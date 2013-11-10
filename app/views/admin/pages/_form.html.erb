@@ -1,0 +1,19 @@
+<%= simple_form_for(@admin_page) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :channel %>
+    <%= f.input :title %>
+    <%= f.input :short_title %>
+    <%= f.input :properties %>
+    <%= f.input :keywords %>
+    <%= f.input :description %>
+    <%= f.input :image_path %>
+    <%#= f.input :content %>
+    <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'simple'}, height: "600px" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

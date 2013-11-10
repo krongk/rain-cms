@@ -1,0 +1,18 @@
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+
+<!-- Styles -->
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Animation -->
+<link href="css/animate.min.css" rel="stylesheet">
+<!-- prettyPhoto -->
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<!-- LiquidSlider -->
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/liquid-slider.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="#">

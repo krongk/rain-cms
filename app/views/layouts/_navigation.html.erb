@@ -1,26 +1,50 @@
-<%= link_to "Home", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">RainCMS</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">RainCMS</a>
+</div>
+<div class="navbar-collapse collapse">
+  <ul class="nav navbar-nav">
+    <li><%= link_to '参数设置', admin_keystores_path %></li>
+    <li><%= link_to '栏目管理', admin_channels_path %></li>
+    <li><%= link_to '页面管理', admin_pages_path %></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">Nav header</li>
+        <li><a href="#">Separated link</a></li>
+        <li><a href="#">One more separated link</a></li>
+      </ul>
     </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
-    <% if current_user.has_role? :admin %>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+        <li>
+        <%= link_to '用户管理', users_path %>
+        </li>
+      <% end %>
       <li>
-      <%= link_to 'Admin', users_path %>
+      <%= link_to '修改账户', edit_user_registration_path %>
+      </li>
+      <li>
+      <%= link_to '退出', destroy_user_session_path, :method=>'delete' %>
+      </li>
+    <% else %>
+      <li>
+      <%= link_to '注册', new_user_registration_path %>
+      </li>
+      <li>
+      <%= link_to '登录', new_user_session_path %>
       </li>
     <% end %>
-  <% else %>
-    <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
-  <% end %>
-</ul>
+  </ul>
+</div><!--/.nav-collapse -->

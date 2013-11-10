@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110114636) do
+ActiveRecord::Schema.define(version: 20131110203517) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
-    t.string   "cate_type"
+    t.string   "typo"
     t.string   "title"
+    t.string   "short_title"
     t.string   "properties"
-    t.string   "default_index"
+    t.string   "default_url"
     t.string   "tmp_index"
     t.string   "tmp_list"
     t.string   "tmp_detial"
@@ -29,6 +30,8 @@ ActiveRecord::Schema.define(version: 20131110114636) do
     t.datetime "updated_at"
   end
 
+  add_index "admin_channels", ["short_title"], name: "index_admin_channels_on_short_title", unique: true, using: :btree
+  add_index "admin_channels", ["title"], name: "index_admin_channels_on_title", unique: true, using: :btree
   add_index "admin_channels", ["user_id"], name: "index_admin_channels_on_user_id", using: :btree
 
   create_table "admin_keystores", force: true do |t|
@@ -39,14 +42,14 @@ ActiveRecord::Schema.define(version: 20131110114636) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_keystores", ["name"], name: "index_admin_keystores_on_name", unique: true, using: :btree
+  add_index "admin_keystores", ["name"], name: "index_admin_keystores_on_name", using: :btree
 
   create_table "admin_pages", force: true do |t|
     t.integer  "user_id"
+    t.integer  "channel_id"
     t.string   "title"
     t.string   "short_title"
     t.string   "properties"
-    t.string   "tags"
     t.string   "keywords"
     t.string   "description"
     t.string   "image_path"
@@ -55,7 +58,25 @@ ActiveRecord::Schema.define(version: 20131110114636) do
     t.datetime "updated_at"
   end
 
+  add_index "admin_pages", ["channel_id"], name: "index_admin_pages_on_channel_id", using: :btree
+  add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
+
+  create_table "ckeditor_assets", force: true do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -11,14 +11,21 @@ module RainCms
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
-      g.test_framework :rspec
-      
-      
-      
-      
       g.view_specs false
       g.helper_specs false
     end
+
+    config.before_configuration do
+      I18n.locale = "zh-CN".to_sym
+      I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
+      I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+      I18n.reload!
+    end
+    config.i18n.default_locale = "zh-CN".to_sym
+
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    
+    #config.assets.precompile += %W( pages.css.scss pages.css)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -33,3 +40,5 @@ module RainCms
     # config.i18n.default_locale = :de
   end
 end
+
+

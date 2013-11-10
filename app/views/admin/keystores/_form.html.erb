@@ -1,0 +1,13 @@
+<%= simple_form_for(@admin_keystore) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :key %>
+    <%= f.input :value %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

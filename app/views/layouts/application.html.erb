@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta name="author" content="master@inruby.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= content_for?(:title) ? yield(:title) : "Rain Cms" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rain Cms" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
@@ -9,19 +15,24 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%# application layout styled for Twitter Bootstrap 3.0 %>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
+    <a href="#content" class="sr-only">跳转到内容部分</a>
+    <%= render file: get_templete(@templete, 'header.html', true) %>
     <main role="main">
       <div class="container">
          <div class="row">
            <div class="col-md-12">
              <%= render 'layouts/messages' %>
+             <% case @channel.properties %>
+             <% when '1' %>
+              <%= render file: get_templete(@templete, @channel.tmp_index) %>
+             <% else %>
+              <%= render file: get_templete(@templete, @channel.tmp_list) %>
+             <% end %>
              <%= yield %>
            </div>
          </div>
       </div>
     </main>
+    <%= render file: get_templete(@templete, 'footer.html', true) %>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<!-- Javascript files -->
+<!-- jQuery -->
+
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Respond JS for IE8 -->
+<script src="js/respond.min.js"></script>
+<!-- HTML5 Support for IE -->
+<script src="js/html5shiv.js"></script>
+<!-- prettyPhoto -->
+<script src="js/jquery.prettyPhoto.js"></script>
+<!-- Isotope -->
+<script src="js/isotope.js"></script>
+<!-- CarouFredSel -->
+<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<!-- LiquidSlider -->
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.liquid-slider.min.js"></script>
+<!-- Custom JS -->
+<script src="js/custom.js"></script>

@@ -36,6 +36,7 @@ RainCms::Application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  ActionMailer::Base.delivery_method = :smtp
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
 

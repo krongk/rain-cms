@@ -1,0 +1,22 @@
+---
+en:
+  active_record:
+    models:
+      admin:
+        page: Page
+    attributes:
+      admin:
+        page:
+          user: User
+          channel: Channel
+          title: Title
+          short_title: Short title
+          properties: Properties
+          keywords: Keywords
+          description: Description
+          image_path: Image path
+          content: Content
+    errors:
+      page: 
+  helpers:
+    page: 

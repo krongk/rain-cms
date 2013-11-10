@@ -1,0 +1,114 @@
+<!-- contact-Heading -->
+			<div class="contact-head">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="contact-header">
+								<h2>Contact</h2>			
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Contact-Heading Ends -->
+		</header>
+		<!-- Header Ends -->
+		
+		<!-- Map starts -->
+		<div class="container">
+			<div class="map">
+				<iframe height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/?ie=UTF8&ll=16.200457,77.355809&spn=0.022378,0.042272&t=m&z=15&output=embed"></iframe>
+							
+			</div>
+		</div>
+		<!-- Map Ends -->
+		
+		<!-- Contact -->
+		<div class="contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="contact-form">
+		
+{% form comment %}
+    <input name="authenticity_token" type="hidden" value="{{ authenticity_token }}" />
+    <input name="site_comment[site_id]" type="hidden" value="{{ site.id }}" />
+    <input name="site_comment[redirect_url]" type="hidden" value="{{ redirect_url }}" />
+
+    {% if form.posted_successfully? %}
+      <div class="notice">留言成功，我们会尽快与您取得联系.</div>
+    {% endif %}
+
+    {% if form.errors %}
+      <div class="notice error">留言失败，请检查是否输入有误!</div>
+    {% endif %}
+
+								<fieldset>
+							
+									<div class="form-group">
+										
+										<div class="col-lg-12">
+		<input type="text" id="comment_name" name="site_comment[name]" size="40" value="{{form.name}}" class="form-control input-lg {% if form.errors contains 'name' %}input-error{% endif %}" />
+
+										</div>
+									</div>
+									<div class="form-group">
+										
+										<div class="col-lg-12">
+		<input type="text" id="comment_mobile_phone" name="site_comment[mobile_phone]" size="40" value="{{form.mobile_phone}}" class="form-control input-lg {% if form.errors contains 'name' %}input-error{% endif %}" />
+										</div>
+									</div>
+									<div class="form-group">
+										
+										<div class="col-lg-12">
+		<textarea id="comment_content" name="site_comment[content]" cols="40" rows="5" class="form-control input-lg {% if form.errors contains 'content' %}input-error{% endif %}">{{form.content}}</textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										
+										<div class="col-lg-12">
+											<button type="submit" class="btn btn-green btn-lg">提交</button>
+											<button type="reset" class="btn btn-green btn-lg">重置</button>
+										</div>
+									</div>
+								</fieldset>
+		{% endform %}
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="contact-address">
+							<span class="home"><i class="icon-home"></i> <strong>Address:</strong><br/>
+							     <span class="addr">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#14,Plot No.14,Karmara Street,<br />
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5th Stage,Koramangala,Madiwala,<br />
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bangalore-560065.</span>
+							</span> <br />
+							<span class="phone"><i class="icon-phone"></i> (+35)9870635421</span> <br />
+							<span><a href="#" class="email"><i class="icon-envelope"></i> tony@gmail.com</a></span> <br />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Contact Ends -->
+		
+		<!-- CTA Starts -->
+		<div class="cta">
+			<div class="container">
+				<div class="cta-info">
+					
+							<div class="row">
+								<div class="col-md-9">
+									<p>Suspendisse <strong>tincidunt</strong> a tortor sit amet rhoncus duroi</p>
+								</div>
+								<div class="col-md-3">
+									<button type="button" class="btn btn-green btn-lg"><i class="icon-download"></i>Download Now</button>
+								</div>
+							</div>
+						
+				</div>
+				
+			</div>
+		</div>
+		<!-- CTA Ends -->
+		

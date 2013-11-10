@@ -1,0 +1,31 @@
+<h1>Listing admin_keystores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_keystores.each do |admin_keystore| %>
+      <tr>
+        <td><%= admin_keystore.key %></td>
+        <td><%= admin_keystore.value %></td>
+        <td><%= admin_keystore.description %></td>
+        <td><%= link_to 'Show', admin_keystore %></td>
+        <td><%= link_to 'Edit', edit_admin_keystore_path(admin_keystore) %></td>
+        <td><%= link_to 'Destroy', admin_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keystore', new_admin_keystore_path %>

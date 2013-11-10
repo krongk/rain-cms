@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @admin_channel.user %>
+</p>
+
+<p>
+  <strong>Typo:</strong>
+  <%= @admin_channel.typo %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_channel.title %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @admin_channel.properties %>
+</p>
+
+<p>
+  <strong>Default url:</strong>
+  <%= @admin_channel.default_url %>
+</p>
+
+<p>
+  <strong>Tmp index:</strong>
+  <%= @admin_channel.tmp_index %>
+</p>
+
+<p>
+  <strong>Tmp list:</strong>
+  <%= @admin_channel.tmp_list %>
+</p>
+
+<p>
+  <strong>Tmp detial:</strong>
+  <%= @admin_channel.tmp_detial %>
+</p>
+
+<p>
+  <strong>Keywords:</strong>
+  <%= @admin_channel.keywords %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @admin_channel.description %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @admin_channel.content %>
+</p>
+
+<%= link_to 'Edit', edit_admin_channel_path(@admin_channel) %> |
+<%= link_to 'Back', admin_channels_path %>

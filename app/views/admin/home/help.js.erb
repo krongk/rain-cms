@@ -1,0 +1,13 @@
+alert("sf");
+
+$('#myModal').modal({
+  keyboard: false
+})
+
+$('#modal-form-submit').on('click', function(e){
+  // We don't want this to act as a link so cancel the link action
+  //e.preventDefault();
+  $('#admin_channel_tmp_index').val("sdfsdf");
+  // Find form and submit it
+  //$('#modal-form').submit();
+});

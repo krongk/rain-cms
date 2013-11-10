@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def get_templete(temp_name, page_name, partial = false )
+    "#{Rails.root}/public/templetes/#{temp_name}/#{if partial then '_' end}#{page_name}"
+  end
+  
 end
