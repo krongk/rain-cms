@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RainCms</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Rain Cms" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rain Cms" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%# application layout styled for Twitter Bootstrap 3.0 %>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <div class="container">
+         <div class="row">
+           <div class="col-md-12">
+             <%= render 'layouts/messages' %>
+             <%= yield %>
+           </div>
+         </div>
+      </div>
+    </main>
+  </body>
 </html>
