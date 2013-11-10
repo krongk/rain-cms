@@ -1,0 +1,47 @@
+<h1>Listing admin_channels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Cate type</th>
+      <th>Title</th>
+      <th>Properties</th>
+      <th>Default index</th>
+      <th>Tmp index</th>
+      <th>Tmp list</th>
+      <th>Tmp detial</th>
+      <th>Keywords</th>
+      <th>Description</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_channels.each do |admin_channel| %>
+      <tr>
+        <td><%= admin_channel.user %></td>
+        <td><%= admin_channel.cate_type %></td>
+        <td><%= admin_channel.title %></td>
+        <td><%= admin_channel.properties %></td>
+        <td><%= admin_channel.default_index %></td>
+        <td><%= admin_channel.tmp_index %></td>
+        <td><%= admin_channel.tmp_list %></td>
+        <td><%= admin_channel.tmp_detial %></td>
+        <td><%= admin_channel.keywords %></td>
+        <td><%= admin_channel.description %></td>
+        <td><%= admin_channel.content %></td>
+        <td><%= link_to 'Show', admin_channel %></td>
+        <td><%= link_to 'Edit', edit_admin_channel_path(admin_channel) %></td>
+        <td><%= link_to 'Destroy', admin_channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Channel', new_admin_channel_path %>

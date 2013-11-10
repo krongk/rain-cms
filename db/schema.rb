@@ -11,7 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110064904) do
+ActiveRecord::Schema.define(version: 20131110114636) do
+
+  create_table "admin_channels", force: true do |t|
+    t.integer  "user_id"
+    t.string   "cate_type"
+    t.string   "title"
+    t.string   "properties"
+    t.string   "default_index"
+    t.string   "tmp_index"
+    t.string   "tmp_list"
+    t.string   "tmp_detial"
+    t.string   "keywords"
+    t.string   "description"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_channels", ["user_id"], name: "index_admin_channels_on_user_id", using: :btree
+
+  create_table "admin_keystores", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_keystores", ["name"], name: "index_admin_keystores_on_name", unique: true, using: :btree
+
+  create_table "admin_pages", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "short_title"
+    t.string   "properties"
+    t.string   "tags"
+    t.string   "keywords"
+    t.string   "description"
+    t.string   "image_path"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

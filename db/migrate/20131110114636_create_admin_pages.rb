@@ -1,0 +1,17 @@
+class CreateAdminPages < ActiveRecord::Migration
+  def change
+    create_table :admin_pages do |t|
+      t.references :user, index: true
+      t.string :title
+      t.string :short_title
+      t.string :properties
+      t.string :tags
+      t.string :keywords
+      t.string :description
+      t.string :image_path
+      t.text :content
+
+      t.timestamps
+    end
+  end
+end

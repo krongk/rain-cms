@@ -1,0 +1,19 @@
+<%= simple_form_for(@admin_page) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :title %>
+    <%= f.input :short_title %>
+    <%= f.input :properties %>
+    <%= f.input :tags %>
+    <%= f.input :keywords %>
+    <%= f.input :description %>
+    <%= f.input :image_path %>
+    <%= f.input :content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
