@@ -27,10 +27,12 @@ class Admin::ChannelsController < ApplicationController
   def create
     @admin_channel = Admin::Channel.new(admin_channel_params)
     @admin_channel.user_id = current_user.id
+    @admin_channel.short_title = Pinyin.t(@admin_channel.title).gsub(/\s+/, '-') if @admin_channel.short_title.blank?
 
     respond_to do |format|
       if @admin_channel.save
-        format.html { redirect_to @admin_channel, notice: 'Channel was successfully created.' }
+        
+        format.html { redirect_to @admin_channel, notice: '栏目添加成功.' }
         format.json { render action: 'show', status: :created, location: @admin_channel }
       else
         format.html { render action: 'new' }
@@ -42,10 +44,13 @@ class Admin::ChannelsController < ApplicationController
   # PATCH/PUT /admin/channels/1
   # PATCH/PUT /admin/channels/1.json
   def update
-    @admin_channel.user_id = current_user.id
+    admin_channel_params[:user_id] = current_user.id
+    admin_channel_params["short_title"] = Pinyin.t(@admin_channel.title).gsub(/\s+/, '-')
+    puts admin_channel_params["short_title"]
+
     respond_to do |format|
       if @admin_channel.update(admin_channel_params)
-        format.html { redirect_to @admin_channel, notice: 'Channel was successfully updated.' }
+        format.html { redirect_to @admin_channel, notice: '栏目更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -72,6 +77,6 @@ class Admin::ChannelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_channel_params
-      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detial, :keywords, :description, :content)
+      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :short_title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detial, :keywords, :description, :content)
     end
 end

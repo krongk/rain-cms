@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   def load_templete
     @templete = Admin::Keystore.value_for('templete')
     @templete ||= 'default'
+
+    @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
+    Dir.chdir(@base_dir)
+    @temp_list = Dir.glob("*.html")
   end
 
 end

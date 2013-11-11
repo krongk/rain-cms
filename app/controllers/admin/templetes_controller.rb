@@ -1,9 +1,6 @@
 class Admin::TempletesController < ApplicationController
-  before_filter :base_dir
 
   def index
-    Dir.chdir(@base_dir)
-    @temp_list = Dir.glob("*.html")
   end
 
   def show
@@ -29,8 +26,4 @@ class Admin::TempletesController < ApplicationController
   def destroy
   end
 
-  private
-  def base_dir
-    @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
-  end
 end

@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
-    <meta name="robots" content="INDEX,FOLLOW" />
-    <meta name="author" content="master@inruby.com" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= content_for?(:title) ? yield(:title) : "Rain Cms" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rain Cms" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <a href="#content" class="sr-only">跳转到内容部分</a>
-    <%= render file: get_templete(@templete, 'header.html', true) %>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-    <%= render file: get_templete(@templete, 'footer.html', true) %>
-  </body>
-</html>
+<% case @channel.properties %>
+<% when 1 %>
+    <%= render file: @base_dir + @channel.tmp_index %>
+<% when 2 %>
+    @page 
+    <%= render file: @base_dir + @channel.tmp_list %>
+<% when 3 %>
+  <script type="text/javascript">
+    window.location.href="<%= @channel.default_url %>" 
+  </script>
+<% end %>
