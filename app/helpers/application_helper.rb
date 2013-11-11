@@ -13,7 +13,8 @@ module ApplicationHelper
   end
 
   def get_templete(temp_name, page_name, partial = false )
-    "#{Rails.root}/public/templetes/#{temp_name}/#{if partial then '_' end}#{page_name}"
+    f = "#{Rails.root}/public/templetes/#{temp_name}/#{if partial then '_' end}#{page_name}"
+    File.exist?(f) ? f : 'layouts/blank'
   end
   
 end

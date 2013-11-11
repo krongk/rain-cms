@@ -1,5 +1,5 @@
-
-<%= @channel.try(:id) %>,
-f
-<%= @page.try(:title) %>,
-<%= @templete %>.
+<% if @page %>
+  <%= raw @page.content %>
+<% else %>
+  <%= raw @channel.content %>
+<% end %>

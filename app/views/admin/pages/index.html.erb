@@ -1,9 +1,8 @@
-<h1>Listing admin_pages</h1>
+<h1>页面列表</h1>
 
-<table>
+<table class="table table-striped table-bordered table-hover table-responsive">
   <thead>
     <tr>
-      <th>User</th>
       <th>Channel</th>
       <th>Title</th>
       <th>Short title</th>
@@ -11,7 +10,6 @@
       <th>Keywords</th>
       <th>Description</th>
       <th>Image path</th>
-      <th>Content</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,15 +19,13 @@
   <tbody>
     <% @admin_pages.each do |admin_page| %>
       <tr>
-        <td><%= admin_page.user %></td>
-        <td><%= admin_page.channel %></td>
+        <td><%= admin_page.channel.title %></td>
         <td><%= admin_page.title %></td>
         <td><%= admin_page.short_title %></td>
         <td><%= admin_page.properties %></td>
         <td><%= admin_page.keywords %></td>
         <td><%= admin_page.description %></td>
         <td><%= admin_page.image_path %></td>
-        <td><%= admin_page.content %></td>
         <td><%= link_to 'Show', admin_page %></td>
         <td><%= link_to 'Edit', edit_admin_page_path(admin_page) %></td>
         <td><%= link_to 'Destroy', admin_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>

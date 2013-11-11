@@ -1,12 +1,11 @@
 class Admin::ChannelsController < ApplicationController
-  layout 'admin'
   before_filter :authenticate_user!
   before_action :set_admin_channel, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/channels
   # GET /admin/channels.json
   def index
-    @admin_channels = Admin::Channel.all
+    @admin_channels = Admin::Channel.where("parent_id IS NULL")
   end
 
   # GET /admin/channels/1
@@ -73,6 +72,6 @@ class Admin::ChannelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_channel_params
-      params.require(:admin_channel).permit(:user_id, :typo, :title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detial, :keywords, :description, :content)
+      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detial, :keywords, :description, :content)
     end
 end

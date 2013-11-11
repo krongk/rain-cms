@@ -1,5 +1,4 @@
 class Admin::KeystoresController < ApplicationController
-  layout 'admin'
   before_filter :authenticate_user!
   before_action :set_admin_keystore, only: [:show, :edit, :update, :destroy]
 

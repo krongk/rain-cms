@@ -17,8 +17,8 @@ module RainCms
 
     config.before_configuration do
       I18n.locale = "zh-CN".to_sym
-      I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
-      I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+      I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.{rb,yml}')]
+      puts Dir[Rails.root.join('config', 'locales', '**', '**', '*.{rb,yml}')]
       I18n.reload!
     end
     config.i18n.default_locale = "zh-CN".to_sym

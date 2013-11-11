@@ -13,6 +13,9 @@
         ['外部连接(在<默认路径>处填写网址)', 3]
       ] %>
 
+    <%= f.select :parent_id, Admin::Channel.all.map { |r| [r.title, r.id, { class: r.id }] }, include_blank: true %>
+
+
     <%= f.input :tmp_index %>
     <!-- Button trigger modal -->
     <button class="btn btn-primary btn-sm btn-inline" data-toggle="modal" data-target="#myModal">
@@ -33,7 +36,6 @@
     <%= f.button :submit %>
   </div>
 <% end %>
-
 
 
 <!-- Modal -->

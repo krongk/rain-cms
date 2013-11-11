@@ -1,7 +1,6 @@
 RainCms::Application.routes.draw do
+  
   #routes for admin ==============================
-  get "admin/home/help"
-  match "admin", to: "admin/home#index", via: [:get]
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
   mount Ckeditor::Engine => '/ckeditor'
@@ -9,6 +8,15 @@ RainCms::Application.routes.draw do
     resources :pages
     resources :channels
     resources :keystores
+    get "home/index"
+    get "home/help"
+    get "templetes/index"
+    get "templetes/show"
+    get "templetes/new"
+    get "templetes/create"
+    get "templetes/edit"
+    post "templetes/update"
+    get "templetes/destroy"
   end
   #routes for front ==============================
   root :to => "welcome#index"
@@ -17,4 +25,6 @@ RainCms::Application.routes.draw do
   #  :constraints => { :dik => /\d{4}.\d{2}.\d{2}/,  
   #  :classify_type => /title|date|skip/ }
   match '/:channel(/:id)', to: "welcome#index", via: :get
+
+  #
 end
