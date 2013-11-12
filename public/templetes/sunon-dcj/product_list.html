@@ -1,0 +1,130 @@
+<!--START MAIN-WRAPPER--> 
+<div class="main-wrapper">
+  <%= render file: '/public/templetes/sunon-dcj/_header.html'%>
+<!-- ######################################################## -->   
+<!-- ################-->
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+    <div class="shine">
+    <div class="container">
+     <div class="row-fluid">
+      <div class="span12">
+        
+        <div class="row-fluid">
+          <div class="span12">
+          <h1>Portfolio 4 columns with filter</h1>
+          <!-- BREADCRUMB -->
+          <ul class="breadcrumb">
+            <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
+            <li class="active">Portfolio 4 columns with filter</li>
+          </ul>
+          <!--END: BREADCRUMB -->
+          </div>
+        </div>
+        </div>
+       </div>
+      </div>
+       </div>
+      </div>
+    <!-- PAGE HEADER -->
+    
+    <!-- CONTENT CONTAINER-->
+    <div class="container">
+                <!-- FILTER-->
+                  <!-- just add your TAG to data-filter="ADD HERE" -->  
+                <!-- and then add your same TAG to portfolio item class="ADD HERE" -->
+                  <div class="color-bottom-line center">
+                    <div class="line-proj center">
+                      <div class="proj">
+                        <div id="filters">
+                          <a href="#" data-filter="*" class="ione-col active">Show All</a>
+                          <a href="#" data-filter=".graphics" class=" ione-col">Graphics</a>
+                          <a href="#" data-filter=".nature" class="ione-col">Nature</a>
+                          <a href="#" data-filter=".food" class="ione-col">Food</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
+                <!--END: FILTER-->
+    <!--###################-->
+    <!-- START PORTFOLIO // THIS ITEM COMMENTED-->
+    <!--###################-->
+    <div id="container-folio" class="row ufilter"><!-- !important! => DONT REMOVE class="ufilter"--> 
+   
+      <div class="span12">
+        <div id="portfolio" class="row">
+    <!-- portfolio item -->
+    <% @pages.each do |page| %>
+      <div class="span3  project-item graphics box">
+        <div class="thumbnail"> 
+          <!-- IMAGE CONTAINER-->
+          <div class="sample project-item-image-container">
+            <div class="project-item-overlay ">
+              <div class="inner">
+                <ul>
+                  <li> <a rel="prettyPhoto[gallery]" href="images/4_c.jpg" class="proj-btn">
+                    <i class="fa-icon-zoom-in fa-icon-large"></i></a>
+                  </li>
+                  
+                  <li>  <a class="proj-btn" href="portfolio_single_project _alt.html">
+                      <i class="fa-icon-link fa-icon-large"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <img src="images/4_c.jpg" alt="iPhonegraphy" /> 
+         </div> 
+         <!--END IMAGE CONTAINER-->
+       
+          <!-- CAPTION -->
+      
+          <div class="caption">
+            <div class="transit-to-top">
+              <h3 class="p-title standart-h3title"><%= page.title %></h3>
+              <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="/aa/<%=page.id %>" title="read more">更多 &rarr;</a>
+            </div>
+          </div> 
+          <!--END CAPTION -->
+        </div>
+        <!-- END: THUMBNAIL -->
+      </div>
+    <% end %>
+      <!-- ##################### -->
+      <!-- END: portfolio item -->
+      <!-- ##################### -->
+      
+      </div>
+    </div>
+<!-- END MAIN WRAPPER-->
+  <%= render file: '/public/templetes/sunon-dcj/_footer.html'%>
+<!--[END] MAIN WRAPPER-->
+</div>
+  
+
+<script>
+		jQuery.noConflict()(function($){
+			var $container = $('#container-folio');
+					
+			if($container.length) {
+				$container.waitForImages(function() {
+					
+					// initialize isotope
+					$container.isotope({
+					  itemSelector : '.box',
+					  layoutMode : 'fitRows'
+					});
+					
+					// filter items when filter link is clicked
+					$('#filters a').click(function(){
+					  var selector = $(this).attr('data-filter');
+					  $container.isotope({ filter: selector });
+					  $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
+					  
+					  return false;
+					});
+					
+				},null,true);
+			}});
+
+</script>
