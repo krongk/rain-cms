@@ -4,6 +4,8 @@
 <!-- Navbar
     ================================================== -->
 <%= render file: 'public/templetes/sunon-dcj/_header.html' %>
+
+<!-- [[main start]] -->
 <!-- PAGE HEADER -->
 <div class="page-header">
 <div class="shine">
@@ -35,7 +37,7 @@
       <!-- ####################-->
       <!-- ####### BLOG ITEM ######-->
       <!-- ####################-->
-      <%= @pages.each do |page| %>
+      <% @pages.each do |page| %>
         <div class="blog-post">
           <div class="blog-item">
             <span class="label label-info label-xl span2 center">
@@ -141,7 +143,7 @@
     <!-- END SIDEBAR-->
   </div>
 </div>
-
+<!-- [[main end]] -->
 <%= render file: 'public/templetes/sunon-dcj/_footer.html' %>
 
 <!-- END: FOOTER -->

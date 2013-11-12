@@ -1,0 +1,105 @@
+<!--START MAIN-WRAPPER--> 
+<div class="main-wrapper">
+<!-- Navbar
+    ================================================== -->
+<%= render file: 'public/templetes/sunon-dcj/_header.html' %>
+<!-- PAGE HEADER -->
+<div class="page-header">
+<div class="shine">
+<div class="container">
+ <div class="row-fluid">
+    <div class="span12">
+      
+        <div class="row-fluid">
+          <div class="span12">
+            <h1><%= @channel.title %></h1>
+      <!-- BREADCRUMB -->
+      <ul class="breadcrumb">
+        <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
+        <li class="active"><%= @channel.title %></li>
+      </ul>
+      <!--END: BREADCRUMB -->
+          </div>
+        </div>
+      </div>
+   </div>
+    </div>
+   </div>
+  </div>
+<!-- PAGE HEADER -->
+<div class="container">
+  <div class="row-fluid blog">
+    <div class="span8">
+  
+      <%= yield %>
+    
+      <hr class="soften">
+      
+    </div>
+    <!-- SIDEBAR-->
+    <div class="span4 side_bar">
+      <div class="row-fluid">
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>最近新闻</span></h5>
+        </div>
+        <ul class="l_tinynav2 widget-archive" id="nav2">
+          <li><a href="#" style="margin-left:0px;"> news</a></li>
+        </ul>
+      </div>
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Tags</span></h5>
+        </div>
+        
+        <div class="span12">
+          <a href="#"><span class="label label-info">Snipp</span></a> 
+        </div>
+      </div>
+            
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Tabs</span></h5>
+        </div>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#1" data-toggle="tab">News</a></li>
+            <li><a href="#2" data-toggle="tab">Freebies</a></li>
+            <li><a href="#2" data-toggle="tab">WordPress</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="1">
+              <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+            <div class="tab-pane" id="2">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl orci, condimentum ultrices consequat eu. Aenean nisl orci, cosequat eu.</p>
+            </div>
+            <div class="tab-pane" id="3">
+              <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Video widget</span></h5>
+        </div>
+        <div class="vendor">
+          <div class="container-video">
+          <iframe src="http://player.vimeo.com/video/29309724?title=0&color=FF5050" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END SIDEBAR-->
+  </div>
+</div>
+
+<%= render file: 'public/templetes/sunon-dcj/_footer.html' %>
+
+<!-- END: FOOTER -->
+</div>
+<!-- END: MAIN-WRAPPER-->

@@ -108,6 +108,8 @@
  <!-- END TOP MENU -->
  <!-- ################-->
  <!-- [[header end]] -->
+
+<!-- [[main start]] -->
 <!-- PAGE HEADER -->
 <div class="page-header">
 <div class="shine">
@@ -117,11 +119,11 @@
       
         <div class="row-fluid">
           <div class="span12">
-            <h1><%= channel.title %></h1>
+            <h1><%= @channel.title %></h1>
 			<!-- BREADCRUMB -->
 			<ul class="breadcrumb">
 			  <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
-			  <li class="active"><%= channel.title %></li>
+			  <li class="active"><%= @channel.title %></li>
 			</ul>
 			<!--END: BREADCRUMB -->
           </div>
@@ -135,117 +137,117 @@
 <div class="container">
   <div class="row-fluid blog">
     <div class="span8">
-	
-	<!-- ####################-->
-	<!-- ####### BLOG ITEM ######-->
-	<!-- ####################-->
-  <%= @pages.each do |page| %>
-    <div class="blog-post">
-      <div class="blog-item">
-        <span class="label label-info label-xl span2 center">
-          <span class="date-blog"><%= page.updated_at.day %></span> <br><%= page.updated_at.month %>
-        </span>
-        <div class="span10">
-          <h2 class="standart-h3title">
-            <a href="/<%= @channel%>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
-          </h2>
+  
+      <!-- ####################-->
+      <!-- ####### BLOG ITEM ######-->
+      <!-- ####################-->
+      <% @pages.each do |page| %>
+        <div class="blog-post">
+          <div class="blog-item">
+            <span class="label label-info label-xl span2 center">
+              <span class="date-blog"><%= page.updated_at.day %></span> <br><%= page.updated_at.year %>-<%= page.updated_at.month %>
+            </span>
+            <div class="span10">
+              <h2 class="standart-h3title">
+                <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
+              </h2>
+            </div>
+
+            <p class="meta-blog clearfix">
+                <i class="icon-comment"></i>
+                <a href="#">3 Comments</a>
+                | <i class="icon-share"></i>
+                <a href="#">39 Shares</a> | <i class="icon-user"></i> 
+                <a href="#">Admin</a> | Tags: 
+                <a href="#"><span class="label label-info">Snipp</span></a> 
+                <a href="#"><span class="label label-info">Bootstrap</span></a> 
+                <a href="#"><span class="label label-info">UI</span></a> 
+                <a href="#"><span class="label label-info">growth</span></a>
+            </p>
+            <div class="row-fluid">
+               <div class="span4">
+                  <div class="thumbnail">
+                      <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
+                  </div> 
+                </div>
+                <div class="span8">
+                    <p class="cat-blog"><%= page.content.truncate(200) %>. </p> 
+                    <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>" target="_blank">阅读详细 &rarr;</a>
+                </div>
+            </div>
+          </div>
         </div>
+      <% end %>
 
-        <p class="meta-blog clearfix">
-    				<i class="icon-comment"></i>
-    				<a href="#">3 Comments</a>
-    				| <i class="icon-share"></i>
-    				<a href="#">39 Shares</a> | <i class="icon-user"></i> 
-    				<a href="#">Admin</a> | Tags: 
-    				<a href="#"><span class="label label-info">Snipp</span></a> 
-    				<a href="#"><span class="label label-info">Bootstrap</span></a> 
-    				<a href="#"><span class="label label-info">UI</span></a> 
-    				<a href="#"><span class="label label-info">growth</span></a>
-    		</p>
-    	  <div class="row-fluid">
-           <div class="span4">
-              <div class="thumbnail">
-                	<img src="images/bootstrap-layout.jpg" alt="post image">
-              </div> 
-    	      </div>
-        		<div class="span8">
-                <p class="cat-blog"><%= page.content.truncate(200) %>. </p> 
-        		    <a href="/<%= @channel%>/<%= page.id %>-<%= page.short_title %>" target="_blank">阅读详细 &rarr;</a>
-        		</div>
+      <!-- ####################-->
+      <!-- ####### END: BLOG ITEM ######-->
+      <!-- ####################-->
+    
+      <hr class="soften">
+      <%= will_paginate @pages %>
+    </div>
+    <!-- SIDEBAR-->
+    <div class="span4 side_bar">
+      <div class="row-fluid">
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>最近新闻</span></h5>
         </div>
-      </div>
-    </div>
-  <% end %>
-
-	<!-- ####################-->
-	<!-- ####### END: BLOG ITEM ######-->
-	<!-- ####################-->
-  <hr class="soften">
-  <%= will_paginate @pages %>
-
-	<!-- SIDEBAR-->
-  <div class="span4 side_bar">
-  	<div class="row-fluid">
-  		<div class="line2 center">
-  			<h5 class="standart-h3title"><span>最近新闻</span></h5>
-  		</div>
-      <ul class="l_tinynav2 widget-archive" id="nav2">
-  			<li><a href="#" style="margin-left:0px;"> news</a></li>
-  		</ul>
-    </div>
-  	<div class="row-fluid">
-      <hr class="half" />
-  		<div class="line2 center">
-        <h5 class="standart-h3title"><span>Tags</span></h5>
-  		</div>
-  		
-      <div class="span12">
-  			<a href="#"><span class="label label-info">Snipp</span></a> 
-      </div>
-  	</div>
-          
-  	<div class="row-fluid">
-      <hr class="half" />
-      <div class="line2 center">
-  			<h5 class="standart-h3title"><span>Tabs</span></h5>
-  		</div>
-      <div class="tabbable">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#1" data-toggle="tab">News</a></li>
-          <li><a href="#2" data-toggle="tab">Freebies</a></li>
-          <li><a href="#2" data-toggle="tab">WordPress</a></li>
+        <ul class="l_tinynav2 widget-archive" id="nav2">
+          <li><a href="#" style="margin-left:0px;"> news</a></li>
         </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="1">
-            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+      </div>
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Tags</span></h5>
+        </div>
+        
+        <div class="span12">
+          <a href="#"><span class="label label-info">Snipp</span></a> 
+        </div>
+      </div>
+            
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Tabs</span></h5>
+        </div>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#1" data-toggle="tab">News</a></li>
+            <li><a href="#2" data-toggle="tab">Freebies</a></li>
+            <li><a href="#2" data-toggle="tab">WordPress</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="1">
+              <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+            <div class="tab-pane" id="2">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl orci, condimentum ultrices consequat eu. Aenean nisl orci, cosequat eu.</p>
+            </div>
+            <div class="tab-pane" id="3">
+              <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
           </div>
-          <div class="tab-pane" id="2">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl orci, condimentum ultrices consequat eu. Aenean nisl orci, cosequat eu.</p>
-          </div>
-          <div class="tab-pane" id="3">
-            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <hr class="half" />
+        <div class="line2 center">
+          <h5 class="standart-h3title"><span>Video widget</span></h5>
+        </div>
+        <div class="vendor">
+          <div class="container-video">
+          <iframe src="http://player.vimeo.com/video/29309724?title=0&color=FF5050" frameborder="0"></iframe>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row-fluid">
-  		<hr class="half" />
-      <div class="line2 center">
-        <h5 class="standart-h3title"><span>Video widget</span></h5>
-      </div>
-      <div class="vendor">
-      	<div class="container-video">
-      	<iframe src="http://player.vimeo.com/video/29309724?title=0&color=FF5050" frameborder="0"></iframe>
-      	</div>
-      </div>
-    </div>
-
+    <!-- END SIDEBAR-->
   </div>
-  <!-- END SIDEBAR-->
-    </div>
 </div>
-
+<!-- [[main end]] -->
 <!-- [[footer start]] -->
 <!-- Footer
     ================================================== -->

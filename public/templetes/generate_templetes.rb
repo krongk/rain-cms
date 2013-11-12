@@ -5,7 +5,7 @@ $USAGE = <<EOT
  # 1. 请输入指定的模板文件名：-e theme
  # 2. 模板文件资源的文件结构为：
  #
- # |theme_name
+ # |templete_name
  #        |assets
  #              _footer.html
  #              _header.html
@@ -64,7 +64,7 @@ class DataExtractor
     error_flag = false
     puts "generate #{@theme}........."
 
-    #split index page
+    #1. split index page
     index_path = File.join(File.dirname(__FILE__), @theme, 'index.html')
     head_path = File.join(File.dirname(__FILE__), @theme, '_head.html')
     header_path = File.join(File.dirname(__FILE__), @theme, '_header.html')
@@ -93,13 +93,14 @@ class DataExtractor
       File.open(temp_index_path, 'w'){|f| f.write( get_content(the_content) )}
     end
 
-    puts "--------------------"
-    #extract other pages
+    #2. extract templete pages
+    puts "extract templete pages--------------------"
     base_dir = File.join(File.dirname(__FILE__), @theme)
     Dir.chdir(base_dir)
+
     temp_list = Dir.glob("*.html")
     temp_list.each do |t|
-      next if t !~ /^t_(.*)$/i
+      next if t !~ /^(?:t|temp)_(.*)$/i
       f_name = $1
       puts t
 
@@ -112,51 +113,24 @@ class DataExtractor
         File.open("temp_#{f_name}", 'w'){|f| f.write( get_content(the_content) )}
       end
     end
-    puts "remove the arealdy processed temp files"
-    FileUtils.rm_f Dir.glob("t_*.html")
-    # #1. prepare files
-    # css_urls_path = File.join(File.dirname(__FILE__), @theme, 'assets', 'css_urls.txt')
-    # js_urls_path = File.join(File.dirname(__FILE__), @theme, 'assets', 'js_urls.txt')
-    # header_path = File.join(File.dirname(__FILE__), @theme, 'assets', '_header.html')
-    # index_content_path = File.join(File.dirname(__FILE__), @theme, 'assets', '_index_content.html')
-    # footer_path = File.join(File.dirname(__FILE__), @theme, 'assets', '_footer.html')
-    # demo_default_path = File.join(File.dirname(__FILE__), @theme, 'demo.default.html')
-    # puts "can not find css_urls_path #{error_flag = true}" unless File.exists?(css_urls_path)
-    # puts "can not find js_urls_path #{error_flag = true}" unless File.exists?(js_urls_path)
-    # puts "can not find header_path #{error_flag = true}" unless File.exists?(header_path)
-    # puts "can not find index_content_path #{error_flag = true}" unless File.exists?(index_content_path)
-    # puts "can not find footer_path #{error_flag = true}" unless File.exists?(footer_path)
-    # puts "can not find demo_default_path #{error_flag = true}" unless File.exists?(demo_default_path)
-    # return if error_flag
+    # puts "remove the arealdy processed temp files"
+    # FileUtils.rm_f Dir.glob("t_*.html")
 
-    # #2. get all content
-    # puts "get demo content"
-    # demo_content = File.open(demo_default_path).read
-    # demo_content = demo_content.force_encoding("utf-8").sub(/{{title}}/, @theme)
-    # demo_content = demo_content.force_encoding("utf-8").sub(/{{css_urls}}/, encoded(File.open(css_urls_path).read))
-    # demo_content = demo_content.force_encoding("utf-8").sub(/{{js_urls}}/, encoded(File.open(js_urls_path).read))
-    # header_content = encoded(File.open(header_path).read)
-    # if header_content =~ /^\s*<body/i 
-    #   demo_content = demo_content.force_encoding("utf-8").sub(/<body>/, header_content)
-    # else
-    #   demo_content = demo_content.force_encoding("utf-8").sub(/{{header}}/, header_content)
-    # end
-    # demo_content = demo_content.force_encoding("utf-8").sub(/{{content}}/, encoded(File.open(index_content_path).read))
-    # demo_content = demo_content.force_encoding("utf-8").sub(/{{footer}}/, encoded(File.open(footer_path).read))
+    #3. extract other single page content
+    puts "extract other single page ............"
+    temp_list = Dir.glob("*.html")
+    temp_list.each do |t|
+      next if t =~ /^(?:t|temp)_(.*)$/i
+      puts t
 
-    # #3. change links
-    # puts "change links"
-    # # <script src="/themes/cryption/js/jquery.min.js" => <script src="js/jquery.min.js"
-    # demo_content = demo_content.gsub(/"\/themes\/#{@theme}\//, '"') #"
-    # # change all link to "#"
-    # demo_content = demo_content.gsub(/href="\//, 'href="#') 
+      the_content = File.open(t).read
+      if /<!-- \[\[main start\]\] -->(.*)<!-- \[\[main end\]\] -->/im =~ the_content.force_encoding("utf-8")
+        the_content = $1
+        File.open(t, 'w'){|f| f.write( get_content(the_content) )}
+      end
+    end
 
-    # #4. write to demo.html
-    # puts "write to demo.thml"
-    # File.open(File.join(File.dirname(__FILE__), @theme, 'demo.html'), 'w'){
-    #   |f| f.write(demo_content)
-    # }
-    puts "down"
+    puts "............down!"
     exit
   end
 
@@ -169,10 +143,6 @@ class DataExtractor
     content.gsub!(/ href\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|ico|icon)\//, ' href="/templetes/{{theme}}/\1/')
     content.gsub!(/\{\{theme\}\}/, "#{@theme}")
     content
-  end
-
-  def encoded(str)
-    return str.force_encoding("utf-8")
   end
 end
 
