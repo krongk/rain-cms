@@ -37,7 +37,7 @@
 
 <p>
   <strong>Tmp detial:</strong>
-  <%= @admin_channel.tmp_detial %>
+  <%= @admin_channel.tmp_detail %>
 </p>
 
 <p>
@@ -50,10 +50,10 @@
   <%= @admin_channel.description %>
 </p>
 
-<p>
+<pre>
   <strong>Content:</strong>
   <%= @admin_channel.content %>
-</p>
+</pre>
 
 <%= link_to 'Edit', edit_admin_channel_path(@admin_channel) %> |
 <%= link_to 'Back', admin_channels_path %>

@@ -1,4 +1,6 @@
+#encoding: utf-8
 class Admin::TempletesController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
   end
@@ -7,9 +9,21 @@ class Admin::TempletesController < ApplicationController
   end
 
   def new
+    @templetes = Dir.glob "#{Rails.root}/public/templetes/*"
   end
 
   def create
+    Admin::Keystore.put('templete', params[:templete])
+    Admin::Keystore.put('head', params[:head])
+    Admin::Keystore.put('foot', params[:foot])
+    #input layouts/_header
+    File.open( File.join(Rails.root, "/app/views/layouts/_header.html.erb"), 'w') do |f|
+      f.write File.open( File.join(@base_dir, '_header.html'), 'r').read
+    end
+    File.open( File.join(Rails.root, "/app/views/layouts/_footer.html.erb"), 'w') do |f|
+      f.write File.open( File.join(@base_dir, '_footer.html'), 'r').read
+    end
+    redirect_to "/admin/templetes/index", notice: "添加成功"
   end
 
   def edit

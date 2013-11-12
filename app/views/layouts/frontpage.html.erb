@@ -1,11 +1,43 @@
-<% case @channel.properties %>
-<% when 1 %>
-    <%= render file: @base_dir + @channel.tmp_index %>
-<% when 2 %>
-    @page 
-    <%= render file: @base_dir + @channel.tmp_list %>
-<% when 3 %>
-  <script type="text/javascript">
-    window.location.href="<%= @channel.default_url %>" 
-  </script>
-<% end %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <meta name="author" content="master@inruby.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= content_for?(:title) ? yield(:title) : "Rain Cms" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rain Cms" %>">
+    
+    <%#= stylesheet_link_tag "frontpage", media: "all", "data-turbolinks-track" => true %>
+    <%#= javascript_include_tag "frontpage", "data-turbolinks-track" => true %>
+    
+    <%= raw Admin::Keystore.value_for('head') %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- <a href="#main" class="sr-only">跳转到内容部分</a> -->
+    <!-- Fixed header -->
+    <%#= render 'layouts/header' %>
+    <!-- Fixed main -->
+    <%= render 'layouts/messages' %>
+    <% if @page %> 
+      <%= render file: @base_dir + @channel.tmp_detail %>
+    <% else %> 
+      <% case @channel.properties %>
+      <% when 1 %>
+          <%= render file: @base_dir + @channel.tmp_index %>
+      <% when 2 %>
+        <script type="text/javascript">
+          window.location.href="<%= @channel.default_url %>" 
+        </script>
+      <% end %>
+    <% end %>
+    <%#= yield %>
+
+    <!-- Fixed footer -->
+    <%#= render 'layouts/footer' %>
+    <%= raw Admin::Keystore.value_for('foot') %>
+  </body>
+</html>

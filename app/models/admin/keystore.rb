@@ -5,7 +5,8 @@ class Admin::Keystore < ActiveRecord::Base
 
   def self.put(key, value)
     ks = self.find_or_create_by_key(key)
-    ks.value = ks.value + value
+    #ks.value = ks.value + value
+    ks.value = value
     ks.save!
     true
   end

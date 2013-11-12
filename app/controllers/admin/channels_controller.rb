@@ -77,6 +77,6 @@ class Admin::ChannelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_channel_params
-      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :short_title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detial, :keywords, :description, :content)
+      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :short_title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detail, :keywords, :description, :content)
     end
 end

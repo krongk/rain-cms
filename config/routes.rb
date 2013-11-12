@@ -13,7 +13,7 @@ RainCms::Application.routes.draw do
     get "templetes/index"
     get "templetes/show"
     get "templetes/new"
-    get "templetes/create"
+    post "templetes/create"
     get "templetes/edit"
     post "templetes/update"
     get "templetes/destroy"
@@ -24,7 +24,7 @@ RainCms::Application.routes.draw do
   #  'sanction', 
   #  :constraints => { :dik => /\d{4}.\d{2}.\d{2}/,  
   #  :classify_type => /title|date|skip/ }
-  match '/:channel(/:id)', to: "welcome#index", via: :get
+  match '/:channel(/:id)', to: "welcome#show", via: :get
 
   #
 end

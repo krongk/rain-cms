@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Value</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -16,11 +15,10 @@
     <% @admin_keystores.each do |admin_keystore| %>
       <tr>
         <td><%= admin_keystore.key %></td>
-        <td><%= admin_keystore.value %></td>
         <td><%= admin_keystore.description %></td>
-        <td><%= link_to 'Show', admin_keystore %></td>
-        <td><%= link_to 'Edit', edit_admin_keystore_path(admin_keystore) %></td>
-        <td><%= link_to 'Destroy', admin_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '查看', admin_keystore %></td>
+        <td><%= link_to '编辑', edit_admin_keystore_path(admin_keystore) %></td>
+        <td><%= link_to '删除', admin_keystore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

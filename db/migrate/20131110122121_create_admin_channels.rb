@@ -10,7 +10,7 @@ class CreateAdminChannels < ActiveRecord::Migration
       t.string :default_url
       t.string :tmp_index
       t.string :tmp_list
-      t.string :tmp_detial
+      t.string :tmp_detail
       t.string :keywords
       t.string :description
       t.text :content

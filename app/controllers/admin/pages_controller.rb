@@ -30,7 +30,9 @@ class Admin::PagesController < ApplicationController
 
     respond_to do |format|
       if @admin_page.save
-        format.html { redirect_to @admin_page, notice: 'Page was successfully created.' }
+        update_tag
+
+        format.html { redirect_to admin_pages_path, notice: '页面添加成功！' }
         format.json { render action: 'show', status: :created, location: @admin_page }
       else
         format.html { render action: 'new' }
@@ -46,7 +48,9 @@ class Admin::PagesController < ApplicationController
     
     respond_to do |format|
       if @admin_page.update(admin_page_params)
-        format.html { redirect_to @admin_page, notice: 'Page was successfully updated.' }
+        update_tag
+
+        format.html { redirect_to admin_pages_path, notice: '页面更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -62,6 +66,14 @@ class Admin::PagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_pages_url }
       format.json { head :no_content }
+    end
+  end
+
+  def update_tag
+    @admin_page.keywords.split(/;|\||.|，|。|；|、/).each do |tag|
+      @admin_page.tag_list.add(tag)
+      @admin_page.save!
+      puts ".................#{tag}"
     end
   end
 

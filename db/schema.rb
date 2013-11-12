@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110203517) do
+ActiveRecord::Schema.define(version: 20131112092735) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
+    t.integer  "parent_id"
     t.string   "typo"
     t.string   "title"
-    t.string   "short_title"
-    t.string   "properties"
+    t.string   "short_title", null: false
+    t.integer  "properties"
     t.string   "default_url"
     t.string   "tmp_index"
     t.string   "tmp_list"
-    t.string   "tmp_detial"
+    t.string   "tmp_detail"
     t.string   "keywords"
     t.string   "description"
     t.text     "content"
@@ -35,14 +36,14 @@ ActiveRecord::Schema.define(version: 20131110203517) do
   add_index "admin_channels", ["user_id"], name: "index_admin_channels_on_user_id", using: :btree
 
   create_table "admin_keystores", force: true do |t|
-    t.string   "name"
-    t.string   "value"
+    t.string   "key"
+    t.text     "value"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "admin_keystores", ["name"], name: "index_admin_keystores_on_name", using: :btree
+  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_name", using: :btree
 
   create_table "admin_pages", force: true do |t|
     t.integer  "user_id"
@@ -88,6 +89,23 @@ ActiveRecord::Schema.define(version: 20131110203517) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
