@@ -1,59 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <h2><%= @admin_channel.title %></h2>
+    <blockquote>
+      <p>
+        <%= link_to '修改', edit_admin_channel_path(@admin_channel), class: 'btn btn-primary btn-warning' %> | 
+        <%= link_to '添加页面', new_admin_page_path, class: 'btn btn-primary btn-info' %> | 
+        <%= link_to 'Back', admin_channels_path, class: 'btn btn-default' %>
+      </p>
+      <small>对应网站前台的栏目</small>
+    </blockquote>
+    <hr>
+    <p>
+      <strong>Typo:</strong>
+      <%= @admin_channel.typo %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @admin_channel.user %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @admin_channel.title %>
+    </p>
 
-<p>
-  <strong>Typo:</strong>
-  <%= @admin_channel.typo %>
-</p>
+    <p>
+      <strong>Properties:</strong>
+      <%= @admin_channel.properties %>
+    </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @admin_channel.title %>
-</p>
+    <p>
+      <strong>Default url:</strong>
+      <%= @admin_channel.default_url %>
+    </p>
 
-<p>
-  <strong>Properties:</strong>
-  <%= @admin_channel.properties %>
-</p>
+    <p>
+      <strong>Tmp index:</strong>
+      <%= @admin_channel.tmp_index %>
+    </p>
 
-<p>
-  <strong>Default url:</strong>
-  <%= @admin_channel.default_url %>
-</p>
+    <p>
+      <strong>Tmp list:</strong>
+      <%= @admin_channel.tmp_list %>
+    </p>
 
-<p>
-  <strong>Tmp index:</strong>
-  <%= @admin_channel.tmp_index %>
-</p>
+    <p>
+      <strong>Tmp detial:</strong>
+      <%= @admin_channel.tmp_detail %>
+    </p>
 
-<p>
-  <strong>Tmp list:</strong>
-  <%= @admin_channel.tmp_list %>
-</p>
+    <p>
+      <strong>Keywords:</strong>
+      <%= @admin_channel.keywords %>
+    </p>
 
-<p>
-  <strong>Tmp detial:</strong>
-  <%= @admin_channel.tmp_detail %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @admin_channel.description %>
+    </p>
 
-<p>
-  <strong>Keywords:</strong>
-  <%= @admin_channel.keywords %>
-</p>
+  </div>
+  <div class="col-md-8">
+    <ul>
+    <% @admin_channel.pages.each do |page| %>
+      <li>
+        <%= link_to page.title, edit_admin_page_path(page) %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @admin_channel.description %>
-</p>
 
-<pre>
-  <strong>Content:</strong>
-  <%= @admin_channel.content %>
-</pre>
-
-<%= link_to 'Edit', edit_admin_channel_path(@admin_channel) %> |
-<%= link_to 'Back', admin_channels_path %>

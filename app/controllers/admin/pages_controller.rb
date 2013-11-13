@@ -45,7 +45,6 @@ class Admin::PagesController < ApplicationController
   # PATCH/PUT /admin/pages/1.json
   def update
     @admin_page.user_id = current_user.id
-    
     respond_to do |format|
       if @admin_page.update(admin_page_params)
         update_tag
@@ -69,11 +68,12 @@ class Admin::PagesController < ApplicationController
     end
   end
 
+  #Tag 用以下的符号隔开都可以，就是不能用空格
   def update_tag
-    @admin_page.keywords.split(/;|\||.|，|。|；|、/).each do |tag|
+    @admin_page.keywords.split(/(,|;|:|\.|\||\\|，|；|。|、)/).each do |tag|
+      next if tag =~ /(,|;|:|\.|\||\\|，|；|。|、)/
       @admin_page.tag_list.add(tag)
       @admin_page.save!
-      puts ".................#{tag}"
     end
   end
 
@@ -85,6 +85,8 @@ class Admin::PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_page_params
-      params.require(:admin_page).permit(:user_id, :channel_id, :title, :short_title, :properties, :keywords, :description, :image_path, :content)
+      params.require(:admin_page).permit(:user_id, :channel_id, :title, :short_title, :properties, :keywords, 
+        :description, :image_path, :content,
+        :tag_id, :context, :taggable)
     end
 end
