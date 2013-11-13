@@ -8,7 +8,6 @@
     <hr>
   </div>
   <div class="col-md-10">
-    <div class="hidden-xs" style="margin-top: 140px;">&nbsp;</div>
     <% @admin_channels.each do |channel| %>
       <div class="panel panel-info">
         <div class="panel-heading"><%= link_to channel.title, admin_channel_path(channel) %></div>

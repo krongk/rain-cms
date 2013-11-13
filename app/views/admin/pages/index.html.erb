@@ -8,7 +8,6 @@
     <hr>
   </div>
   <div class="col-md-10">
-    <div class="hidden-xs" style="margin-top: 50px;">&nbsp;</div>
     <div class="panel panel-info">
       <div class="panel-heading">页面列表</div>
       <% if @admin_pages.empty? %>
@@ -23,7 +22,7 @@
           <li class="list-group-item">
             <%= link_to page.title, admin_page_path(page) %>
             <span class="pull-right">
-              <%= link_to page.short_title, page %> 
+              <%= link_to '预览', get_preview_url(page), target: '_blank' %> 
               <%= link_to '修改', edit_admin_page_path(page) %>
               <%= link_to '删除', page, method: :delete, data: { confirm: 'Are you sure?' } %>
             </span>

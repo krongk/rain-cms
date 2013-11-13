@@ -34,6 +34,11 @@ module ApplicationHelper
     content_for(:meta_description){ meta_description}
   end
 
+  #preview use id, production use short_title to cache.
+  def get_preview_url(page)
+    "/#{page.channel.id}/#{page.id}"
+  end
+
   def get_templete(temp_name, page_name, partial = false )
     f = "#{Rails.root}/public/templetes/#{temp_name}/#{if partial then '_' end}#{page_name}"
     File.exist?(f) ? f : 'layouts/blank'
