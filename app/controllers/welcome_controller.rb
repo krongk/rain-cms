@@ -4,15 +4,11 @@ class WelcomeController < ApplicationController
   def index
     @channel = Admin::Channel.find_by(short_title: params[:channel])
     @channel ||=  Admin::Channel.first #first is the index
-  end
 
-  def show
-    @channel = Admin::Channel.find_by(short_title: params[:channel])
     @page = Admin::Page.find_by(id: params[:id])
     @pages = @channel.pages.page(params[:page])
     # if @channel.nil? ||  @channel.properties == 3 && @page.nil?
     #   render action: :index
     # end
   end
-
 end

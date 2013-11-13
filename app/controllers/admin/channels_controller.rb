@@ -5,12 +5,13 @@ class Admin::ChannelsController < ApplicationController
   # GET /admin/channels
   # GET /admin/channels.json
   def index
-    @admin_channels = Admin::Channel.where("parent_id IS NULL")
+    @admin_channels = Admin::Channel.where("parent_id IS NULL OR parent_id = 0")
   end
 
   # GET /admin/channels/1
   # GET /admin/channels/1.json
   def show
+    @pages = @admin_channel.pages.order('updated_at DESC').page(params[:page])
   end
 
   # GET /admin/channels/new
@@ -27,7 +28,7 @@ class Admin::ChannelsController < ApplicationController
   def create
     @admin_channel = Admin::Channel.new(admin_channel_params)
     @admin_channel.user_id = current_user.id
-    @admin_channel.short_title = Pinyin.t(@admin_channel.title).gsub(/\s+/, '-') if @admin_channel.short_title.blank?
+    @admin_channel.short_title = get_short_title('channel', @admin_channel.title) if @admin_channel.short_title.blank?
 
     respond_to do |format|
       if @admin_channel.save
@@ -45,11 +46,12 @@ class Admin::ChannelsController < ApplicationController
   # PATCH/PUT /admin/channels/1.json
   def update
     admin_channel_params[:user_id] = current_user.id
-    admin_channel_params["short_title"] = Pinyin.t(@admin_channel.title).gsub(/\s+/, '-')
-    puts admin_channel_params["short_title"]
 
     respond_to do |format|
       if @admin_channel.update(admin_channel_params)
+        @admin_channel.short_title = get_short_title('channel', @admin_channel.title)
+        @admin_channel.save!
+
         format.html { redirect_to @admin_channel, notice: '栏目更新成功.' }
         format.json { head :no_content }
       else

@@ -18,4 +18,22 @@ class ApplicationController < ActionController::Base
     @temp_list = Dir.glob("*.html")
   end
 
+  def get_short_title(typo, title)
+    return if title.blank?
+    st = Pinyin.t(title).gsub(/(-|\s+)/, '-').gsub(/[^\w-]/, '')
+    case typo
+    when 'channel'
+      while Admin::Channel.where(short_title: st).any?
+        st += ('a'..'z').to_a[rand(26)]
+      end
+    when 'page'
+      while Admin::Page.where(short_title: st).any?
+        st += ('a'..'z').to_a[rand(26)]
+      end
+    else
+      raise "Please put typo ['channel', 'page'] on method get_short_title"
+    end
+    return st
+  end
+
 end

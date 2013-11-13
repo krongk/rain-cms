@@ -5,7 +5,7 @@ class Admin::PagesController < ApplicationController
   # GET /admin/pages
   # GET /admin/pages.json
   def index
-    @admin_pages = Admin::Page.all
+    @admin_pages = Admin::Page.order("updated_at DESC").page(params[:page])
   end
 
   # GET /admin/pages/1
@@ -70,8 +70,8 @@ class Admin::PagesController < ApplicationController
 
   #Tag 用以下的符号隔开都可以，就是不能用空格
   def update_tag
-    @admin_page.keywords.split(/(,|;|:|\.|\||\\|，|；|。|、)/).each do |tag|
-      next if tag =~ /(,|;|:|\.|\||\\|，|；|。|、)/
+    @admin_page.keywords.split(ApplicationHelper::SPECIAL_SYMBO_REG).each do |tag|
+      next if ApplicationHelper::SPECIAL_SYMBO_REG.match tag
       @admin_page.tag_list.add(tag)
       @admin_page.save!
     end

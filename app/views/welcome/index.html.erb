@@ -1,5 +1,13 @@
-<% if @page %>
-  <%#= raw @page.content %>
-<% else %>
-  <%#= raw @channel.content %>
-<% end %>
+<% title \
+  [ @page.try(:title), 
+    @channel.title, 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+<% meta_keywords \
+  [ @page.try(:keywords), 
+    @channel.title, 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+<% meta_description \
+  [ @page.try(:description), 
+    @channel.title, 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+

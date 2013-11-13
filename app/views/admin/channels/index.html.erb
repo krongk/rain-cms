@@ -8,16 +8,18 @@
     <hr>
   </div>
   <div class="col-md-10">
-    <ul>
+    <div class="hidden-xs" style="margin-top: 140px;">&nbsp;</div>
     <% @admin_channels.each do |channel| %>
-      <li><%= link_to channel.title, admin_channel_path(channel) %>
-        <ul>
-        <% channel.children.each do |child| %>
-          <li><%= link_to child.title, admin_channel_path(child) %></li>
-        <% end %>
+      <div class="panel panel-info">
+        <div class="panel-heading"><%= link_to channel.title, admin_channel_path(channel) %></div>
+        <!-- List group -->
+        <ul class="list-group">
+          <% channel.children.each do |child| %>
+            <li class="list-group-item"><%= link_to child.title, admin_channel_path(child) %></li>
+          <% end %>
         </ul>
-      </li>
+      </div>
     <% end %>
-    </ul>
   </div>
 </div>
+

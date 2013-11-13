@@ -7,8 +7,9 @@
     <meta name="author" content="master@inruby.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= content_for?(:title) ? yield(:title) : "Rain Cms" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rain Cms" %>">
+    <title><%= content_for?(:title) ? yield(:title) : Admin::Keystore.value_for('site_name') %></title>
+    <meta name="keywords" content="<%= content_for?(:meta_keywords) ? yield(:meta_keywords) : Admin::Keystore.value_for('site_name') %>">
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : Admin::Keystore.value_for('site_name') %>">
     
     <%#= stylesheet_link_tag "frontpage", media: "all", "data-turbolinks-track" => true %>
     <%#= javascript_include_tag "frontpage", "data-turbolinks-track" => true %>
@@ -34,7 +35,8 @@
         </script>
       <% end %>
     <% end %>
-    <%#= yield %>
+    
+    <%= yield %>
 
     <!-- Fixed footer -->
     <%#= render 'layouts/footer' %>

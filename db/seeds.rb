@@ -20,3 +20,4 @@ user.add_role :admin
 
 puts 'init templetes'
 Admin::Keystore.put('templete', 'default')
+Admin::Keystore.put('site_name', 'Rain CMS')
