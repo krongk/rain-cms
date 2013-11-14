@@ -32,7 +32,7 @@ class Admin::ChannelsController < ApplicationController
 
     respond_to do |format|
       if @admin_channel.save
-        
+        update_tag(@admin_channel)
         format.html { redirect_to @admin_channel, notice: '栏目添加成功.' }
         format.json { render action: 'show', status: :created, location: @admin_channel }
       else
@@ -49,8 +49,11 @@ class Admin::ChannelsController < ApplicationController
 
     respond_to do |format|
       if @admin_channel.update(admin_channel_params)
-        @admin_channel.short_title = get_short_title('channel', @admin_channel.title)
-        @admin_channel.save!
+        update_tag(@admin_channel)
+        if @admin_channel.short_title.blank?
+          @admin_channel.short_title = get_short_title('channel', @admin_channel.title)
+          @admin_channel.save!
+        end
 
         format.html { redirect_to @admin_channel, notice: '栏目更新成功.' }
         format.json { head :no_content }

@@ -11,3 +11,4 @@
     @channel.title, 
     Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
 
+<% content @page.present? ? @page.content : (@channel.default_url.blank? ? @channel.content : get_templete_content(@channel.default_url)) %>

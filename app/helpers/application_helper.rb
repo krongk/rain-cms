@@ -33,15 +33,68 @@ module ApplicationHelper
   def meta_description(meta_description)
     content_for(:meta_description){ meta_description}
   end
-
-  #preview use id, production use short_title to cache.
-  def get_preview_url(page)
-    "/#{page.channel.id}/#{page.id}"
+  def content(item_content)
+    content_for(:content){ raw item_content }
   end
 
-  def get_templete(temp_name, page_name, partial = false )
-    f = "#{Rails.root}/public/templetes/#{temp_name}/#{if partial then '_' end}#{page_name}"
-    File.exist?(f) ? f : 'layouts/blank'
+  #use for Admin: preview id, production use short_title to cache.
+  def get_preview_url(obj)
+    if obj.class == Admin::Page
+      "/#{obj.channel.id}/#{obj.id}"
+    elsif obj.class == Admin::Channel
+      "/#{obj.id}"
+    else
+      "/"
+    end
   end
-  
+  #use for Frontpage: get production frontpage path
+  def get_url(obj)
+    if obj.class == Admin::Page
+      "/#{obj.channel.short_title}/#{obj.id}"
+    elsif obj.class == Admin::Channel
+      "/#{obj.id}"
+    else
+      "/"
+    end
+  end
+
+  #this method used on admin/channel and admin/page create and update.
+  # admin/channel_controller.rb
+  # admin/page_controller.rb
+  def get_short_title(typo, title)
+    return if title.blank?
+    st = Pinyin.t(title).gsub(/(-|\s+)/, '-').gsub(/[^\w-]/, '')
+    case typo
+    when 'channel'
+      while Admin::Channel.where(short_title: st).any?
+        st += ('a'..'z').to_a[rand(26)]
+      end
+    when 'page'
+      while Admin::Page.where(short_title: st).any?
+        st += ('a'..'z').to_a[rand(26)]
+      end
+    else
+      raise "Please put typo ['channel', 'page'] on method get_short_title"
+    end
+    return st
+  end
+
+  #this method is to get content from default_url which channel has.
+  # welcome/index.html.erb
+  def get_templete_content(default_url)
+    if !default_url.blank? && File.exist?(@base_dir + default_url)
+      return File.open(@base_dir + default_url, 'r').read
+    end
+    '没有找到任何文件,请检查default_url是否设置正确'
+  end
+
+  #Tag 用以下的符号隔开都可以，就是不能用空格
+  def update_tag(channel_or_page)
+    channel_or_page.keywords.split(SPECIAL_SYMBO_REG).each do |tag|
+      next if SPECIAL_SYMBO_REG.match tag
+      channel_or_page.tag_list.add(tag)
+      channel_or_page.save!
+    end
+  end
+
 end

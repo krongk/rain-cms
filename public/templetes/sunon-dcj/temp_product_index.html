@@ -1,283 +1,115 @@
-
-
+<% 
+def get_color_tag(page)
+  cc = [['graphics', '个性时尚'], ['nature', '现代简约'], ['food', '传统经典']].find{|c| page.tag_list.include?( c )}
+  return '' if cc.nil?
+  cc.any? ? cc[0] : 'other'
+end
+%>
 <!--START MAIN-WRAPPER--> 
 <div class="main-wrapper">
-<%= render file: 'public/templetes/sunon-dcj/_header.html' %>
+  <%= render file: 'public/templetes/sunon-dcj/_header.html' %>
 
-<!-- [[main start]] -->
-<!-- PAGE HEADER -->
-		<div class="page-header">
-		<div class="shine">
-		<div class="container">
-		 <div class="row-fluid">
-			<div class="span12">
-			  
-				<div class="row-fluid">
-				  <div class="span12">
-					<h1>Portfolio 4 columns with filter</h1>
-					<!-- BREADCRUMB -->
-					<ul class="breadcrumb">
-					  <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
-					  <li class="active">Portfolio 4 columns with filter</li>
-					</ul>
-					<!--END: BREADCRUMB -->
-				  </div>
-				</div>
-			  </div>
-			 </div>
-			</div>
-		   </div>
-		  </div>
-		<!-- PAGE HEADER -->
-		
-		<!-- CONTENT CONTAINER-->
-		<div class="container">
-								<!-- FILTER-->
-									<!-- just add your TAG to data-filter="ADD HERE" -->	
-								<!-- and then add your same TAG to portfolio item class="ADD HERE" -->
-									<div class="color-bottom-line center">
-										<div class="line-proj center">
-											<div class="proj">
-												<div id="filters">
-												  <a href="#" data-filter="*" class="ione-col active">Show All</a>
-												  <a href="#" data-filter=".graphics" class=" ione-col">Graphics</a>
-												  <a href="#" data-filter=".nature" class="ione-col">Nature</a>
-												  <a href="#" data-filter=".food" class="ione-col">Food</a>
-												</div>
-											</div>
-										</div>
-									</div>
-							
-								<!--END: FILTER-->
-		<!--###################-->
-		<!-- START PORTFOLIO // THIS ITEM COMMENTED-->
-		<!--###################-->
-		<div id="container-folio" class="row ufilter"><!-- !important! => DONT REMOVE class="ufilter"--> 
-   
-      <div class="span12">
-        <div id="portfolio" class="row">
-		<!-- portfolio item -->
-          <div class="span3  project-item graphics box">
-		  <div class="thumbnail">
-            
-				<!-- IMAGE CONTAINER-->
-            <div class="sample project-item-image-container">
-				<div class="project-item-overlay ">
-					<div class="inner">
-					  <ul>
-							<li> <a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/4_c.jpg" class="proj-btn">
-								<i class="fa-icon-zoom-in fa-icon-large"></i></a>
-							</li>
-							
-							<li>	<a class="proj-btn" href="portfolio_single_project _alt.html">
-									<i class="fa-icon-link fa-icon-large"></i></a>
-							</li>
-					  </ul>
-					</div>
-				</div>
-              <img src="/templetes/sunon-dcj/images/4_c.jpg" alt="iPhonegraphy" /> 
-			 </div> 
-			 <!--END IMAGE CONTAINER-->
-			 
-			 <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-			</div>
-			<!-- END: THUMBNAIL -->
-          </div>
-		  <!-- ##################### -->
-		  <!-- END: portfolio item -->
-		  <!-- ##################### -->
-		  
-          <div class="span3  project-item nature box">
-		  <div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/2_c.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
+  <!-- [[main start]] -->
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="shine">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="row-fluid">
+              <div class="span12">
+                <h1><%= @channel.title %></h1>
+                <!-- BREADCRUMB -->
+                  <ul class="breadcrumb">
+                    <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
+                    <li class="active">产品中心</li>
                   </ul>
-                </div>
+                <!--END: BREADCRUMB -->
               </div>
-              <img src="/templetes/sunon-dcj/images/2_c.jpg" alt="Beach Heat" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div>
-		  </div>
-          <div class="span3  project-item food box">
-		  <div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/1_c.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/1_c.jpg" alt="Delicious World" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div>
-		  </div>
-          <div class="span3  project-item graphics box"><div class="thumbnail">
-           
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/3_c.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/3_c.jpg" alt="Cables and Balls" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div>
-		  </div>
-          <div class="span3  project-item graphics box"><div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/box.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/box.jpg" alt="Fireprojects" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div> 
-		  </div>
-          <div class="span3  project-item graphics box">
-		  <div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/box.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/box.jpg" alt="Fireprojects" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div>
-        </div><div class="span3  project-item graphics box">
-		  <div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/box.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/box.jpg" alt="Fireprojects" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-          </div>
-        </div><div class="span3  project-item graphics box">
-		  <div class="thumbnail">
-            
-            <div class="sample project-item-image-container">
-              <div class="project-item-overlay">
-                <div class="inner">
-                  <ul>
-                    <li><a rel="prettyPhoto[gallery]" href="/templetes/sunon-dcj/images/box.jpg" class="proj-btn"><i class="fa-icon-zoom-in fa-icon-large"></i></a></li>
-                    <li><a class="proj-btn" href="portfolio_single_project _alt.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-              <img src="/templetes/sunon-dcj/images/box.jpg" alt="Fireprojects" /> 
-			  </div>
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h3 class="p-title standart-h3title">Awesome project title</h3>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p><a href="#" title="read more">read more &rarr;</a>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
+            </div>
           </div>
         </div>
-		</div>
       </div>
     </div>
- </div>
-<!-- [[main end]] --> 
+  </div>
+  <!-- PAGE HEADER -->
+	
+	<!-- CONTENT CONTAINER-->
+	<div class="container">
+    <!-- FILTER-->
+    <!-- just add your TAG to data-filter="ADD HERE" -->	
+    <!-- and then add your same TAG to portfolio item class="ADD HERE" -->
+    <div class="color-bottom-line center">
+    	<div class="line-proj center">
+    		<div class="proj">
+    			<div id="filters">
+    			  <a href="#" data-filter="*" class="ione-col active">显示全部</a>
+    			  <a href="#" data-filter=".graphics" class=" ione-col">个性时尚</a>
+    			  <a href="#" data-filter=".nature" class="ione-col">现代简约</a>
+    			  <a href="#" data-filter=".food" class="ione-col">传统经典</a>
+            <a href="#" data-filter=".other" class="ione-col">其它</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!--END: FILTER-->
+	
+  <!--###################-->
+	<!-- START PORTFOLIO // THIS ITEM COMMENTED-->
+	<!--###################-->
+	<div id="container-folio" class="row ufilter"><!-- !important! => DONT REMOVE class="ufilter"--> 
+    <div class="span12">
+      <div id="portfolio" class="row">
+      
+        <!-- portfolio item -->
+      <% @pages.each do |page| %>
+        <div class="span3  project-item box <%= get_color_tag(page)%>">
+          <div class="thumbnail">
+        
+            <!-- IMAGE CONTAINER-->
+            <div class="sample project-item-image-container">
+              <div class="project-item-overlay ">
+                <div class="inner">
+                  <ul>
+                		<li> <a rel="prettyPhoto[gallery]" href="<%= page.image_path %>" class="proj-btn">
+                			<i class="fa-icon-zoom-in fa-icon-large"></i></a>
+                		</li>
+                		<li><a class="proj-btn" href="<%= get_url(page) %>">
+                				<i class="fa-icon-link fa-icon-large"></i></a>
+                		</li>
+                  </ul>
+                </div>
+              </div>
+              <img src="<%= page.image_path %>" alt="<%= page.title %>" /> 
+            </div> 
+            <!--END IMAGE CONTAINER-->
 
-<%= render file: 'public/templetes/sunon-dcj/_footer.html' %>
+  		      <!-- CAPTION -->
+            <div class="caption">
+              <div class="transit-to-top">
+                <h3 class="p-title standart-h3title"><%= page.title %></h3>
+                <p class="caption-descr"><%= page.short_description(100) %></p><a href="<%= get_url(page) %>" title="read more">更多 &rarr;</a>
+              </div>
+            </div> 
+            <!--END CAPTION -->
+          </div>
+          <!-- END: THUMBNAIL -->
+        </div>
+      <% end %>
+    	  <!-- ##################### -->
+    	  <!-- END: portfolio item -->
+    	  <!-- ##################### -->
+      </div>
+    </div>
+  </div>
+  <!-- [[main end]] --> 
+
+  <%= render file: 'public/templetes/sunon-dcj/_footer.html' %>
 </div>
 <!-- END: MAIN-WRAPPER-->
 
 <!-- Le javascript
-    ================================================== --> 
+  ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 
 <script src="/templetes/sunon-dcj/assets/js/jquery.js" type="text/javascript"></script> 
@@ -303,31 +135,29 @@
 <script src="/templetes/sunon-dcj/assets/js/superfish.js" type="text/javascript"></script> 
 <script src="/templetes/sunon-dcj/assets/js/custom.js" type="text/javascript"></script>
 <script src="/templetes/sunon-dcj/assets/js/jquery.ui.totop.js" type="text/javascript"></script>
-<script type="text/javascript" src="/templetes/sunon-dcj/assets/js/switcher.js"></script>
 
 <script>
-		jQuery.noConflict()(function($){
-			var $container = $('#container-folio');
-					
-			if($container.length) {
-				$container.waitForImages(function() {
-					
-					// initialize isotope
-					$container.isotope({
-					  itemSelector : '.box',
-					  layoutMode : 'fitRows'
-					});
-					
-					// filter items when filter link is clicked
-					$('#filters a').click(function(){
-					  var selector = $(this).attr('data-filter');
-					  $container.isotope({ filter: selector });
-					  $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
-					  
-					  return false;
-					});
-					
-				},null,true);
-			}});
-
+	jQuery.noConflict()(function($){
+		var $container = $('#container-folio');
+				
+		if($container.length) {
+			$container.waitForImages(function() {
+				
+				// initialize isotope
+				$container.isotope({
+				  itemSelector : '.box',
+				  layoutMode : 'fitRows'
+				});
+				
+				// filter items when filter link is clicked
+				$('#filters a').click(function(){
+				  var selector = $(this).attr('data-filter');
+				  $container.isotope({ filter: selector });
+				  $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
+				  
+				  return false;
+				});
+				
+			},null,true);
+	}});
 </script>

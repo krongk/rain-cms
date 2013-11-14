@@ -117,6 +117,7 @@ class DataExtractor
     # FileUtils.rm_f Dir.glob("t_*.html")
 
     #3. extract other single page content
+    #去除其他只保留body部分, 形式请参考temp_index.html
     puts "extract other single page ............"
     temp_list = Dir.glob("*.html")
     temp_list.each do |t|

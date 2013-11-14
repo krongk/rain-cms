@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
     #id use for previous
     @channel ||= Admin::Channel.find_by(short_title: params[:channel])
     #first is index page
-    @channel ||=  Admin::Channel.first
+    @channel ||= Admin::Channel.first
 
     #@page = Admin::Page.find_by(id: params[:id])
     @pages = @channel.pages.page(params[:page])

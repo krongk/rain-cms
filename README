@@ -5,8 +5,41 @@ RainCMS设计思路：
 -> 栏目 -> 页面
 -> 插件：多说评论，友情链接，bshare分享，幻灯片，广告
 
+To do list:
+  ->给form添加popover提示
+  ->模式对话框选择
+  ->缓存管理
+
+## 渲染逻辑
+
+  如果有page, 则render到tmp_detail
+    content 渲染 page.content
+  否则(有channel)
+    如果选择渲染封面(properties == 1)
+      render到tmp_index
+        如果有default_url
+          则content渲染default_url的模版内容
+        否则content渲染channel.content
+    如果选择渲染外部链接(properties == 2)
+      default_url必须给定一个外部链接值
+      程序直接跳转到default_url
+
 ***************************
 >针对开发人员
+
+# 公共变量
+ 系统初始化了三个变量：@base_dir, @templete, @temp_list
+
+ application_controller.rb:
+
+    def load_templete
+      @templete = Admin::Keystore.value_for('templete')
+      @templete ||= 'default'
+
+      @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
+      Dir.chdir(@base_dir)
+      @temp_list = Dir.glob("*.html").sort
+    end
 
 # 如何安装RainCMS
   
@@ -113,3 +146,26 @@ http://mildthemes.com/themes/blat/index.php
 
 分享一篇给网页设计师的文章(有了这篇文章你什么都不需要了)
 http://webdesign.tutsplus.com/articles/roundups/new-to-webdesigntuts-start-here/
+
+
+# url list
+http://www.sunon-china.com/Product3.php?classid=88
+http://www.sunon-china.com/Product2.php?classid=87
+http://www.sunon-china.com/Product2.php?classid=86
+
+http://www.sunon-china.com/Product2.php?classid=91
+http://www.sunon-china.com/Product2.php?classid=90
+http://www.sunon-china.com/Product2.php?classid=92
+
+http://www.sunon-china.com/Product2.php?classid=105
+
+http://www.sunon-china.com/Product2.php?classid=110
+http://www.sunon-china.com/Product2.php?classid=109
+http://www.sunon-china.com/Product2.php?classid=108
+http://www.sunon-china.com/Product2.php?classid=107
+
+http://www.sunon-china.com/Product2.php?classid=114
+http://www.sunon-china.com/Product2.php?classid=111
+http://www.sunon-china.com/Product2.php?classid=113
+http://www.sunon-china.com/Product2.php?classid=115
+http://www.sunon-china.com/Product2.php?classid=112

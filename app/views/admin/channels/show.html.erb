@@ -5,43 +5,38 @@
       <p>
         <%= link_to '修改', edit_admin_channel_path(@admin_channel), class: 'btn btn-primary btn-warning' %> | 
         <%= link_to '添加页面', new_admin_page_path(channel: @admin_channel.id), class: 'btn btn-primary btn-info' %> | 
+        <%= link_to '预览', get_preview_url(@admin_channel), target: '_blank', class: 'btn btn-default' %>
         <%= link_to '返回', admin_channels_path, class: 'btn btn-default' %>
       </p>
       <small>对应网站前台的栏目</small>
     </blockquote>
     <hr>
     <p>
-      <strong>Typo:</strong>
+      <strong>类型:</strong>
       <%= @admin_channel.typo %>
     </p>
 
     <p>
-      <strong>Title:</strong>
+      <strong>栏目名称:</strong>
       <%= @admin_channel.title %>
     </p>
 
     <p>
-      <strong>Properties:</strong>
-      <%= @admin_channel.properties %>
+      <strong>简略别名:</strong>
+      <%= @admin_channel.short_title %>
     </p>
 
     <p>
-      <strong>Default url:</strong>
+      <strong>默认路径:</strong>
       <%= @admin_channel.default_url %>
     </p>
 
     <p>
-      <strong>Tmp index:</strong>
+      <strong>封面模版:</strong>
       <%= @admin_channel.tmp_index %>
     </p>
-
     <p>
-      <strong>Tmp list:</strong>
-      <%= @admin_channel.tmp_list %>
-    </p>
-
-    <p>
-      <strong>Tmp detial:</strong>
+      <strong>详细页面模版:</strong>
       <%= @admin_channel.tmp_detail %>
     </p>
 
@@ -50,10 +45,6 @@
       <%= @admin_channel.keywords %>
     </p>
 
-    <p>
-      <strong>Description:</strong>
-      <%= @admin_channel.description %>
-    </p>
 
   </div>
   <div class="col-md-8">

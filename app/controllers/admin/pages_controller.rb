@@ -27,10 +27,10 @@ class Admin::PagesController < ApplicationController
   def create
     @admin_page = Admin::Page.new(admin_page_params)
     @admin_page.user_id = current_user.id
-
+    @admin_page.short_title = get_short_title('page', @admin_page.title) if @admin_page.short_title.blank?
     respond_to do |format|
       if @admin_page.save
-        update_tag
+        update_tag(@admin_page)
 
         format.html { redirect_to admin_pages_path, notice: '页面添加成功！' }
         format.json { render action: 'show', status: :created, location: @admin_page }
@@ -47,7 +47,11 @@ class Admin::PagesController < ApplicationController
     @admin_page.user_id = current_user.id
     respond_to do |format|
       if @admin_page.update(admin_page_params)
-        update_tag
+        update_tag(@admin_page)
+        if @admin_page.short_title.blank?
+          @admin_page.short_title = get_short_title('page', @admin_page.title)
+          @admin_page.save!
+        end
 
         format.html { redirect_to admin_pages_path, notice: '页面更新成功.' }
         format.json { head :no_content }
@@ -65,15 +69,6 @@ class Admin::PagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admin_pages_url }
       format.json { head :no_content }
-    end
-  end
-
-  #Tag 用以下的符号隔开都可以，就是不能用空格
-  def update_tag
-    @admin_page.keywords.split(ApplicationHelper::SPECIAL_SYMBO_REG).each do |tag|
-      next if ApplicationHelper::SPECIAL_SYMBO_REG.match tag
-      @admin_page.tag_list.add(tag)
-      @admin_page.save!
     end
   end
 

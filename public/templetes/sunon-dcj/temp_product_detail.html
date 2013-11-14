@@ -1,107 +1,91 @@
 
-
-
 <!--START MAIN-WRAPPER--> 
 <div class="main-wrapper">
-<%= render file: 'public/templetes/sunon-dcj/_header.html' %> 
- <!-- [[main start]] --> 
-<!-- PAGE HEADER -->
+	<%= render file: 'public/templetes/sunon-dcj/_header.html' %> 
+ 	<!-- [[main start]] --> 
+		<!-- PAGE HEADER -->
 		<div class="page-header">
-		<div class="shine">
-		<div class="container">
-		 <div class="row-fluid">
-			<div class="span12">
-			  
-				<div class="row-fluid">
-				  <div class="span12">
-					<h1>Project single title!</h1>
-					<!-- BREADCRUMB -->
-					<ul class="breadcrumb">
-					  <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
-					  <li class="active">Awesome project! Portfolio single  title!</li>
-					</ul>
-					<!--END: BREADCRUMB -->
-				  </div>
+			<div class="shine">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="row-fluid">
+								<div class="span12">
+									<h1>Project single title!</h1>
+									<!-- BREADCRUMB -->
+									<ul class="breadcrumb">
+									  <li><a href="#">Home</a> <span class="divider">&rarr;</span></li>
+									  <li class="active">Awesome project! Portfolio single  title!</li>
+									</ul>
+									<!--END: BREADCRUMB -->
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			  </div>
-			 </div>
 			</div>
-		   </div>
-		  </div>
+		</div>
 		<!-- PAGE HEADER -->
 		
 		<!-- ################ -->
-		<!-- CONTENT CONTAINER-->
-		<!-- ################ -->
-	<div class="container">
-				<div class="row-fluid">
+    <!-- CONTENT CONTAINER-->
+    <!-- ################ -->
+		<div class="container">
+			<div class="row-fluid">
 				<!-- SLIDER SIDE -->
 				<div class="span8">
-					
-				<div class="section-2 group">
-				<ul id="images" class="rs-slider">
-				    <li class="group">
-				        <a href="#">
-				            <img src="/templetes/sunon-dcj/images/wood6.jpg" alt="" />
-				        </a>
-				        <div class="rs-caption rs-bottom">
-				            <h3>Caption Area</h3>
-				            <p>Wood texture by <a href="http://downloads.dvq.co.nz/" class="button">Matthew Skiles.</a></p>
-				        </div>
-				    </li>
-				    <li class="group">
-				        <a href="#" class="slide-parent">
-				            <img src="/templetes/sunon-dcj/images/greenbut.jpg" alt=""/>
-				        </a>
-				        <div class="rs-caption rs-top-right">
-				            <p>This image is wrapped in a link.</p>
-				        </div>
-				    </li>
-				    <li class="group">
-				        <img src="/templetes/sunon-dcj/images/form.jpg" alt=""/>
-				        <div class="rs-caption rs-bottom-right">
-				            <p>Adapted from <a class="button" href="http://dribbble.com/shots/154205-Cool-Green-Signup-form">Glenn Van Bogaert</a></p>
-				        </div>
-				    </li>
-				    <li class="group"><img src="/templetes/sunon-dcj/images/red.jpg" alt=""/>
-				    </li>
-				    <li class="group"><img src="/templetes/sunon-dcj/images/6.jpg" alt=""/></li>
-				</ul>
-            </div> <!-- /.section-2 -->
-							
+					<div class="large-sl" id="slider">
+						<!-- CONTROLS DIV CONTAINER ! NOT REMOVE -->
+						<div class="portfolio-controls-single"></div>
+						<!-- CONTROLS DIV CONTAINER ! NOT REMOVE -->
+						<!-- BEGIN SLIDER UL -->
+						<ul class="slides">
+						  <!-- BEGIN SLIDE -->
+						  <li class="slide thumbnail">
+						    <img src="/templetes/sunon-dcj/images/slider/2.jpg" alt="" /><!-- PUT YOUR IMG HERE-->
+						  </li>
+						  <!-- END SLIDE -->
+						  <!-- BEGIN SLIDE -->
+						  <li class="slide thumbnail">
+						    <img src="/templetes/sunon-dcj/images/slider/3.jpg" alt="" />
+						  </li>
+				  		<!-- END SLIDE -->
+				 		</ul>
+    				<!-- END SLIDER UL -->
+    			</div>
+    			<!-- DESCRIPTION -->
+			    <div class="well">
+			    	<%= @page.description %>
+			    </div>
+     			<!-- END DESCRIPTION -->
 				</div>
-			<!-- END: SLIDER SIDE -->
-			<!-- PORTFOLIO ASIDE -->
-			<div class="span4">
+				<!-- END: SLIDER SIDE -->
+				<!-- PORTFOLIO ASIDE -->
+				<div class="span4">
 					<!-- TITLE -->
-			<h2 class="folio-title">Awesome project! Portfolio single  title! </h2>
-					 
-					 <!-- PARAGRAPH -->
+					<h2 class="folio-title"><%= @page.title %></h2>
+
+					<!-- PARAGRAPH -->
 					<p>
-					Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-					</p>
-					<p>
-					Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+						<%= @page.description %>
 					</p>
 					<!-- END PARAGRAPH -->
 					<!-- DEVIDER LINE -->
 					<div class="no-color-line-no-border3"></div>
 					<hr class="half2"/>
 					<!-- ACTION BUTTON -->
-					<a class="btn btn-info btn-large btn-block btn-action" href="#" title="">Buy now!</a>
+					<a class="btn btn-success btn-large btn-block" href="#" title="">现在预定</a>
 					<!-- END ACTION BUTTON -->
+				</div>
+				<!-- PORTFOLIO ASIDE -->
 			</div>
-			<!-- PORTFOLIO ASIDE -->
-			</div>
-  
-	</div>
-	<!-- ################ -->
+		</div>
+		<!-- ################ -->
 		<!--END: CONTENT CONTAINER-->
 		<!-- ################ -->
-<!-- [[main end]] --> 
+		<!-- [[main end]] --> 
 
-<%= render file: 'public/templetes/sunon-dcj/_footer.html' %> 
-<!-- END: FOOTER -->
+	<%= render file: 'public/templetes/sunon-dcj/_footer.html' %> 
 </div>
 <!-- END: MAIN-WRAPPER-->
 

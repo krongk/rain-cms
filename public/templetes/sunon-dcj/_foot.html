@@ -29,6 +29,9 @@
 <script type="text/javascript" src="/templetes/sunon-dcj/assets/js/jquery-hover-effect.js"></script>
 <script src="/templetes/sunon-dcj/assets/js/custom.js" type="text/javascript"></script>
 
+<script src="/templetes/sunon-dcj/assets/js/jquery.js" type="text/javascript"></script> 
+<script type="text/javascript" src="templetes/sunon-dcj/assets/js/jquery.flexslider-min.js"></script>
+
 <!-- SLIDER -->
 <script type="text/javascript">
 	jQuery(document).ready(function($){
@@ -62,7 +65,6 @@
 	itemWidth:170,
 	itemMargin: 30,
 	move:1,
-
 	
   });
 });
@@ -96,5 +98,26 @@
   
 </script>
 
-
+<script>
+  // Can also be used with $(document).ready()
+  jQuery('.large-sl').flexslider({
+	  
+		animation: 'slide',
+		animationLoop: false,
+		useCSS: false,
+		controlNav: false,
+		controlsContainer: '.portfolio-controls-single',
+		initDelay: 0,
+		animationSpeed:'500',
+		startAt: 0,
+		touch: true,
+		minItems: 1,
+		maxItems: 30,
+		mousewheel:true,
+		pauseOnHover:true,
+		move:1,
+		itemWidth:770,
+		itemMargin: 0,
+  }); 
+</script>
 <!--END: SLIDER -->
