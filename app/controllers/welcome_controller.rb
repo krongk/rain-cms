@@ -15,8 +15,11 @@ class WelcomeController < ApplicationController
     #first is index page
     @channel ||= Admin::Channel.first
 
+    if @channel.nil?
+      redirect_to "/admin/channels/new", notice: "没有任何内容，请在后台添加" and return
+    end
     #@page = Admin::Page.find_by(id: params[:id])
-    @pages = @channel.pages.page(params[:page]) unless @channel.nil?
+    @pages = @channel.pages.page(params[:page])
     # if @channel.nil? ||  @channel.properties == 3 && @page.nil?
     #   render action: :index
     # end
