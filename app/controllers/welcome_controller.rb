@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
     @channel ||= Admin::Channel.first
 
     #@page = Admin::Page.find_by(id: params[:id])
-    @pages = @channel.pages.page(params[:page])
+    @pages = @channel.pages.page(params[:page]) unless @channel.nil?
     # if @channel.nil? ||  @channel.properties == 3 && @page.nil?
     #   render action: :index
     # end
