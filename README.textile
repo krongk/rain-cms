@@ -1,80 +1,64 @@
-h1. Rain Cms
 
-This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.io/.
+## Rain-Store服务器管理
 
-h2. Diagnostics
+1. 登录：115.29.195.174 root 7672d9f5
+   修改密码：$>passwd -> Kenromxxx(大写)
 
-This application was built with recipes that are known to work together.
+2. 阿里云服务器便捷工具安装(http://help.aliyun.com/manual?spm=0.0.0.0.qI06SV&lastSortId=440)：
+  分区，运行根目录文件： ./auto_fdisk.sh
+    
+   同步时间(下载：http://help.aliyun.com/manual?spm=0.0.0.0.Bpbzii&&helpId=1660)
+   $>sudo bash update_time.sh
 
-This application was built with preferences that are NOT known to work together.
+2. 软件安装：
+  安装git: $>apt-get install git-core
 
-If the application doesn't work as expected, please "report an issue":https://github.com/RailsApps/rails_apps_composer/issues and include these diagnostics:
+  安装rvm,requirements,ruby,rails: 
+  $>curl -L https://get.rvm.io | bash -s stable --rails --autolibs=enabled
+  $>source /usr/local/rvm/scripts/rvm
+  $>sudo bash ~/.profile
 
-We'd also like to know if you've found combinations of recipes or preferences that do work together.
+  更新gem源：
+  $>sed -i 's!ftp.ruby-lang.org/pub/ruby!ruby.taobao.org/mirrors/ruby!' $rvm_path/config/db
+  $>cat  /usr/local/rvm/config/db
 
-Recipes:
-["apps4", "controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "prelaunch", "railsapps", "readme", "routes", "saas", "setup", "testing", "views"]
+  $>gem source
+  $>gem source --add http://ruby.taobao.org/
+  $>gem source --remove https://rubygems.org/
+  $>gem source
 
-Preferences:
-{:git=>true, :apps4=>"none", :dev_webserver=>"puma", :prod_webserver=>"puma", :database=>"mysql", :templates=>"erb", :unit_test=>"rspec", :integration=>"none", :continuous_testing=>"none", :fixtures=>"none", :frontend=>"bootstrap3", :email=>"gmail", :authentication=>"devise", :devise_modules=>"confirmable", :authorization=>"cancan", :form_builder=>"simple_form", :starter_app=>"admin_app", :quiet_assets=>true, :local_env_file=>true, :better_errors=>true, :ban_spiders=>true, :jsruntime=>true, :github=>true}
+  安装MySQL:
+  $>sudo apt-get install mysql-server mysql-client
+  输入密码；kenrome001
+  $>sudo apt-get install libmysql-ruby libmysqlclient-dev
 
-h2. Ruby on Rails
+  安装Passenger+Nginx
+  $> gem install passenger
+  $> passenger-install-nginx-module
+  !!!!记住这里前面没有加‘sudo'，因为rvm是安装在no-sudo用户下的，如果在这里加sudo的话，会将passenger 安装到系统自带的ruby1.8下
 
-This application requires:
+  >以下是官方安装方法：不适用于Ruby+Passenger的集成
+    安装Passenger+Nginx(http://www.modrails.com/documentation/Users%20guide%20Nginx.html#install_on_debian_ubuntu)
+    $>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+    $>vi /etc/apt/sources.list.d/passenger.list
+      insert line: deb https://oss-binaries.phusionpassenger.com/apt/passenger precise main
+    $>sudo chown root: /etc/apt/sources.list.d/passenger.list
+    $>sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+    $>sudo apt-get update
 
-* Ruby version 2.0.0
-* Rails version 4.0.0
+  添加用户组：
+  $>adduser --system --no-create-home --disabled-login --disabled-password --group  www
 
-Learn more about "Installing Rails":http://railsapps.github.io/installing-rails.html.
 
-h2. Database
+  整理文件夹：
+  $>cd alidata1/
+  $>mkdir backup
+  $>mkdir www
+  $>mkdir server
 
-This application uses MySQL with ActiveRecord.
+  $>ln -s /opt/nginx/ /alidata/server/ 或者
+  $>ln -s /etc/nginx/ /alidata1/server/
+  $>ln -s /var/log/ /alidata1/
 
-h2. Development
-
-* Template Engine: ERB
-* Testing Framework: RSpec
-* Front-end Framework: Twitter Bootstrap 3.0 (Sass)
-* Form Builder: SimpleForm
-* Authentication: Devise
-* Authorization: CanCan
-
-h2. Email
-
-The application is configured to send email using a Gmail account.
-
-h2. Getting Started
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Documentation and Support
-
-This is the only documentation.
-
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Contributing
-
-If you make improvements to this application, please share with others.
-
-* Fork the project on GitHub.
-* Make your feature addition or bug fix.
-* Commit with Git.
-* Send the author a pull request.
-
-If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
-
-h2. Credits
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. License
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  查找：
+  $> find / -name 'nginx'
