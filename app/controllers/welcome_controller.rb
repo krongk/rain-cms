@@ -20,7 +20,7 @@ class WelcomeController < ApplicationController
     end
     #@page = Admin::Page.find_by(id: params[:id])
     if params[:tag]
-      @pages = Page.tagged_with(params[:tag]).page(params[:page])
+      @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
       @pages = @channel.pages.page(params[:page])
     end

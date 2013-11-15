@@ -84,7 +84,7 @@ class TestA
         page.title = sun.name
         page.description = sun.description
         page.short_title = Pinyin.t(page.title).gsub(/\s+/, '-')
-        page.image_path = sun.image2.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_small_images/')
+        page.image_path = sun.thumb_image.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_small_images/')
         page.content = get_content(sun)
         flag = 'y'
         page.save!
@@ -129,6 +129,7 @@ class TestA
 
     sun.image1.to_s.split(/\n+/).each do |s|
       next unless s =~ /\d+.(jpg|png|gif)/i
+      next if s == sun.image2
       str_arr << %{ <!-- BEGIN SLIDE -->
               <li class="slide thumbnail">
                 <img src="#{s.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_images/')}" alt="#{sun.typo1}-#{sun.typo2}-#{sun.name}" />
