@@ -1,4 +1,7 @@
 module ApplicationHelper
+  #for tag cloud 
+  include ActsAsTaggableOn::TagsHelper
+  
   PAGE_PROPERTIES = [
     ['H', '头条'],
     ['C', '推荐'],

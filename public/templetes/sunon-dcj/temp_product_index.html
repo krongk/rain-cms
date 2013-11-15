@@ -1,9 +1,9 @@
 <% 
-def get_color_tag(page)
-  cc = [['graphics', '个性时尚'], ['nature', '现代简约'], ['food', '传统经典']].find{|c| page.tag_list.include?( c )}
-  return '' if cc.nil?
-  cc.any? ? cc[0] : 'other'
-end
+  def get_color_tag(page)
+    cc = [['graphics', '个性时尚'], ['nature', '现代简约'], ['food', '传统经典']].find{|c| page.tag_list.include?( c[-1] )}
+    return '' if cc.nil?
+    cc.any? ? cc[0] : 'other'
+  end
 %>
 <!--START MAIN-WRAPPER--> 
 <div class="main-wrapper">
@@ -33,31 +33,31 @@ end
     </div>
   </div>
   <!-- PAGE HEADER -->
-	
-	<!-- CONTENT CONTAINER-->
-	<div class="container">
+  
+  <!-- CONTENT CONTAINER-->
+  <div class="container">
     <!-- FILTER-->
-    <!-- just add your TAG to data-filter="ADD HERE" -->	
+    <!-- just add your TAG to data-filter="ADD HERE" -->  
     <!-- and then add your same TAG to portfolio item class="ADD HERE" -->
     <div class="color-bottom-line center">
-    	<div class="line-proj center">
-    		<div class="proj">
-    			<div id="filters">
-    			  <a href="#" data-filter="*" class="ione-col active">显示全部</a>
-    			  <a href="#" data-filter=".graphics" class=" ione-col">个性时尚</a>
-    			  <a href="#" data-filter=".nature" class="ione-col">现代简约</a>
-    			  <a href="#" data-filter=".food" class="ione-col">传统经典</a>
+      <div class="line-proj center">
+        <div class="proj">
+          <div id="filters">
+            <a href="#" data-filter="*" class="ione-col active">显示全部</a>
+            <a href="#" data-filter=".graphics" class=" ione-col">个性时尚</a>
+            <a href="#" data-filter=".nature" class="ione-col">现代简约</a>
+            <a href="#" data-filter=".food" class="ione-col">传统经典</a>
             <a href="#" data-filter=".other" class="ione-col">其它</a>
-    			</div>
-    		</div>
-    	</div>
+          </div>
+        </div>
+      </div>
     </div>
     <!--END: FILTER-->
-	
+  
   <!--###################-->
-	<!-- START PORTFOLIO // THIS ITEM COMMENTED-->
-	<!--###################-->
-	<div id="container-folio" class="row ufilter"><!-- !important! => DONT REMOVE class="ufilter"--> 
+  <!-- START PORTFOLIO // THIS ITEM COMMENTED-->
+  <!--###################-->
+  <div id="container-folio" class="row ufilter"><!-- !important! => DONT REMOVE class="ufilter"--> 
     <div class="span12">
       <div id="portfolio" class="row">
       
@@ -71,12 +71,12 @@ end
               <div class="project-item-overlay ">
                 <div class="inner">
                   <ul>
-                		<li> <a rel="prettyPhoto[gallery]" href="<%= page.image_path %>" class="proj-btn">
-                			<i class="fa-icon-zoom-in fa-icon-large"></i></a>
-                		</li>
-                		<li><a class="proj-btn" href="<%= get_url(page) %>">
-                				<i class="fa-icon-link fa-icon-large"></i></a>
-                		</li>
+                    <li> <a rel="prettyPhoto[gallery]" href="<%= page.image_path %>" class="proj-btn">
+                      <i class="fa-icon-zoom-in fa-icon-large"></i></a>
+                    </li>
+                    <li><a class="proj-btn" href="<%= get_url(page) %>">
+                        <i class="fa-icon-link fa-icon-large"></i></a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -84,11 +84,11 @@ end
             </div> 
             <!--END IMAGE CONTAINER-->
 
-  		      <!-- CAPTION -->
+            <!-- CAPTION -->
             <div class="caption">
               <div class="transit-to-top">
                 <h3 class="p-title standart-h3title"><%= page.title %></h3>
-                <p class="caption-descr"><%= page.short_description(100) %></p><a href="<%= get_url(page) %>" title="read more">更多 &rarr;</a>
+                <p class="caption-descr"><%= page.short_description(40) %></p><a href="<%= get_url(page) %>" title="read more">更多 &rarr;</a>
               </div>
             </div> 
             <!--END CAPTION -->
@@ -96,9 +96,9 @@ end
           <!-- END: THUMBNAIL -->
         </div>
       <% end %>
-    	  <!-- ##################### -->
-    	  <!-- END: portfolio item -->
-    	  <!-- ##################### -->
+        <!-- ##################### -->
+        <!-- END: portfolio item -->
+        <!-- ##################### -->
       </div>
     </div>
   </div>
@@ -137,27 +137,31 @@ end
 <script src="/templetes/sunon-dcj/assets/js/jquery.ui.totop.js" type="text/javascript"></script>
 
 <script>
-	jQuery.noConflict()(function($){
-		var $container = $('#container-folio');
-				
-		if($container.length) {
-			$container.waitForImages(function() {
-				
-				// initialize isotope
-				$container.isotope({
-				  itemSelector : '.box',
-				  layoutMode : 'fitRows'
-				});
-				
-				// filter items when filter link is clicked
-				$('#filters a').click(function(){
-				  var selector = $(this).attr('data-filter');
-				  $container.isotope({ filter: selector });
-				  $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
-				  
-				  return false;
-				});
-				
-			},null,true);
-	}});
+  jQuery.noConflict()(function($){
+    var $container = $('#container-folio');
+        
+    if($container.length) {
+      $container.waitForImages(function() {
+        
+        // initialize isotope
+        $container.isotope({
+          itemSelector : '.box',
+          layoutMode : 'fitRows'
+        });
+        
+        // filter items when filter link is clicked
+        $('#filters a').click(function(){
+          var selector = $(this).attr('data-filter');
+          $container.isotope({ filter: selector });
+          $(this).removeClass('active').addClass('active').siblings().removeClass('active all');
+          
+          return false;
+        });
+        
+      },null,true);
+  }});
 </script>
+
+    
+    
+    

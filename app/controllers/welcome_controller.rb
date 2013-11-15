@@ -25,4 +25,9 @@ class WelcomeController < ApplicationController
     # end
     #render text: "#{@channel.id} - #{@page.id}" and return
   end
+
+  def tag_cloud
+    @pages = Admin::Post.tag_counts_on(:tags)
+  end
+
 end

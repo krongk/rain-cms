@@ -8,6 +8,15 @@ class Admin::Page < ActiveRecord::Base
   def short_description(count)
     self.description.to_s.truncate(count)
   end
+
+  #最近新闻
+  #typo = ['article', 'image', 'product']
+  def self.recent(count = 10, {typo = 'all'})
+    pages = Admin::Page.order("updated_at DESC").limit(count)
+    pages = pages.select{|p| p.channel.typo == typo} unless typo == 'all'
+    pages
+  end
+
 end
 
 =begin

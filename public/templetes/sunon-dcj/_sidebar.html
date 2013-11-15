@@ -1,48 +1,28 @@
 <div class="span4 side_bar">
   
   <div class="row-fluid">
-      <div class="line2 center">
-        <h5 class="standart-h3title"><span>Categories</span></h5>
-      </div>
-      <ul class="l_tinynav2 widget-archive" id="nav2">
-                  <li><a href="#" style="margin-left:0px;"> news</a></li>
-                  <li><a href="# " style="margin-left:0px;">Category</a></li>
-                  <li><a href="#" style="margin-left:0px;">Blog</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category</a></li>
-                  <li><a href="#" style="margin-left:0px;">One more category </a></li>                   
-                                   
-                                  
-                </ul>
-      </div>
-  <div class="row-fluid">
-  <hr class="half" />
-  <div class="line2 center">
-        <h5 class="standart-h3title"><span>Tags</span></h5>
+    <div class="line2 center">
+      <h5 class="standart-h3title"><span>最近发生...</span></h5>
+    </div>
+    <ul class="l_tinynav2 widget-archive" id="nav2">
+      <% Page.recent(10).each do |page| %>
+        <li><a href="<%= get_url(page) %>" style="margin-left:0px;"><%= page.title %></a></li>
+      <% end %>    
+    </ul>
   </div>
-    
+  <div class="row-fluid">
+    <hr class="half" />
+    <div class="line2 center">
+      <h5 class="standart-h3title"><span>Tags</span></h5>
+    </div>
+      
     <div class="span12">
-              <a href="#"><span class="label label-info">Snipp</span></a> 
-              <a href="#"><span class="label label-info">Bootstrap</span></a> 
-              <a href="#"><span class="label label-info">UI</span></a> 
-              <a href="#"><span class="label label-info">growth</span></a>
-              <a href="#"><span class="label label-info">Snipp</span></a> 
-              <a href="#"><span class="label label-info">Bootstrap</span></a> 
-              <a href="#"><span class="label label-info">UI</span></a> 
-              <a href="#"><span class="label label-info">Snipp</span></a> 
-              <a href="#"><span class="label label-info">Bootstrap</span></a> 
-              <a href="#"><span class="label label-info">UI</span></a> 
-              <a href="#"><span class="label label-info">growth</span></a>
-              <a href="#"><span class="label label-info">growth</span></a>
-              <a href="#"><span class="label label-info">Snipp</span></a> 
-              <a href="#"><span class="label label-info">Bootstrap</span></a> 
-              <a href="#"><span class="label label-info">UI</span></a> 
-              <a href="#"><span class="label label-info">growth</span></a>
-              </div>
+      <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+        <%= link_to { :action => :tag, :id => tag.name } do %>
+          <span class="label label-info tag<%=tag.id %>"><%= tag.name %></span>
+        <% end %>
+      <% end %>
+    </div>
   </div>
       
   <div class="row-fluid">
@@ -70,14 +50,14 @@
         </div>
     </div>
       
-      <div class="row-fluid">
+  <div class="row-fluid">
     <hr class="half" />
-  <div class="line2 center">
+    <div class="line2 center">
       <h5 class="standart-h3title"><span>Video widget</span></h5>
-      </div>
+    </div>
       <div class="vendor">
         <div class="container-video">
-        <iframe src="http://player.vimeo.com/video/29309724?title=0&color=FF5050" frameborder="0"></iframe>
+          <iframe src="http://player.vimeo.com/video/29309724?title=0&color=FF5050" frameborder="0"></iframe>
         </div>
       </div>
   </div>

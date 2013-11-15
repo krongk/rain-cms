@@ -54,6 +54,12 @@ end
 class AdminChannel < CommonTableBase
   self.table_name = 'admin_channels'
 end
+class Tagging < CommonTableBase
+  self.table_name = 'taggings'
+end
+class Tag < CommonTableBase
+  self.table_name = 'tags'
+end
 
 class TestA
   def initialize(args)
@@ -78,10 +84,18 @@ class TestA
         page.title = sun.name
         page.description = sun.description
         page.short_title = Pinyin.t(page.title).gsub(/\s+/, '-')
-        page.image_path = sun.image2.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/product_images/')
+        page.image_path = sun.image2.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_small_images/')
         page.content = get_content(sun)
         flag = 'y'
         page.save!
+
+        tag = Tag.find_or_create_by(name: page.keywords)
+        taging = Tagging.create!(
+          tag_id: tag.id,
+          taggable_id: page.id,
+          taggable_type: 'Admin::Page',
+          context: 'tags'
+        )
       end
       sun.is_processed = flag
       sun.save!
@@ -107,24 +121,31 @@ class TestA
     #
     str_arr = []
 
+    str_arr << %{ <!-- BEGIN SLIDE -->
+              <li class="slide thumbnail">
+                <img src="#{sun.image2.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_images/')}" alt="#{sun.typo1}-#{sun.typo2}-#{sun.name}" />
+              </li>
+              <!-- END SLIDE -->} unless sun.image2.nil?
+
     sun.image1.to_s.split(/\n+/).each do |s|
       next unless s =~ /\d+.(jpg|png|gif)/i
       str_arr << %{ <!-- BEGIN SLIDE -->
               <li class="slide thumbnail">
-                <img src="#{s.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/product_images/')}" alt="#{sun.typo1}-#{sun.typo2}-#{sun.name}" />
+                <img src="#{s.to_s.sub(/http:\/\/www.sunon-china.com\/upload\//i, '/assets/product_images/')}" alt="#{sun.typo1}-#{sun.typo2}-#{sun.name}" />
               </li>
               <!-- END SLIDE -->}
     end
 
+    cont3 = ''
     cont3 = %{
       <!-- DESCRIPTION -->
           <div class="well">
             #{sun.seka}
           </div>
           <!-- END DESCRIPTION -->
-    }
+    } unless sun.seka.nil?
 
-    return [cont1, str_arr.join("\n"), cont2, cont3].join("\n")
+    return [cont3, cont1, str_arr.join("\n"), cont2].join("\n")
   end
 end
 
