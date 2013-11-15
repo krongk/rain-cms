@@ -6,7 +6,7 @@ class Admin::Page < ActiveRecord::Base
   scope :by_join_date, order("created_at DESC")
 
   def short_description(count)
-    self.description.truncate(count)
+    self.description.to_s.truncate(count)
   end
 end
 
