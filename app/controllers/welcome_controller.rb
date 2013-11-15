@@ -19,15 +19,17 @@ class WelcomeController < ApplicationController
       redirect_to "/admin/channels/new", notice: "没有任何内容，请在后台添加" and return
     end
     #@page = Admin::Page.find_by(id: params[:id])
-    @pages = @channel.pages.page(params[:page])
+    if params[:tag]
+      @pages = Page.tagged_with(params[:tag]).page(params[:page])
+    else
+      @pages = @channel.pages.page(params[:page])
+    end
     # if @channel.nil? ||  @channel.properties == 3 && @page.nil?
     #   render action: :index
     # end
     #render text: "#{@channel.id} - #{@page.id}" and return
-  end
 
-  def tag_cloud
-    @pages = Admin::Post.tag_counts_on(:tags)
+    @tags = Admin::Page.tag_counts_on(:tags)
   end
 
 end

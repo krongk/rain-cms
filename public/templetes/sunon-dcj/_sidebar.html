@@ -1,11 +1,11 @@
-<div class="span4 side_bar">
+                              <div class="span4 side_bar">
   
   <div class="row-fluid">
     <div class="line2 center">
       <h5 class="standart-h3title"><span>最近发生...</span></h5>
     </div>
     <ul class="l_tinynav2 widget-archive" id="nav2">
-      <% Page.recent(10).each do |page| %>
+      <% Admin::Page.recent(10).each do |page| %>
         <li><a href="<%= get_url(page) %>" style="margin-left:0px;"><%= page.title %></a></li>
       <% end %>    
     </ul>
@@ -18,9 +18,8 @@
       
     <div class="span12">
       <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-        <%= link_to { :action => :tag, :id => tag.name } do %>
-          <span class="label label-info tag<%=tag.id %>"><%= tag.name %></span>
-        <% end %>
+        <%= link_to tag.name, {:action => :index, :tag => tag.name }  %>
+     
       <% end %>
     </div>
   </div>
@@ -62,3 +61,8 @@
       </div>
   </div>
 </div>
+    
+    
+    
+    
+    
