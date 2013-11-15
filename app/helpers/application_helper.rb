@@ -67,6 +67,7 @@ module ApplicationHelper
   def get_short_title(typo, title)
     return if title.blank?
     st = Pinyin.t(title).gsub(/(-|\s+)/, '-').gsub(/[^\w-]/, '')
+    st = st.to_s.squeeze('-')[0..10].gsub(/\W+$/, '')
     case typo
     when 'channel'
       while Admin::Channel.where(short_title: st).any?
