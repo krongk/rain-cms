@@ -65,7 +65,7 @@ body
 	/************** TOP BANNER INDEX & 404 ************/
 .action-banner-bg
 {
-	background: #67B055 url(../img/big_bg.jpg) top center repeat;
+	background: #67B055 url(/templetes/sunon-dcj/assets/img/big_bg.jpg) top center repeat;
 	background-size: 100% 100%;
 	box-shadow: 0px 5px 12px rgba(50, 50, 50, 0.35) inset;
 	height: 100%;
@@ -79,7 +79,7 @@ body
 }
 .action-banner-bg-top
 {
-/*	background: url(../img/pixel.png) top left repeat;
+/*	background: url(/templetes/sunon-dcj/assets/img/pixel.png) top left repeat;
 */	height: 100%;
 	position: absolute;
 	right: 0;
@@ -96,7 +96,7 @@ body
 /********************************* PAGE HEADER *************************************/
 .page-header
 {
-	background: #77CC62 url(../img/blured.jpg) center center repeat;
+	background: #77CC62 url(/templetes/sunon-dcj/assets/img/blured.jpg) center center repeat;
 	margin: 0px 0 30px;
 	margin-left: auto;
 	margin-right: auto;
@@ -115,7 +115,7 @@ body
 }
 .pixel-bg
 {
-	background: transparent url(../img/pixel.png) top left repeat;
+	background: transparent url(/templetes/sunon-dcj/assets/img/pixel.png) top left repeat;
 }
 .shine
 {
@@ -1089,7 +1089,7 @@ p.land
 /****************************** PRELOADER **************************/
 .js div#preloader
 {
-	background: #333 url(../img/loading_page.gif) no-repeat center center;
+	background: #333 url(/templetes/sunon-dcj/assets/img/loading_page.gif) no-repeat center center;
 	height: 100%;
 	left: 0;
 	overflow: visible;
@@ -2433,7 +2433,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .footer {
 	margin-top: 70px;
 	border-top: 1px solid #e5e5e5;
-	background:#222 url(../img/bg_footer.png);
+	background:#222 url(/templetes/sunon-dcj/assets/img/bg_footer.png);
 	padding: 30px 0 0 0;
 	color: #919191;
 }

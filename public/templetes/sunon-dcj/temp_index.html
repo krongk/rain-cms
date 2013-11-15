@@ -176,199 +176,37 @@
         	</div>
         
           <ul class="thumbnails slides">
-          <!--START ITEM -->
-				  <li class="span4 slide">  
-					  <div class="project-item">
-						  <div class="thumbnail">
-							<!--IMAGE CONTAINER OVERLAY -->
-	            	<div class="sample project-item-image-container">
-									<div class="project-item-overlay">
-										<div class="inner">
-							  			<ul>
-												<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-							  			</ul>
+          <% Admin::Page.recent(10, :typo => 'product').each do |page| %>
+	          <!--START ITEM -->
+					  <li class="span4 slide">  
+						  <div class="project-item">
+							  <div class="thumbnail">
+								<!--IMAGE CONTAINER OVERLAY -->
+		            	<div class="sample project-item-image-container">
+										<div class="project-item-overlay">
+											<div class="inner">
+								  			<ul>
+													<li><a class="proj-btn" href="<%= get_url(page) %>"><i class="fa-icon-link fa-icon-large"></i></a></li>
+								  			</ul>
+											</div>
 										</div>
+										<img src="<%= page.image_path %>" alt="" /> 
 									</div>
-									<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
-								</div>
-								<!-- END: IMAGE CONTAINER OVERLAY -->
-				  			<!-- CAPTION -->
-				
-					 			<div class="caption">
-									<div class="transit-to-top">
-									  <h4 class="p-title">Awesome project title</h4>
-									  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-									</div>
-					  		</div> 
-					  		<!--END CAPTION -->
-							</div>
-						</div>
-			  	</li>
-			   <!--END ITEM --> 
-			    <!--START ITEM -->
-			  <li class="span4 slide">  
-			  <div class="project-item">
-			  <div class="thumbnail">
-			   <!--IMAGE CONTAINER OVERLAY -->
-                <div class="sample project-item-image-container">
-				
-					<div class="project-item-overlay">
-						<div class="inner">
-						  <ul>
-							
-							<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-						  </ul>
-						</div>
-					</div>
-						<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
+									<!-- END: IMAGE CONTAINER OVERLAY -->
+					  			<!-- CAPTION -->
 					
-				</div>
-				<!-- END: IMAGE CONTAINER OVERLAY -->
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h4 class="p-title">Awesome project title</h4>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-				 
-			</div>
-			</div>
-			  </li>
-			   <!--END ITEM -->  <!--START ITEM -->
-			  <li class="span4 slide">  
-			  <div class="project-item">
-			  <div class="thumbnail">
-			   <!--IMAGE CONTAINER OVERLAY -->
-                <div class="sample project-item-image-container">
-				
-					<div class="project-item-overlay">
-						<div class="inner">
-						  <ul>
-							
-							<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-						  </ul>
-						</div>
-					</div>
-						<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
-					
-				</div>
-				<!-- END: IMAGE CONTAINER OVERLAY -->
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h4 class="p-title">Awesome project title</h4>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-				 
-			</div>
-			</div>
-			  </li>
-			   <!--END ITEM -->  
-			   <!--START ITEM -->
-			  <li class="span4 slide">  
-			  <div class="project-item">
-			  <div class="thumbnail">
-			   <!--IMAGE CONTAINER OVERLAY -->
-                <div class="sample project-item-image-container">
-				
-					<div class="project-item-overlay">
-						<div class="inner">
-						  <ul>
-							
-							<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-						  </ul>
-						</div>
-					</div>
-						<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
-					
-				</div>
-				<!-- END: IMAGE CONTAINER OVERLAY -->
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h4 class="p-title">Awesome project title</h4>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-				 
-			</div>
-			</div>
-			  </li>
-			   <!--END ITEM -->  
-			   <!--START ITEM -->
-			  <li class="span4 slide">  
-			  <div class="project-item">
-			  <div class="thumbnail">
-			   <!--IMAGE CONTAINER OVERLAY -->
-                <div class="sample project-item-image-container">
-				
-					<div class="project-item-overlay">
-						<div class="inner">
-						  <ul>
-							
-							<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-						  </ul>
-						</div>
-					</div>
-						<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
-					
-				</div>
-				<!-- END: IMAGE CONTAINER OVERLAY -->
-			  <!-- CAPTION -->
-			
-			 <div class="caption">
-					  <div class="transit-to-top">
-						  <h4 class="p-title">Awesome project title</h4>
-						  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-					  </div>
-				  </div> 
-				  <!--END CAPTION -->
-				 
-			</div>
-			</div>
-			  </li>
-			   <!--END ITEM -->  
-			   <!--START ITEM -->
-			  <li class="span4 slide">  
-				<div class="project-item">
-					<div class="thumbnail">
-			   <!--IMAGE CONTAINER OVERLAY -->
-						<div class="sample project-item-image-container">
-				
-							<div class="project-item-overlay">
-								<div class="inner">
-									<ul>
-							
-										<li><a class="proj-btn" href="portfolio_single_project.html"><i class="fa-icon-link fa-icon-large"></i></a></li>
-									</ul>
+						 			<div class="caption">
+										<div class="transit-to-top">
+										  <h4 class="p-title"><%= page.title %></h4>
+										  <p class="caption-descr"><%= page.short_description(20) %></p>
+										</div>
+						  		</div> 
+						  		<!--END CAPTION -->
 								</div>
 							</div>
-								<img src="/templetes/sunon-dcj/images/box.jpg" alt="" /> 
-					
-						</div>
-				<!-- END: IMAGE CONTAINER OVERLAY -->
-					  <!-- CAPTION -->
-					
-							<div class="caption">
-							  <div class="transit-to-top">
-								  <h4 class="p-title">Awesome project title</h4>
-								  <p class="caption-descr">This project presents beautiful style graphic &amp; design. VERSO provides modern features</p>
-							  </div>
-							</div> 
-						  <!--END CAPTION -->
-				 
-					</div>
-				</div>
-			</li>
-			   <!--END ITEM -->
+				  	</li>
+				    <!--END ITEM --> 
+			  	<% end %>
 	    </ul>
 	</div>
 	  <!--- ########### ## -->
@@ -382,66 +220,27 @@
       <div class="span6">
 	
 	  <div class="border-left-color">
-	  <h3 class="standart-h3title"><span>东长江资讯中心</span></h3>
-        <table class="table table-hover">
-		<tbody>
-			<tr>
-				<td>
-				<div class="nowrap small-text">January 3, 2013</div>
-				</td>
-				
-				<td>
-					<i class="fa-icon-comments-alt">&nbsp;</i>
-				</td>
-				<td>
-				<a href="#"> <strong> 圣奥东长江家具2014年校园招聘公告</strong> </a>
-				<div class="italic">人才招聘</div>
-				</td>
-			</tr>
-			
-		<tr>
-			<td>
-				<div class="nowrap small-text">January 2, 2013</div>
-			</td>
-			<td>
-				<i class="fa-icon-comments-alt">&nbsp;</i>
-			</td>
-			<td>
-				<a href="#"> 
-					<strong>2013年“市长杯”创意杭州工业设计大赛“圣奥杯”分赛场获奖公示</strong> 
-				</a>
-				<div class="italic">行业咨询
-				</div>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
-				<div class="nowrap small-text">December 10, 2012</div>
-			</td>
-			<td><i class="fa-icon-calendar">&nbsp;</i></td>
-			<td>
-				<a href="#" target="_blank"> <strong>公司再获“AAA级守合同重信用企业”称号</strong> </a>
-				<div class="italic">公司新闻</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>
-			<div class="nowrap small-text">October 1, 2012</div>
-			</td>
-			<td>
-				<i class="fa-icon-calendar">&nbsp;</i>
-			</td>
-			<td>
-				<a href="#"> <strong>VERSO Executive Officer Graham Doe participates in the White Horse Business Council's Open Data meeting</strong> 
-				</a>
-				<div class="italic ">VERSOMagazine</div>
-			</td>
-		</tr>
-		</tbody>
-		</table>
-      </div>
+	  	<h3 class="standart-h3title"><span>东长江资讯中心</span></h3>
+      <table class="table table-hover">
+				<tbody>
+					<% Admin::Page.recent(4, typo: 'article').each do |page| %>
+						<tr>
+							<td>
+							<div class="nowrap small-text"><%= page.format_date %></div>
+							</td>
+							
+							<td>
+								<i class="fa-icon-comments-alt">&nbsp;</i>
+							</td>
+							<td>
+							<a href="<%= get_url(page) %>"> <strong><%= page.title %></strong> </a>
+							<div class="italic"><%= page.channel.title %></div>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+    </div>
 	 
 	  </div>
 	  

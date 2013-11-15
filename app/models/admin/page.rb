@@ -8,7 +8,9 @@ class Admin::Page < ActiveRecord::Base
   def short_description(count)
     self.description.to_s.truncate(count)
   end
-
+  def format_date
+    self.updated_at.strftime("%Y-%M-%d")
+  end
   #最近新闻
   #typo = ['article', 'image', 'product']
   def self.recent(count = 10, options = {})
