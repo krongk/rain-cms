@@ -40,7 +40,7 @@
           <div class="blog-item">
             <span class="label label-info label-xl span2 center">
               <span class="date-blog"><%= page.updated_at.day %></span> <br><%= page.updated_at.year %>-<%= page.updated_at.month %>
-            </span>
+              </span>
             <div class="span10">
               <h2 class="standart-h3title">
                 <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
@@ -49,14 +49,13 @@
 
             <p class="meta-blog clearfix">
                 <i class="icon-comment"></i>
-                <a href="#">3 Comments</a>
+                <a href="#">评论</a>
                 | <i class="icon-share"></i>
-                <a href="#">39 Shares</a> | <i class="icon-user"></i> 
-                <a href="#">Admin</a> | Tags: 
-                <a href="#"><span class="label label-info">Snipp</span></a> 
-                <a href="#"><span class="label label-info">Bootstrap</span></a> 
-                <a href="#"><span class="label label-info">UI</span></a> 
-                <a href="#"><span class="label label-info">growth</span></a>
+                <a href="#">分享</a> | <i class="icon-user"></i> 
+                <a href="#">东长江发布</a> | 标签: 
+                <% page.tag_list.each do |t| %>
+                  <a href="#"><span class="label label-info"><%= t %></span></a> 
+                <% end %>
             </p>
             <div class="row-fluid">
                <div class="span4">
@@ -65,7 +64,7 @@
                   </div> 
                 </div>
                 <div class="span8">
-                    <p class="cat-blog"><%= page.content.truncate(200) %>. </p> 
+                    <p class="cat-blog"><%= truncate_content(page.content, 200) %></p> 
                     <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>" target="_blank">阅读详细 &rarr;</a>
                 </div>
             </div>

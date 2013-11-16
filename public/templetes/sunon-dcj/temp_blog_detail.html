@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span12">
-						<h1><%= @page.title %></h1>
+						<h1><%= @channel.title %></h1>
 						<!-- BREADCRUMB -->
 						<ul class="breadcrumb">
 						  <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
@@ -28,39 +28,44 @@
   <div class="row-fluid blog">
     <div class="span8">
       <div class="blog-post">
-        <div class="">
+        <div class="blog-item">
 		
-		<span class="label label-info label-xl span2 center"><span class="date-blog">30</span> <br>January </span>
-          <div class="span10"><h2 class="standart-h2title"><%= @page.title %></h2>
-		  </div>
-          
-		 
-            <p class="meta-blog clearfix">
-								<i class="icon-comment"></i>
-								<a href="#">3 Comments</a>
-								| <i class="icon-share"></i>
-								<a href="#">39 Shares</a> | <i class="icon-user"></i> 
-								<a href="#">Admin</a> | Tags: 
-								<a href="#"><span class="label label-info">Snipp</span></a> 
-								<a href="#"><span class="label label-info">Bootstrap</span></a> 
-								<a href="#"><span class="label label-info">UI</span></a> 
-								<a href="#"><span class="label label-info">growth</span></a>
-						</p>
+		      <span class="label label-info label-xl span2 center"><span class="date-blog"><%= @page.updated_at.day %></span> <br><%= @page.updated_at.year %>-<%= @page.updated_at.month %>
+          </span>
+          <div class="span10">
+            <h2 class="standart-h2title"><%= @page.title %></h2>
+		      </div>
+        
+	 
+          <p class="meta-blog clearfix">
+							<i class="icon-comment"></i>
+							 <a href="#comment">评论</a>
+              | <i class="icon-share"></i>
+              <a href="#">分享</a> | <i class="icon-user"></i> 
+              <a href="#">东长江发布</a> | 标签: 
+              <% @page.tag_list.each do |t| %>
+                <a href="#"><span class="label label-info"><%= t %></span></a> 
+              <% end %>
+					</p>
          
-          <div class="thumbnail">
-            	<img src="/templetes/sunon-dcj/images/responsive.jpg" alt="bootstrap template responsive theme">
-          </div>
-		  
+          <% unless @page.image_path.blank? %>
+            <div class="thumbnail">
+              <img src="<%= @page.image_path %>" alt="<%= @page.title %>">
+            </div>
+		      <% end %>
+
           <div class="dd_buttons clearfix">
            
           </div>
         </div>
-        <%= raw @page.content %>
+        <div class="page_content">
+          <%= raw @page.content %>
+        </div>
       </div>
       
 	  <div class="row-fluid">
 			<div class="line2 center">
-          <h5 class="standart-h3title"><span>评论</span></h5>
+          <h5 class="standart-h3title"><span>评论</span></h5><a name="comment"></a>
 		  </div>
       <!-- Duoshuo Comment BEGIN -->
         <div class="ds-thread"></div>

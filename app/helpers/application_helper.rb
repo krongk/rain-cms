@@ -40,6 +40,13 @@ module ApplicationHelper
     content_for(:content){ raw item_content }
   end
 
+  ################################################
+  #############helper for view####################
+  #
+  def truncate_content(content, count)
+    sanitize(strip_tags(content).truncate(count))
+  end
+
   #use for Admin: preview id, production use short_title to cache.
   def get_preview_url(obj)
     if obj.class == Admin::Page
@@ -64,6 +71,7 @@ module ApplicationHelper
   #this method used on admin/channel and admin/page create and update.
   # admin/channel_controller.rb
   # admin/page_controller.rb
+  # short_title is used on URL, accept [a-zA-Z0-9-]
   def get_short_title(typo, title)
     return if title.blank?
     st = Pinyin.t(title).gsub(/(-|\s+)/, '-').gsub(/[^\w-]/, '')

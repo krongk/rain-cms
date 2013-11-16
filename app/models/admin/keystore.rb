@@ -1,4 +1,6 @@
 class Admin::Keystore < ActiveRecord::Base
+  validates :key, :value, presence: true
+
   def self.get(key)
     self.find_by_key(key)
   end

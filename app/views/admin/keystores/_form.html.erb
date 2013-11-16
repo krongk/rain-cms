@@ -1,13 +1,23 @@
 <%= simple_form_for(@admin_keystore) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :key %>
-    <%= f.input :value, input_html: {style: "width: 100%; height: 600px; max-height: 800px;"} %>
-    <%= f.input :description %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary btn-info' %>
+  <div class="row">
+    <div class="col-md-2">
+      <h2>参数管理</h2>
+      <blockquote>
+        <p>
+          <%= f.button :submit, '提交保存', class: 'btn btn-lg btn-danger' %><br>
+          <small><%= link_to '返回参数列表', admin_keystores_path %></small>
+        </p>
+        <small>参数为全局设置，请按照教程要求添加</small>
+      </blockquote>
+      <hr>
+    </div>
+    <div class="col-md-10">
+      <div class="form-inputs">
+        <%= f.input :key %>
+        <%= f.input :value, input_html: {style: "width: 100%; height: 300px; max-height: 800px;"} %>
+        <%= f.input :description %>
+      </div>
+    </div>
   </div>
 <% end %>

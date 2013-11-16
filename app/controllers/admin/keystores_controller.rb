@@ -5,7 +5,7 @@ class Admin::KeystoresController < ApplicationController
   # GET /admin/keystores
   # GET /admin/keystores.json
   def index
-    @admin_keystores = Admin::Keystore.all
+    @admin_keystores = Admin::Keystore.page(params[:page])
   end
 
   # GET /admin/keystores/1

@@ -15,7 +15,7 @@
     <div class="col-md-10">
       <div class="form-inputs">
         <label class="string optional control-label" for="admin_channel_typo">内容模型：</label>
-        <%= f.select :typo, %W[article image product], include_blank: false %>
+        <%= f.select :typo, Admin::Channel::TYPOS, include_blank: false %>
         <br>
         <%= f.input :properties, :collection => 
           [

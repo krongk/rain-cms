@@ -10,14 +10,14 @@
 <div class="navbar-collapse collapse">
   <% if user_signed_in? %>
     <ul class="nav navbar-nav">
-      <li><%= link_to '模版管理', "/admin/templetes/index" %></li>
-      <li><%= link_to '参数设置', admin_keystores_path %></li>
+      <li><%= link_to '系统参数', admin_keystores_path %></li>
+      <li><%= link_to '模版管理', "/admin/templetes/index" %></li>     
       <li><%= link_to '栏目管理', admin_channels_path %></li>
       <li><%= link_to '页面管理', admin_pages_path %></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
+          <li><a href="/admin/home/help">使用教程</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
           <li class="divider"></li>
