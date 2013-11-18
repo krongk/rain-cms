@@ -1,5 +1,5 @@
 #encoding: utf-8
-# 该文件的目的是组装模板文件，生成一个演示预览：demo.html
+# 该文件的目的是组装模板文件
 #use $USAGE
 $USAGE = <<EOT
  # 1. 请输入指定的模板文件名：-e theme
@@ -7,16 +7,14 @@ $USAGE = <<EOT
  #
  # |templete_name
  #        |assets
- #              _footer.html
- #              _header.html
- #              _index_content.html
- #              css_urls.txt
- #              js_urls.txt
- #        |css
- #        |js
- #        |img
+ #						|css
+ #						|js
+ #						|img
  #        |pages
- #        |demo.default.html   
+ #        |index.html
+ #				|blog_list.html
+ #				|blog_detail.html
+ #				|about.html
 EOT
 
 #or
@@ -65,6 +63,11 @@ class DataExtractor
   def run
     error_flag = false
     puts "generate #{@theme}........."
+		#0. dump theme folder
+		puts "dump #{@theme} into #{@theme}_bak"
+    base_dir = File.join(File.dirname(__FILE__), @theme)
+    Dir.chdir(base_dir)
+		FileUtils.cp_r @theme, "#{@theme}_bak"
 
     #1. split index page
     index_path = File.join(File.dirname(__FILE__), @theme, 'index.html')
@@ -88,7 +91,7 @@ class DataExtractor
     end
 
     temp_index_path = File.join(File.dirname(__FILE__), @theme, 'temp_index.html')
-    if /<body>(.*)<\/body>/im =~ index_content.force_encoding("utf-8")
+    if /<body[^>]+>(.*)<\/body>/im =~ index_content.force_encoding("utf-8")
       the_content = $1
       %W[header footer].each do |s|
         the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
@@ -101,9 +104,7 @@ class DataExtractor
 
     #2. extract templete pages
     puts "extract templete pages--------------------"
-    base_dir = File.join(File.dirname(__FILE__), @theme)
-    Dir.chdir(base_dir)
-
+    
     temp_list = Dir.glob("*.html")
     temp_list.each do |t|
       next if t !~ /^(?:t|temp)_(.*)$/i
@@ -120,6 +121,7 @@ class DataExtractor
       end
     end
     puts "remove the arealdy processed temp files"
+		FileUtils.mkdir 'pages'
     FileUtils.mv Dir.glob("t_*.html"), '/pages', :force => true  # no error
     
     #3. extract other single page content
