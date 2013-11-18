@@ -91,6 +91,9 @@ class DataExtractor
       %W[header footer].each do |s|
         the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
       end
+      #remove foot from body
+      the_content = the_content.sub(/<!--\s*\[\[foot start\]\]\s*-->(.*)<!--\s*\[\[foot end\]\]\s*-->/im, '')
+      
       File.open(temp_index_path, 'w'){|f| f.write( get_content(the_content) )}
     end
 
@@ -132,6 +135,11 @@ class DataExtractor
       end
     end
 
+    #4. format css's image path
+    css_list = Dir.glob("*", "*.css")
+    css_list += Dir.glob("*", "*", "*.css")
+    puts css_list
+    
     puts "............down!"
     exit
   end
