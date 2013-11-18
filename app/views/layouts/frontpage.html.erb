@@ -14,7 +14,7 @@
     <%#= stylesheet_link_tag "frontpage", media: "all", "data-turbolinks-track" => true %>
     <%#= javascript_include_tag "frontpage", "data-turbolinks-track" => true %>
     
-    <%= raw Admin::Keystore.value_for('head') %>
+    <%= render file: @base_dir + '_head.html' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -40,7 +40,7 @@
 
     <!-- Fixed footer -->
     <%#= render 'layouts/footer' %>
-    <%= raw Admin::Keystore.value_for('foot') %>
+    <%= render file: @base_dir + '_foot.html' %>
     
   </body>
 </html>
