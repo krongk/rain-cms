@@ -136,10 +136,10 @@ class DataExtractor
     end
 
     #4. format css's image path
-    css_list = Dir.glob("*", "*.css")
-    css_list += Dir.glob("*", "*", "*.css")
+    css_list = Dir.glob("**", "*.css")
+    css_list += Dir.glob("**", "css", "*.css")
     puts css_list
-    
+
     puts "............down!"
     exit
   end
