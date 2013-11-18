@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   layout 'frontpage'
-  #{"controller"=>"welcome", "action"=>"index", "channel"=>"fw", "id"=>"2"}
+  #{"controller"=>"welcome", "action"=>"index", "channel"=>"fw", "id"=>"2", "tag" => "tagkey"}
   def index
     #page first, then channel ?
     if params[:id]
@@ -18,17 +18,13 @@ class WelcomeController < ApplicationController
     if @channel.nil?
       redirect_to "/admin/channels/new", notice: "没有任何内容，请在后台添加" and return
     end
-    #@page = Admin::Page.find_by(id: params[:id])
+
     if params[:tag]
       @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
       @pages = @channel.pages.page(params[:page])
     end
-    # if @channel.nil? ||  @channel.properties == 3 && @page.nil?
-    #   render action: :index
-    # end
-    #render text: "#{@channel.id} - #{@page.id}" and return
-
+    #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
   end
 
