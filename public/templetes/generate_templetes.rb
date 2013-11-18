@@ -139,9 +139,9 @@ class DataExtractor
     css_list = Dir.glob(File.join("**", "*.css"))
     css_list.each do |css|
       the_content = File.open(css).read
-      File.open(css, 'w'){|f| f.write( get_content(the_content) )}
+      File.open(css, 'w'){|f| f.write( get_content(the_content.force_encoding("utf-8")) )}
     end
-    
+
     puts "............down!"
     exit
   end
