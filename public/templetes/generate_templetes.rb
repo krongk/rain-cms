@@ -32,7 +32,7 @@ require 'logger'
 require 'optparse'
 require 'fileutils'
 require 'pp'
-
+require 'iconv'
 # re-use Exception
 class Exception
   attr_accessor :method_name
@@ -58,6 +58,8 @@ class DataExtractor
     opt.on('-e', '--theme theme') { |theme| @theme = theme.downcase }
     opt.parse!(args)
     print_and_exit('please provide theme name with -e <theme>') if @theme.nil?
+
+    @ic = Iconv.new("UTF-8//IGNORE", "UTF-8")
   end
   
   def run
@@ -157,9 +159,10 @@ class DataExtractor
   # url(/templetes/
   # background: url(
   def get_content(content)
-    content.gsub!(/ src\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|ico|icon)\//, ' src="/templetes/{{theme}}/\1/')
-    content.gsub!(/ href\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|ico|icon)\//, ' href="/templetes/{{theme}}/\1/')
-    content.gsub!(/url\(['".\/]*((assets|img|images|image|font|ico|icon)[^\)]+)['"]\)/, 'url("/templetes/{{theme}}/\1")')
+    content = @ic.iconv(content)
+    content.gsub!(/ src\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|fonts|ico|icos|icon|icons)\//, ' src="/templetes/{{theme}}/\1/')
+    content.gsub!(/ href\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|fonts|icos|icons|ico|icon)\//, ' href="/templetes/{{theme}}/\1/')
+    content.gsub!(/url\(['".\/]*((assets|img|images|image|font|fonts|icos|icons|ico|icon)[^\)]+)['"]\)/, 'url("/templetes/{{theme}}/\1")')
     content.gsub!(/\{\{theme\}\}/, "#{@theme}")
     content
   end
