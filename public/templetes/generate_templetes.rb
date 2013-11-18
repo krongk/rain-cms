@@ -162,7 +162,8 @@ class DataExtractor
     content = @ic.iconv(content)
     content.gsub!(/ src\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|fonts|ico|icos|icon|icons)\//, ' src="/templetes/{{theme}}/\1/')
     content.gsub!(/ href\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|fonts|icos|icons|ico|icon)\//, ' href="/templetes/{{theme}}/\1/')
-    content.gsub!(/url\(['".\/]*((assets|img|images|image|font|fonts|icos|icons|ico|icon)[^\)]+)['"]\)/, 'url("/templetes/{{theme}}/\1")')
+    #css
+    content.gsub!(/url\(['".\/]*((assets|img|images|image|font|fonts|social-icons|icos|icons|ico|icon)[^\)]+(jpg|jpefg|gif|png))['"]\)/, 'url("/templetes/{{theme}}/\1")')
     content.gsub!(/\{\{theme\}\}/, "#{@theme}")
     content
   end
