@@ -120,8 +120,8 @@ class DataExtractor
       end
     end
     puts "remove the arealdy processed temp files"
-    FileUtils.rm_f Dir.glob("t_*.html")
-
+    FileUtils.mv Dir.glob("t_*.html"), '/pages', :force => true  # no error
+    
     #3. extract other single page content
     #去除其他只保留body部分的main部分, 形式请参考temp_index.html
     puts "extract other single page ............"
