@@ -74,13 +74,15 @@ class DataExtractor
     return if error_flag
 
     index_content = File.open(index_path).read
+    puts index_content
     %W[head foot header footer].each do |s|
-      if /<!-- \[\[#{s} start\]\] -->(.*)<!-- \[\[#{s} end\]\] -->/im =~ index_content.force_encoding("utf-8")
+      if /<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]v-->/im =~ index_content.force_encoding("utf-8")
         the_content = $1
         File.open(eval("#{s}_path"), 'w'){|f| f.write( get_content(the_content) )}
         puts s
       else
         puts "error to find: " + s
+        raise
       end
     end
 
@@ -88,7 +90,7 @@ class DataExtractor
     if /<body>(.*)<\/body>/im =~ index_content.force_encoding("utf-8")
       the_content = $1
       %W[header footer].each do |s|
-        the_content = the_content.sub(/<!-- \[\[#{s} start\]\] -->(.*)<!-- \[\[#{s} end\]\] -->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
+        the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
       end
       File.open(temp_index_path, 'w'){|f| f.write( get_content(the_content) )}
     end
@@ -108,7 +110,7 @@ class DataExtractor
       if /<body>(.*)<\/body>/im =~ the_content.force_encoding("utf-8")
         the_content = $1
         %W[header footer].each do |s|
-          the_content = the_content.sub(/<!-- \[\[#{s} start\]\] -->(.*)<!-- \[\[#{s} end\]\] -->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
+          the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s}\s*end\]\] -->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
         end
         File.open("temp_#{f_name}", 'w'){|f| f.write( get_content(the_content) )}
       end
@@ -125,7 +127,7 @@ class DataExtractor
       puts t
 
       the_content = File.open(t).read
-      if /<!-- \[\[main start\]\] -->(.*)<!-- \[\[main end\]\] -->/im =~ the_content.force_encoding("utf-8")
+      if /<!--\s*\[\[main start\]\]\s*-->(.*)<!--\s*\[\[main end\]\]\s*-->/im =~ the_content.force_encoding("utf-8")
         the_content = $1
         File.open(t, 'w'){|f| f.write( get_content(the_content) )}
       end
