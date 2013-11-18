@@ -32,22 +32,117 @@
 
 <hr class="hr-white">
 
-<h2>什么是 Markdown</h2>
+<h2>如何创建网页模板</h2>
 
-<p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
+<p>RainCMS前端的样式，都是基于模版创建而来，不同的模版对应不同的主题和效果，用户可以轻松自由的定制模版。</p>
+<p>模版的定制规则如下：(参考/templetes/generate_templetes.rb)</p>
 
+<h3>模版文件结构</h3>
+<pre>
+  |templetes
+            |templete_name
+                          |assets
+                                |css
+                                |js
+                                |font
+                                |img
+                          |images
+                          |index.html
+                          |t_blog_list.html
+                          |t_blog_detail.html
+                          |about.html
+</pre>
+规则说明：
 <ul>
-<li><p>书写一个质能守恒公式：</p>
-
-<p><span class="MathJax_Preview"></span><span class="MathJax" id="MathJax-Element-2-Frame" role="textbox" aria-readonly="true" style=""><nobr><span class="math" id="MathJax-Span-9" style="width: 5.147em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.945em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.252em 1000.002em 2.358em -0.382em); top: -2.209em; left: 0.002em;"><span class="mrow" id="MathJax-Span-10"><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math; font-style: italic;">E<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.05em;"></span></span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main; padding-left: 0.291em;">=</span><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.291em;">m</span><span class="msubsup" id="MathJax-Span-14"><span style="display: inline-block; position: relative; width: 0.916em; height: 0px;"><span style="position: absolute; clip: rect(1.445em 1000.002em 2.166em -0.382em); top: -2.017em; left: 0.002em;"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math; font-style: italic;">c</span><span style="display: inline-block; width: 0px; height: 2.022em;"></span></span><span style="position: absolute; top: -2.257em; left: 0.435em;"><span class="mn" id="MathJax-Span-16" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 1.877em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.214em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.253em; vertical-align: -0.059em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-2">E=mc^2</script></p></li>
-<li><p>或者高亮一段代码：</p></li>
+  <li>模版必须放在/public/templetes/目录下</li>
+  <li>[首页]必须名为: index.html</li>
+  <li>[模版页]必须以"t_"打头， 如blog_list.html</li>
+  <li>[内容页]用容易识别的名称命名</li>
 </ul>
 
-<pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><code class="language-python"><span class="kwd">class</span><span class="pln"> </span><span class="typ">SomeClass</span><span class="pun">:</span></code></li><li class="L1"><code class="language-python"><span class="pln">    </span><span class="kwd">pass</span></code></li><li class="L2"><code class="language-python"><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">'__main__'</span><span class="pun">:</span></code></li><li class="L3"><code class="language-python"><span class="pln">    </span><span class="kwd">print</span><span class="pln"> </span><span class="str">'hello world'</span></code></li></ol></pre>
+<p>下面分别介绍[首页],[模版页]和[内容页]</p>
 
-<p>想要了解更详细的语法说明，可以参考我们准备的 [Markdown 语法简明手册][1]</p>
+<h3>定制[首页]</h3>
+<p>首页作为模版的统一入口，所有公共的css、js、导航、页脚等部分都从首页里面提取出来。</p>
+<ul>
+  <li>
+    <p>用下面的标记分别把需要提取的部分标记出来</p>
+    <p>&gt;head&lt;部分公共代码（一般是css文件）</p>
+    <pre>
+      <!-- head start -->
+        ...
+      <!-- head end -->
+    </pre>
+    <p>网页底部公共代码(一般是js文件和统计代码等)</p>
+    <pre>
+      <!-- foot start -->
+        ...
+      <!-- foot end -->
+    </pre>
+    <p>公共导航部分，页头</p>
+    <pre>
+      <!-- header start -->
+        ...
+      <!-- header end -->
+    </pre>
+    <p>页脚公共部分，如友情链接、版权信息等</p>
+    <pre>
+      <!-- footer start -->
+        ...
+      <!-- footer end -->
+    </pre>
+  </li>
+</ul>
 
-<p>总而言之，不同于其它 <em>所见即所得</em> 的编辑器：您只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。<strong>Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。</strong> 它目前已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。</p>
+<h3>定制[模版页]</h3>
+<p>模版页作为通用模版调用，如博客系统则有一个列表模版+详细页模版。</p>
+<p>模版页的修改很简单，通过以下步骤实现:</p>
+<ul>
+  <li>
+    <p>把模版的名字更改为"t_xxx.html"</p>
+  </li>
+  <li>
+    <p>把css在本页特有的代码，复制到index.html的&gt;head&lt;部分（如果有的话）</p>
+  </li>
+  <li>
+    <p>把js在本页特有的部分，复制到index.html的&gt;foot&lt;部分（如果有的话）</p>
+  </li> 
+  <li>在&gt;body&lt;部分标示出共有的代码：
+    <pre>
+      <!-- header start -->
+        ...
+      <!-- header end -->
+
+      <!-- footer start -->
+        ...
+      <!-- footer end -->
+    </pre>
+  </li>
+</ul>
+
+<h3>定制[内容页]</h3>
+<p>内容页作为某个独特的网页而存在，比如about.html是为了呈现‘关于我们’栏目的效果，team.html是为了呈现'关于团队'栏目的效果。</p>
+<p>内容页将会装载到指定的模版页面中，如"temp_default_index.html"模版中，如果内容页作为栏目，那么该栏目下面的页面将会装载到“temp_default_detail.html”模版中， 内容页的修改步骤如下:</p>
+<ul>
+  <li>
+    <p>通过模版页复制，创建两个文件“t_default_index.html"和"t_default_detail.html"</p>
+  </li>
+  <li>
+    <p>在“t_default_index.html"和"t_default_detail.html"要呈现内容的地方加上： &gt;%= yield(:content) %&lt; </p>
+  </li> 
+  <li>
+    <p>把内容页&gt;body&lt;部分中的header,footer部分用代码标记起来：</p>
+    <pre>
+      <!-- header start -->
+        ...
+      <!-- header end -->
+
+      <!-- footer start -->
+        ...
+      <!-- footer end -->
+    </pre>
+  </li>
+</ul>
 
 <hr class="hr-white">
 

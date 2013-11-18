@@ -17,10 +17,12 @@ class Admin::Page < ActiveRecord::Base
   
   #最近新闻
   #typo = ['article', 'image', 'product']
+  #channel =[ channel.short_title, ]
   def self.recent(count = 10, options = {})
     options = {typo: 'all'}.merge(options)
     pages = Admin::Page.order("updated_at DESC").limit(count)
     pages = pages.select{|p| p.channel.typo == options[:typo]} unless options[:typo] == 'all'
+    pages = pages.select{|p| p.channel.short_title == options[:channel]} unless options[:channel].nil?
     pages
   end
 

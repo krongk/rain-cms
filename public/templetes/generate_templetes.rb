@@ -113,11 +113,11 @@ class DataExtractor
         File.open("temp_#{f_name}", 'w'){|f| f.write( get_content(the_content) )}
       end
     end
-    # puts "remove the arealdy processed temp files"
-    # FileUtils.rm_f Dir.glob("t_*.html")
+    puts "remove the arealdy processed temp files"
+    FileUtils.rm_f Dir.glob("t_*.html")
 
     #3. extract other single page content
-    #去除其他只保留body部分, 形式请参考temp_index.html
+    #去除其他只保留body部分的main部分, 形式请参考temp_index.html
     puts "extract other single page ............"
     temp_list = Dir.glob("*.html")
     temp_list.each do |t|
