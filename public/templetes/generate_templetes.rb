@@ -32,6 +32,7 @@ require 'logger'
 require 'optparse'
 require 'fileutils'
 require 'pp'
+require 'iconv'
 
 # re-use Exception
 class Exception
@@ -74,9 +75,10 @@ class DataExtractor
     return if error_flag
 
     index_content = File.open(index_path).read
-    puts index_content
+
+    index_content = Iconv.conv 'UTF-8', 'GBK', index_content
     %W[head foot header footer].each do |s|
-      if /<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]v-->/im =~ index_content.force_encoding("utf-8")
+      if /<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]v-->/im =~ index_content#.force_encoding("utf-8")
         the_content = $1
         File.open(eval("#{s}_path"), 'w'){|f| f.write( get_content(the_content) )}
         puts s
