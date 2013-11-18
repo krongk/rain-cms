@@ -66,7 +66,6 @@ class DataExtractor
 		#0. dump theme folder
 		puts "dump #{@theme} into #{@theme}_bak"
     base_dir = File.join(File.dirname(__FILE__), @theme)
-    Dir.chdir(base_dir)
 		FileUtils.cp_r @theme, "#{@theme}_bak"
 
     #1. split index page
@@ -104,7 +103,7 @@ class DataExtractor
 
     #2. extract templete pages
     puts "extract templete pages--------------------"
-    
+    Dir.chdir(base_dir)
     temp_list = Dir.glob("*.html")
     temp_list.each do |t|
       next if t !~ /^(?:t|temp)_(.*)$/i
