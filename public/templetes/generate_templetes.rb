@@ -76,7 +76,7 @@ class DataExtractor
     index_content = File.open(index_path).read
     index_content.delete!("^\u{0000}-\u{007F}")
     %W[head foot header footer].each do |s|
-      if /<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]-->/im =~ index_content.force_encoding("utf-8")
+      if /<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im =~ index_content.force_encoding("utf-8")
         the_content = $1
         File.open(eval("#{s}_path"), 'w'){|f| f.write( get_content(the_content) )}
         puts s
@@ -109,7 +109,7 @@ class DataExtractor
       if /<body>(.*)<\/body>/im =~ the_content.force_encoding("utf-8")
         the_content = $1
         %W[header footer].each do |s|
-          the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s}\s*end\]\] -->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
+          the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
         end
         File.open("temp_#{f_name}", 'w'){|f| f.write( get_content(the_content) )}
       end
