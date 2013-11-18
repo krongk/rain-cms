@@ -136,21 +136,30 @@ class DataExtractor
     end
 
     #4. format css's image path
-    css_list = Dir.glob("**", "*.css")
-    css_list += Dir.glob("**", "css", "*.css")
-    puts css_list
-
+    css_list = Dir.glob(File.join("**", "*.css"))
+    css_list.each do |css|
+      the_content = File.open(css).read
+      File.open(css, 'w'){|f| f.write( get_content(the_content) )}
+    end
+    
     puts "............down!"
     exit
   end
 
+  #assets:
   # <img src="assets/img
   # <script src="assets/js/b
   # <link href="assets/
   # <img src="images/
+  #css:
+  # url(../../images/down.png)
+  # background:url(/templetes
+  # url(/templetes/
+  # background: url(
   def get_content(content)
     content.gsub!(/ src\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|ico|icon)\//, ' src="/templetes/{{theme}}/\1/')
     content.gsub!(/ href\s*=\s*"(assets|img|images|image|js|javascript|javascripts|css|font|ico|icon)\//, ' href="/templetes/{{theme}}/\1/')
+    content.gsub!(/url\(['".\/]*((assets|img|images|image|font|ico|icon)[^\)]+)['"]\)/, 'url("/templetes/{{theme}}/\1")')
     content.gsub!(/\{\{theme\}\}/, "#{@theme}")
     content
   end
