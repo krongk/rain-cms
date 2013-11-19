@@ -29,7 +29,7 @@ class Admin::KeystoresController < ApplicationController
 
     respond_to do |format|
       if @admin_keystore.save
-        format.html { redirect_to @admin_keystore, notice: 'Keystore was successfully created.' }
+        format.html { redirect_to admin_keystores_path, notice: '参数添加成功.' }
         format.json { render action: 'show', status: :created, location: @admin_keystore }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class Admin::KeystoresController < ApplicationController
   def update
     respond_to do |format|
       if @admin_keystore.update(admin_keystore_params)
-        format.html { redirect_to @admin_keystore, notice: 'Keystore was successfully updated.' }
+        format.html { redirect_to admin_keystores_path, notice: '参数更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -50,6 +50,9 @@ GEM
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.1.4)
+    cache_digests (0.3.1)
+      actionpack (>= 3.2)
+      thread_safe
     cancan (1.6.10)
     chinese_pinyin (0.6.0)
     climate_control (0.0.3)
@@ -222,6 +225,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (>= 3.0.0.0)
   bootstrap-will_paginate
+  cache_digests
   cancan
   chinese_pinyin
   ckeditor!

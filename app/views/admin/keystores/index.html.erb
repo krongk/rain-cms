@@ -1,26 +1,31 @@
-<div class="page-header">
-  <h1>参数管理
-    <small>|　<%= link_to '新增参数', new_admin_keystore_path, class: 'btn btn-primary' %></small>
-  </h1>
-</div>
-
-<% @admin_keystores.each do |admin_keystore| %>
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <%= admin_keystore.key %>
-      <span class="pull-right">
-        <%= link_to '编辑', edit_admin_keystore_path(admin_keystore) %> | 
-        <%= link_to '删除', admin_keystore, method: :delete, data: { confirm: '删除参数可能会导致网站无法正常访问，你确定吗?' } %>
-      </span>
-    </div>
-    <div class="panel-body">
-      <%= admin_keystore.description %>
-    </div>
-    <!-- Table -->
-    <table class="table">
-      <tr><td><pre><%= admin_keystore.value %></pre></td></tr>
-    </table>
+<div class="row">
+  <div class="col-md-2">
+    <h2>参数管理</h2>
+    <blockquote>
+      <p><%= link_to '新增参数', new_admin_keystore_path, class: 'btn btn-primary' %></p>
+      <small>设置系统公共参数</small>
+      <small>templete: 模板名称</small>
+      <small>site_name: 网站名称</small>
+      
+    </blockquote>
+    <hr>
   </div>
-<% end %>
+  <div class="col-md-10">
+    <% @admin_keystores.each do |admin_keystore| %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <strong><%= admin_keystore.key %></strong>(<em><%= admin_keystore.description %></em>) 
+          <span class="pull-right">
+            <%= link_to '编辑', edit_admin_keystore_path(admin_keystore) %> | 
+            <%= link_to '删除', admin_keystore, method: :delete, data: { confirm: '删除参数可能会导致网站无法正常访问，你确定吗?' } %>
+          </span>
+        </div>
+        <div class="panel-body">
+          <%= admin_keystore.value %> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= will_paginate @admin_keystores %>

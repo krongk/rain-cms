@@ -1,5 +1,12 @@
 class Admin::Keystore < ActiveRecord::Base
   validates :key, :value, presence: true
+  after_save :clean_cache
+
+  def clean_cache
+    Rails.cache.delete('templete')
+    Rails.cache.delete('site_name')
+    Rails.cache.delete('temp_list')
+  end
 
   def self.get(key)
     self.find_by_key(key)
