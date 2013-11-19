@@ -90,7 +90,7 @@ class DataExtractor
     end
 
     temp_index_path = File.join(File.dirname(__FILE__), @theme, 'temp_index.html')
-    if /<body[^>]+>(.*)<\/body>/im =~ index_content.force_encoding("utf-8")
+    if /<\/head>(.*)<\/html>/im =~ index_content.force_encoding("utf-8")
       the_content = $1
       %W[header footer].each do |s|
         the_content = the_content.sub(/<!--\s*\[\[#{s} start\]\]\s*-->(.*)<!--\s*\[\[#{s} end\]\]\s*-->/im, "<%= render file: 'public/templetes/#{@theme}/_#{s}.html' %>")
