@@ -62,3 +62,9 @@
 
   查找：
   $> find / -name 'nginx'
+
+  安装imagemagick
+
+  $> apt-get install imagemagick libmagickcore-dev
+  $> apt-get install libmagickwand-dev
+  $> gem install rmagick
