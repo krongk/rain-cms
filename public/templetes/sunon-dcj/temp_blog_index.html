@@ -1,4 +1,4 @@
-
+            
 
 <!--START MAIN-WRAPPER--> <div class="main-wrapper">
 <!-- Navbar
@@ -60,7 +60,11 @@
             <div class="row-fluid">
                <div class="span4">
                   <div class="thumbnail">
-                      <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
+<% if page.image_path.blank? %>
+     <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
+<% else %>
+    <img src="<%= page.image_path %>" alt="<%= page.keywords %>">
+<% end %>
                   </div> 
                 </div>
                 <div class="span8">
@@ -90,3 +94,6 @@
 <!-- END: FOOTER -->
 </div>
 <!-- END: MAIN-WRAPPER-->
+
+    
+    

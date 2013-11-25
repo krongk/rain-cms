@@ -1,95 +1,65 @@
-
-
 <!--START MAIN-WRAPPER--> 
 <div class="main-wrapper">
 <!-- Navbar
     ================================================== -->
 <%= render file: 'public/templetes/sunon-dcj/_header.html' %>
-
-<!-- [[main start]] -->
-<!-- PAGE HEADER -->
-<div class="page-header">
-<div class="shine">
-<div class="container">
-  <div class="row-fluid">
-    <div class="span12">
-      <div class="row-fluid">
-        <div class="span12">
-          <h1><%= @channel.title %></h1>
-    			<!-- BREADCRUMB -->
-    			<ul class="breadcrumb">
-    			  <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
-    			  <li class="active"><%= @channel.title %></li>
-    			</ul>
-    			<!--END: BREADCRUMB -->
-        </div>
-      </div>
-    </div>
-	</div>
-  </div>
- </div>
-</div>
-<!-- PAGE HEADER -->
-<div class="container">
-  <div class="row-fluid blog">
-    <div class="span8">
-  
-      <!-- ####################-->
-      <!-- ####### BLOG ITEM ######-->
-      <!-- ####################-->
-      <% @pages.each do |page| %>
-        <div class="blog-post">
-          <div class="blog-item">
-            <span class="label label-info label-xl span2 center">
-              <span class="date-blog"><%= page.updated_at.day %></span> <br><%= page.updated_at.year %>-<%= page.updated_at.month %>
-            </span>
-            <div class="span10">
-              <h2 class="standart-h3title">
-                <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
-              </h2>
-            </div>
-
-            <p class="meta-blog clearfix">
-                <i class="icon-comment"></i>
-                <a href="#">3 Comments</a>
-                | <i class="icon-share"></i>
-                <a href="#">39 Shares</a> | <i class="icon-user"></i> 
-                <a href="#">Admin</a> | Tags: 
-                <a href="#"><span class="label label-info">Snipp</span></a> 
-                <a href="#"><span class="label label-info">Bootstrap</span></a> 
-                <a href="#"><span class="label label-info">UI</span></a> 
-                <a href="#"><span class="label label-info">growth</span></a>
-            </p>
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="shine">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span12">
             <div class="row-fluid">
-               <div class="span4">
-                  <div class="thumbnail">
-                      <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
-                  </div> 
-                </div>
-                <div class="span8">
-                    <p class="cat-blog"><%= page.content.truncate(200) %>. </p> 
-                    <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>" target="_blank">阅读详细 &rarr;</a>
-                </div>
+              <div class="span12">
+                <h1><%= @channel.title %></h1>
+                <!-- BREADCRUMB -->
+                <ul class="breadcrumb">
+                  <li><a href="/">首页</a> <span class="divider">&rarr;</span></li>
+                  <li class="active"><%= @channel.title %></li>
+                </ul>
+                <!--END: BREADCRUMB -->
+              </div>
             </div>
           </div>
         </div>
-      <% end %>
-
-      <!-- ####################-->
-      <!-- ####### END: BLOG ITEM ######-->
-      <!-- ####################-->
-    
-      <hr class="soften">
-      <%= will_paginate @pages %>
+      </div>
     </div>
-    <!-- SIDEBAR-->
-    <%= render file: 'public/templetes/sunon-dcj/_sidebar.html' %>
-    <!-- END SIDEBAR-->
+  </div>
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="row-fluid blog">
+    <!-- ####################-->
+    <!-- ####### BLOG ITEM ######-->
+    <!-- ####################-->
+    <% @pages.each do |page| %>
+      <div class="span4 box-blog">
+        <h2 class="box-title">
+          <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
+        </h2>
+        <div class="thumbnail box">
+          <a href="<%= get_url(page) %>">
+            <% if page.image_path.blank? %>
+            <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
+            <% else %>
+            <img src="<%= page.image_path %>" alt="<%= page.keywords %>">
+            <% end %>
+          </a>
+        </div> 
+      </div>
+    <% end %>
+    <!-- ####################-->
+    <!-- ####### END: BLOG ITEM ######-->
+    <!-- ####################-->
+    <hr class="soften">
+    <%= will_paginate @pages %>
+    </div>
   </div>
 </div>
-<!-- [[main end]] -->
 <%= render file: 'public/templetes/sunon-dcj/_footer.html' %>
 
 <!-- END: FOOTER -->
 </div>
 <!-- END: MAIN-WRAPPER-->
+
+    
+    
