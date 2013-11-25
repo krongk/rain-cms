@@ -302,6 +302,8 @@ body
 	-webkit-border-radius: 0px;
 	-webkit-box-shadow: none;
 	-webkit-transition: all 0.2s ease-in-out;
+}
+.thumbnail-limit-height{
 	height: 150px;
 	overflow: hidden;
 }

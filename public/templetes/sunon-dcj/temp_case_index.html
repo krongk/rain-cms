@@ -36,7 +36,7 @@
         <h2 class="box-title">
           <a href="/<%= @channel.short_title %>/<%= page.id %>-<%= page.short_title %>"><%= page.title %></a>
         </h2>
-        <div class="thumbnail box">
+        <div class="thumbnail thumbnail-limit-height box">
           <a href="<%= get_url(page) %>">
             <% if page.image_path.blank? %>
             <img src="/templetes/sunon-dcj/images/bootstrap-layout.jpg" alt="post image">
