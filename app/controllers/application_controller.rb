@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
   private
   #this method initlize global variables.
   def load_templete
+    @templete = Admin::Keystore.value_for('templete')
+    @templete ||= 'default'
+    @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
+    Dir.chdir(@base_dir)
+    @temp_list = Dir.glob("*.html").sort
+  end
+  
+  def load_templete_bak
     @templete = Rails.cache.read('templete')
     unless @templete
       @templete = Admin::Keystore.value_for('templete')
