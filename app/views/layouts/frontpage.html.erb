@@ -13,16 +13,14 @@
     
     <%#= stylesheet_link_tag "frontpage", media: "all", "data-turbolinks-track" => true %>
     <%#= javascript_include_tag "frontpage", "data-turbolinks-track" => true %>
-    
+   
     <%= render file: @base_dir + '_head.html' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <!-- <a href="#main" class="sr-only">跳转到内容部分</a> -->
-    <!-- Fixed header -->
-    <%#= render 'layouts/header' %>
-    <!-- Fixed main -->
+    
     <%= render 'layouts/messages' %>
+
     <% if @page %> 
       <%= render file: @base_dir + @channel.tmp_detail %>
     <% else %> 
@@ -38,8 +36,6 @@
     
     <%= yield %>
 
-    <!-- Fixed footer -->
-    <%#= render 'layouts/footer' %>
     <%= render file: @base_dir + '_foot.html' %>
     
   </body>

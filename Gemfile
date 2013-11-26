@@ -20,8 +20,8 @@ gem 'simple_form'
 gem 'acts-as-taggable-on'
 
 # For linux
-# gem 'therubyracer', :platform=>:ruby
-# gem 'puma'
+ gem 'therubyracer', :platform=>:ruby
+ gem 'puma'
 
 #Liquid templete html
 gem 'liquid'

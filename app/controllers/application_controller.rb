@@ -12,11 +12,24 @@ class ApplicationController < ActionController::Base
   private
   #this method initlize global variables.
   def load_templete
-    @templete = Admin::Keystore.value_for('templete')
-    @templete ||= 'default'
+    @templete = Rails.cache.read('templete')
+    unless @templete
+      @templete = Admin::Keystore.value_for('templete')
+      @templete ||= 'default'
+      Rails.cache.write('templete', @templete)
+    end
 
-    @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
-    Dir.chdir(@base_dir)
-    @temp_list = Dir.glob("*.html").sort
+    @base_dir = Rails.cache.read('base_dir')
+    unless @base_dir
+      @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
+      Rails.cache.write('base_dir', @base_dir)
+    end
+
+    @temp_list = Rails.cache.read('temp_list')
+    unless @temp_list
+      Dir.chdir(@base_dir)
+      @temp_list = Dir.glob("*.html").sort
+      Rails.cache.write('temp_list', @temp_list)
+    end
   end
 end

@@ -303,6 +303,10 @@ body
 	-webkit-box-shadow: none;
 	-webkit-transition: all 0.2s ease-in-out;
 }
+.thumbnail-limit-height{
+	height: 150px;
+	overflow: hidden;
+}
 .caption
 {
 	background: #f2f2f2;
@@ -1626,6 +1630,10 @@ img.post-image-full
 	margin-bottom: 20px;
 	-moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
 	-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+}
+.box-title{
+	background: #77CC62;
+	padding: 4px 10px;
 }
 .widget-archive > li a:hover
 {

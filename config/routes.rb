@@ -26,5 +26,4 @@ RainCms::Application.routes.draw do
   #  :classify_type => /title|date|skip/ }
   match '/:channel(/:id)', to: "welcome#index", via: :get
 
-  #
 end

@@ -2,11 +2,17 @@
 ## Rain-Store服务器管理
 
 1. 登录：115.29.195.174 root 7672d9f5
-   修改密码：$>passwd -> Kenromxxx(大写)
+   修改密码：$>passwd roor-> Kenromxxx(大写)
 
 2. 阿里云服务器便捷工具安装(http://help.aliyun.com/manual?spm=0.0.0.0.qI06SV&lastSortId=440)：
   分区，运行根目录文件： ./auto_fdisk.sh
-    
+
+  手动磁盘分区：
+   mkfs.ext3 /dev/xvdb1
+   echo '/dev/xvdb1 /mnt ext3 defaults 0 0' >> /etc/fstab
+   cat /etc/fstab
+   mount -a
+
    同步时间(下载：http://help.aliyun.com/manual?spm=0.0.0.0.Bpbzii&&helpId=1660)
    $>sudo bash update_time.sh
 
@@ -32,7 +38,7 @@
   输入密码；kenrome001
   $>sudo apt-get install libmysql-ruby libmysqlclient-dev
 
-  安装Passenger+Nginx
+  安装Passenger+nginx
   $> gem install passenger
   $> passenger-install-nginx-module
   !!!!记住这里前面没有加‘sudo'，因为rvm是安装在no-sudo用户下的，如果在这里加sudo的话，会将passenger 安装到系统自带的ruby1.8下
@@ -48,6 +54,9 @@
 
   添加用户组：
   $>adduser --system --no-create-home --disabled-login --disabled-password --group  www
+
+  安装PHP
+    $> sudo apt-get install php5-common php5-fpm php-apc php5-mysql php5-gd
 
 
   整理文件夹：

@@ -69,27 +69,27 @@
     <p>用下面的标记分别把需要提取的部分标记出来</p>
     <p>&gt;head&lt;部分公共代码（一般是css文件）</p>
     <pre>
-      <!-- [[head start]] -->
+      &lt;!-- [[head start]] --&gt;
         ...
-      <!-- [[head end]] -->
+      &lt;!-- [[head end]] --&gt;
     </pre>
     <p>网页底部公共代码(一般是js文件和统计代码等)</p>
     <pre>
-      <!-- [[foot start]] -->
+      &lt;!-- [[foot start]] --&gt;
         ...
-      <!-- [[foot end]] -->
+      &lt;!-- [[foot end]] --&gt;
     </pre>
     <p>公共导航部分，页头</p>
     <pre>
-      <!-- [[header start]] -->
+      &lt;!-- [[header start]] --&gt;
         ...
-      <!-- [[header end]] -->
+      &lt;!-- [[header end]] --&gt;
     </pre>
     <p>页脚公共部分，如友情链接、版权信息等</p>
     <pre>
-      <!-- [[footer start]] -->
+      &lt;!-- [[footer start]] --&gt;
         ...
-      <!-- [[footer end]] -->
+      &lt;!-- [[footer end]] --&gt;
     </pre>
   </li>
 </ul>
@@ -102,20 +102,20 @@
     <p>把模版的名字更改为"t_xxx.html"</p>
   </li>
   <li>
-    <p>把css在本页特有的代码，复制到index.html的&gt;head&lt;部分（如果有的话）</p>
+    <p>把css在本页特有的代码，复制到index.html的&lt;head&gt;部分（如果有的话）</p>
   </li>
   <li>
-    <p>把js在本页特有的部分，复制到index.html的&gt;foot&lt;部分（如果有的话）</p>
+    <p>把js在本页特有的部分，复制到index.html的&lt;foot&gt;部分（如果有的话）</p>
   </li> 
-  <li>在&gt;body&lt;部分标示出共有的代码：
+  <li>在&lt;body&gt;部分标示出共有的代码：
     <pre>
-      <!-- [[header start]] -->
+      &lt;!-- [[header start]] --&gt;
         ...
-      <!-- [[header end]] -->
+      &lt;!-- [[header end]] --&gt;
 
-      <!-- [[footer start]] -->
+      &lt;!-- [[footer start]] --&gt;
         ...
-      <!-- [[footer end]] -->
+      &lt;!-- [[footer end]] --&gt;
     </pre>
   </li>
 </ul>
