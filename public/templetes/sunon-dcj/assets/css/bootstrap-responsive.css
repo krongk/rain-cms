@@ -938,11 +938,19 @@
   .carousel-caption {
     position: static;
   }
+  #wowslider-container1 .ws-title{
+    bottom: 15px;
+    left: 10px;
+  }
 }
 
 @media (max-width: 979px) {
   body {
     padding-top: 0;
+  }
+  #wowslider-container1 .ws-title{
+    bottom: 35px;
+    left: 20px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {

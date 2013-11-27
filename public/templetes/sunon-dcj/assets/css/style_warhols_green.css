@@ -317,6 +317,10 @@ body
 	overflow: hidden;
 	width: 100%;
 }
+.administration .transit-to-top
+{
+	height: 160px;
+}
 .transit-to-top h4, .transit-to-top h3
 {
 	font-size: 100%;
@@ -337,7 +341,7 @@ body
 p.caption-descr
 {
 	font-size: 80%;
-	line-height: 13px;
+	line-height: 20px;
 	text-align: justify;
 	word-wrap: break-word;
 }
