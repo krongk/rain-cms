@@ -14,8 +14,8 @@
     </div>
     <div class="col-md-10">
       <div class="form-inputs">
-        <%#= f.association :channel, include_blank: false  %>
-        <%= grouped_collection_select('', 'admin_page[channel_id]', Admin::Channel.where('parent_id is null'), :children, :title, :id, :title, :include_blank => false, prompt: '请选择所属栏目', selected: params[:channel].to_i) %>
+        <%= f.association :channel, include_blank: false  %>
+        <%#= grouped_collection_select('', 'admin_page[channel_id]', Admin::Channel.where('parent_id is null'), :children, :title, :id, :title, :include_blank => false, prompt: '请选择所属栏目', selected: params[:channel].to_i) %>
 
         <%= f.input :title, placeholder: '美好切题的标题能使文章的关注度大放异彩' %> 
         <%= f.input :short_title, label: '名称简写(不填则程序自动生成)', placeholder: '标题别名，请用全英文，用于生成可读的URL链接， 如"http://www.abc.com/about-us"' %>
