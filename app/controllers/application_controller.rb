@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
     Dir.chdir(@base_dir)
     @temp_list = Dir.glob("*.html").sort
+
+    #imgfiles = File.join(@base_dir, "**", "*.{jpg, png, gif, jpeg}")
+    assetfiles = File.join(Rails.root, "public", "**", "*.{jpg, png, gif, jpeg}")
+    @image_list = Dir.glob(assetfiles).map{|i| i.sub(/^.*\/public/, '') }.sort
   end
   
   def load_templete_bak

@@ -14,8 +14,8 @@ class Admin::TempletesController < ApplicationController
 
   def create
     Admin::Keystore.put('templete', params[:templete])
-    Admin::Keystore.put('head', params[:head])
-    Admin::Keystore.put('foot', params[:foot])
+    #Admin::Keystore.put('head', params[:head])
+    #Admin::Keystore.put('foot', params[:foot])
     #input layouts/_header
     File.open( File.join(Rails.root, "/app/views/layouts/_header.html.erb"), 'w') do |f|
       f.write File.open( File.join(@base_dir, '_header.html'), 'r').read
