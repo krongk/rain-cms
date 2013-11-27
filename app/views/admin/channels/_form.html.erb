@@ -37,7 +37,7 @@
         <%= f.input :keywords, placeholder: '关键词用逗号隔开，建议一篇文章3-5个关键词' %>
         <%= f.input :description, placeholder: '文章摘要，用于SEO描述，用一句话描述文章内容，一般100字以内' %>
         <%#= f.input :content %>
-        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'custom', height: "600px"} } %>
+        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'custom', :height => '600px'} } %>
       </div>
     </div>
   </div>
