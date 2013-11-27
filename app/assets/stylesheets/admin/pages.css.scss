@@ -3,14 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .modal-ul{
-  margin: 4px;
 }
 .modal-ul li{
   float: left;
-  margin: 4px;
-  border: solid 1px;
+  display: block;
+  margin: 1px;
+  padding: 1px;
+  border: solid 1px #ddd;
 }
 .choose-image img{
-  max-width: 100px;
   max-height: 60px;
 }

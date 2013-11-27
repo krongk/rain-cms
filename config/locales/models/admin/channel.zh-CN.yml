@@ -10,7 +10,7 @@ zh-CN:
         title: 栏目名称
         short_title: 名称简写
         properties: 栏目属性
-        default_url: 首页地址
+        default_url: 首页默认路径
         tmp_index: 封面模板
         tmp_list: 列表页面模板
         tmp_detail: 详细页面模板

@@ -68,6 +68,25 @@ module ApplicationHelper
     end
   end
 
+  def get_menu(channel_title_or_short_title)
+    parent_channel = Admin::Channel.find_by(short_title: channel_title_or_short_title)
+    parent_channel ||= Admin::Channel.find_by(title: channel_title_or_short_title)
+    return if parent_channel.nil?
+    if parent_channel.children.any?
+      str_arr = []
+      str_arr << %{<li class="dropdown">}
+      str_arr << %{<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"> #{parent_channel.title} <b class="caret"></b></a>}
+      str_arr << %{<ul class="dropdown-menu">}
+      parent_channel.children.each do |ch|
+        str_arr << get_menu(ch.short_title)
+      end
+      str_arr << %{</ul></li>}
+      str_arr.join("\n").html_safe
+    else
+      %{<li><a href="#{get_url(parent_channel)}">#{parent_channel.title}</a></li>}.html_safe
+    end
+  end
+
   #this method used on admin/channel and admin/page create and update.
   # admin/channel_controller.rb
   # admin/page_controller.rb

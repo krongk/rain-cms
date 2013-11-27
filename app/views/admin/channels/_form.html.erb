@@ -31,20 +31,14 @@
         <%= f.input :tmp_detail, collection: @temp_list, label: '页面模板：(用于承载本栏目所属页面的显示)' %>
         <%= f.input :title, placeholder: '用于显示在前台的栏目名称' %>  
         <%= f.input :short_title, label: '名称简写(不填则程序自动生成)', placeholder: '标题别名，请用全英文，用于生成可读的URL链接， 如"http://www.abc.com/about-us"' %>  
-        
-        <label>首页默认路径：
-        如果‘栏目属性’选择‘频道封面’，则如果默认路径有值(如'about.html')则访问路径里面的内容，否则访问‘栏目内容’里面的内容
-        如果‘栏目属性’选择‘外部连接’，则默认路径比如设置一个绝对路径的值(如http://www.baidu.com)
-        <a  href="#" class=" " data-toggle="popover" title="" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title">提示</a>
-        </label>
-        <%= f.input :default_url, placeholder: '如果栏目属性为‘外部链接’，则需要在这里提供一个完整的外部链接地址，如"http://www.baidu.com"', label: false%>
+
+        <%= f.input :default_url, placeholder: '如果栏目属性为‘外部链接’，则需要在这里提供一个完整的外部链接地址，如"http://www.baidu.com"' %>
         
         <%= f.input :keywords, placeholder: '关键词用逗号隔开，建议一篇文章3-5个关键词' %>
         <%= f.input :description, placeholder: '文章摘要，用于SEO描述，用一句话描述文章内容，一般100字以内' %>
         <%#= f.input :content %>
-        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'simple'}, height: "800px" } %>
+        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'custom', height: "600px"} } %>
       </div>
     </div>
   </div>
 <% end %>
-

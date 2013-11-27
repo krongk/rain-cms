@@ -14,56 +14,27 @@
     </div>
     <div class="col-md-10">
       <div class="form-inputs">
-        <%= f.association :channel, include_blank: false  %>
+        <%= f.association :channel, include_blank: false, prompt: '请选择所属栏目', selected: params[:channel].to_i  %>
         <%#= grouped_collection_select('', 'admin_page[channel_id]', Admin::Channel.where('parent_id is null'), :children, :title, :id, :title, :include_blank => false, prompt: '请选择所属栏目', selected: params[:channel].to_i) %>
 
         <%= f.input :title, placeholder: '美好切题的标题能使文章的关注度大放异彩' %> 
         <%= f.input :short_title, label: '名称简写(不填则程序自动生成)', placeholder: '标题别名，请用全英文，用于生成可读的URL链接， 如"http://www.abc.com/about-us"' %>
         <%= f.input :keywords, placeholder: '关键词用逗号隔开，建议一篇文章3-5个关键词' %>
         <%= f.input :description, placeholder: '文章摘要，用于SEO描述，用一句话描述文章内容，一般100字以内' %>
-        <%= f.input :image_path, placeholder: '网页预览图片路径，如产品图片等', input_html: {style: "width: 70%;"} %>
-        <!-- Button trigger modal -->
-        <button style="pull-right" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          选择
-        </button>
+
+        <label>缩略图(
+          <a data-toggle="modal" data-target="#myModal" href="javascript:void(0);">选择</a>)
+        </label>
+        <%= f.input :image_path, placeholder: '网页预览图片路径，如产品图片等', label: false %>
+
         <%= f.collection_check_boxes :properties, ApplicationHelper::PAGE_PROPERTIES, :first, :last %>
         <br>
         <%#= f.input :properties %>
         <%#= f.input :content %>
-        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'simple'}, height: "600px" } %>
+        <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'custom', height: "600px"} } %>
       </div>
     </div>
   </div>
 <% end %>
 
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">图片浏览</h4>
-      </div>
-      <div class="modal-body">
-        <ul class="modal-ul">
-          <% @image_list.each do |img_path| %>
-            <li><a href="#" class="choose-image" data-title="<%= img_path %>" data-dismiss="modal">
-            <img src="<%= img_path %>"/>
-            </a></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<script type="text/javascript">
-  $(document).on("click", ".choose-image", function () {
-    var image_path = $(this).data('title');
-    $("#admin_page_image_path").val(image_path);
-  });
-</script>
+<%= render :partial => '/admin/pages/image_list_modal_dialog' %>
