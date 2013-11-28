@@ -2,7 +2,7 @@ class CreateAdminKeystores < ActiveRecord::Migration
   def change
     create_table :admin_keystores do |t|
       t.string :key
-      t.text :value
+      t.string :value
       t.string :description
 
       t.timestamps

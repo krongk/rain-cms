@@ -1,39 +1,64 @@
+<!-- NAVBAR -->
 <header>
-  <!-- Navigation -->
-  <div class="navbar navbar-default bs-docs-nav" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
-          <span class="sr-only">导航</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">{{site.title}}</a>
-      </div>
-      
-      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/">首页</a></li>
-               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">产品介绍<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/p/blog.html">新闻博客</a></li>
-                  <li><a href="/p/portfolio.html">成功案例</a></li>
-                  <li><a href="/p/pricing.html">价格方案</a></li>
-                </ul>
-               </li>
-              
-              <li><a href="/p/about.html">关于我们</a></li> 
-              <li><a href="/p/service.html">服务项目</a></li>
-              <li><a href="/p/contact.html">联系方式</a></li> 
-            </ul> 
-        
-      </nav>
-      
-  
-    </div>
-  </div>
-  <!-- Navigation Ends -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
 
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">菜单切换</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="brand">
+					<a href="index.html">
+						<img src="/templetes/default/assets/img/logo.png" alt="" class="retina">
+					</a>
+				</div>
+
+				<nav class="nav-collapse collapse navbar-responsive-collapse" role="navigation">
+					<ul class="nav navbar-nav">
+
+						<li>
+							<a href="portfolio.html">
+								<img src="/templetes/default/assets/flat-icons/pensils.png" width="60" height="60">
+								Portfolio
+							</a>
+						</li>
+
+						<li>
+							<a href="blog.html">
+								<img src="/templetes/default/assets/flat-icons/letter-symbol.png" width="61">
+								Blog
+							</a>
+						</li>
+
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<img src="/templetes/default/assets/flat-icons/magic.png" width="60" height="60">
+								Pages <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+								<li><a tabindex="-1" href="blog-post.html">Blog Post</a></li>
+								<li><a tabindex="-1" href="portfolio-single.html">Single Portfolio</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="contact.html">
+								<img src="/templetes/default/assets/flat-icons/mail.png" width="58">
+								Contact
+							</a>
+						</li>
+
+						<li class="separated-left no-icon">
+							<a href="#login-modal" data-toggle="modal">Log in</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
