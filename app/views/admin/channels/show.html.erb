@@ -39,13 +39,8 @@
       <strong>详细页面模版:</strong>
       <%= @admin_channel.tmp_detail %>
     </p>
-
-    <p>
-      <strong>Keywords:</strong>
-      <%= @admin_channel.keywords %>
-    </p>
-
-    <%= link_to '删除', @admin_channel, method: :delete, data: { confirm: '删除以后，将同时删除此栏目下的所有页面，而且无法恢复，请确认要删除?' },class: 'btn btn-default btn-inverse' %>
+    <hr>
+    <%= link_to '删除此栏目', @admin_channel, method: :delete, data: { confirm: '删除以后，将同时删除此栏目下的所有页面，而且无法恢复，请确认要删除?' },class: 'btn btn-default' %>
   </div>
   <div class="col-md-8">
     <div class="panel panel-info">

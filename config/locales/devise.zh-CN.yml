@@ -2,9 +2,6 @@
 # https://gist.github.com/shichuan/3768778
 
 zh-CN:
-  activerecord:
-    users:
-      remember_me: "记住登录状态"
   errors:
     messages:
       expired: "您已过期，请重新申请"
@@ -98,7 +95,7 @@ zh-CN:
         new:
           title: '登录'
           submit: '登录'
-          remember_me: '记住我'
+          remember_me: '记住登录状态'
       unlocks:
         new:
           title: '重发解锁指令'
