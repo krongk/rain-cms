@@ -1,6 +1,6 @@
 class CreateAdminChannels < ActiveRecord::Migration
   def change
-    create_table :admin_channels do |t|
+    create_table :admin_channels, :options=>'charset=utf8' do |t|
       t.references :user, index: true
       t.integer :parent_id
       t.string :typo
@@ -17,7 +17,6 @@ class CreateAdminChannels < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :admin_channels, :parent_id, unique: true
     add_index :admin_channels, :title, unique: true
     add_index :admin_channels, :short_title, unique: true
   end

@@ -146,4 +146,19 @@ module ApplicationHelper
     end
   end
 
+  #Pages slice 
+  #将pages数组按照每count一组分组，用于frontpage特殊展示
+  # [1,2,3,'a', 'b', 'c','d'] => [[1, 2, 3], ["a", "b", "c"], ["d"]]
+  def get_slice_pages(pages, count)
+    pages_dup = pages
+    slice_pages = []
+    while pages_dup.size > count do
+      tmp_pages = pages_dup.slice(0, count)
+      slice_pages << tmp_pages
+      pages_dup = pages_dup - tmp_pages
+    end
+    slice_pages << pages_dup
+    slice_pages
+  end
+
 end

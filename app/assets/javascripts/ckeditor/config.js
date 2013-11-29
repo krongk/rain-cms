@@ -102,5 +102,10 @@ CKEDITOR.editorConfig = function( config )
     { name: 'tools', items: [ 'ShowBlocks', 'Maximize' ] },
   ];
   config.toolbar = 'custom';
+
+  //
+  //xj: Allow all classes for all allowed elements.
+  config.extraAllowedContent = '*(*)';
+
 };
 

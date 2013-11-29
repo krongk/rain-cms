@@ -1,6 +1,6 @@
 class CreateAdminKeystores < ActiveRecord::Migration
   def change
-    create_table :admin_keystores do |t|
+    create_table :admin_keystores, :options=>'charset=utf8' do |t|
       t.string :key
       t.string :value
       t.string :description

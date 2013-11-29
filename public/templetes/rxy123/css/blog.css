@@ -1,5 +1,5 @@
 #blog{
-	margin-top: 70px;
+	margin-top: 90px;
 }
 #blog .header{
 	margin-left: 0;
@@ -9,7 +9,7 @@
 #blog .section_header input[type="text"]{
 	float: right;
 	margin-top: 9px;
-	background: url("/templetes/rxy123/img/search.png") #fff no-repeat 5px;
+	background: url('/assets/search.png') #fff no-repeat 5px;
 	padding-left: 28px;
 	width: 18%;
 	border-radius: 5px;
@@ -25,9 +25,11 @@
 #blog .post_row .post{
 	background: #fff;
 	margin-left: 0;
-	margin-right: 20px;
+	margin-right: 10px;
+	margin-bottom: 40px;
 	border-radius: 4px;
 	box-shadow: 1px 1px 2px 0px #E0E0E0;
+	height: 450px;
 }
 #blog .post_row .last{
 	margin-right: 0;

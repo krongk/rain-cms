@@ -1,6 +1,6 @@
 class CreateAdminPages < ActiveRecord::Migration
   def change
-    create_table :admin_pages do |t|
+    create_table :admin_pages, :options=>'charset=utf8' do |t|
       t.references :user, index: true
       t.references :channel, index: true
       t.string :title

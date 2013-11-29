@@ -1,6 +1,6 @@
 /* Sign Up Option 1 */
 #sign_up1{
-	background: url("/templetes/rxy123/img/backgrounds/ocean.jpg")  no-repeat;
+	background: url("/assets/backgrounds/ocean.jpg")  no-repeat;
 	display: block;
 	height: 540px;
 	margin-bottom: 90px;
@@ -225,7 +225,7 @@
 	background: #252528;
 }
 #sign_up2 .icos{
-	background: url("/templetes/rxy123/img/signin_icos.png") no-repeat;
+	background: url('/assets/signin_icos.png') no-repeat;
 	width: 96px;
 	height: 30px;
 }

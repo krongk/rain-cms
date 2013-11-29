@@ -1,10 +1,10 @@
 #blog_post{
-	margin-top: 70px;
+	margin-top: 90px;
 }
 #blog_post .section_header input[type="text"]{
 	float: right;
 	margin-top: 9px;
-	background: url("/templetes/rxy123/img/search.png") #fff no-repeat 5px;
+	background: url('/assets/search.png') #fff no-repeat 5px;
 	padding-left: 28px;
 	width: 18%;
 	border-radius: 5px;

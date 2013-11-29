@@ -1,5 +1,5 @@
 #contact {
-	margin-top: 70px;
+	margin-top: 90px;
 }
 #contact .contact{
 	margin: 40px 0 100px 0;
@@ -29,13 +29,13 @@
 	width: 89%;
 }
 #contact .form .box input.name{
-	background: url("/templetes/rxy123/img/formname.png") #fff no-repeat 5px;
+	background: url('/assets/formname.png') #fff no-repeat 5px;
 }
 #contact .form .box input.mail{
-	background: url("/templetes/rxy123/img/formmail.png") #fff no-repeat 5px;
+	background: url('/assets/formmail.png') #fff no-repeat 5px;
 }
 #contact .form .box input.phone{
-	background: url("/templetes/rxy123/img/formphone.png") #fff no-repeat 5px;
+	background: url('/assets/formphone.png') #fff no-repeat 5px;
 }
 #contact .form .box_r{
 	float: right;
@@ -177,7 +177,7 @@
 	background: #252528;
 }
 .contacticos{
-	background: url("/templetes/rxy123/img/contact_icos.png") no-repeat;
+	background: url('/assets/contact_icos.png') no-repeat;
 	width: 24px;
 	height: 44px;
 }

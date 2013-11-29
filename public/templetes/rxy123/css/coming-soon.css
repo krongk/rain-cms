@@ -2,7 +2,7 @@
 	margin-top: -35px;
 }
 #coming_soon .head{
-	background: url("/templetes/rxy123/img/backgrounds/color-splash.jpg") no-repeat;
+	background: url("/assets/backgrounds/color-splash.jpg") no-repeat;
 	display: block;
 	padding-top: 160px;
 	height: 288px;
@@ -37,7 +37,7 @@
 	margin: 0;
 	float: right;
 }
-#coming_soon .count .box{
+#coming_soon .count .box2{
 	text-align: center;
 	float: right;
 	margin-left: -10px;
@@ -172,12 +172,12 @@
 	display: none;
 }
 #coming_soon .icons{
-	background: url("/templetes/rxy123/img/socialicons2.png") no-repeat;
+	background: url('/assets/socialicons2.png') no-repeat;
 	width: 265px;
 	height: 36px;
 }
 #coming_soon .iconsh{
-	background: url("/templetes/rxy123/img/socialicons_h.png") no-repeat;
+	background: url('/assets/socialicons_h.png') no-repeat;
 	width: 265px;
 	height: 36px;
 }
@@ -202,7 +202,7 @@
 		text-align: center;
 		width: 37%;
 	}
-	#coming_soon .count .box{
+	#coming_soon .count .box2{
 		margin: 0 0 13px 0;
 	}
 	#coming_soon .count .first{
@@ -253,7 +253,7 @@
 	#coming_soon .count .first{
 		margin: 0;
 	}
-	#coming_soon .count .box{
+	#coming_soon .count .box2{
 		float: none;
 		display: inline-block;
 	}

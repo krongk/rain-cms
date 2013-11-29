@@ -7,34 +7,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="index.html">
-                <strong>CLEAN CANVAS</strong>
-            </a>
+       <!--       <a class="brand" href="index.html">
+                <strong><span style="color: orange; font-family:'微软雅黑';font-size: 2em;">瑞信云</span></strong>
+            </a> -->
+            <%= link_to image_tag("/templetes/rxy123/img/logo3.png", width: '220px', alt: '瑞信云'), root_path, class: 'brand'%>
+
             <div class="nav-collapse collapse">
                 <ul class="nav pull-right">
-                    <li><a href="index.html" class="active">HOME</a></li>
-                    <li><a href="about-us.html">ABOUT US</a></li>
+                    <li><a href="/" class="active">首页</a></li>
+                    <li><a href="/about">关于瑞信云</a></li>
+                    <%= get_menu('service')%>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            PAGES
+                            移动营销天地
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="features.html">Features</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="portfolio-item.html">Portfolio Item</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                            <li><a href="sign-in.html">Sign in</a></li>
-                            <li><a href="sign-up.html">Sign up</a></li>
-                            <li><a href="backgrounds.html">Backgrounds</a></li>
+                            <% Admin::Page.recent(5, typo: 'article').each do |page| %>
+                                <li><%= link_to page.title, get_url(page)%></li>
+                            <% end %>
+                            <li><a href="/blog">更多...</a></li>
                         </ul>
                     </li>
-                    <li><a href="pricing.html">PRICING</a></li>
-                    <li><a href="contact.html">CONTACT US</a></li>
-                    <li><a href="blog.html">BLOG</a></li>
-                    <li><a class="btn-header" href="sign-up.html">Sign up</a></li>
-                    <li><a class="btn-header" href="sign-in.html">Sign in</a></li>
+                    <li><a href="/case">行业解决方案</a></li>
+                    <li><a href="/portfolio">成功案例</a></li>
+                    <%= get_menu('join')%>
                 </ul>
             </div>
         </div>

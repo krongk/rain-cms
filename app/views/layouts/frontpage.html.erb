@@ -17,7 +17,7 @@
     <%= render file: @base_dir + '_head.html' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= Admin::Keystore.value_for('body_css') %>">
     
     <%= render 'layouts/messages' %>
 
@@ -26,13 +26,15 @@
       <%= puts @channel.tmp_detail %>
       <%= render file: @base_dir + @channel.tmp_detail %>
     <% else %> 
-      <% case @channel.properties %>
+      <% case @channel.properties.to_i %>
       <% when 1 %>
-          <%= render file: @base_dir + @channel.tmp_index %>
+        <%= render file: @base_dir + @channel.tmp_index %>
       <% when 2 %>
         <script type="text/javascript">
           window.location.href="<%= @channel.default_url %>" 
         </script>
+      <% else %>
+        cuwo 
       <% end %>
     <% end %>
     

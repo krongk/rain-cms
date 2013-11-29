@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20131112092735) do
     t.integer  "parent_id"
     t.string   "typo"
     t.string   "title"
-    t.string   "short_title", null: false
-    t.integer  "properties"
+    t.string   "short_title"
+    t.string   "properties"
     t.string   "default_url"
     t.string   "tmp_index"
     t.string   "tmp_list"
@@ -37,13 +37,13 @@ ActiveRecord::Schema.define(version: 20131112092735) do
 
   create_table "admin_keystores", force: true do |t|
     t.string   "key"
-    t.text     "value"
+    t.string   "value"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_name", using: :btree
+  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_key", using: :btree
 
   create_table "admin_pages", force: true do |t|
     t.integer  "user_id"
