@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-10">
       <div class="form-inputs">
-        <%= f.association :channel, include_blank: false, prompt: '请选择所属栏目', selected: params[:channel].to_i  %>
+        <%= f.association :channel, include_blank: false, prompt: '请选择所属栏目', selected: @admin_page.channel_id || params[:channel].to_i  %>
         <%#= grouped_collection_select('', 'admin_page[channel_id]', Admin::Channel.where('parent_id is null'), :children, :title, :id, :title, :include_blank => false, prompt: '请选择所属栏目', selected: params[:channel].to_i) %>
 
         <%= f.input :title, placeholder: '美好切题的标题能使文章的关注度大放异彩' %> 

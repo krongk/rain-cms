@@ -22,6 +22,8 @@
     <%= render 'layouts/messages' %>
 
     <% if @page %> 
+      <%= puts @base_dir %>
+      <%= puts @channel.tmp_detail %>
       <%= render file: @base_dir + @channel.tmp_detail %>
     <% else %> 
       <% case @channel.properties %>
