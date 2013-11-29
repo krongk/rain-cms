@@ -4,15 +4,26 @@
 2. 替换产品的图片、图片链接、文字等内容<br>
 3. 保存查看效果<br>
 4. 如果图片没有左右切换的效果出现，说明需要修改一下代码：<br>
-  重新点击‘修改’修改页面，然后点击‘源码’，找到以下标签ul：<br>
+  重新点击‘修改’修改页面，然后点击‘源码’<br>
+  找到产品介绍图片上面的标签ul：<br>
   <pre>
     &lt;ul&gt; 修改为 &lt;ul class="slides"&gt;
   </pre>
-  找到以下标签li:
+  找到以下标签li:(每张图上面都对应一个li)
   <pre>
     &lt;li> 修改为 &lt;li class="slide thumbnail"&gt;
   </pre>
-  修改以后，直接保存。
+
+  找到有个文字“产品介绍”“产品色卡”的上面有个ul标签:<br>
+  <pre>
+    &lt;ul&gt;  &lt;ul class="nav nav-tabs" id="myTab"&gt;
+  </pre>
+  找到“产品介绍”旁边的标签li，修改为：
+  <pre>
+    &lt;li&gt;  &lt;li class="active"&gt;
+  </pre>
+  "产品色卡"旁边的li标签不用修改。<br>
+  修改以后，千万别再点“源码”，而是直接点击保存，保存页面。
   <br>
   <br>
 </p>
@@ -21,45 +32,159 @@
 
 <!-- SLIDER SIDE -->
 <div class="span7">
-<div class="large-sl" id="slider"><!-- CONTROLS DIV CONTAINER ! NOT REMOVE -->
+<div class="large-sl" id="slider">
+<!-- CONTROLS DIV CONTAINER ! NOT REMOVE -->
 <div class="portfolio-controls-single">&nbsp;</div>
 <!-- CONTROLS DIV CONTAINER ! NOT REMOVE --><!-- BEGIN SLIDER UL -->
 
 <ul class="slides">
-  <!-- BEGIN SLIDE -->
+  
+  <!-- 产品介绍开始 -->
   <li class="slide thumbnail">
     <!-- 复制图片地址到这里 -->
     <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
        <!-- 复制图片地址到这里 -->
       <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
       <div class="well" style="display:block; line-height: 25px;">
-         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润，它是设计师引以为豪的技艺合一的典范。健全的侧柜走线系统有效解决办公室线路收纳问题。这里有技术与艺术的统一。办公空间根据样本统计数据确定拔插电源、开关抽屉等动作所需的距离。
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
       </div>
     </a></li>
-  <!-- BEGIN SLIDE -->
+  <!-- 产品介绍结束 -->
 
+  <!-- 产品介绍开始 -->
   <li class="slide thumbnail">
     <!-- 复制图片地址到这里 -->
-    <a href="/ckeditor_assets/pictures/65/content_leading36.jpg" rel="prettyPhoto[gallery]">
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
        <!-- 复制图片地址到这里 -->
-      <img alt="实木系列-现代简约-领驭" src="/ckeditor_assets/pictures/65/content_leading36.jpg" style="height:1116px; width:800px" /><br></a>
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
       <div class="well" style="display:block; line-height: 25px;">
-         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润，它是设计师引以为豪的技艺合一的典范。健全的侧柜走线系统有效解决办公室线路收纳问题。这里有技术与艺术的统一。办公空间根据样本统计数据确定拔插电源、开关抽屉等动作所需的距离。
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
       </div>
     </a></li>
-  <!-- BEGIN SLIDE -->
+  <!-- 产品介绍结束 -->
 
+  <!-- 产品介绍开始 -->
   <li class="slide thumbnail">
     <!-- 复制图片地址到这里 -->
-    <a href="/ckeditor_assets/pictures/65/content_leading36.jpg" rel="prettyPhoto[gallery]">
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
        <!-- 复制图片地址到这里 -->
-      <img alt="实木系列-现代简约-领驭" src="/ckeditor_assets/pictures/65/content_leading36.jpg" style="height:1116px; width:800px" /><br></a>
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
       <div class="well" style="display:block; line-height: 25px;">
-         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润，它是设计师引以为豪的技艺合一的典范。健全的侧柜走线系统有效解决办公室线路收纳问题。这里有技术与艺术的统一。办公空间根据样本统计数据确定拔插电源、开关抽屉等动作所需的距离。
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
       </div>
-    </li>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
+
+  <!-- 产品介绍开始 -->
+  <li class="slide thumbnail">
+    <!-- 复制图片地址到这里 -->
+    <a href="/assets/product_images/EL80.jpg" rel="prettyPhoto[gallery]">
+       <!-- 复制图片地址到这里 -->
+      <img alt="实木系列-现代简约-领驭" src="/assets/product_images/EL80.jpg" /><br></a>
+      <div class="well" style="display:block; line-height: 25px;">
+         木结合 绿色办公环保也能驾驭时尚。Bravo，一改实木家具传统，将新型钢制材料运用到办公桌下脚，环保又不失时尚。钢制下脚是Bravo的点睛之笔，结合L型转接的凌冽与鱼肚型框柱的圆润.
+      </div>
+    </a></li>
+  <!-- 产品介绍结束 -->
 </ul>
-<!-- END SLIDER UL --></div>
+<!-- END SLIDER UL -->
+</div>
 
 
 </div>
@@ -76,7 +201,7 @@
 
   <div class="tab-content">
     <div class="tab-pane active" id="home">
-<!-------------------------------------->
+<!-- ---------------------------------- -->
       产品描述放这，。。。。。
 <div class="pro_tab_con" style="display:block;">
 五星级酒店，五星级饭店，也有五星级办公空间。<br>
@@ -115,6 +240,7 @@
 <br><br>
 <a href="http://v.youku.com/v_show/id_XNjM4MjY1NzQw.html" target="_blank"><img src="http://www.sunon-china.com/images/imgshipg2.jpg"/></a>
 <!-------------------------------------->
+
     </div>
     <div class="tab-pane" id="profile">
       <p>
