@@ -1,0 +1,33 @@
+
+    <%= render file: 'public/templetes/rxy123/_header.html' %>
+    <div id="blog_post">
+        <div class="container">
+            <div class="section_header">
+                <h3><%= @page.title %></h3>
+
+                <input type="text" class="input-large search-query" placeholder="搜索">
+            </div>
+
+            <div class="row">
+                <div class="span8">
+                    <img class="post_pic" src="<%= @page.image_path %>" />
+
+                    <div class="post_content">
+                        <h2><%= @page.title %></h2>
+                        <span class="date"><%= @page.format_date %></span>
+                        <%= raw @page.content %>
+
+                        <div class="author_box">
+                            <div class="author"><%= @page.keywords %></div>
+                            <div class="area">瑞信云(Rxy123.com)</div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                
+                <!-- SideBar -->
+                
+            </div>
+        </div>
+    <%= render file: 'public/templetes/rxy123/_footer.html' %>
