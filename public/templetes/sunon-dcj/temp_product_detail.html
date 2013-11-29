@@ -32,47 +32,8 @@
     <!-- ################ -->
 		<div class="container">
 			<div class="row-fluid">
-				<!-- SLIDER SIDE -->
-				<div class="span8">
-					<%= raw @page.content %>
-    			
-				</div>
-				<!-- END: SLIDER SIDE -->
-				<!-- PORTFOLIO ASIDE -->
-				<div class="span4">
-					<!-- TITLE -->
-					<h2 class="folio-title"><%= @page.title %></h2>
 
-					<ul class="nav nav-tabs" id="myTab">
-				    <li class="active"><a href="#home" data-toggle="tab">产品描述</a></li>
-				    <li><a href="#profile" data-toggle="tab">产品色卡</a></li>
-				  </ul>
-
-					<div class="tab-content">
-					  <div class="tab-pane active" id="home">
-					    <%= @page.description %>
-					  </div>
-					  <div class="tab-pane" id="profile">
-					  	<p>
-					    <img src="http://www.sunon-china.com/upload/s_20120411041211.jpg" /> <a href="javascript:void(null)">鸡翅木面</a>
-					      <img src="http://www.sunon-china.com/upload/s_20120411041211.jpg" /> <a href="javascript:void(null)">鸡翅木面</a>
-					     </p>
-					  </div>
-					</div>
-
-					<script>
-					  $(function () {
-					    $('#myTab a:last').tab('show')
-					  })
-					</script>
-					<!-- END PARAGRAPH -->
-					<!-- DEVIDER LINE -->
-					<div class="no-color-line-no-border3"></div>
-					<hr class="half2"/>
-					<!-- ACTION BUTTON -->
-					<a class="btn btn-success btn-large btn-block" href="#" title="">现在预定</a>
-					<!-- END ACTION BUTTON -->
-				</div>
+				<%= raw @page.content %>
 				<!-- PORTFOLIO ASIDE -->
 			</div>
 		</div>
@@ -85,3 +46,8 @@
 </div>
 <!-- END: MAIN-WRAPPER-->
 
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
