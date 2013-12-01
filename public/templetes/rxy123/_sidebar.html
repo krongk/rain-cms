@@ -8,12 +8,12 @@
         <div class="sidebar_header">
             <h4>最近新闻</h4>
         </div>
-        <% Admin::Page.recent(5, typo: 'article', channel: 'blog') do |page| %>
+        <% Admin::Page.recent(5, typo: 'article', channel: 'blog').each do |page| %>
             <div class="recent">
                 <span>
                     <img src="<%= page.image_path %>" alt="<%= page.title %>">
                 </span>
-                <p><%= page.title %></p>
+                <p><%=link_to page.title, get_url(page) %></p>
             </div>
         <% end %>
     </div>
