@@ -5,16 +5,17 @@
         RainCMS使用教程
       </a>
       <a href="#raincms" class="list-group-item">RainCMS简介</a>
-      <a href="#" class="list-group-item">如何添加栏目</a>
-      <a href="#" class="list-group-item">如何添加页面</a>
-      <a href="#" class="list-group-item">如何安装模板</a>
+      <a href="#templete" class="list-group-item">如何创建网页模板</a>
+      <a href="#channel" class="list-group-item">如何添加栏目</a>
+      <a href="#page" class="list-group-item">如何添加页面</a>
     </div>
   </div>
   <div class="col-md-10">
     <!-- raincms start-->
 
-<div id="wmd-preview" class="wmd-preview" style="height: auto;"><h2>RainCMS简介</h2>
-
+<div id="wmd-preview" class="wmd-preview" style="height: auto;">
+<h2>RainCMS简介</h2>
+<a name="raincms"></a>
 <p>RainCMS是由Ruby on Rails开发的一款轻量级内容管理开源系统。由瑞信云科技公司开发并维护，如今已经服务于国外多家企业，获得了良好的效果和反馈，中文版系统将致力于围绕国内企业需求，作出许多改进和实践，以切合国内网络环境的需求。</p>
 
 <p>您可以使用 <strong>RainCMS</strong>：</p>
@@ -33,7 +34,7 @@
 <hr class="hr-white">
 
 <h2>如何创建网页模板</h2>
-
+<a name="templete"></a>
 <p>RainCMS前端的样式，都是基于模版创建而来，不同的模版对应不同的主题和效果，用户可以轻松自由的定制模版。</p>
 <p>模版的定制规则如下：(参考/templetes/generate_templetes.rb)</p>
 
@@ -133,13 +134,13 @@
   <li>
     <p>把内容页&gt;body&lt;部分中的header,footer部分用代码标记起来：</p>
     <pre>
-      <!-- [[header start]] -->
+      &lt;!-- [[header start]] --&gt;
         ...
-      <!-- [[header end]] -->
+      &lt;!-- [[header end]] --&gt;
 
-      <!-- [[footer start]] -->
+      &lt;!-- [[footer start]] --&gt;
         ...
-      <!-- [[footer end]] -->
+      &lt;!-- [[footer end]] --&gt;
     </pre>
   </li>
 </ul>
@@ -147,7 +148,7 @@
 <hr class="hr-white">
 
 <h2>什么是 Cmd Markdown</h2>
-
+<a name="channel"></a>
 <p>您可以使用很多工具书写 Markdown，但是 <strong>Cmd Markdown</strong> 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 <strong>Cmd Markdown</strong>，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
 
 <h3>1. 实时同步预览</h3>
