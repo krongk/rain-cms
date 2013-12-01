@@ -6,8 +6,11 @@
     <link rel="stylesheet" type="text/css" href="/templetes/rxy123/css/theme.css">
     <!-- index Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/index.css" type="text/css" media="screen" />
+    <!-- app service Styles -->
+    <link rel="stylesheet" href="/templetes/rxy123/css/pricing.css" type="text/css" media="screen" />
     <!-- blog Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/blog.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/templetes/rxy123/css/blogpost.css" type="text/css" media="screen" />
     <!-- about Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/about.css" type="text/css" media="screen" />
      <!-- case Styles -->
@@ -30,3 +33,20 @@
         </style>
     <% end %>
     
+    <% if @channel.short_title == 'portfolio' %>
+      <link href="http://www.apps123.cn/templets/apps123/css/layout2013.css" rel="stylesheet" media="screen" type="text/css" />
+      <style>
+        .case-detail-pic{
+          width: 90px;
+          height: 90px;
+        }
+        #c_img{
+          width: 90px;
+          height: 90px;
+        }
+        .photo img{
+          width: 100px;
+          height: 100px;
+        }
+      </style>
+    <% end %>

@@ -6,23 +6,7 @@
             <div class="section_header">
                 <h3><%= @channel.title %></h3>
             </div>
-            <div class="row">
-                <div class="span12">
-                    <div id="filters_container">
-                        <ul id="filters">
-                            <li><a href="#" data-filter="*" class="active">All</a></li>
-                            <li class="separator">/</li>
-                            <li><a href="#" data-filter=".art">Art</a></li>
-                            <li class="separator">/</li>
-                            <li><a href="#" data-filter=".ilustration">Illustration</a></li>
-                            <li class="separator">/</li>
-                            <li><a href="#" data-filter=".print">Print</a></li>
-                            <li class="separator">/</li>
-                            <li><a href="#" data-filter=".web">Web</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>            
+          
             <div class="row">
                 <div class="span12">
                     <div id="gallery_container">
@@ -30,13 +14,14 @@
                         <div class="photo art web">
                             <img src="<%= page.image_path %>" />
                             <a href="<%= get_url(page)%>" class="mask">
-                                <h3>>%= page.title %?</h3>
+                                <h3><%= page.title %></h3>
                                 <small><%= page.keywords %></small>
                                 <div class="more">+</div>
                             </a>
                         </div>
                         <% end %>
                     </div>
+                    <%= will_paginate @pages %>
                 </div>
             </div>            
         </div>

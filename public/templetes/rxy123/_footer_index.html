@@ -7,10 +7,10 @@
                     <h3 class="footer_header">
                         推荐阅读
                     </h3>
-                    <% Admin::Page.recent(2, :properties => 'c') do |page| %>
+                    <% Admin::Page.recent(2, typo: 'article', properties: 'c', channel: 'blog').each do |page| %>
                         <div class="post">
                             <a href="<%= get_url(page) %>">
-                              <img src="<%= page.image_path %>" class="img-circle" style="max-width: 300px; max-height: 200px;" />
+                              <img src="<%= page.image_path %>" class="img-circle" style="max-width: 60px; max-height: 60px;" />
                             </a>
                             <div class="date">
                                <%= page.format_date %>

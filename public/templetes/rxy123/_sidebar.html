@@ -1,40 +1,24 @@
 <div class="span3 sidebar offset1">
     <div class="box">
-        <div class="sidebar_header">
-            <h4>Menu</h4>
-        </div>
-
-        <ul class="sidebar_menu">
-            <ul>
-                <li><a href="#">Coffee</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Music</a></li>
-                <li><a href="#">Photography</a></li>
-                <li><a href="#">Packaging   </a></li>
-            </ul>
-        </ul>
+      <img src="/ckeditor_assets/pictures/13/content_.jpg."/><br>
+      扫一扫，精彩在微信
     </div>
     
     <div class="box box2">
         <div class="sidebar_header">
-            <h4>Recent Posts</h4>
+            <h4>最近新闻</h4>
         </div>
-
-        <div class="recent">
-            <span>
-                <img src="img/recent_photos.jpg" alt="">
-            </span>
-            <p>There are many  embarrassing hidden in the middle of text.</p>
-        </div>
-        <div class="recent">
-            <span>
-                <img src="img/recent_photos.jpg" alt="">
-            </span>
-            <p>There are many  embarrassing hidden in the middle of text.</p>
-        </div>
+        <% Admin::Page.recent(5, typo: 'article', channel: 'blog') do |page| %>
+            <div class="recent">
+                <span>
+                    <img src="<%= page.image_path %>" alt="<%= page.title %>">
+                </span>
+                <p><%= page.title %></p>
+            </div>
+        <% end %>
     </div>
 
-    <div class="box">
+<!--     <div class="box">
         <div class="sidebar_header">
             <h4>Popular photos</h4>
         </div>
@@ -73,5 +57,5 @@
                 <li><a href="#">October 2011</a></li>
             </ul>
         </ul>
-    </div>
+    </div> -->
 </div>

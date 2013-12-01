@@ -12,7 +12,7 @@ class Admin::Page < ActiveRecord::Base
     self.description.to_s.truncate(count)
   end
   def format_date
-    self.updated_at.strftime("%Y-%M-%d")
+    self.updated_at.strftime("%Y-%m-%d") unless self.updated_at.nil?
   end
   
   #最近新闻
@@ -20,11 +20,11 @@ class Admin::Page < ActiveRecord::Base
   #channel =[ channel.short_title, ]
   def self.recent(count = 10, options = {})
     options = {typo: 'all'}.merge(options)
-    pages = Admin::Page.order("updated_at DESC").limit(count)
+    pages = Admin::Page.order("updated_at DESC")
     pages = pages.select{|p| p.channel.typo == options[:typo]} unless options[:typo] == 'all'
-    pages = pages.select{|p| p.channel.short_title == options[:channel]} unless options[:channel].nil?
+    pages = pages.select{|p| p.channel.short_title == options[:channel]}  unless options[:channel].nil?
     pages = pages.select{|p| p.properties == options[:properties]} unless options[:properties].nil?
-    pages
+    pages[0...count]
   end
 
 end

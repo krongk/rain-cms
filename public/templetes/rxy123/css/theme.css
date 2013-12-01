@@ -98,7 +98,6 @@ header {
 .section_header h3 {
 	color: rgb(100, 100, 100);
 	font-weight: 300;
-	font-style: italic;
 	font-size: 27px;
 	border-bottom: 1px solid #b3b3b3;
 	padding-bottom: 0px;
@@ -110,14 +109,13 @@ header {
 -------------------------------------------------- */
 #footer {
 	min-height: 260px;
-	margin-top: 140px;
+	margin-top: 40px;
 	background-color: #252528;
 	color: #fff;
 	padding-top: 35px;
 }
 #footer .footer_header {
 	color: rgb(196, 196, 196);
-	font-style: italic;
 	font-weight: 300;
 	font-size: 25px;
 	margin-bottom: 40px;

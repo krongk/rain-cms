@@ -54,7 +54,14 @@
       <!-- List group -->
       <ul class="list-group">
         <% @pages.each do |page| %>
-          <li class="list-group-item"><%= link_to page.title, edit_admin_page_path(page) %></li>
+          <li class="list-group-item">
+            <%= link_to page.title, edit_admin_page_path(page) %>
+            <span class="pull-right">
+              <%= link_to '预览', get_url(page), target: '_blank' %> | 
+              <%= link_to '编辑', edit_admin_page_path(page) %> | 
+              <%= link_to '删除', page, method: :delete, data: { confirm: '删除以后无法恢复，请确认要删除?' }%> 
+            </span>
+          </li>
         <% end %>
       </ul>
     </div>
