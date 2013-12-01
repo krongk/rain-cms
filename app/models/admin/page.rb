@@ -23,6 +23,7 @@ class Admin::Page < ActiveRecord::Base
     pages = Admin::Page.order("updated_at DESC").limit(count)
     pages = pages.select{|p| p.channel.typo == options[:typo]} unless options[:typo] == 'all'
     pages = pages.select{|p| p.channel.short_title == options[:channel]} unless options[:channel].nil?
+    pages = pages.select{|p| p.properties == options[:properties]} unless options[:properties].nil?
     pages
   end
 

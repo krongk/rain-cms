@@ -5,59 +5,50 @@
             <div class="row sections">
                 <div class="span4 recent_posts">
                     <h3 class="footer_header">
-                        Recent Posts
+                        推荐阅读
                     </h3>
-                    <div class="post">
-                        <a href="blogpost.html">
-                            <img src="/templetes/rxy123/img/recent_post1.png" class="img-circle" />
-                        </a>
-                        <div class="date">
-                            Wed, 12 Dec
+                    <% Admin::Page.recent(2, :properties => 'c') do |page| %>
+                        <div class="post">
+                            <a href="<%= get_url(page) %>">
+                              <img src="<%= page.image_path %>" class="img-circle" style="max-width: 300px; max-height: 200px;" />
+                            </a>
+                            <div class="date">
+                               <%= page.format_date %>
+                            </div>
+                            <a href="blogpost.html" class="title">
+                               <%= page.title %>
+                            </a>
                         </div>
-                        <a href="blogpost.html" class="title">
-                            Randomised words which don't look embarrasing hidden.
-                        </a>
-                    </div>
-                    <div class="post">
-                        <a href="blogpost.html">
-                            <img src="/templetes/rxy123/img/recent_post2.png" class="img-circle" />
-                        </a>
-                        <div class="date">
-                            Mon, 12 Dec
-                        </div>
-                        <a href="blogpost.html" class="title">
-                            Randomised words which don't look embarrasing hidden.
-                        </a>
-                    </div>
+                    <% end %>
                 </div>
                 <div class="span4 testimonials">
                     <h3 class="footer_header">
-                        Testimonials
+                        服务承诺
                     </h3>
                     <div class="wrapper">
                         <div class="quote">
-                            <span></span>
-                            There are many variations of passages of randomised words which don't look even slightly believable. You need to be sure there isn't anything embarrassing of text.
-                            <span></span>
+                            <span>“</span>
+                            瑞信云为企业提供完整的移动应用开发和管理集成。建设APP从未如此简单； 一次建设，即可生成基于苹果、安卓、HTML5 Web APP手机应用和强大的管理后台。
+                            <span>”</span>
                         </div>
                         <div class="author">
                             <img src="/templetes/rxy123/img/user-display.png" />
-                            <div class="name">Alejandra Galvan Castillo</div>
+                            <div class="name">瑞信云咨询.小宋</div>
                             <div class="info">
-                                Details Canvas
+                              +86 185 8327 5189
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="span4 contact">
                     <h3 class="footer_header">
-                        Contact
+                      联系我们
                     </h3>
                     <form action="#" method="post">
-                        <input type="text" placeholder="Your name" />
-                        <input type="text" placeholder="Your email" />
-                        <textarea rows="3" placeholder="Message"></textarea>
-                        <input type="submit" value="Send" />
+                        <input type="text" placeholder="你的姓名" />
+                        <input type="text" placeholder="手机号码" />
+                        <textarea rows="3" placeholder="留言内容"></textarea>
+                        <input type="submit" value="提交" />
                     </form>
                 </div>
             </div>
@@ -97,7 +88,7 @@
                     </div>
                     <div class="row copyright">
                         <div class="span12">
-                             2013 Clean Canvas. All rights reserved. Theme by Detail Canvas.
+                             2013 瑞信云. All rights reserved.
                         </div>
                     </div>
                 </div>            

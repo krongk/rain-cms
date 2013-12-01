@@ -1,0 +1,36 @@
+
+<%= render file: 'public/templetes/rxy123/_header.html' %>
+
+<div id="backgrounds">
+    <div class="container">
+        <div class="section_header">
+            <h3>
+              <%= @channel.description %>
+            </h3>
+        </div>
+         <% get_slice_pages(@pages, 2).each do |slice_pages| %>
+            <!-- Row -->
+            <div class="row">
+                <div class="span6 photo">
+                    <a href="<%= get_url(slice_pages.first) %>">
+                        <div class="circle">
+                            <span><%= slice_pages.first.title %></span>
+                        </div>
+                    </a>
+                    <img src="<%= slice_pages.first.image_path %>">
+                </div>
+
+                <div class="span6 photo right">
+                    <a href="<%= get_url(slice_pages.last) %>">
+                        <div class="circle">
+                            <span class="doble"><%= slice_pages.last.title %></span>
+                        </div>
+                    </a>
+                    <img src="<%= slice_pages.last.image_path %>">
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<%= render file: 'public/templetes/rxy123/_footer.html' %>

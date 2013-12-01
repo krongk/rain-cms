@@ -57,6 +57,7 @@
 }
 #team .people .bio_box{
 	margin: 0;
+	max-width: 400px;
 }
 #team .people .bio_boxr{
 	float: right;
