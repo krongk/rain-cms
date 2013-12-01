@@ -21,8 +21,9 @@ class ApplicationController < ActionController::Base
     #imgfiles = File.join(@base_dir, "**", "*.{jpg, png, gif, jpeg}")
     @image_list = Rails.cache.read('image_list')
     unless @image_list
-      assetfiles = File.join(Rails.root, "public", "**", "*.{jpg, png, gif, jpeg}")
-      @image_list = Dir.glob(assetfiles).map{|i| i.sub(/^.*\/public/, '') }.sort
+      assetfiles = File.join(Rails.root, "public", "ckeditor_assets", "**", "*.{jpg, png, gif, jpeg}")
+      tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
+      @image_list = Dir.glob([assetfiles, tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
       Rails.cache.write('image_list', @image_list)
     end
   end
