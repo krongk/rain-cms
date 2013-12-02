@@ -1,12 +1,14 @@
 <div class="span3 sidebar offset1">
-    <div class="box">
-      <img src="/ckeditor_assets/pictures/13/content_.jpg."/><br>
-      扫一扫，精彩在微信
+    <div class="box center">
+      <img src="/templetes/rxy123/img/qrcode_for_website.jpg" /><br>
+      扫一扫，更多精彩在手机！
+      <img src="/templetes/rxy123/img/qrcode_for_wx_dingyuehao.jpg"/><br>
+      扫一扫，更多精彩在微信！
     </div>
     
     <div class="box box2">
         <div class="sidebar_header">
-            <h4>最近新闻</h4>
+            <h4>最近发生...</h4>
         </div>
         <% Admin::Page.recent(5, typo: 'article', channel: 'blog').each do |page| %>
             <div class="recent">

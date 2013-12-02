@@ -157,7 +157,6 @@ header {
 }
 #footer .testimonials .quote span {
 	font-size: 32px;
-	font-style: italic;
 	position: relative;
 	top: 5px;
 	font-family: Georgia !important;
@@ -178,7 +177,6 @@ header {
 	font-weight: bold;
 }
 #footer .testimonials .info {
-	font-style: italic;
 	color: #ccc;
 }
 
@@ -243,12 +241,14 @@ header {
 	margin-top: 30px;
 	text-align: center;
 }
+.center{
+	text-align: center;
+}
 #footer .credits .social a {
 	margin: 10px;
 }
 #footer .credits .copyright {
 	color: #a6a6a7;
-	font-style: italic;
 	text-align: center;
 	margin-top: 30px;
 }

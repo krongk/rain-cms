@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/templetes/rxy123/css/index.css" type="text/css" media="screen" />
     <!-- app service Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/pricing.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/templetes/rxy123/css/services.css" type="text/css" media="screen" />
     <!-- blog Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/blog.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/templetes/rxy123/css/blogpost.css" type="text/css" media="screen" />
@@ -26,6 +27,15 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <!-- app123 -->
+    <script type="text/javascript">
+      var mobileUrl="http://m.rxy123.com/657", mobile = (/mmp|symbian|smartphone|midp|wap|phone|xoom|iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+      if (mobile) {
+         window.location = mobileUrl;
+      }
+    </script>
+
 
     <% if @channel.short_title == 'index' %>
         <style type="text/css">

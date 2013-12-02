@@ -105,7 +105,13 @@ CKEDITOR.editorConfig = function( config )
 
   //
   //xj: Allow all classes for all allowed elements.
+  //e.g <ul class="slicer">
   config.extraAllowedContent = '*(*)';
-
+  //
+  //xj: Allow <i> tag.
+  //e.g. <i class="fa fa-book"></i>
+  config.allowedContent = true;
+  config.ProtectedTags = 'i' ;
+  config.protectedSource.push( /<i[\s\S]*?\>/g ); //allows beginning <i> tag
+  config.protectedSource.push( /<\/i[\s\S]*?\>/g ); //allows ending </i> tag
 };
-

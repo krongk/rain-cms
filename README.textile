@@ -77,3 +77,18 @@
   $> apt-get install imagemagick libmagickcore-dev
   $> apt-get install libmagickwand-dev
   $> gem install rmagick
+
+  ######################################
+  ## 部署到production
+
+  因为是通过模版安装，图片文件不能完成数字化，选择Rails4的no-digest方式：
+  1. 修改/config/environments/production.rb
+  config.serve_static_assets = true #default is false
+  config.assets.compile = false
+  config.assets.digest = false #default is true
+
+  2. ckeditor仍然无法运行，则运行：/lib/tasks/ckeditor.rake
+    讲数字化的文件名改为非数字化的。
+
+  解决 Nginx"Permission denied"的问题：
+  sudo chmod 777 -R /alidata/www/rxy123/public/templetes/rxy123/
