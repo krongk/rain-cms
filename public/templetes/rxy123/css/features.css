@@ -24,10 +24,10 @@
 }
 #features .option1 .feature .info h3 {
 	font-size: 21px;
-	margin-top: 35px;
+	margin-top: 0px;
 }
 #features .option1 .feature.ss h3 {
-	margin-top: 45px;
+	margin-top: 0px;
 }
 #features .option1 .feature .info h3 img {
 	margin-right: 18px;
@@ -35,7 +35,7 @@
 	top: -10px;
 }
 #features .option1 .feature .info p {
-	margin-top: 15px;
+	margin-top: 10px;
 }
 #features .option2{
 	margin-bottom: 70px;

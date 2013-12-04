@@ -9,11 +9,13 @@
     <!-- app service Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/pricing.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/templetes/rxy123/css/services.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/templetes/rxy123/css/features.css" type="text/css" media="screen" />
     <!-- blog Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/blog.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/templetes/rxy123/css/blogpost.css" type="text/css" media="screen" />
     <!-- about Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/about.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/templetes/rxy123/css/contact.css" type="text/css" media="screen" />
      <!-- case Styles -->
     <link rel="stylesheet" href="/templetes/rxy123/css/case.css" type="text/css" media="screen" />
     <!-- portfolio Styles -->
@@ -37,7 +39,7 @@
     </script>
 
 
-    <% if @channel.short_title == 'index' %>
+    <% if ['index', 'weixin'].include? @channel.short_title %>
         <style type="text/css">
           .pull_body{padding-top: 0px !important;}
         </style>

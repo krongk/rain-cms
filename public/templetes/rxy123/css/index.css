@@ -282,7 +282,7 @@
 /* Features
 -------------------------------------------------- */
 #features {
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: -20px;
 }
 #features .feature {
@@ -291,10 +291,10 @@
 }
 #features .feature .info h3 {
     font-size: 21px;
-    margin-top: 35px;
+    margin-top: 5px;
 }
 #features .feature.ss h3 {
-    margin-top: 45px;
+    margin-top: 5px;
 }
 #features .feature .info h3 img {
     margin-right: 18px;
@@ -302,7 +302,7 @@
     top: -10px;
 }
 #features .feature .info p {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 /* Pricing charts
