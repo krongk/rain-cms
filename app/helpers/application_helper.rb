@@ -139,6 +139,9 @@ module ApplicationHelper
 
   #Tag 用以下的符号隔开都可以，就是不能用空格
   def update_tag(channel_or_page)
+    #remove all previows
+    channel_or_page.tag_list.clear
+    #add new 
     channel_or_page.keywords.split(SPECIAL_SYMBO_REG).each do |tag|
       next if SPECIAL_SYMBO_REG.match tag
       channel_or_page.tag_list.add(tag)
