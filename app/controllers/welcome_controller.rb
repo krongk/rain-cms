@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
     if params[:tag]
       @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
-      @pages = @channel.pages.page(params[:page])
+      @pages = @channel.pages.order("updated_at DESC").page(params[:page])
     end
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
