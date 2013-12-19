@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  caches_page :index
+  
   layout 'frontpage'
   #{"controller"=>"welcome", "action"=>"index", "channel"=>"fw", "id"=>"2", "tag" => "tagkey"}
   def index

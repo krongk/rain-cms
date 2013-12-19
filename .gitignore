@@ -38,6 +38,8 @@ db/*.sqlite3
 /doc/features.html
 /doc/specs.html
 /public/cache
+/public/templetes/sunon-dcj/*
+/public/templetes/rxy123/*
 /public/stylesheets/compiled
 /public/system/*
 /spec/tmp/*

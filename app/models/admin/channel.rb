@@ -14,4 +14,13 @@ class Admin::Channel < ActiveRecord::Base
   validates :short_title, format: { with: /\A[a-zA-Z0-9-]+\z/,
     message: "名称简写只能包括字母数字和横线" }
 
+  #cache
+  after_save :expire_cache
+  def expire_cache
+    cache_index_path = File.join(Rails.root, 'public', 'index.html')
+    cache_cate_path = File.join(Rails.root, 'public', self.short_title + '.html')
+    FileUtils.rm_rf cache_index_path if File.exist?(cache_index_path)
+    FileUtils.rm_rf cache_cate_path if File.exist?(cache_cate_path)
+  end
+
 end

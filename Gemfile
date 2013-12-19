@@ -23,6 +23,11 @@ gem 'acts-as-taggable-on'
  # gem 'therubyracer', :platform=>:ruby
  # gem 'puma'
 
+#page caching
+# http://www.rubytutorial.io/page-caching-with-rails-4
+gem 'actionpack-page_caching'
+#gem 'rails-observers' #manually remove the cache pages on raincms
+
 #Liquid templete html
 gem 'liquid'
 

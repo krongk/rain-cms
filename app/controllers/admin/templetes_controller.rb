@@ -35,9 +35,28 @@ class Admin::TempletesController < ApplicationController
     @file = File.join(@base_dir, params[:f])
     File.open(@file, 'w'){|f| f.write(params[:content])}
     redirect_to "/admin/templetes/index", notice: "更新成功"
+    expire_cache
   end
 
   def destroy
+  end
+
+  private
+  def expire_cache
+    cache_index_path = File.join(Rails.root, 'public', 'index.html')
+    FileUtils.rm_rf cache_index_path if File.exist?(cache_index_path)
+
+    Admin::Channel.find_each do |channel|
+      cache_page_path = File.join(Rails.root, 'public', channel.short_title + '.html')
+      cache_page_dir = File.join(Rails.root, 'public', channel.short_title)
+      FileUtils.rm_rf cache_page_path if File.exist?(cache_page_path)
+      FileUtils.rm_rf cache_page_dir if File.exist?(cache_page_dir)
+      
+      cache_page_id_path = File.join(Rails.root, 'public', channel.id.to_s + '.html')
+      cache_page_id_dir = File.join(Rails.root, 'public', channel.id.to_s)
+      FileUtils.rm_rf cache_page_id_path if File.exist?(cache_page_id_path)
+      FileUtils.rm_rf cache_page_id_dir if File.exist?(cache_page_id_dir)
+    end
   end
 
 end
