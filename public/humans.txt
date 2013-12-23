@@ -4,9 +4,9 @@
 
 /* TEAM */
   <your title>: <your name>
-  Site:
+  Site: RainCMS
   Twitter:
-  Location:
+  Location: Chengdu,China
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project

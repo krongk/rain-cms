@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   #add page cache
   include ActionController::Caching::Pages
-  #self.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
+  self.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -22,35 +22,13 @@ class ApplicationController < ActionController::Base
     Dir.chdir(@base_dir)
     @temp_list = Dir.glob("*.html").sort
 
-    #imgfiles = File.join(@base_dir, "**", "*.{jpg, png, gif, jpeg}")
-    #@image_list = Rails.cache.read('image_list')
-    #unless @image_list
-      #assetfiles = File.join(Rails.root, "public", "ckeditor_assets", "**", "*.{jpg, png, gif, jpeg}")
-      tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
-      @image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
-      #Rails.cache.write('image_list', @image_list)
-    #end
+    tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
+    @image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
   end
-  
-  def load_templete_bak
-    @templete = Rails.cache.read('templete')
-    unless @templete
-      @templete = Admin::Keystore.value_for('templete')
-      @templete ||= 'default'
-      Rails.cache.write('templete', @templete)
-    end
 
-    @base_dir = Rails.cache.read('base_dir')
-    unless @base_dir
-      @base_dir = "#{Rails.root}/public/templetes/#{@templete}/"
-      Rails.cache.write('base_dir', @base_dir)
-    end
-
-    @temp_list = Rails.cache.read('temp_list')
-    unless @temp_list
-      Dir.chdir(@base_dir)
-      @temp_list = Dir.glob("*.html").sort
-      Rails.cache.write('temp_list', @temp_list)
-    end
+  #render 404 error
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
+
 end

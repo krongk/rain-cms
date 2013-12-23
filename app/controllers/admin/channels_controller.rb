@@ -1,4 +1,4 @@
-class Admin::ChannelsController < ApplicationController
+class Admin::ChannelsController < Admin::ApplicationController
   before_filter :authenticate_user!
   before_action :set_admin_channel, only: [:show, :edit, :update, :destroy]
 

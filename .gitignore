@@ -40,6 +40,7 @@ db/*.sqlite3
 /public/cache
 /public/templetes/sunon-dcj/*
 /public/templetes/rxy123/*
+/public/templetes/rxy-cn/*
 /public/stylesheets/compiled
 /public/system/*
 /spec/tmp/*

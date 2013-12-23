@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '>= 3.0.0.0'
 gem 'bootstrap-will_paginate'
-#gem 'font-awesome-sass-rails'
 gem 'font-awesome-rails'
 gem 'cancan'
 gem 'devise'
@@ -33,6 +32,9 @@ gem 'liquid'
 
 #add :git to bugfix open dialog error
 gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
+#File upload
+gem 'paperclip'
+gem 'paperclip-qiniu'
 
 #Excel processing
 # gem 'roo', '>=1.11.2' 
@@ -41,9 +43,6 @@ gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
 #Wizard
 #gem 'wicked'
 
-#File upload
-gem 'paperclip'
-gem 'paperclip-qiniu'
 
 #I18n
 gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x

@@ -1,6 +1,5 @@
 #encoding: utf-8
-class Admin::TempletesController < ApplicationController
-  before_filter :authenticate_user!
+class Admin::TempletesController < Admin::ApplicationController
 
   def index
   end
