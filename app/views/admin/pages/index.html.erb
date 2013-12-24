@@ -25,10 +25,10 @@
               <%= link_to get_preview_url(page), target: '_blank' do %>
                 <i class="fa fa-eye"></i> 预览
               <% end %> | 
-              <%= link_to get_preview_url(page), target: '_blank' do %>
+              <%= link_to edit_admin_page_path(page) do %>
                 <i class="fa fa-edit"></i> 编辑
               <% end %> | 
-              <%= link_to get_preview_url(page), target: '_blank' do %>
+              <%= link_to page, method: :delete, data: { confirm: '删除以后无法恢复，确定要删除?' }  do %>
                 <i class="fa fa-trash-o"></i> 删除
               <% end %> 
             </span>

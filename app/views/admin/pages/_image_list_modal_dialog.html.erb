@@ -10,7 +10,7 @@
         <ul class="modal-ul">
           <% @image_list.each do |img_path| %>
             <li><a href="#" class="choose-image" data-title="<%= img_path %>" data-dismiss="modal">
-            <img src="<%= img_path %>" alt="<%= img_path.to_s.sub(/^.*\/(.*)$/, '\1') %>"/>
+            <img src="<%= img_path %>" title="<%= img_path.to_s.sub(/^.*\/(.*)$/, '\1') %>" />
             </a></li>
           <% end %>
         </ul>

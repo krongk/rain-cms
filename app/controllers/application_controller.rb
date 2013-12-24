@@ -22,9 +22,8 @@ class ApplicationController < ActionController::Base
     Dir.chdir(@base_dir)
     @temp_list = Dir.glob("*.html").sort
 
-    #tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
-    #@image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
-    @image_list = []
+    tempfiles = File.join(Rails.root, "public", "ckeditor_assets", "**", "*.{jpg, png, gif, jpeg}")
+    @image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
   end
 
   #render 404 error
