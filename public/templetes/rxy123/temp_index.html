@@ -1,86 +1,12 @@
-
+            
     <%= render file: 'public/templetes/rxy123/_header.html' %>
     <%= render file: 'public/templetes/rxy123/_slider_index.html' %>
 
-
-    <div id="features">
-        <div class="container">
-            <div class="section_header">
-                <h3>手机网站如何帮助企业营销？</h3>
-            </div> 
-            <div class="row feature">
-                <div class="span6">
-                    <img src="/templetes/rxy123/img/showcase1.png" />
-                </div>
-                <div class="span6 info">
-                    <h3>
-                        <img src="/templetes/rxy123/img/features-ico1.png" />
-                        电脑网站与手机网站的不同
-                    </h3>
-                    <p>
-                        电脑网站适用于桌面电脑终端浏览，如果用手机浏览电脑网站，因手机的屏幕尺寸和CPU处理能力有限，将大大影响用户的浏览体验。手机网站专门为手机浏览需求设计，是手机浏览企业网站的最佳选择。
-                    </p>
-                </div>
-            </div>
-            <div class="row feature ss">
-                <div class="span6 info">
-                    <h3>
-                        <img src="/templetes/rxy123/img/features-ico2.png" />
-                       企业形象新名片
-                    </h3>
-                    <p>
-                        手机网站提供商可为企业提供网站二维码，如果印在名片上，客户无需输入网址，扫一扫即可打开网站。放在产品手册上、宣传资料上，提供了一个全新的方便客户了解企业的入口。
-                    </p>
-                </div>
-                <div class="span6">
-                    <img src="/templetes/rxy123/img/showcase2.png" class="pull-right" />
-                </div>
-            </div>
-            <div class="row feature ss">
-                <div class="span6">
-                    <img src="/templetes/rxy123/img/showcase3.png" />
-                </div>
-                <div class="span6 info">
-                    <h3>
-                        <img src="/templetes/rxy123/img/features-ico3.png" />
-                        社交网络推广一个都不能少
-                    </h3>
-                    <p>
-                       利用微信公共平台,微博，以及短信、彩信等方式推送有手机网址的信息，让更多的人访问你的企业。参与社交网络的内容贡献，让企业真正拥有粉丝。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="clients">
-        <div class="container">
-            <div class="section_header">
-                <h3>我们的客户</h3>
-            </div>
-            <div class="row">
-                <div class="span2 client">
-                    <a href="http://www.zxjj99.com" target="_blank"><div class="img client1"></div></a>
-                </div>
-                <div class="span2 client">
-                    <a href="http://www.mesbo.cn" target="_blank"><div class="img client2"></div></a>
-                </div>
-                <div class="span2 client">
-                    <a href="http://www.sunon-dcj.com" target="_blank"><div class="img client3"></div></a>
-                </div>
-                <div class="span2 client">
-                    <div class="img client4"></div>
-                </div>
-                <div class="span2 client">
-                    <div class="img client5"></div>
-                </div>
-                <div class="span2 client">
-                    <div class="img client6"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <%= yield(:content) %>
 
     <%= render file: 'public/templetes/rxy123/_footer_index.html' %>
 
     
+
+    
+   

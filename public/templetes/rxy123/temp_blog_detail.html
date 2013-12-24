@@ -1,13 +1,14 @@
-
+                  
 <%= render file: 'public/templetes/rxy123/_header.html' %>
 <div id="blog_post">
 <div class="container">
     <div class="section_header">
-        <h1><%= @page.title %></h1>
+        
     </div>
-
+   
     <div class="row">
         <div class="span8">
+            <h1><%= @page.title %></h1><hr/>
             <img class="post_pic" src="<%= @page.image_path %>" />
 
             <div class="post_content">
@@ -19,6 +20,20 @@
                 </div>
             </div>
 
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"rxy123"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
             
         </div>
         
@@ -27,3 +42,7 @@
     </div>
 </div>
 <%= render file: 'public/templetes/rxy123/_footer.html' %>
+
+    
+    
+    

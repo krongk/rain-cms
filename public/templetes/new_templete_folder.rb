@@ -81,7 +81,7 @@ class DataExtractor
     File.open(blog_path, "w+") { |file| file.write("\n") } unless File.exists?(blog_path)
     File.open(post_path, "w+") { |file| file.write("\n") }
     #3. copy default example file
-    #FileUtils.cp_r( "default/demo.default.html", "#{@theme}/demo.default.html" )
+    FileUtils.cp_r( "myway/demo.default.html", "#{@theme}/demo.default.html" )
     
     puts "down"
     exit
