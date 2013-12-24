@@ -112,9 +112,9 @@ CKEDITOR.editorConfig = function( config )
   //e.g <ul class="slicer">
   //config.extraAllowedContent = '*(*)';
   // 用上面的方式会导致图片无法渲染，不知道为何。
-  config.extraAllowedContent = 'ul(*)';
-  config.extraAllowedContent = 'li(*)';
-  config.extraAllowedContent = 'span(*)';
+  config.extraAllowedContent = 'ul(*);li(*);span(*)';
+  //config.extraAllowedContent = 'li(*)';
+  //config.extraAllowedContent = 'span(*)';
 
   //
   //xj: Allow <i> tag.
