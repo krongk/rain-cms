@@ -1,6 +1,10 @@
 /*
- Copy it from: C:\RailsInstaller\Ruby2.0.0\lib\ruby\gems\2.0.0\gems\ckeditor-4.0.6\app\assets\javascripts\ckeditor
- and then add toolbar config below.
+encoding: utf-8;
+
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+每次版本更新，记得重新在以下目录拷贝覆盖此文件：
+C:\RailsInstaller\Ruby2.0.0\lib\ruby\gems\2.0.0\gems\ckeditor-4.0.6\app\assets\javascripts\ckeditor
 */
 
 CKEDITOR.editorConfig = function( config )
@@ -106,12 +110,18 @@ CKEDITOR.editorConfig = function( config )
   //
   //xj: Allow all classes for all allowed elements.
   //e.g <ul class="slicer">
-  config.extraAllowedContent = '*(*)';
+  //config.extraAllowedContent = '*(*)';
+  // 用上面的方式会导致图片无法渲染，不知道为何。
+  config.extraAllowedContent = 'ul(*)';
+  config.extraAllowedContent = 'li(*)';
+  config.extraAllowedContent = 'span(*)';
+
   //
   //xj: Allow <i> tag.
   //e.g. <i class="fa fa-book"></i>
-  config.allowedContent = true;
-  config.ProtectedTags = 'i' ;
-  config.protectedSource.push( /<i[\s\S]*?\>/g ); //allows beginning <i> tag
-  config.protectedSource.push( /<\/i[\s\S]*?\>/g ); //allows ending </i> tag
+  //config.allowedContent = true;
+  //config.ProtectedTags = 'i' ;
+  //config.protectedSource.push( /<i[\s\S]*?\>/g ); //allows beginning <i> tag
+  //config.protectedSource.push( /<\/i[\s\S]*?\>/g ); //allows ending </i> tag
 };
+

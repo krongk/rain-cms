@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   #add page cache
   include ActionController::Caching::Pages
-  self.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
+  #self.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
     Dir.chdir(@base_dir)
     @temp_list = Dir.glob("*.html").sort
 
-    tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
-    @image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
+    #tempfiles = File.join(Rails.root, "public", "templetes", "**", "*.{jpg, png, gif, jpeg}")
+    #@image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
+    @image_list = []
   end
 
   #render 404 error
