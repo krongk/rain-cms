@@ -1,7 +1,6 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 Copy from: root@AY1311051648483881f3Z:/usr/local/rvm/gems/ruby-2.0.0-p247/bundler/gems/ckeditor-077827e01390/app/assets/javascripts/ckeditorG
-For licensing, see LICENSE.html or http://ckeditor.com/license
+Must update it via new version changed.
 */
 
 CKEDITOR.editorConfig = function( config )

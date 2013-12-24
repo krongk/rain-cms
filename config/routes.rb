@@ -17,6 +17,7 @@ RainCms::Application.routes.draw do
     get "templetes/edit"
     post "templetes/update"
     get "templetes/destroy"
+    get "templetes/update_cache"
   end
   #routes for front ==============================
   root :to => "welcome#index"

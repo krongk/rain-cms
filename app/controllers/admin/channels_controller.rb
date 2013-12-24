@@ -5,7 +5,7 @@ class Admin::ChannelsController < Admin::ApplicationController
   # GET /admin/channels
   # GET /admin/channels.json
   def index
-    @admin_channels = Admin::Channel.where("parent_id IS NULL OR parent_id = 0")
+    @admin_channels = Admin::Channel.where("parent_id IS NULL OR parent_id = 0").page(params[:page])
   end
 
   # GET /admin/channels/1

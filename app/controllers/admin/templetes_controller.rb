@@ -40,6 +40,12 @@ class Admin::TempletesController < Admin::ApplicationController
   def destroy
   end
 
+  def update_cache
+    expire_cache
+    `/alidata/server/nginx/sbin/nginx -s reload`
+    flash[:notice] = "系统缓存更新成功。"
+  end
+
   private
   def expire_cache
     #if update templete, expire all cache pages

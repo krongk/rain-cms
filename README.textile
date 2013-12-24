@@ -92,3 +92,5 @@
 
   解决 Nginx"Permission denied"的问题：
   sudo chmod 777 -R /alidata/www/rxy123/public/templetes/rxy123/
+
+  3. 修改admin/templetes_controller.rb中update_cache方法reload nginx的路径
