@@ -42,20 +42,9 @@ class Admin::TempletesController < Admin::ApplicationController
 
   private
   def expire_cache
-    cache_index_path = File.join(Rails.root, 'public', 'index.html')
-    FileUtils.rm_rf cache_index_path if File.exist?(cache_index_path)
-
-    Admin::Channel.find_each do |channel|
-      cache_page_path = File.join(Rails.root, 'public', channel.short_title + '.html')
-      cache_page_dir = File.join(Rails.root, 'public', channel.short_title)
-      FileUtils.rm_rf cache_page_path if File.exist?(cache_page_path)
-      FileUtils.rm_rf cache_page_dir if File.exist?(cache_page_dir)
-      
-      cache_page_id_path = File.join(Rails.root, 'public', channel.id.to_s + '.html')
-      cache_page_id_dir = File.join(Rails.root, 'public', channel.id.to_s)
-      FileUtils.rm_rf cache_page_id_path if File.exist?(cache_page_id_path)
-      FileUtils.rm_rf cache_page_id_dir if File.exist?(cache_page_id_dir)
-    end
+    #if update templete, expire all cache pages
+    cache_page_dir = File.join(Rails.root, 'public', 'page_cache')
+    FileUtils.rm_rf cache_page_dir if File.exist?(cache_page_dir)
   end
 
 end

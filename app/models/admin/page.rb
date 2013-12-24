@@ -11,11 +11,15 @@ class Admin::Page < ActiveRecord::Base
   #cache
   after_save :expire_cache
   def expire_cache
-    cache_index_path = File.join(Rails.root, 'public', 'index.html')
-    cache_page_path = File.join(Rails.root, 'public', self.channel.short_title, self.id.to_s + '.html')
-    FileUtils.rm_rf cache_index_path if File.exist?(cache_index_path)
-    FileUtils.rm_rf cache_page_path if File.exist?(cache_page_path)
+    cache_paths = [] 
+    cache_paths << File.join(Rails.root, 'public', 'page_cache', 'index.html')
+    cache_paths << File.join(Rails.root, 'public', 'page_cache', self.channel.short_title, self.id.to_s + '.html')
+    cache_paths << File.join(Rails.root, 'public', 'page_cache', self.channel.id.to_s, self.id.to_s + '.html')
+    cache_paths.each do |path|
+      FileUtils.rm_rf path if File.exist?(path)
+    end
   end
+
 
   def short_description(count)
     self.description.to_s.truncate(count)
