@@ -41,16 +41,19 @@ class Admin::TempletesController < Admin::ApplicationController
   end
 
   def update_cache
+    logger.info "expire cache"
     expire_cache
+    logger.info "reload nginx"
     `/alidata/server/nginx/sbin/nginx -s reload`
     flash[:notice] = "系统缓存更新成功。"
   end
 
   private
+  #if update templete, expire all cache pages
   def expire_cache
-    #if update templete, expire all cache pages
     cache_page_dir = File.join(Rails.root, 'public', 'page_cache')
-    FileUtils.rm_rf cache_page_dir if File.exist?(cache_page_dir)
+    FileUtils.rm_rf cache_page_dir 
+    logger.info "cache expire dir: #{cache_page_dir}, #{!File.directory?(cache_page_dir)}"
   end
 
 end

@@ -17,12 +17,16 @@ class Admin::Channel < ActiveRecord::Base
   #cache
   after_save :expire_cache
   def expire_cache
+    logger.info "Channel #{self.id} saved!"
     cache_paths = [] 
     cache_paths << File.join(Rails.root, 'public', 'page_cache', 'index.html')
     cache_paths << File.join(Rails.root, 'public', 'page_cache', self.short_title + '.html')
     cache_paths << File.join(Rails.root, 'public', 'page_cache', self.id.to_s + '.html')
     cache_paths.each do |path|
-      FileUtils.rm_rf path if File.exist?(path)
+      if File.exist?(path)
+        FileUtils.rm_rf path 
+        logger.info "cache expire page: #{path}, #{!File.exist?(path)}"
+      end
     end
   end
 

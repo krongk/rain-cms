@@ -38,6 +38,7 @@ db/*.sqlite3
 /doc/features.html
 /doc/specs.html
 /public/cache
+/public/page_cache
 /public/ckeditor_assets
 /public/assets
 /public/templetes/sunon-dcj
