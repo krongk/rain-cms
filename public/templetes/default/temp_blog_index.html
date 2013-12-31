@@ -1,116 +1,52 @@
-
+                                    
 <%= render file: 'public/templetes/default/_header.html' %>
 
 <div class="light-container">
-	<div class="container">
+  <div class="container">
 
-		<div class="row">
+    <div class="row">
 
-			<div class="posts-list col-sm-10 col-lg-10">
+      <div class="posts-list col-sm-9 col-lg-9">
 
-				<ul class="pager">
-				    <li class="previous"><a href="#">&larr; Older</a></li>
-				    <li class="next"><a href="#">Newer &rarr;</a></li>
-				</ul>
+        <ul class="pager">
+            <li class="previous"><a href="/blog/<%= params[:page].to_i > 0 ?  params[:page].to_i - 1 :  '' %>">&larr; Older</a></li>
+            <li class="next"><a href="<%= params[:page].to_i > 0 ?  params[:page].to_i + 1 :  '' %>">Newer &rarr;</a></li>
+        </ul>
 
-				<div class="blog-post">
-					<div class="post-featured-image top">
-						<img src="/templetes/default/images/blog/blog1.png" alt="" class="retina">
-					</div>
-					<h2 class="post-title">Lorem ipsum dolor sir amet non omnis morair</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elementum, orci quis aliquam tempus, dolor magna laoreet lectus, vitae feugiat urna tellus eget eros. Sed convallis erat vitae lorem viverra ornare. Aenean magna lacus, pellentesque id viverra nec, sollicitudin quis mi. Duis suscipit, neque eu euismod adipiscing, lectus ligula mollis purus, in convallis metus felis sit amet leo. Phasellus posuere quam sit amet metus sollicitudin laoreet. Vestibulum ornare euismod nunc, eget congue ipsum consectetur sed. Sed orci turpis, ultrices vitae tincidunt nec, egestas sit amet odio. Maecenas luctus lectus id purus dictum imperdiet. Ut condimentum fermentum ligula, et laoreet justo varius nec. Fusce justo urna, cursus vitae tristique sit amet, scelerisque non turpis. Donec pellentesque pulvinar sem, a rutrum sapien ultrices eget. Maecenas fermentum eros et tellus fermentum faucibus dapibus quam aliquet.
-					</p>
-					<a href="blog-post.html" class="btn btn-primary">Read more</a>
-				</div>
+        <% Admin::Page.where("channel_id in (?)", @channel.children.map(&:id)).order("updated_at DESC").each do |page| %>
+          <div class="blog-post">
+            <div class="post-featured-image top">
+              <%= image_tag page.image_path, title: page.title, alt: page.title, class: "retina" %>
+            </div>
+            <h2 class="post-title"><%= page.title %></h2>
+            <p>
+              <%= page.description %>
+            </p>
+            <a href="<%= get_url(page) %>" class="btn btn-primary">更多...</a>
+          </div>
+          <hr/>
+        <% end %>
+        
+        <ul class="pager">
+          <li class="previous"><a href="/blog/<%= params[:page].to_i > 0 ?  params[:page].to_i - 1 :  '' %>">&larr; Older</a></li>
+          <li class="next"><a href="<%= params[:page].to_i > 0 ?  params[:page].to_i + 1 :  '' %>">Newer &rarr;</a></li>
+        </ul>
 
-				<div class="blog-post">
-					<h2 class="post-title">Donec sed odio dui. Maecenas faucibus mollis interdum.</h2>
-					<p>
-						Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-					</p>
-					<hr>
-					<a href="blog-post.html" class="btn btn-primary">Read more</a>
-				</div>
+      </div>
 
-				<div class="blog-post">
-					<div class="post-featured-image top">
-						<img src="/templetes/default/images/blog/blog2.png" alt="" class="retina">
-					</div>
-					<h2 class="post-title">Curabitur blandit tempus porttitor.</h2>
-					<p>
-						Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-					</p>
-					<p>
-						Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus mollis interdum.
-					</p>
-					<a href="blog-post.html" class="btn btn-primary">Read more</a>
-				</div>
+      <div class="col-lg-3 col-sm-3">
+        <%= render file: 'public/templetes/default/_sidebar.html' %>
+      </div>
 
-				<div class="blog-post">
-					<div class="post-featured-image top">
-						<img src="/templetes/default/images/blog/blog3.png" alt="" class="retina">
-					</div>
-					<h2 class="post-title">Lorem ipsum dolor sir amet non omnis morair</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elementum, orci quis aliquam tempus, dolor magna laoreet lectus, vitae feugiat urna tellus eget eros. Sed convallis erat vitae lorem viverra ornare. Aenean magna lacus, pellentesque id viverra nec, sollicitudin quis mi. Duis suscipit, neque eu euismod adipiscing, lectus ligula mollis purus, in convallis metus felis sit amet leo. Phasellus posuere quam sit amet metus sollicitudin laoreet. Vestibulum ornare euismod nunc, eget congue ipsum consectetur sed. Sed orci turpis, ultrices vitae tincidunt nec, egestas sit amet odio. Maecenas luctus lectus id purus dictum imperdiet. Ut condimentum fermentum ligula, et laoreet justo varius nec. Fusce justo urna, cursus vitae tristique sit amet, scelerisque non turpis. Donec pellentesque pulvinar sem, a rutrum sapien ultrices eget. Maecenas fermentum eros et tellus fermentum faucibus dapibus quam aliquet.
-					</p>
-					<a href="blog-post.html" class="btn btn-primary">Read more</a>
-				</div>
+    </div>
 
-				<div class="blog-post">
-					<div class="post-featured-image top">
-						<img src="/templetes/default/images/blog/blog4.png" alt="" class="retina">
-					</div>
-					<h2 class="post-title">Lorem ipsum dolor sir amet non omnis morair</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elementum, orci quis aliquam tempus, dolor magna laoreet lectus, vitae feugiat urna tellus eget eros. Sed convallis erat vitae lorem viverra ornare. Aenean magna lacus, pellentesque id viverra nec, sollicitudin quis mi. Duis suscipit, neque eu euismod adipiscing, lectus ligula mollis purus, in convallis metus felis sit amet leo. Phasellus posuere quam sit amet metus sollicitudin laoreet. Vestibulum ornare euismod nunc, eget congue ipsum consectetur sed. Sed orci turpis, ultrices vitae tincidunt nec, egestas sit amet odio. Maecenas luctus lectus id purus dictum imperdiet. Ut condimentum fermentum ligula, et laoreet justo varius nec. Fusce justo urna, cursus vitae tristique sit amet, scelerisque non turpis. Donec pellentesque pulvinar sem, a rutrum sapien ultrices eget. Maecenas fermentum eros et tellus fermentum faucibus dapibus quam aliquet.
-					</p>
-					<a href="blog-post.html" class="btn btn-primary">Read more</a>
-				</div>
-
-				<ul class="pager">
-				    <li class="previous"><a href="#">&larr; Older</a></li>
-				    <li class="next"><a href="#">Newer &rarr;</a></li>
-				</ul>
-
-			</div>
-
-			<div class="col-lg-2 col-sm-2">
-				<div class="sidebar">
-					<ul>
-						<legend>Design</legend>
-						<li><a href="#">Lorem ipsum</a></li>
-						<li><a href="#">Parturient Risus</a></li>
-						<li><a href="#">Sollicitudin</a></li>
-						<li><a href="#">Dapibus Mollis</a></li>
-						<li><a href="#">Sem Nullam</a></li>
-					</ul>
-					
-					<ul>
-						<legend>Code</legend>
-						<li><a href="#">Lorem ipsum</a></li>
-						<li><a href="#">Parturient Risus</a></li>
-						<li><a href="#">Sollicitudin</a></li>
-						<li><a href="#">Dapibus Mollis</a></li>
-						<li><a href="#">Sem Nullam</a></li>
-					</ul>
-					
-					<ul>
-						<legend>Marketing</legend>
-						<li><a href="#">Lorem ipsum</a></li>
-						<li><a href="#">Parturient Risus</a></li>
-						<li><a href="#">Sollicitudin</a></li>
-						<li><a href="#">Dapibus Mollis</a></li>
-						<li><a href="#">Sem Nullam</a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
+  </div>
 </div>
 
 <%= render file: 'public/templetes/default/_footer.html' %>
 
+    
+    
+    
+    
+    
