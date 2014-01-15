@@ -42,4 +42,11 @@ class WelcomeController < ApplicationController
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
   end
+
+  def search
+    @pages = Admin::Page.search(params[:search])
+    puts @pages.size
+    puts "............................"
+    @channel ||= Admin::Channel.first 
+  end
 end

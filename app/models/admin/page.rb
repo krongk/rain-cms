@@ -24,8 +24,7 @@ class Admin::Page < ActiveRecord::Base
     end
   end
 
-
-  def short_description(count)
+  def short_description(count = 50)
     self.description.to_s.truncate(count)
   end
   def format_date
@@ -42,6 +41,14 @@ class Admin::Page < ActiveRecord::Base
     pages = pages.select{|p| p.channel.short_title == options[:channel]}  unless options[:channel].nil?
     pages = pages.select{|p| p.properties == options[:properties]} unless options[:properties].nil?
     pages[0...count]
+  end
+  #搜索
+  def self.search(search)
+    if search
+      where(['title LIKE ?', "%#{search}%"])
+    else
+      scoped
+    end
   end
 
 end

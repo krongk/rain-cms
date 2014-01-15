@@ -1,4 +1,4 @@
-	<footer>
+      	<footer>
 		<div class="container">
 			<p>RainCMS. &nbsp;&nbsp;由<a href="http://www.rxy123.com" target="_blank"><b>瑞信云</b></a>全力驱动.</p>
 		</div>
@@ -44,4 +44,10 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
+<% form_tag search_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
     

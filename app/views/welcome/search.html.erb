@@ -1,0 +1,15 @@
+<% title \
+  [ params[:search], 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+<% meta_keywords \
+  [ params[:search], 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+<% meta_description \
+  [ params[:search], 
+    Admin::Keystore.value_for('site_name')].join(' | ').sub(/^\s*\|/, '').strip %>
+
+<% if Admin::Keystore.value_for('search_tmp_path') %>
+  <%= render file: @base_dir + Admin::Keystore.value_for('search_tmp_path') %>
+<% else %>
+  <h2 class="error">没有找的搜索模版文件！</h2>
+<% end %>

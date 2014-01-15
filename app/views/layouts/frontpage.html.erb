@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<% if Admin::Keystore.value_for('html_tag') %>
+  <%= raw Admin::Keystore.value_for('html_tag') %>
+<% else %>
+  <html lang="zh-CN">
+<% end %>
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Language" content="zh-CN" />
@@ -17,24 +23,29 @@
     <%= render file: @base_dir + '_head.html' %>
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= Admin::Keystore.value_for('body_css') %>">
-    
+
+<% if Admin::Keystore.value_for('body_tag') %>
+  <%= raw Admin::Keystore.value_for('body_tag') %>
+<% else %>
+  <body>
+<% end %>
+
     <%= render 'layouts/messages' %>
 
-    <% if @page %> 
-      <%= puts @base_dir %>
-      <%= puts @channel.tmp_detail %>
-      <%= render file: @base_dir + @channel.tmp_detail %>
-    <% else %> 
-      <% case @channel.properties.to_i %>
-      <% when 1 %>
-        <%= render file: @base_dir + @channel.tmp_index %>
-      <% when 2 %>
-        <script type="text/javascript">
-          window.location.href="<%= @channel.default_url %>" 
-        </script>
-      <% else %>
-        cuwo 
+    <% unless params[:search] %>
+      <% if @page %> 
+        <%= render file: @base_dir + @channel.tmp_detail %>
+      <% else %> 
+        <% case @channel.properties.to_i %>
+        <% when 1 %>
+          <%= render file: @base_dir + @channel.tmp_index %>
+        <% when 2 %>
+          <script type="text/javascript">
+            window.location.href="<%= @channel.default_url %>" 
+          </script>
+        <% else %>
+          cuwo 
+        <% end %>
       <% end %>
     <% end %>
     
