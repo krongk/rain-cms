@@ -73,17 +73,19 @@ module ApplicationHelper
   end
 
   #前台获得下拉列表菜单
-  def get_menu(channel_title_or_short_title)
+  #默认调用方法：get_menu('product')
+  #level: 显示的层级深度，默认为2级；如果要显示3级，则调用：get_menu('product', 3)
+  def get_menu(channel_title_or_short_title, level = 1)
     parent_channel = Admin::Channel.find_by(short_title: channel_title_or_short_title)
     parent_channel ||= Admin::Channel.find_by(title: channel_title_or_short_title)
-    return if parent_channel.nil?
-    if parent_channel.children.any?
-      str_arr = []
+    return if parent_channel.nil? 
+    if parent_channel.children.any? && (level = level - 1) >= 0
+       str_arr = []
       str_arr << %{<li class="dropdown">}
       str_arr << %{<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"> #{parent_channel.title} <b class="caret"></b></a>}
       str_arr << %{<ul class="dropdown-menu">}
       parent_channel.children.each do |ch|
-        str_arr << get_menu(ch.short_title)
+        str_arr << get_menu(ch.short_title, level - 1)
       end
       str_arr << %{</ul></li>}
       str_arr.join("\n").html_safe
