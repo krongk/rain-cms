@@ -43,6 +43,10 @@ module ApplicationHelper
   ################################################
   #############helper for view####################
   #
+  def get_date(date)
+    date.strftime("%Y-%m-%d")
+  end
+
   def truncate_content(content, count)
     sanitize(strip_tags(content).truncate(count))
   end

@@ -3,6 +3,7 @@ class Admin::Page < ActiveRecord::Base
   belongs_to :channel
 
   acts_as_taggable
+  scope :by_update_date, order("updated_at DESC")
 
   validates :channel, :title, :short_title, presence: true
   validates :short_title, format: { with: /\A[a-zA-Z0-9-]+\z/,

@@ -49,4 +49,9 @@ class WelcomeController < ApplicationController
     puts "............................"
     @channel ||= Admin::Channel.first 
   end
+
+  def tag
+    @pages = Admin::Page.tagged_with(params[:tag]).by_update_date.page(params[:page])
+  end
+
 end
