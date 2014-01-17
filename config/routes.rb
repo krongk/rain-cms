@@ -22,8 +22,8 @@ RainCms::Application.routes.draw do
   #routes for front ==============================
   root :to => "welcome#index"
   match '/search(/page/:page)', to: "welcome#search", via: :get
-  match '/tag(/page/:page)', to: "welcome#tag", via: :get
-
+  get '/tag/:tag', to: "welcome#tag", as: 'tag'
+  
   #match '/:profession/:state_code/:dik/:classify_type/(:action(/:id))' => 
   #  'sanction', 
   #  :constraints => { :dik => /\d{4}.\d{2}.\d{2}/,  

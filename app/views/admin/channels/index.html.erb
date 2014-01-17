@@ -10,7 +10,7 @@
   <div class="col-md-10">
     <% @admin_channels.each do |channel| %>
       <div class="panel panel-info">
-        <div class="panel-heading"><%= link_to channel.title, admin_channel_path(channel) %></div>
+        <div class="panel-heading"><i class="fa fa-list"></i> <%= link_to channel.title, admin_channel_path(channel) %></div>
         <!-- List group -->
         <ul class="list-group">
           <% channel.children.each do |ch| %>

@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
 
     tempfiles = File.join(Rails.root, "public", "ckeditor_assets", "**", "*.{jpg, png, gif, jpeg}")
     @image_list = Dir.glob([tempfiles]).map{|i| i.sub(/^.*\/public/, '') }.sort
+    @image_list = @image_list.select{|i| i =~ /thumb_/i}
   end
 
   #render 404 error

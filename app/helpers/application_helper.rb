@@ -100,15 +100,15 @@ module ApplicationHelper
     if parent_channel.children.any?
       str_arr = []
       str_arr << %{<li class="#{li_class}">}
-      str_arr << %{<a href="#{admin_channel_path(parent_channel)}"> #{parent_channel.title}</a>}
+      str_arr << %{<a href="#{admin_channel_path(parent_channel)}"> #{parent_channel.title}</a> <i class="fa fa-caret-down"></i> }
       str_arr << %{<ul class="#{ul_class}">}
       parent_channel.children.each do |ch|
-        str_arr << get_admin_channel(ch, ul_class, li_class)
+        str_arr << get_admin_channel_list(ch, ul_class, li_class)
       end
       str_arr << %{</ul></li>}
       str_arr.join("\n").html_safe
     else
-      %{<li class="#{li_class}"><a href="#{admin_channel_path(parent_channel)}">#{parent_channel.title}</a></li>}.html_safe
+      %{<li class="#{li_class}"><i class="fa fa-files-o"></i> <a href="#{admin_channel_path(parent_channel)}">#{parent_channel.title}</a></li>}.html_safe
     end
   end
   #this method used on admin/channel and admin/page create and update.
