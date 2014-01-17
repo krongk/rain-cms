@@ -28,6 +28,7 @@ class Admin::Page < ActiveRecord::Base
   def short_description(count = 50)
     self.description.to_s.truncate(count)
   end
+  
   def format_date
     self.updated_at.strftime("%Y-%m-%d") unless self.updated_at.nil?
   end
@@ -46,9 +47,10 @@ class Admin::Page < ActiveRecord::Base
   #搜索
   def self.search(search)
     if search
-      where(['title LIKE ?', "%#{search}%"])
+      puts ".................................................#{search}"
+      where('title LIKE ?', "%#{search}%")
     else
-      scoped
+      all
     end
   end
 

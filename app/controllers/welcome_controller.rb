@@ -33,8 +33,10 @@ class WelcomeController < ApplicationController
     not_found if @channel.nil?
     not_found if params[:id] && @page.nil?
     
+    if params[:search]
+      @pages = Admin::Page.search(params[:search]).by_update_date.page(params[:page])
     #tag
-    if params[:tag]
+    elsif params[:tag]
       @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
       @pages = @channel.pages.order("updated_at DESC").page(params[:page])
@@ -44,14 +46,13 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    @pages = Admin::Page.search(params[:search])
-    puts @pages.size
-    puts "............................"
+    @pages = Admin::Page.search(params[:search]).by_update_date.page(params[:page])
     @channel ||= Admin::Channel.first 
   end
 
   def tag
     @pages = Admin::Page.tagged_with(params[:tag]).by_update_date.page(params[:page])
+    @channel ||= Admin::Channel.first 
   end
 
 end

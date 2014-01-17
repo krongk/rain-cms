@@ -32,7 +32,7 @@
 
     <%= render 'layouts/messages' %>
 
-    <% unless params[:search] %>
+    <% unless params[:search] || params[:tag] %>
       <% if @page %> 
         <%= render file: @base_dir + @channel.tmp_detail %>
       <% else %> 
