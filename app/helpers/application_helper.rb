@@ -79,7 +79,7 @@ module ApplicationHelper
     parent_channel ||= Admin::Channel.find_by(title: channel_title_or_short_title)
     return if parent_channel.nil? 
     if parent_channel.children.any? && (level = level - 1) >= 0
-       str_arr = []
+      str_arr = []
       str_arr << %{<li class="dropdown">}
       str_arr << %{<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"> #{parent_channel.title} <b class="caret"></b></a>}
       str_arr << %{<ul class="dropdown-menu">}
