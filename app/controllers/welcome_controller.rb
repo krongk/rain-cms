@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   # 1. a URL query must has channel except root
   # 2. If has page, the channel is page.channel, not care the params
   def index
-    #render text: params and return
+    #render text: request.path and return
    
     #page first, then channel ?
     if params[:id]
@@ -43,6 +43,14 @@ class WelcomeController < ApplicationController
     end
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
+
+    #统一访问路径，使URL呈唯一性
+    if @page
+      if request.path != "/#{@channel.short_title}/#{@page.id}"
+        redirect_to "/#{@channel.short_title}/#{@page.id}"
+      end
+    end
+
   end
 
   def search
