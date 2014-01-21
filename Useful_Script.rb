@@ -64,3 +64,21 @@
   User.tagged_with(["awesome", "cool"], :exclude => true)
 ############HOW TO USE TAG############################
  
+
+############Fix ckeditor picture ############################
+change
+:url  => "/ckeditor_assets/pictures/:id/:style_:basename.:extension" => 
+:url  => "/ckeditor_assets/pictures/:id/:style.:extension",
+
+def test
+  tempfiles = File.join(Rails.root, "public", "ckeditor_assets", "**", "*.{jpg, png, gif, jpeg}")
+  Dir.glob([tempfiles]).each do |img|
+    new_img_path = img.sub(/(content|original|thumb)_.*[.](jpg|png|jpeg|gif).*$/, '\1.\2')
+    next if new_img_path == img
+    puts img
+    puts new_img_path
+
+    FileUtils.mv img, new_img_path
+  end
+  ''
+end

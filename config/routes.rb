@@ -8,7 +8,7 @@ RainCms::Application.routes.draw do
     resources :pages
     resources :channels
     resources :keystores
-    get "home/index"
+    get "home/ckeditor_pictures"
     get "home/help"
     get "templetes/index"
     get "templetes/show"
