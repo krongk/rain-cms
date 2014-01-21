@@ -8,7 +8,7 @@ RainCms::Application.routes.draw do
     resources :pages
     resources :channels
     resources :keystores
-    get "home/index"
+    get "home/ckeditor_pictures"
     get "home/help"
     get "templetes/index"
     get "templetes/show"
@@ -21,6 +21,8 @@ RainCms::Application.routes.draw do
   end
   #routes for front ==============================
   root :to => "welcome#index"
+  
+  #match search/tag special path
   match '/search(/page/:page)', to: "welcome#search", via: :get, as: 'search'
   match '/tag/:tag', to: "welcome#tag", as: 'tag', via: :get
   
@@ -30,5 +32,6 @@ RainCms::Application.routes.draw do
   #  :classify_type => /title|date|skip/ }
   match '/:channel(/:id)', to: "welcome#index", via: :get
   match '/:channel(/page/:page)', to: "welcome#index", via: :get
+
 
 end

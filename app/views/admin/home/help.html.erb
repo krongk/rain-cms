@@ -1,218 +1,36 @@
-<div class="row">
-  <div class="col-md-2">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        RainCMS使用教程
-      </a>
-      <a href="#raincms" class="list-group-item">RainCMS简介</a>
-      <a href="#templete" class="list-group-item">如何创建网页模板</a>
-      <a href="#channel" class="list-group-item">如何添加栏目</a>
-      <a href="#page" class="list-group-item">如何添加页面</a>
+<div id="admin_help" class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="list-group" data-spy="affix" data-offset-top="100">
+        <a href="#" class="list-group-item active">
+          RainCMS使用教程
+        </a>
+        <a href="#about" class="list-group-item"><i class="fa fa-dot-circle-o"></i> RainCMS简介</a>
+        <a href="#templete" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何创建网页模板</a>
+        <a href="#channel" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加栏目</a>
+        <a href="#page" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加页面</a>
+        <a href="#search" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加搜索功能</a>
+        <a href="#tag" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加标签(TAG)</a>
+      </div>
     </div>
-  </div>
-  <div class="col-md-10">
-    <!-- raincms start-->
+    <div class="col-md-10">
+      <hr class="hr-white"><a name="about"></a>
+      <%= render partial: 'about' %>
 
-<div id="wmd-preview" class="wmd-preview" style="height: auto;">
-<h2>RainCMS简介</h2>
-<a name="raincms"></a>
-<p>RainCMS是由Ruby on Rails开发的一款轻量级内容管理开源系统。由瑞信云科技公司开发并维护，如今已经服务于国外多家企业，获得了良好的效果和反馈，中文版系统将致力于围绕国内企业需求，作出许多改进和实践，以切合国内网络环境的需求。</p>
+      <hr class="hr-white"><a name="templete"></a>
+      <%= render partial: 'templete' %>
 
-<p>您可以使用 <strong>RainCMS</strong>：</p>
+      <hr class="hr-white"><a name="channel"></a>
+      <%= render partial: 'channel' %>
 
-<ul>
-<li>建立一个功能完善的企业独立站点</li>
-<li>高级模板定制（需要有一定的开发基础）</li>
-<li>手机优先适配，一个站点同时支持电脑、PAD和手机</li>
-<li>发布页面，博客，新闻，日记，杂文，所见所想</li>
-<li>多方面SEO优化，营销渠道支持</li>
-<li>轻松第三方插件集成</li>
-</ul>
+      <hr class="hr-white"><a name="page"></a>
+      <%= render partial: 'page' %>
 
-<p>RainCMS从技术层面封装了控制层和对象模块，用户只需要定制视图层模板，即可获得全新的独立站点。</p>
+      <hr class="hr-white"><a name="search"></a>
+      <%= render partial: 'search' %>
 
-<hr class="hr-white">
-
-<h2>如何创建网页模板</h2>
-<a name="templete"></a>
-<p>RainCMS前端的样式，都是基于模版创建而来，不同的模版对应不同的主题和效果，用户可以轻松自由的定制模版。</p>
-<p>模版的定制规则如下：(参考/templetes/generate_templetes.rb)</p>
-
-<h3>模版文件结构</h3>
-<pre>
-  |templetes
-            |templete_name
-                          |assets
-                                |css
-                                |js
-                                |font
-                                |img
-                          |images
-                          |index.html
-                          |t_blog_list.html
-                          |t_blog_detail.html
-                          |about.html
-</pre>
-规则说明：
-<ul>
-  <li>模版必须放在/public/templetes/目录下</li>
-  <li>[首页]必须名为: index.html</li>
-  <li>[模版页]必须以"t_"打头， 如blog_list.html</li>
-  <li>[内容页]用容易识别的名称命名</li>
-</ul>
-
-<p>下面分别介绍[首页],[模版页]和[内容页]</p>
-
-<h3>定制[首页]</h3>
-<p>首页作为模版的统一入口，所有公共的css、js、导航、页脚等部分都从首页里面提取出来。</p>
-<ul>
-  <li>
-    <p>用下面的标记分别把需要提取的部分标记出来</p>
-    <p>&gt;head&lt;部分公共代码（一般是css文件）</p>
-    <pre>
-      &lt;!-- [[head start]] --&gt;
-        ...
-      &lt;!-- [[head end]] --&gt;
-    </pre>
-    <p>网页底部公共代码(一般是js文件和统计代码等)</p>
-    <pre>
-      &lt;!-- [[foot start]] --&gt;
-        ...
-      &lt;!-- [[foot end]] --&gt;
-    </pre>
-    <p>公共导航部分，页头</p>
-    <pre>
-      &lt;!-- [[header start]] --&gt;
-        ...
-      &lt;!-- [[header end]] --&gt;
-    </pre>
-    <p>页脚公共部分，如友情链接、版权信息等</p>
-    <pre>
-      &lt;!-- [[footer start]] --&gt;
-        ...
-      &lt;!-- [[footer end]] --&gt;
-    </pre>
-  </li>
-</ul>
-
-<h3>定制[模版页]</h3>
-<p>模版页作为通用模版调用，如博客系统则有一个列表模版+详细页模版。</p>
-<p>模版页的修改很简单，通过以下步骤实现:</p>
-<ul>
-  <li>
-    <p>把模版的名字更改为"t_xxx.html"</p>
-  </li>
-  <li>
-    <p>把css在本页特有的代码，复制到index.html的&lt;head&gt;部分（如果有的话）</p>
-  </li>
-  <li>
-    <p>把js在本页特有的部分，复制到index.html的&lt;foot&gt;部分（如果有的话）</p>
-  </li> 
-  <li>在&lt;body&gt;部分标示出共有的代码：
-    <pre>
-      &lt;!-- [[header start]] --&gt;
-        ...
-      &lt;!-- [[header end]] --&gt;
-
-      &lt;!-- [[footer start]] --&gt;
-        ...
-      &lt;!-- [[footer end]] --&gt;
-    </pre>
-  </li>
-</ul>
-
-<h3>定制[内容页]</h3>
-<p>内容页作为某个独特的网页而存在，比如about.html是为了呈现‘关于我们’栏目的效果，team.html是为了呈现'关于团队'栏目的效果。</p>
-<p>内容页将会装载到指定的模版页面中，如"temp_default_index.html"模版中，如果内容页作为栏目，那么该栏目下面的页面将会装载到“temp_default_detail.html”模版中， 内容页的修改步骤如下:</p>
-<ul>
-  <li>
-    <p>通过模版页复制，创建两个文件“t_default_index.html"和"t_default_detail.html"</p>
-  </li>
-  <li>
-    <p>在“t_default_index.html"和"t_default_detail.html"要呈现内容的地方加上： &gt;%= yield(:content) %&lt; </p>
-  </li> 
-  <li>
-    <p>把内容页&gt;body&lt;部分中的header,footer部分用代码标记起来：</p>
-    <pre>
-      &lt;!-- [[header start]] --&gt;
-        ...
-      &lt;!-- [[header end]] --&gt;
-
-      &lt;!-- [[footer start]] --&gt;
-        ...
-      &lt;!-- [[footer end]] --&gt;
-    </pre>
-  </li>
-</ul>
-
-<hr class="hr-white">
-
-<h2>什么是 Cmd Markdown</h2>
-<a name="channel"></a>
-<p>您可以使用很多工具书写 Markdown，但是 <strong>Cmd Markdown</strong> 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 <strong>Cmd Markdown</strong>，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
-
-<h3>1. 实时同步预览</h3>
-
-<p>我们将 Cmd Markdown 的主界面一分为二，左边为<strong>编辑区</strong>，右边为<strong>预览区</strong>，在编辑区的操作会实时地渲染到预览区方便查看最终的版面效果，并且如果你在其中一个区拖动滚动条，我们有一个巧妙的算法把另一个区的滚动条同步到等价的位置，超酷！</p>
-
-<h3>2. 编辑工具栏</h3>
-
-<p>也许您还是一个 Markdown 语法的新手，在您完全熟悉它之前，我们在 <strong>编辑区</strong> 的顶部放置了一个如下图所示的工具栏，您可以使用鼠标在工具栏上调整格式，不过我们仍旧鼓励你使用键盘标记格式，提高书写的流畅度。</p>
-
-<p><img src="http://www.zybuluo.com/static/img/toolbar-editor.png" alt="tool-editor" title=""></p>
-
-<h3>3. 编辑模式</h3>
-
-<p>如果您还想以更加心无旁骛的方式编辑文字，可以点击 <strong>编辑工具栏</strong> 最右测的拉伸按钮或者按下 <strong>Ctrl + M</strong>，将 Cmd Markdown 切换到独立的编辑模式，这是一个极度简洁的写作环境，所有可能会引起分心的元素都已经被挪除，超清爽！</p>
-
-<h3>4. 实时的云端文稿</h3>
-
-<p>为了保障数据安全，Cmd Markdown 会将您每一次击键的内容保存至云端，同时在 <strong>编辑工具栏</strong> 的最右侧提示 “已保存” 的字样。无需担心浏览器崩溃，机器掉电或者地震，海啸——在编辑的过程中随时关闭浏览器或者机器，下一次回到 Cmd Markdown 的时候继续写作。</p>
-
-<h3>5. 离线模式</h3>
-
-<p>在网络环境不稳定的情况下记录文字一样很安全！在您写作的时候，如果电脑突然失去网络连接，Cmd Markdown 会智能切换至离线模式，将您后续键入的文字保存在本地，直到网络恢复再将他们传送至云端，即使在网络恢复前关闭浏览器或者电脑，一样没有问题，等到下次开启 Cmd Markdown 的时候，她会提醒您将离线保存的文字传送至云端。简而言之，我们尽最大的努力保障您文字的安全。</p>
-
-<h3>6. 管理工具栏</h3>
-
-<p>为了便于管理您的文稿，在 <strong>预览区</strong> 的顶部放置了如下所示的 <strong>管理工具栏</strong>：</p>
-
-<p><img src="http://www.zybuluo.com/static/img/toolbar-manager.png" alt="tool-manager" title=""></p>
-
-<p>工具栏上的四个图标依次为：</p>
-
-<ul>
-<li><strong>立即发布</strong>：将当前的文稿生成到固定链接，在网络上发布这个链接，分享您的文稿</li>
-<li><strong>新建文本</strong>：开始撰写一篇新的文稿</li>
-<li><strong>删除文本</strong>：删除当前的文稿</li>
-<li><strong>导出文本</strong>：将当前的文稿转化为 Markdown 文本或者 Html 格式，并导出到本地</li>
-</ul>
-
-<h3>7. 阅读工具栏</h3>
-
-<p><img src="http://www.zybuluo.com/static/img/toolbar-reader.png" alt="tool-manager" title=""></p>
-
-<p>通过在 <strong>预览区</strong> 顶部右侧的 <strong>阅读工具栏</strong>，可以查看文稿列表，增强阅读体验</p>
-
-<p>工具栏上的四个图标依次为：</p>
-
-<ul>
-<li><strong>文稿列表</strong>：所有新增和过往的文稿都可以在这里查看、操作</li>
-<li><strong>主题切换</strong>：内置了黑白两种模式的主题，试试 <strong>黑色主题</strong>，超炫！</li>
-<li><strong>阅读模式</strong>：心无旁骛的阅读模式提供超一流的阅读体验</li>
-<li><strong>全屏模式</strong>：简洁，简洁，再简洁，一个完全沉浸式的写作和阅读环境</li>
-</ul>
-
-<h3>8. 阅读模式</h3>
-
-<p>在 <strong>阅读工具栏</strong> 点击 <strong>阅读模式</strong> 图标或者按下 <strong>Ctrl+Alt+M</strong> 随即进入独立的阅读模式界面，我们在版面渲染上的每一个细节：字体，字号，行间距，前背景色都倾注了大量的时间，努力提升您阅读的体验和品质。尝试进入阅读模式，感受这份诚意。</p>
-
-<h3>9. 文稿发布和分享</h3>
-
-<p>在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <strong>立即发布</strong> 图标发布这份文档给好友吧！</p>
-
-<hr class="hr-white"></div>
-
-    <!-- raincms start-->
+      <hr class="hr-white"><a name="tag"></a>
+      <%= render partial: 'tag' %>
+    </div>
   </div>
 </div>

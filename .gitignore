@@ -29,6 +29,7 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/database.yml
+/config/application.yml
 /coverage.data
 /coverage/
 /db/*.javadb/
@@ -40,7 +41,8 @@ db/*.sqlite3
 /public/cache
 /public/page_cache
 /public/ckeditor_assets
-/public/assets
+/public/assets/*
+/public/favicon.ico
 /public/templetes/sunon-dcj
 /public/templetes/rxy123
 /public/templetes/rxy-cn

@@ -11,15 +11,14 @@
   <% if user_signed_in? %>
     <ul class="nav navbar-nav">
       <li><%= link_to '系统参数', admin_keystores_path %></li>
-      <li><%= link_to '模版管理', "/admin/templetes/index" %></li>     
+      <li><%= link_to '模版管理', "/admin/templetes/index" %></li>
+      <li><%= link_to '图片管理', "home/ckeditor_pictures" %></li>
       <li><%= link_to '栏目管理', admin_channels_path %></li>
       <li><%= link_to '页面管理', admin_pages_path %></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="/admin/home/help">使用教程</a></li>
-          <li><a href="/admin/home/index">版权说明</a></li>
-     
           <li class="divider"></li>
           <li class="dropdown-header">Nav header</li>
 
@@ -35,17 +34,14 @@
         </li>
       <% end %>
       <li>
-      <%= link_to '修改账户', edit_user_registration_path %>
+      <%= link_to '修改密码', edit_user_registration_path %>
       </li>
       <li>
-      <%= link_to '退出', destroy_user_session_path, :method=>'delete' %>
+        <%= link_to '退出', destroy_user_session_path, :method=>'delete' %>
       </li>
     <% else %>
       <li>
-      <%= link_to '注册', new_user_registration_path %>
-      </li>
-      <li>
-      <%= link_to '登录', new_user_session_path %>
+        <%= link_to '登录', new_user_session_path %>
       </li>
     <% end %>
   </ul>
