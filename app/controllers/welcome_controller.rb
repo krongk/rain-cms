@@ -54,12 +54,12 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    @pages = Admin::Page.search(params[:search]).by_update_date.page(params[:page])
+    @pages = Admin::Page.search(params[:search]).page(params[:page])
     @channel ||= Admin::Channel.first 
   end
 
   def tag
-    @pages = Admin::Page.tagged_with(params[:tag]).by_update_date.page(params[:page])
+    @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     @channel ||= Admin::Channel.first 
   end
 
