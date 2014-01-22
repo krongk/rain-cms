@@ -36,7 +36,7 @@
 
 <script type="text/javascript">
   $(document).on("click", ".thumbnail", function () {
-    $("#modal-body-img").append("<img src='" + $(this).data('content') + "'>");
+    $("#modal-body-img").html("<img src='" + $(this).data('content') + "'>");
     $("#modal-body-img").append("<p><b>原图地址：</b><input style='width: 300px;' value='" + $(this).data('original') + "'></p>");
     $("#modal-body-img").append("<p><b>大图地址：</b><input style='width: 300px;' value='" + $(this).data('content') + "'></p>");
     $("#modal-body-img").append("<p><b>小图地址：</b><input style='width: 300px;' value='" + $(this).data('thumb') + "'></p>");
