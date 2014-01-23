@@ -39,7 +39,8 @@ class WelcomeController < ApplicationController
     elsif params[:tag]
       @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
-      @pages = @channel.pages.order("updated_at DESC").page(params[:page])
+      #@pages = @channel.pages.order("updated_at DESC").page(params[:page])
+      @pages = Admin::Page.joins(:channel).where(["admin_channels.id = ? OR admin_channels.parent_id = ?", @channel.id, @channel.id]).page(params[:page])  
     end
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)

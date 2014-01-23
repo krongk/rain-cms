@@ -26,7 +26,7 @@ RainCms::Application.routes.draw do
   
   #match search/tag special path
   match '/search(/page/:page)', to: "welcome#search", via: :get, as: 'search'
-  match '/tag/:tag', to: "welcome#tag", as: 'tag', via: :get
+  match '/tag/:tag(/page/:page)', to: "welcome#tag", as: 'tag', via: :get
   
   #match '/:profession/:state_code/:dik/:classify_type/(:action(/:id))' => 
   #  'sanction', 
