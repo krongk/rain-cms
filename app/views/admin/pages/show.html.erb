@@ -1,49 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @admin_page.user %>
-</p>
-
-<p>
-  <strong>Channel:</strong>
-  <%= @admin_page.channel %>
-</p>
-
-<p>
-  <strong>Title:</strong>
+<h2>
   <%= @admin_page.title %>
-</p>
+</h2>
 
-<p>
-  <strong>Short title:</strong>
-  <%= @admin_page.short_title %>
-</p>
-
-<p>
-  <strong>Properties:</strong>
-  <%= @admin_page.properties %>
-</p>
-
-<p>
-  <strong>Keywords:</strong>
-  <%= @admin_page.keywords %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @admin_page.description %>
-</p>
-
-<p>
-  <strong>Image path:</strong>
-  <%= @admin_page.image_path %>
-</p>
-
-<p>
-  <strong>Content:</strong>
+<hr/>
+<div class="container">
   <%= raw @admin_page.content %>
-</p>
-
-<%= link_to 'Edit', edit_admin_page_path(@admin_page) %> |
-<%= link_to 'Back', admin_pages_path %>
+</div>
+<hr/>
+<%= link_to '修改', edit_admin_page_path(@admin_page) %> |
+<%= link_to '返回', admin_pages_path %>

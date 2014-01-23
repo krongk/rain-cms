@@ -1,5 +1,7 @@
 RainCms::Application.routes.draw do
   
+  resources :comments
+
   #routes for admin ==============================
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
