@@ -1,0 +1,45 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover ">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>手机号码</th>
+        <th>电话号码</th>
+        <th>Email</th>
+        <th>QQ</th>
+        <th>地址</th>
+        <th>性别</th>
+        <th>出生</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.name %></td>
+          <td><%= comment.mobile_phone %></td>
+          <td><%= comment.tel_phone %></td>
+          <td><%= comment.email %></td>
+          <td><%= comment.qq %></td>
+          <td><%= comment.address %></td>
+          <td><%= comment.gender %></td>
+          <td><%= comment.birth %></td>
+          <td><%= comment.status %></td>
+          <td>
+            <%= link_to comment do %>
+              <i class="fa fa-eye"></i> 查看详情
+            <% end %> | 
+            <%= link_to edit_comment_path(comment) do %>
+              <i class="fa fa-edit"></i> 修改状态
+            <% end %> | 
+            <%= link_to comment, method: :delete, data: { confirm: '删除以后无法恢复，确定要删除?' }  do %>
+              <i class="fa fa-trash-o"></i> 删除
+            <% end %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

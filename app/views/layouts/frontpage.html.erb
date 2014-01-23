@@ -33,7 +33,7 @@
 
     <%= render 'layouts/messages' %>
 
-    <% unless params[:search] || params[:tag] %>
+    <% unless params[:search] || params[:tag] || params[:controller] == 'comments' %>
       <% if @page %>
         <% if File.exist?( @base_dir + @channel.tmp_detail )%>
           <%= render file: @base_dir + @channel.tmp_detail %>
