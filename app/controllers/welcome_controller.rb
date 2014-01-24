@@ -45,6 +45,9 @@ class WelcomeController < ApplicationController
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
 
+    #comment
+    @comment = Comment.new
+    
     #统一访问路径，使URL呈唯一性
     if @page
       if request.path != "/#{@channel.short_title}/#{@page.id}"

@@ -10,6 +10,7 @@ RainCms::Application.routes.draw do
     resources :pages
     resources :channels
     resources :keystores
+    resources :comments
     get "home/ckeditor_pictures"
     get "home/help"
     get "templetes/index"
