@@ -1,7 +1,7 @@
 #encoding: utf-8
-class CreateComments < ActiveRecord::Migration
+class CreateAdminComments < ActiveRecord::Migration
   def change
-    create_table :comments do |t|
+    create_table :admin_comments do |t|
       t.string :name
       t.string :mobile_phone
       t.string :tel_phone

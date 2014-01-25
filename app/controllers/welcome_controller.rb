@@ -39,11 +39,15 @@ class WelcomeController < ApplicationController
     elsif params[:tag]
       @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
     else
-      @pages = @channel.pages.order("updated_at DESC").page(params[:page])
+      #@pages = @channel.pages.order("updated_at DESC").page(params[:page])
+      @pages = Admin::Page.joins(:channel).where(["admin_channels.id = ? OR admin_channels.parent_id = ?", @channel.id, @channel.id]).page(params[:page])  
     end
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
 
+    #comment
+    @comment = Comment.new
+    
     #统一访问路径，使URL呈唯一性
     if @page
       if request.path != "/#{@channel.short_title}/#{@page.id}"
