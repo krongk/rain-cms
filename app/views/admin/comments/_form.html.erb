@@ -5,7 +5,9 @@
     <label class="string optional control-label" for="admin_channel_typo">修改状态：</label>
     <%= f.select :status, Comment::STATUS, include_blank: true %>
     <blockquote>
-      <p><%= f.button :submit, class: 'btn btn-large btn-primary' %></p>
+      <p><%= f.button :submit, class: 'btn btn-large btn-primary' %> | 
+      <a href="/admin/comments" class='btn btn-large btn-default'>返回</a>
+      </p>
     </blockquote>
   </div>
   <div class="col-md-8">
