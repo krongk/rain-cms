@@ -14,8 +14,7 @@ class CreateAdminComments < ActiveRecord::Migration
       t.text :content
       t.text :content2
       t.text :content3
-      t.string :status, default: '未处理'
-
+      t.string :status
       t.timestamps
     end
   end
