@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :load_templete
 
+  #catch exception
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
+  end
+  rescue_from ActionController::RoutingError do |exception|
+    redirect_to root_path, :alert => '没有找到该文件！'
   end
 
   private
