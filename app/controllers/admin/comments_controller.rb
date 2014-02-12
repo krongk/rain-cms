@@ -1,6 +1,7 @@
 class Admin::CommentsController < Admin::ApplicationController
   before_action :set_admin_comment, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /admin/comments
   # GET /admin/comments.json
   def index

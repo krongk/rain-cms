@@ -1,6 +1,5 @@
 #encoding: utf-8
 class Admin::TempletesController < Admin::ApplicationController
-
   def index
   end
 
@@ -31,6 +30,7 @@ class Admin::TempletesController < Admin::ApplicationController
   end
 
   def update
+    return if user.has_role?(:admin) || user.has_role?(:user)
     @file = File.join(@base_dir, params[:f])
     File.open(@file, 'w'){|f| f.write(params[:content])}
     redirect_to "/admin/templetes/index", notice: "更新成功"

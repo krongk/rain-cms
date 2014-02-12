@@ -1,6 +1,7 @@
 class Admin::KeystoresController < Admin::ApplicationController
   before_action :set_admin_keystore, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  
   # GET /admin/keystores
   # GET /admin/keystores.json
   def index

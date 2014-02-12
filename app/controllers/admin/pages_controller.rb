@@ -1,6 +1,6 @@
 class Admin::PagesController < Admin::ApplicationController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /admin/pages
   # GET /admin/pages.json
   def index
