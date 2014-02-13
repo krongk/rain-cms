@@ -31,7 +31,7 @@ class Admin::TempletesController < Admin::ApplicationController
 
   def update
     #only admin can modify templtes
-    if current_user.has_role?(:admin)
+    unless current_user.has_role?(:admin)
       redirect_to "/admin/templetes/index", alert: "没有修改权限"
       return
     end
