@@ -30,7 +30,12 @@ class Admin::TempletesController < Admin::ApplicationController
   end
 
   def update
-    return if user.has_role?(:admin) || user.has_role?(:user)
+    #only admin can modify templtes
+    if current_user.has_role?(:admin)
+      redirect_to "/admin/templetes/index", alert: "没有修改权限"
+      return
+    end
+
     @file = File.join(@base_dir, params[:f])
     File.open(@file, 'w'){|f| f.write(params[:content])}
     redirect_to "/admin/templetes/index", notice: "更新成功"
