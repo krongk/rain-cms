@@ -1,7 +1,6 @@
 class Admin::CommentsController < Admin::ApplicationController
   before_action :set_admin_comment, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
-  
+ 
   # GET /admin/comments
   # GET /admin/comments.json
   def index
@@ -41,6 +40,11 @@ class Admin::CommentsController < Admin::ApplicationController
   # PATCH/PUT /admin/comments/1
   # PATCH/PUT /admin/comments/1.json
   def update
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_comments_path, alert: "没有修改权限"
+      return
+    end
     respond_to do |format|
       if @comment.update(admin_comment_params)
         format.html { redirect_to admin_comments_path, notice: '修改成功.' }
@@ -55,6 +59,11 @@ class Admin::CommentsController < Admin::ApplicationController
   # DELETE /admin/comments/1
   # DELETE /admin/comments/1.json
   def destroy
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_comments_path, alert: "没有修改权限"
+      return
+    end
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to admin_comments_url }
