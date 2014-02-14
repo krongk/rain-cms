@@ -1,5 +1,4 @@
 class Admin::ChannelsController < Admin::ApplicationController
-  load_and_authorize_resource
   before_action :set_admin_channel, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/channels
@@ -45,6 +44,12 @@ class Admin::ChannelsController < Admin::ApplicationController
   # PATCH/PUT /admin/channels/1
   # PATCH/PUT /admin/channels/1.json
   def update
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_channels_path, alert: "没有权限"
+      return
+    end
+
     admin_channel_params[:user_id] = current_user.id
 
     respond_to do |format|
@@ -67,6 +72,11 @@ class Admin::ChannelsController < Admin::ApplicationController
   # DELETE /admin/channels/1
   # DELETE /admin/channels/1.json
   def destroy
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_channels_path, alert: "没有权限"
+      return
+    end
     @admin_channel.destroy
     respond_to do |format|
       format.html { redirect_to admin_channels_url }

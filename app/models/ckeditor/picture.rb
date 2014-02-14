@@ -6,6 +6,8 @@ class Ckeditor::Picture < Ckeditor::Asset
 
   validates_attachment_size :data, :less_than => 5.megabytes
   validates_attachment_presence :data
+  #update to version 4.0
+  validates_attachment_content_type :data, :content_type => /\Aimage\/.*\Z/
 
   def url_content
     url(:content)
