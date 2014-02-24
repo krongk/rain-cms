@@ -9,11 +9,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :load_templete
 
+  #catch exception
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
+  end
+  rescue_from ActionController::RoutingError do |exception|
+    redirect_to root_path
   end
 
   private
+  #detect if a mobile device
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
+  end
+  helper_method :mobile_device?
+
   #this method initlize global variables.
   def load_templete
     @templete = Admin::Keystore.value_for('templete')

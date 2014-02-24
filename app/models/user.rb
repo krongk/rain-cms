@@ -6,11 +6,6 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, 
   #        :recoverable, :rememberable, :trackable, :validatable
 
-  # xj: disable the :registerable, not allow user sign up on production.
-  if Rails.env.production?
-    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-  else
-    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
-  end
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
 
 end

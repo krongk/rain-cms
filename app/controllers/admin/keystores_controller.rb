@@ -1,6 +1,6 @@
 class Admin::KeystoresController < Admin::ApplicationController
   before_action :set_admin_keystore, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /admin/keystores
   # GET /admin/keystores.json
   def index
@@ -54,6 +54,11 @@ class Admin::KeystoresController < Admin::ApplicationController
   # DELETE /admin/keystores/1
   # DELETE /admin/keystores/1.json
   def destroy
+    #only admin can modify 
+    unless current_user.has_role?(:admin) 
+      redirect_to admin_keystores_path, alert: "没有权限"
+      return
+    end
     @admin_keystore.destroy
     respond_to do |format|
       format.html { redirect_to admin_keystores_url }

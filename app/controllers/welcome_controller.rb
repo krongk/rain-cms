@@ -34,13 +34,13 @@ class WelcomeController < ApplicationController
     not_found if params[:id] && @page.nil?
     
     if params[:search]
-      @pages = Admin::Page.search(params[:search]).by_update_date.page(params[:page])
+      @pages = Admin::Page.search(params[:search]).order("updated_at DESC").page(params[:page])
     #tag
     elsif params[:tag]
-      @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
+      @pages = Admin::Page.tagged_with(params[:tag]).order("updated_at DESC").page(params[:page])
     else
       #@pages = @channel.pages.order("updated_at DESC").page(params[:page])
-      @pages = Admin::Page.joins(:channel).where(["admin_channels.id = ? OR admin_channels.parent_id = ?", @channel.id, @channel.id]).page(params[:page])  
+      @pages = Admin::Page.joins(:channel).where(["admin_channels.id = ? OR admin_channels.parent_id = ?", @channel.id, @channel.id]).order("admin_pages.updated_at DESC").page(params[:page])  
     end
     #tag cloud
     @tags = Admin::Page.tag_counts_on(:tags)
@@ -58,13 +58,19 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    @pages = Admin::Page.search(params[:search]).page(params[:page])
+    @pages = Admin::Page.search(params[:search]).order("updated_at DESC").page(params[:page])
     @channel ||= Admin::Channel.first 
+
+    #comment
+    @comment = Comment.new
   end
 
   def tag
-    @pages = Admin::Page.tagged_with(params[:tag]).page(params[:page])
-    @channel ||= Admin::Channel.first 
+    @pages = Admin::Page.tagged_with(params[:tag]).order("updated_at DESC").page(params[:page])
+    @channel ||= Admin::Channel.first
+
+    #comment
+    @comment = Comment.new
   end
 
 end

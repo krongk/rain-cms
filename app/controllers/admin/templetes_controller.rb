@@ -1,6 +1,5 @@
 #encoding: utf-8
 class Admin::TempletesController < Admin::ApplicationController
-
   def index
   end
 
@@ -31,6 +30,12 @@ class Admin::TempletesController < Admin::ApplicationController
   end
 
   def update
+    #only admin can modify templtes
+    unless current_user.has_role?(:admin)
+      redirect_to "/admin/templetes/index", alert: "没有修改权限"
+      return
+    end
+
     @file = File.join(@base_dir, params[:f])
     File.open(@file, 'w'){|f| f.write(params[:content])}
     redirect_to "/admin/templetes/index", notice: "更新成功"

@@ -5,6 +5,4 @@ class Admin::HomeController < Admin::ApplicationController
 
   def help
   end
-
-
 end

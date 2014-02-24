@@ -43,6 +43,11 @@ class Admin::PagesController < Admin::ApplicationController
   # PATCH/PUT /admin/pages/1
   # PATCH/PUT /admin/pages/1.json
   def update
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_pages_path, alert: "没有权限"
+      return
+    end
     @admin_page.user_id = current_user.id
     respond_to do |format|
       if @admin_page.update(admin_page_params)
@@ -64,6 +69,11 @@ class Admin::PagesController < Admin::ApplicationController
   # DELETE /admin/pages/1
   # DELETE /admin/pages/1.json
   def destroy
+    #only user can modify 
+    unless current_user.has_role?(:admin) || current_user.has_role?(:user)
+      redirect_to admin_pages_path, alert: "没有权限"
+      return
+    end
     @admin_page.destroy
     respond_to do |format|
       format.html { redirect_to admin_pages_url }

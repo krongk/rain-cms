@@ -1,7 +1,7 @@
 
 ## Rain-Store服务器管理
 
-1. 登录：115.29.195.174 root 7672d9f5
+1. 登录：115.29.195.174 root pwssword
    修改密码：$>passwd roor-> Kenromxxx(大写)
 
 2. 阿里云服务器便捷工具安装(http://help.aliyun.com/manual?spm=0.0.0.0.qI06SV&lastSortId=440)：
