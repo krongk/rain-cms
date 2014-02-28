@@ -1,6 +1,7 @@
 class Admin::Page < ActiveRecord::Base
   belongs_to :user
   belongs_to :channel
+  self.per_page = 24
 
   acts_as_taggable
 
