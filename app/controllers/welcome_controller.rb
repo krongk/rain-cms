@@ -12,7 +12,6 @@ class WelcomeController < ApplicationController
   # 1. a URL query must has channel except root
   # 2. If has page, the channel is page.channel, not care the params
   def index
-    #render text: request.path and return
    
     #page first, then channel ?
     if params[:id]
