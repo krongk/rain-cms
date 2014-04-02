@@ -106,11 +106,8 @@ CKEDITOR.editorConfig = function( config )
   //
   //xj: Allow all classes for all allowed elements.
   //e.g <ul class="slicer">
-  //config.extraAllowedContent = '*(*)';
-  // use "*(*)" will cause image not render correctly, do not known why?
-  
-  config.extraAllowedContent = 'ul(*);li(*);span(*)';
-  //config.extraAllowedContent = 'li(*)';
-  //config.extraAllowedContent = 'span(*)';
+  //but <i class='fa'></i> is not allowed, you should add like: <i class='fa'> </i>
+  config.allowedContent = true;
+  config.extraAllowedContent = true;
 
 };
