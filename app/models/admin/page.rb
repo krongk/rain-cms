@@ -38,21 +38,34 @@ class Admin::Page < ActiveRecord::Base
   end
 
   #最近新闻
-  #typo = ['article', 'image', 'product']
-  #channel =[ channel.short_title, ]
+  #params: 
+  # => typo = ['article', 'image', 'product']
+  # => channel =[ channel.short_title, ]
+  # => properties =[recommend, top, hot]
   #eg: Admin::Page.recent(12, :typo => 'product',  :rand => true)
+  #    Admin::Page.recent(10, :channel => 'product-bed')
   def self.recent(count = 10, options = {})
-    options = {typo: 'all'}.merge(options)
-    pages = options[:rand] ? Admin::Page.order(" rand() ") : Admin::Page.order("updated_at DESC")
-    pages = pages.select{|p| p.channel.typo == options[:typo]} unless options[:typo] == 'all'
-    pages = pages.select{|p| p.channel.short_title == options[:channel]}  unless options[:channel].nil?
-    pages = pages.select{|p| p.properties == options[:properties]} unless options[:properties].nil?
-    pages[0...count]
+    queries     = []
+    conditions  = []
+    if options[:channel].present?
+      queries     << 'admin_channels.short_title = ?'
+      conditions  << options[:channel]
+    end
+    if options[:typo].present?
+      queries     << 'admin_channels.typo = ?'
+      conditions  << options[:typo]
+    end
+    if options[:properties].present?
+      queries     << 'admin_pages.properties = ?'
+      conditions  << options[:properties]
+    end
+    conditions.unshift(queries.join(' AND '))
+    return Admin::Page.joins(:channel).where(conditions).order("updated_at DESC").limit(count)
   end
+
   #搜索
   def self.search(search)
     if search
-      puts ".................................................#{search}"
       where('title LIKE ?', "%#{search}%")
     else
       all
