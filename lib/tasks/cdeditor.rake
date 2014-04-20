@@ -13,6 +13,3 @@ namespace :ckeditor do
     end
   end
 end
-
-
-
