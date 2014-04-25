@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
   end
   rescue_from ActionController::RoutingError do |exception|
-    redirect_to root_path
+    not_found#  redirect_to root_path
   end
 
   private
