@@ -1,5 +1,5 @@
 source 'http://ruby.taobao.org'
-ruby '2.0.0'
+#ruby '2.0.0'
 gem 'rails', '~> 4.0.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,7 +20,6 @@ gem 'acts-as-taggable-on'
 
 # For linux
 gem 'therubyracer', :platform=>:ruby
-gem 'puma'
 
 #page caching
 # http://www.rubytutorial.io/page-caching-with-rails-4
@@ -28,7 +27,7 @@ gem 'actionpack-page_caching'
 #gem 'rails-observers' #manually remove the cache pages on raincms
 
 #Liquid templete html
-gem 'liquid'
+#gem 'liquid'
 
 #add :git to bugfix open dialog error
 gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
@@ -54,10 +53,10 @@ gem 'i18n_yaml_generator'
 #Markdown syntax
 gem "nokogiri"
 gem "htmlentities"
-gem 'slodown'
+#gem 'slodown'
 
 #Send Mail
-gem 'mailgun'
+#gem 'mailgun'
 
 #Pinyin.t('中国', splitter: '-') => "zhong-guo"
 gem 'chinese_pinyin'

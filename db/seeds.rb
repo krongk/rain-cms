@@ -22,3 +22,18 @@ user.add_role :admin
 puts 'init templetes'
 Admin::Keystore.put('templete', 'default')
 Admin::Keystore.put('site_name', 'Rain CMS')
+
+puts "create new channel"
+#1
+AdminChannel.create!(
+  :parent_id    => nil,
+  :typo         => 'article',
+  :title        => '首页',
+  :short_title  => 'index',
+  :properties   => 1,
+  :default_url  => nil,
+  :tmp_index    => 'temp_index.html',
+  :tmp_detail   => nil,
+  :keywords     => '',
+  :description  => ''
+)
