@@ -27,3 +27,15 @@ INSERT INTO admin_channels(parent_id, typo, title, short_title, properties, defa
 VALUES(NULL, 'article', '产品定制', 'customize', 1, NULL, 'temp_defult_index.html', 'temp_default_detail.html', '产品定制', '产品定制');
 INSERT INTO admin_channels(parent_id, typo, title, short_title, properties, default_url, tmp_index, tmp_detail, keywords, description)
 VALUES(NULL, 'article', '联系我们', 'contact', 1, NULL, 'temp_defult_index.html', 'temp_default_detail.html', '联系我们', '联系我们');
+
+#################
+编辑：index.html
+   在index.html中添加拆分标记，如：
+      # <!-- [[head start]] --> ... <!-- [[head end]] -->
+      # <!-- [[foot start]] --> ... <!-- [[foot end]] -->
+      # <!-- [[header start]] --> ... <!-- [[header end]] -->
+      # <!-- [[footer start]] --> ... <!-- [[footer end]] -->
+#################
+运行：generate_templetes.rb -e theme
+
+

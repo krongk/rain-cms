@@ -24,8 +24,7 @@ Admin::Keystore.put('templete', 'default')
 Admin::Keystore.put('site_name', 'Rain CMS')
 
 puts "create new channel"
-#1
-AdminChannel.create!(
+Admin::Channel.create!(
   :parent_id    => nil,
   :typo         => 'article',
   :title        => '首页',
@@ -33,7 +32,7 @@ AdminChannel.create!(
   :properties   => 1,
   :default_url  => nil,
   :tmp_index    => 'temp_index.html',
-  :tmp_detail   => nil,
-  :keywords     => '',
+  :tmp_detail   => 'temp_index.html',
+  :keywords     => '首页',
   :description  => ''
 )
