@@ -1,0 +1,16 @@
+---
+zh-CN:
+  activerecord:
+    models:
+      admin/forage: 采集数据
+    attributes:
+      admin/forage:
+        title: 标题
+        content: 内容
+        tag: 标签
+        author: 作者
+        original_url: 原地址
+    errors:
+      forage: 
+  helpers:
+    forage: 

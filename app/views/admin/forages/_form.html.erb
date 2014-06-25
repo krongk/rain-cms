@@ -1,0 +1,23 @@
+<%= simple_form_for(@admin_forage) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-xs-12">
+      <div class="form-inputs">
+        <%= f.input :title %>
+        <%= f.input :content, input_html: {style: "height: 600px;"}%>
+        <%= f.input :tag %>
+        <%= f.input :author %>
+        <%= f.input :original_url, readonly: true %>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-2 col-xs-12">
+      <div class="form-actions">
+        <p>*合并到栏目：<br/>
+          <%= f.select :channel_id, Admin::Channel.all.reverse.map { |r| [r.title, r.id, { class: r.id }] }, include_blank: false %>
+        </p>
+        <%= f.button :submit, class: 'btn btn-lg btn-block btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>

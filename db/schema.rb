@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124050217) do
+ActiveRecord::Schema.define(version: 20140625045401) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
     t.integer  "parent_id"
     t.string   "typo"
     t.string   "title"
-    t.string   "short_title"
-    t.string   "properties"
+    t.string   "short_title", null: false
+    t.integer  "properties"
     t.string   "default_url"
     t.string   "tmp_index"
     t.string   "tmp_list"
@@ -53,15 +53,25 @@ ActiveRecord::Schema.define(version: 20140124050217) do
     t.datetime "updated_at"
   end
 
+  create_table "admin_forages", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "tag"
+    t.string   "author"
+    t.string   "original_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "admin_keystores", force: true do |t|
-    t.string   "key"
-    t.string   "value"
+    t.string   "key",                      null: false
+    t.string   "value",       limit: 1024, null: false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_key", using: :btree
+  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_name", using: :btree
 
   create_table "admin_pages", force: true do |t|
     t.integer  "user_id"
@@ -70,9 +80,9 @@ ActiveRecord::Schema.define(version: 20140124050217) do
     t.string   "short_title"
     t.string   "properties"
     t.string   "keywords"
-    t.string   "description"
-    t.string   "image_path"
-    t.text     "content"
+    t.text     "description"
+    t.string   "image_path",  limit: 512
+    t.text     "content",     limit: 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
   end

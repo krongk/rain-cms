@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-2">
+    <h2>数据采集</h2>
+    <blockquote>
+      <small>数据采集，即将网络采集的数据，通过伪原创的方式，合并的页面中去。</small>
+    </blockquote>
+    <hr>
+  </div>
+  <div class="col-md-10">
+    <div class="panel panel-info">
+      <div class="panel-heading">采集数据</div>
+      <% if @admin_forages.empty? %>
+        <div class="panel-body">
+          <p>还没有任何数据，<a href="/admin/home/help#forage" class="alert-link">查看数据采集教程！</a></p>
+        </div>
+      <% end %>
+
+      <!-- List group -->
+      <ul class="list-group">
+        <% @admin_forages.each do |page| %>
+          <li class="list-group-item">
+            <strong><%= page.id %>.</strong>&nbsp;&nbsp;<%= link_to page.title, edit_admin_forage_path(page) %>
+            <span class="pull-right">
+              <%= link_to page.original_url, target: '_blank' do %>
+                <i class="fa fa-eye"></i> 原文件
+              <% end %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= will_paginate @admin_forages %>
+  </div>
+</div>

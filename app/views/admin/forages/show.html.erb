@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_forage.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @admin_forage.content %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @admin_forage.tag %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @admin_forage.author %>
+</p>
+
+<p>
+  <strong>Original url:</strong>
+  <%= @admin_forage.original_url %>
+</p>
+
+<%= link_to 'Edit', edit_admin_forage_path(@admin_forage) %> |
+<%= link_to 'Back', admin_forages_path %>

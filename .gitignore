@@ -47,6 +47,9 @@ db/*.sqlite3
 /public/favicon.ico
 /public/stylesheets/compiled
 /public/system/*
+/public/templetes/rxy-cn
+/public/templetes/rxy123
+/public/templetes/unify
 /spec/tmp/*
 /cache
 /capybara*

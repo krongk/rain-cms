@@ -1,5 +1,9 @@
 RainCms::Application.routes.draw do
   
+  namespace :admin do
+    resources :forages
+  end
+
   resources :comments
 
   #routes for admin ==============================
