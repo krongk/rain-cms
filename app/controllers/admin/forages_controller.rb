@@ -1,4 +1,7 @@
 class Admin::ForagesController < Admin::ApplicationController
+  include ActionView::Helpers::TextHelper #simple_format
+  include ActionView::Helpers::OutputSafetyHelper #raw
+
   before_action :set_admin_forage, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/forages
@@ -47,7 +50,8 @@ class Admin::ForagesController < Admin::ApplicationController
       channel_id: params[:admin_forage].delete(:channel_id),
       short_title: get_short_title('page', params[:admin_forage][:title]),
       title: params[:admin_forage].delete(:title), 
-      content: params[:admin_forage].delete(:content), 
+      content: simple_format(params[:admin_forage].delete(:content)), 
+      image_path: params[:admin_forage].delete(:image_url), 
       keywords: params[:admin_forage].delete(:tag)
     )
     respond_to do |format|
@@ -81,6 +85,6 @@ class Admin::ForagesController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_forage_params
-      params.require(:admin_forage).permit(:channel_id, :title, :content, :tag, :author, :original_url)
+      params.require(:admin_forage).permit(:channel_id, :title, :content, :tag, :author, :image_url, :original_url)
     end
 end

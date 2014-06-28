@@ -10,6 +10,7 @@ zh-CN:
         tag: 标签
         author: 作者
         original_url: 原地址
+        image_url: 图片地址
     errors:
       forage: 
   helpers:

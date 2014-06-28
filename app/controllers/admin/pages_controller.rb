@@ -19,6 +19,7 @@ class Admin::PagesController < Admin::ApplicationController
 
   # GET /admin/pages/1/edit
   def edit
+    @image_list = Ckeditor::Picture.order("created_at DESC").limit(10)
   end
 
   # POST /admin/pages

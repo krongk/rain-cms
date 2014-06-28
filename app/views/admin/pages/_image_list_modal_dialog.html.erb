@@ -4,19 +4,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">图片浏览</h4>
+        <h4 class="modal-title" id="myModalLabel">显示最新上传的20张图片</h4>
       </div>
       <div class="modal-body">
         <ul class="modal-ul">
-          <% @image_list.each do |img_path| %>
-            <li><a href="#" class="choose-image" data-title="<%= img_path %>" data-dismiss="modal">
-            <img src="<%= img_path %>" title="<%= img_path.to_s.sub(/^.*\/(.*)$/, '\1') %>" />
+          <% @image_list.each do |img| %>
+            <li><a href="#" class="choose-image" data-title="<%= img.url_content %>" data-dismiss="modal">
+            <img src="<%= img.url_content %>" title="<%= img.url_content %>" />
             </a></li>
           <% end %>
         </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -6,18 +6,37 @@
       <div class="form-inputs">
         <%= f.input :title %>
         <%= f.input :content, input_html: {style: "height: 600px;"}%>
-        <%= f.input :tag %>
-        <%= f.input :author %>
-        <%= f.input :original_url, readonly: true %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :tag %>
+            <%= f.input :author %>
+            <%= f.input :image_url %>
+            <%= f.input :original_url, readonly: true %>
+          </div>
+          <div class="col-md-6">
+            <% if @admin_forage.image_url.present? %>
+              <div style="margin: 40px 40px 0px 40px;">
+              <a href="javascript:void(0);" class="thumbnail"><img src="<%= @admin_forage.image_url %>" class="img-respoonsive" /></a>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-4 col-sm-2 col-xs-12">
       <div class="form-actions">
-        <p>*合并到栏目：<br/>
+        <p>*选择栏目：<br/>
           <%= f.select :channel_id, Admin::Channel.all.reverse.map { |r| [r.title, r.id, { class: r.id }] }, include_blank: false %>
         </p>
-        <%= f.button :submit, class: 'btn btn-lg btn-block btn-danger' %>
+        <%= f.button :submit, value: '合 并', class: 'btn btn-lg btn-block btn-danger' %>
       </div>
+      <p style="margin-top: 100px;" class="text-right">
+        <%= link_to @admin_forage, method: :delete, data: { confirm: '删除以后无法恢复，确定要删除?' }, class: 'btn btn-default btn-lg'  do %>
+          <i class="fa fa-trash-o"></i> 删除
+        <% end %>
+        <br/><br/>
+        <a href="javascript: history.go(-1);" class="btn btn-default btn-lg"><i class="fa fa-arrow-left"> </i> 返回</a>
+      </p>
     </div>
   </div>
 <% end %>
