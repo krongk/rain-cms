@@ -20,6 +20,7 @@
       <ul class="list-group">
         <% @admin_pages.each do |page| %>
           <li class="list-group-item">
+            <%= page.id %>. &nbsp;
             <%= link_to page.title, edit_admin_page_path(page) %>
             <span class="pull-right">
               <%= link_to get_preview_url(page), target: '_blank' do %>
