@@ -37,13 +37,19 @@ class Admin::Page < ActiveRecord::Base
     self.image_path.sub(/content/, 'thumb')
   end
 
+  # "H|C|F" => ['H', 'C', 'F']
+  # 用于在_form.html.erb中初始化值
+  def arr_properties
+    properties.to_s.split('|')
+  end
+
   #最近新闻
   #params: 
   # => typo = ['article', 'image', 'product']
   # => channel =[ channel.short_title, ]
   # => properties =[recommend, top, hot]
   #eg: Admin::Page.recent(12, :typo => 'product',  :rand => true)
-  #    Admin::Page.recent(10, :channel => 'product-bed')
+  #    Admin::Page.recent(10, :channel => 'product-bed', :properties => '1')
   def self.recent(count = 10, options = {})
     queries     = []
     conditions  = []
@@ -56,7 +62,7 @@ class Admin::Page < ActiveRecord::Base
       conditions  << options[:typo]
     end
     if options[:properties].present?
-      queries     << 'admin_pages.properties = ?'
+      queries     << 'admin_pages.properties regexp ?'
       conditions  << options[:properties]
     end
     conditions.unshift(queries.join(' AND '))

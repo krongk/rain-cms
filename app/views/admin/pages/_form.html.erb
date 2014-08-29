@@ -27,7 +27,7 @@
         </label>
         <%= f.input :image_path, placeholder: '网页预览图片路径，如产品图片等', label: false %>
 
-        <%= f.collection_check_boxes :properties, ApplicationHelper::PAGE_PROPERTIES, :first, :last %>
+        <%= f.collection_check_boxes(:properties, Admin::Property.all, :id, :name, :checked => @admin_page.arr_properties) %>
         <br>
         <%#= f.input :properties %>
         <%#= f.input :content %>

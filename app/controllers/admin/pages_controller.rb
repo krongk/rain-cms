@@ -15,17 +15,20 @@ class Admin::PagesController < Admin::ApplicationController
   # GET /admin/pages/new
   def new
     @admin_page = Admin::Page.new
+    @image_list = Ckeditor::Picture.order("created_at DESC").limit(20)
   end
 
   # GET /admin/pages/1/edit
   def edit
-    @image_list = Ckeditor::Picture.order("created_at DESC").limit(10)
+    @image_list = Ckeditor::Picture.order("created_at DESC").limit(20)
   end
 
   # POST /admin/pages
   # POST /admin/pages.json
   def create
-    @admin_page = Admin::Page.new(admin_page_params)
+    attrs = admin_page_params.merge!(properties: params["admin_page"]["properties"].join('|'))
+    @admin_page = Admin::Page.new(attrs)
+    #@admin_page.properties = params["admin_page"]["properties"].join('|')
     @admin_page.user_id = current_user.id
     @admin_page.short_title = get_short_title('page', @admin_page.title) if @admin_page.short_title.blank?
     respond_to do |format|
@@ -44,6 +47,8 @@ class Admin::PagesController < Admin::ApplicationController
   # PATCH/PUT /admin/pages/1
   # PATCH/PUT /admin/pages/1.json
   def update
+    attrs = admin_page_params.merge!(properties: params["admin_page"]["properties"].join('|'))
+   
     #only user can modify 
     unless current_user.has_role?(:admin) || current_user.has_role?(:user)
       redirect_to admin_pages_path, alert: "没有权限"
@@ -51,7 +56,7 @@ class Admin::PagesController < Admin::ApplicationController
     end
     @admin_page.user_id = current_user.id
     respond_to do |format|
-      if @admin_page.update(admin_page_params)
+      if @admin_page.update(attrs)
         update_tag(@admin_page)
         if @admin_page.short_title.blank?
           @admin_page.short_title = get_short_title('page', @admin_page.title)
@@ -90,7 +95,8 @@ class Admin::PagesController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_page_params
-      params.require(:admin_page).permit(:user_id, :channel_id, :title, :short_title, :properties, :keywords, 
+      params.require(:admin_page).permit(:user_id, :channel_id, :title, :short_title, 
+        :keywords, 
         :description, :image_path, :content,
         :tag_id, :context, :taggable)
     end

@@ -2,17 +2,6 @@ module ApplicationHelper
   #for tag cloud 
   include ActsAsTaggableOn::TagsHelper
 
-  PAGE_PROPERTIES = [
-    ['H', '头条'],
-    ['C', '推荐'],
-    ['F', '幻灯'],
-    ['D', '底部'],
-    ['S', '滚动'],
-    ['B', '加粗'],
-    ['P', '图片'],
-    ['J', '跳转'],
-  ]
-
   SPECIAL_SYMBO_REG = /(,|;|:|\.|\||\\|，|；|。|、)/
 
   def display_base_errors resource

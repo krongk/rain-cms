@@ -1,0 +1,15 @@
+---
+en:
+  active_record:
+    models:
+      admin:
+        property: Property
+    attributes:
+      admin:
+        property:
+          name: Name
+          desc: Desc
+    errors:
+      property: 
+  helpers:
+    property: 

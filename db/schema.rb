@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625045401) do
+ActiveRecord::Schema.define(version: 20140829182312) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
     t.integer  "parent_id"
     t.string   "typo"
     t.string   "title"
-    t.string   "short_title", null: false
-    t.integer  "properties"
+    t.string   "short_title"
+    t.string   "properties"
     t.string   "default_url"
     t.string   "tmp_index"
     t.string   "tmp_list"
@@ -37,18 +37,18 @@ ActiveRecord::Schema.define(version: 20140625045401) do
 
   create_table "admin_comments", force: true do |t|
     t.string   "name"
-    t.string   "mobile_phone"
-    t.string   "tel_phone"
-    t.string   "email"
-    t.string   "qq"
-    t.string   "address"
-    t.string   "gender"
+    t.string   "mobile_phone", limit: 32
+    t.string   "tel_phone",    limit: 32
+    t.string   "email",        limit: 64
+    t.string   "qq",           limit: 16
+    t.string   "address",      limit: 512
+    t.string   "gender",       limit: 8
     t.date     "birth"
-    t.string   "hobby"
+    t.string   "hobby",        limit: 1024
     t.text     "content"
     t.text     "content2"
     t.text     "content3"
-    t.string   "status"
+    t.string   "status",                    default: "未处理"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,19 +59,20 @@ ActiveRecord::Schema.define(version: 20140625045401) do
     t.string   "tag"
     t.string   "author"
     t.string   "original_url"
+    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "admin_keystores", force: true do |t|
-    t.string   "key",                      null: false
-    t.string   "value",       limit: 1024, null: false
+    t.string   "key"
+    t.string   "value"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_name", using: :btree
+  add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_key", using: :btree
 
   create_table "admin_pages", force: true do |t|
     t.integer  "user_id"
@@ -80,9 +81,9 @@ ActiveRecord::Schema.define(version: 20140625045401) do
     t.string   "short_title"
     t.string   "properties"
     t.string   "keywords"
-    t.text     "description"
-    t.string   "image_path",  limit: 512
-    t.text     "content",     limit: 2147483647
+    t.string   "description"
+    t.string   "image_path"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,6 +91,13 @@ ActiveRecord::Schema.define(version: 20140625045401) do
   add_index "admin_pages", ["channel_id"], name: "index_admin_pages_on_channel_id", using: :btree
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
+
+  create_table "admin_properties", force: true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
