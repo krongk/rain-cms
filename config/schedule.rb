@@ -22,3 +22,7 @@
 every 5.days do 
   rake "rake sitemap:refresh"
 end
+
+every 2.days do 
+  rake "rake page:content_cleanup"
+end
