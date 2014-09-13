@@ -12,12 +12,7 @@
 # 4.1 run: bundle exec whenever
 
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://#{ENV["HOST_NAME"]}"
-
-#Add aditional ping search engin
-  # SitemapGenerator::Sitemap.search_engines =>  {:google=>"http://www.google.com/webmasters/tools/ping?sitemap=%s",
-  #  :bing=>"http://www.bing.com/webmaster/ping.aspx?siteMap=%s"}
-  SitemapGenerator::Sitemap.search_engines[:baidu] = "http://ping.baidu.com/ping/RPC2"
+SitemapGenerator::Sitemap.default_host = "#{ENV["HOST_NAME"]}"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -43,19 +38,18 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  Admin::Channel.tag_counts_on(:tags).each do |tag|
-    add tag_path(tag), :priority => 0.6, :changefreq => 'weekly'
-  end
-  Admin::Page.tag_counts_on(:tags).each do |tag|
-    add tag_path(tag), :priority => 0.5, :changefreq => 'weekly'
-  end
-
   Admin::Channel.find_each do |channel|
     add "/#{channel.short_title}", :priority => 0.8, :changefreq => 'daily'
+    channel.pages.each do |page|
+      add "/#{channel.short_title}/#{page.short_title}", :priority => 0.7, :changefreq => 'daily'
+    end
   end
 
-  Admin::Page.find_each do |page|
-    add "/#{page.channel.short_title}/#{page.short_title}", :priority => 0.7, :changefreq => 'daily'
+  Admin::Channel.tag_counts_on(:tags).each do |tag|
+    add tag_path(tag.name), :priority => 0.6, :changefreq => 'weekly'
+  end
+  Admin::Page.tag_counts_on(:tags).each do |tag|
+    add tag_path(tag.name), :priority => 0.5, :changefreq => 'weekly'
   end
 
 end
