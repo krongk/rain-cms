@@ -41,7 +41,7 @@ SitemapGenerator::Sitemap.create do
   Admin::Channel.find_each do |channel|
     add "/#{channel.short_title}", :priority => 0.8, :changefreq => 'daily'
     channel.pages.each do |page|
-      add "/#{channel.short_title}/#{page.short_title}", :priority => 0.7, :changefreq => 'daily'
+      add "/#{channel.short_title}/#{page.id}", :priority => 0.7, :changefreq => 'daily'
     end
   end
 
