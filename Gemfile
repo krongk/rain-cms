@@ -17,7 +17,8 @@ gem 'mysql2', '0.3.13'
 gem 'rolify'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
-
+gem 'sitemap_generator'
+gem 'whenever', :require => false
 # For linux
 gem 'therubyracer', :platform=>:ruby
 

@@ -5,12 +5,36 @@
 # For example, setting:
 # GMAIL_USERNAME: Your_Gmail_Username
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
-
 # Add application configuration variables here, as shown below.
 #
-GMAIL_USERNAME: Your_Username
-GMAIL_PASSWORD: Your_Password
-ADMIN_NAME: First User
-ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
+
+#send email
+GMAIL_USERNAME: wefwef
+GMAIL_PASSWORD: wef.com
+
+QMAIL_USERNAME: wefewwe@qq.com
+QMAIL_PASSWORD: wef.com
+
+MAILGUN_USERNAME: wef@we.cn
+MAILGUN_PASSWORD: wfwewef
+
+#Use on email
+DOMAIN_NAME: localhost
+#User on sitemap_generator
+HOST_NAME: www.wef.com
+
+#Admin
+ADMIN_NAME: wefwf
+ADMIN_EMAIL: wef@wf.com
+ADMIN_PASSWORD: wfww
 ROLES: [admin, user, VIP]
+
+#send sms
+SMS_BAO_USER: wfw
+SMS_BAO_PASSWORD: awfw
+SMS_MAX_CHARACTER_COUNT: 64
+
+#Qiniu store
+QINIU_ACCESS_KEY: HXrvQOeDfAizpMzdawfweybFcx
+QINIU_SECRET_KEY: n886ogK5IGUwYx-M4m-NLSawd_
+
