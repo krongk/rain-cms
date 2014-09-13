@@ -16,10 +16,12 @@ class Admin::ChannelsController < Admin::ApplicationController
   # GET /admin/channels/new
   def new
     @admin_channel = Admin::Channel.new
+    @image_list = Ckeditor::Picture.order("created_at DESC").limit(20)
   end
 
   # GET /admin/channels/1/edit
   def edit
+    @image_list = Ckeditor::Picture.order("created_at DESC").limit(20)
   end
 
   # POST /admin/channels
@@ -92,6 +94,6 @@ class Admin::ChannelsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_channel_params
-      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :short_title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detail, :keywords, :description, :content)
+      params.require(:admin_channel).permit(:user_id, :parent_id, :typo, :title, :short_title, :properties, :default_url, :tmp_index, :tmp_list, :tmp_detail, :keywords, :description, :image_path, :content)
     end
 end

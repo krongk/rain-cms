@@ -36,9 +36,16 @@
         
         <%= f.input :keywords, placeholder: '关键词用逗号隔开，建议一篇文章3-5个关键词' %>
         <%= f.input :description, placeholder: '文章摘要，用于SEO描述，用一句话描述文章内容，一般100字以内' %>
+        
+        <label>缩略图(
+          <a data-toggle="modal" data-target="#myModal" href="javascript:void(0);">选择</a>)
+        </label>
+        <%= f.input :image_path, placeholder: '网页预览图片路径，如产品图片等', label: false, input_html: {id: 'image_path'} %>
         <%#= f.input :content %>
         <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'custom', :height => '600px'} } %>
       </div>
     </div>
   </div>
 <% end %>
+
+<%= render :partial => '/admin/pages/image_list_modal_dialog' %>

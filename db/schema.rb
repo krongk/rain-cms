@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829182312) do
+ActiveRecord::Schema.define(version: 20140913122955) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140829182312) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_path"
   end
 
   add_index "admin_channels", ["short_title"], name: "index_admin_channels_on_short_title", unique: true, using: :btree
@@ -92,11 +93,9 @@ ActiveRecord::Schema.define(version: 20140829182312) do
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
-  create_table "admin_properties", force: true do |t|
-    t.string   "name"
-    t.string   "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "admin_properties", id: false, force: true do |t|
+    t.integer "id",   null: false
+    t.string  "name", null: false
   end
 
   create_table "ckeditor_assets", force: true do |t|
