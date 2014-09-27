@@ -59,6 +59,26 @@ module ApplicationHelper
       "/"
     end
   end
+  #获得obj的上一个对象
+  def get_prev_obj(obj)
+    the_obj = case obj.class
+    when Admin::Page
+      Admin::Page.order("id desc").where("id < ?", obj.id).limit(1).first
+    when Admin::Channel
+      Admin::Channel.order("id desc").where("id < ?", obj.id).limit(1).first
+    end
+    return the_obj.nil? ? obj : the_obj
+  end
+  #获得obj的下一个对象
+  def get_next_obj(obj)
+    the_obj = case obj.class
+    when Admin::Page
+      Admin::Page.where("id > ?", obj.id).limit(1).first
+    when Admin::Channel
+      Admin::Channel.where("id > ?", obj.id).limit(1).first
+    end
+    return the_obj.nil? ?  obj : the_obj
+  end
 
   #前台获得下拉列表菜单
   #默认调用方法：get_menu('product')
