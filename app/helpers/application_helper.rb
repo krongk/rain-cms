@@ -61,20 +61,20 @@ module ApplicationHelper
   end
   #获得obj的上一个对象
   def get_prev_obj(obj)
-    the_obj = case obj.class
-    when Admin::Page
+    the_obj = case obj.class.to_s
+    when "Admin::Page"
       Admin::Page.order("id desc").where("id < ?", obj.id).limit(1).first
-    when Admin::Channel
+    when "Admin::Channel"
       Admin::Channel.order("id desc").where("id < ?", obj.id).limit(1).first
     end
     return the_obj.nil? ? obj : the_obj
   end
   #获得obj的下一个对象
   def get_next_obj(obj)
-    the_obj = case obj.class
-    when Admin::Page
+    the_obj = case obj.class.to_s
+    when "Admin::Page"
       Admin::Page.where("id > ?", obj.id).limit(1).first
-    when Admin::Channel
+    when "Admin::Channel"
       Admin::Channel.where("id > ?", obj.id).limit(1).first
     end
     return the_obj.nil? ?  obj : the_obj
