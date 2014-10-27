@@ -20,9 +20,9 @@
 # Learn more: http://github.com/javan/whenever
 
 every 5.days do 
-  rake "rake sitemap:refresh"
+  rake "sitemap:refresh"
 end
 
 every 2.days do 
-  rake "rake page:content_cleanup"
+  rake "page:content_cleanup"
 end

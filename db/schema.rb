@@ -38,18 +38,18 @@ ActiveRecord::Schema.define(version: 20140913122955) do
 
   create_table "admin_comments", force: true do |t|
     t.string   "name"
-    t.string   "mobile_phone", limit: 32
-    t.string   "tel_phone",    limit: 32
-    t.string   "email",        limit: 64
-    t.string   "qq",           limit: 16
-    t.string   "address",      limit: 512
-    t.string   "gender",       limit: 8
+    t.string   "mobile_phone"
+    t.string   "tel_phone"
+    t.string   "email"
+    t.string   "qq"
+    t.string   "address"
+    t.string   "gender"
     t.date     "birth"
-    t.string   "hobby",        limit: 1024
+    t.string   "hobby"
     t.text     "content"
     t.text     "content2"
     t.text     "content3"
-    t.string   "status",                    default: "未处理"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,10 +93,11 @@ ActiveRecord::Schema.define(version: 20140913122955) do
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
-  create_table "admin_properties", id: false, force: true do |t|
-    t.integer "id",   null: false
-    t.string  "name", null: false
+  create_table "admin_properties", force: true do |t|
+    t.string "name", null: false
   end
+
+  add_index "admin_properties", ["name"], name: "index_admin_properties_on_name", unique: true, using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
