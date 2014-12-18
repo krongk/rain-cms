@@ -27,12 +27,13 @@ puts "create new channel"
 Admin::Channel.create!(
   :parent_id    => nil,
   :typo         => 'article',
-  :title        => '首页',
+  :title        => '关于易莲',
   :short_title  => 'index',
   :properties   => 1,
   :default_url  => nil,
   :tmp_index    => 'temp_index.html',
   :tmp_detail   => 'temp_index.html',
-  :keywords     => '首页',
+  :keywords     => '关于易莲',
   :description  => ''
 )
+

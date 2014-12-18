@@ -1,11 +1,11 @@
 <div class="navbar-header">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-    <span class="sr-only">RainCMS</span>
+    <span class="sr-only"><%= Admin::Keystore.value_for('site_name') %></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand" href="#"><span class="blue">Rain</span><span class="orange">CMS</span></a>
+  <a class="navbar-brand" href="#"><%= Admin::Keystore.value_for('site_name') %></a>
 </div>
 <div class="navbar-collapse collapse">
   <% if user_signed_in? %>

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= content_for?(:title) ? yield(:title) : "RainCMS" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "RainCMS" %>">
+    <title><%= content_for?(:title) ? yield(:title) : Admin::Keystore.value_for('site_name') %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : Admin::Keystore.value_for('site_name') %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
