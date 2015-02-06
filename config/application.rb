@@ -15,12 +15,14 @@ module RainCms
       g.helper_specs false
     end
 
+    config.i18n.available_locales = "zh-CN".to_sym
+    config.i18n.default_locale = "zh-CN".to_sym
     config.before_configuration do
       I18n.locale = "zh-CN".to_sym
       I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '*.{rb,yml}')]
       I18n.reload!
     end
-    config.i18n.default_locale = "zh-CN".to_sym
+    
 
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     

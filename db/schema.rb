@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913122955) do
+ActiveRecord::Schema.define(version: 20150125160854) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
@@ -140,8 +140,11 @@ ActiveRecord::Schema.define(version: 20140913122955) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "cate_id"
   end
+
+  add_index "tags", ["cate_id"], name: "index_tags_on_cate_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
