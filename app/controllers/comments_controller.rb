@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        if ENV['SMS_TOGGLE']
+          SmsSendWorker.perform_async(ENV['SMS_PHONE'].split('|').join(','), "【#{ENV['SITE_NAME']}】#{@comment.mobile_phone}#{@comment.content.nil? ? '希望你尽快与他取得联系' : @comment.content.to_s.truncate(36)}")
+          SmsSendWorker.perform_async(@comment.mobile_phone, "【#{ENV['SITE_NAME']}】您的联络人员手机号为#{ENV['CONTACT_MOBILE']}, 我们会尽快与您取得联系！")
+        end
         format.html { redirect_to "/", notice: '留言成功.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else

@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 module RainCms
   class Application < Rails::Application
+    require 'fen_xiao'
+    require 'sms_bao'
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|

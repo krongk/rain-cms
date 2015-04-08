@@ -1,0 +1,36 @@
+<div id="fenxiao" class="list">
+  <h2><i class="fa fa-dot-circle-o fa-lg"></i>  如何实现分销系统</h2>
+
+  <p>步骤：</p>
+  <ol>
+    <li>在application.yml 中设置分销系统开关和总站数据库信息
+      <pre>
+# 如果开通分销开关，则后台可获得总部数据
+FENXIAO_TOGGLE: true
+DB_HOST: 127.0.0.1
+DB_PORT: 3301
+DB_DATABASE: grand
+DB_USERNAME: root
+DB_PASSWORD: kenrome001
+HEADPARTER_SITE: http://www.ezltest.com
+      </pre>
+    </li>
+    <li>在后台菜单‘数据采集’中添加按钮‘获取分销总站的最新数据’。</li>
+    <li>获取的总站最新数据将显示在‘数据采集’中</li>
+    <li>用户可以合并采集的数据到页面，并进行再次编辑</li>
+  </ol>
+
+  <p>运行条件条件：</p>
+  <ol>
+    <li>需要在服务区根目录下运行： <strong>bundle exec sidekiq</strong></li>
+  </ol>
+
+  <h3>涉及的文件</h3>
+  <pre>
+    app/views/admin/forages/index.html.erb
+    app/controllers/admin/home_controller.rb#fenxiao_headquarter
+    app/workers/fen_xiao_worker.rb
+    lib/fen_xiao.rb
+  </pre>
+
+</div>

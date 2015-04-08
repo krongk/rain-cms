@@ -1,12 +1,22 @@
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-3">
     <h2>数据采集</h2>
     <blockquote>
-      <small>数据采集，即将网络采集的数据，通过伪原创的方式，合并的页面中去。</small>
+      <small>数据采集，即将网络采集的数据，合并到页面中去。</small>
     </blockquote>
     <hr>
+
+    <% if ENV['FENXIAO_TOGGLE'] %>
+      <blockquote>
+        <%= simple_form_for(Admin::Comment.new, url: '/admin/home/fenxiao_headquarter', method: 'post', html: { id: 'contact', name: 'contact', novalidate: true } ) do |f| %>
+           <button type="submit" class="btn btn-warning">获取分销总站的最新数据</button>
+        <% end %>
+        <small>若为分销系统，可以点击以上按钮获取总站的数据，并进行再次编辑后合并到本站中。</small>
+      </blockquote>
+    <% end %>
+
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     <div class="panel panel-info">
       <div class="panel-heading">采集数据</div>
       <% if @admin_forages.empty? %>

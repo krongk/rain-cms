@@ -20,7 +20,7 @@ gem 'acts-as-taggable-on'
 gem 'sitemap_generator'
 gem 'whenever', :require => false
 # For linux
-gem 'therubyracer', :platform=>:ruby
+#gem 'therubyracer', :platform=>:ruby
 
 #page caching
 # http://www.rubytutorial.io/page-caching-with-rails-4
@@ -49,7 +49,7 @@ gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
 gem 'i18n_yaml_generator'
 
 #Queue
-#gem 'sidekiq'
+gem 'sidekiq'
 
 #Markdown syntax
 gem "nokogiri"

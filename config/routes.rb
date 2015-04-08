@@ -17,6 +17,7 @@ RainCms::Application.routes.draw do
     resources :comments
     get "home/ckeditor_pictures"
     get "home/help"
+    post "home/fenxiao_headquarter"
     get "templetes/index"
     get "templetes/show"
     get "templetes/new"

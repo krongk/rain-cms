@@ -14,6 +14,12 @@ zh-CN:
           description: 摘要描述
           image_path: 缩略图
           content: 页面内容
+          price: 价格
+          discount: 折扣
+          unit: 单位
+          amount: 库存数量
+          headquarter_id: 总站ID
+          is_processed: 是否发布
     errors:
       page: 
   helpers:

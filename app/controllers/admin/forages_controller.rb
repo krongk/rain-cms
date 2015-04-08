@@ -7,7 +7,7 @@ class Admin::ForagesController < Admin::ApplicationController
   # GET /admin/forages
   # GET /admin/forages.json
   def index
-    @admin_forages = Admin::Forage.page(params[:page])
+    @admin_forages = Admin::Forage.order("updated_at DESC").page(params[:page])
   end
 
   # GET /admin/forages/1

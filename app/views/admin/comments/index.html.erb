@@ -2,7 +2,7 @@
   <div class="row">
     <% @comments.each do |comment| %>
       <div class="col-xs-12 col-sm-21 col-md-4 col-lg-3">
-        <div class="alert alert-block alert-info">
+        <div class="alert alert-block alert-<%= comment.status == '未处理' ? 'warning' : 'info'%>">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <h4><%= comment.mobile_phone %></h4>
           <%= comment.content.to_s.truncate(300) %>
