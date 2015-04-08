@@ -5,10 +5,5 @@ class AddColumnsToAdminPages < ActiveRecord::Migration
     add_column :admin_pages, :unit, :string #件／个／条
     add_column :admin_pages, :amount, :integer #库存数量
 
-    add_column :admin_pages, :headquarter_id, :integer #分销系统总站id
-    add_column :admin_pages, :is_processed, :string, default: 'n' #是否发布
-    
-    add_index :admin_pages, :headquarter_id, unique: true
-    add_index :admin_pages, :is_processed
   end
 end
