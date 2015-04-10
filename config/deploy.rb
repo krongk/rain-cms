@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:krongk/rain-cms.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/alidata/www/zhidk_admin'
+set :deploy_to, '/home/srv/www/zhidk_admin'
 
 # Default value for :scm is :git
 # set :scm, :git
