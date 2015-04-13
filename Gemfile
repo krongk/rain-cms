@@ -20,7 +20,7 @@ gem 'acts-as-taggable-on'
 gem 'sitemap_generator'
 gem 'whenever', :require => false
 # For linux
-#gem 'therubyracer', :platform=>:ruby
+gem 'therubyracer', :platform=>:ruby
 
 #page caching
 # http://www.rubytutorial.io/page-caching-with-rails-4
@@ -71,7 +71,7 @@ group :development do
 end
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capistrano'
+  gem 'capistrano-rvm'
   gem 'capistrano-rvm'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
