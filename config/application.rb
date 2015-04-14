@@ -17,7 +17,9 @@ module RainCms
       g.helper_specs false
     end
 
-    config.i18n.available_locales = "zh-CN".to_sym
+    #bugfix: I18n::InvalidLocale: :"zh-CN" is not a valid locale
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ["zh-CN"]
     config.i18n.default_locale = "zh-CN".to_sym
     config.before_configuration do
       I18n.locale = "zh-CN".to_sym
