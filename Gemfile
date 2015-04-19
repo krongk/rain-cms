@@ -1,13 +1,13 @@
 source 'http://ruby.taobao.org'
-#ruby '2.0.0'
-gem 'rails', '~> 4.0.0'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+ruby '2.0.0'
+gem 'rails'#, '~> 4.2.0'
+gem 'sass-rails'#, '~> 4.0.0'
+gem 'uglifier'#, '>= 1.3.0'
+gem 'coffee-rails'#, '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
-gem 'bootstrap-sass', '>= 3.0.0.0'
+gem 'jbuilder'#, '~> 1.2'
+gem 'bootstrap-sass'#, '>= 3.0.0.0'
 gem 'bootstrap-will_paginate'
 gem 'font-awesome-rails'
 gem 'cancan'
@@ -45,7 +45,7 @@ gem 'paperclip-qiniu'
 
 
 #I18n
-gem 'rails-i18n', '~> 4.0.0.pre' # For 4.0.x
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master' # For 4.x
 gem 'i18n_yaml_generator'
 
 #Queue
@@ -63,6 +63,7 @@ gem "htmlentities"
 gem 'chinese_pinyin'
 
 group :development do
+  gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'hub', :require=>nil
