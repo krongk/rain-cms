@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: 455c022caca84646ed2d3feddde411277076a2bc
+  specs:
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
+
+GIT
   remote: git://github.com/svenfuchs/rails-i18n.git
   revision: d73fb5475880e9baf7d43cd799bdf2787c79136b
   branch: master
@@ -6,14 +14,6 @@ GIT
     rails-i18n (4.0.4)
       i18n (~> 0.6)
       railties (~> 4.0)
-
-GIT
-  remote: git@github.com:galetahub/ckeditor.git
-  revision: 455c022caca84646ed2d3feddde411277076a2bc
-  specs:
-    ckeditor (4.1.1)
-      cocaine
-      orm_adapter (~> 0.5.0)
 
 GEM
   remote: http://ruby.taobao.org/

@@ -31,7 +31,8 @@ gem 'actionpack-page_caching'
 #gem 'liquid'
 
 #add :git to bugfix open dialog error
-gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
+#gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
+gem 'ckeditor', github: 'galetahub/ckeditor'
 #File upload
 gem 'paperclip'
 gem 'paperclip-qiniu'
@@ -72,7 +73,6 @@ group :development do
 end
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capistrano-rvm'
   gem 'capistrano-rvm'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
