@@ -94,9 +94,9 @@ CKEDITOR.editorConfig = function( config )
   config.toolbar_custom = [
     { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Save', 'Templates', 'Undo' ] },
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline'] },
-    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Blockquote', 'CreateDiv', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
-    { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
-    { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule'] },
+    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
+    { name: 'links', items: [ 'Link', 'Unlink' ] },
+    { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule'] },
     { name: 'styles', items: ['Format'] },
     { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
     { name: 'tools', items: [ 'ShowBlocks', 'Maximize' ] },

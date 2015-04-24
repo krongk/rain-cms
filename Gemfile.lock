@@ -293,44 +293,44 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
-  acts-as-taggable-on
+  acts-as-taggable-on (= 3.5.0)
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.4.1)
   bootstrap-will_paginate
-  cancan
+  cancan (= 1.6.10)
   capistrano-passenger
   capistrano-rails
   capistrano-rvm
   chinese_pinyin
   ckeditor!
-  coffee-rails
+  coffee-rails (~> 4.1.0)
   database_cleaner (= 1.0.1)
-  devise
+  devise (= 3.4.1)
   email_spec
-  figaro
-  font-awesome-rails
+  figaro (= 1.1.0)
+  font-awesome-rails (= 4.3.0.0)
   htmlentities
   hub
   i18n_yaml_generator
-  jbuilder
-  jquery-rails
+  jbuilder (~> 2.2.13)
+  jquery-rails (= 4.0.3)
   mysql2 (= 0.3.13)
   nokogiri
   paperclip
   paperclip-qiniu
   quiet_assets
-  rails
+  rails (~> 4.2.1)
   rails-i18n!
   rails_layout
-  rolify
+  rolify (= 4.0.0)
   rspec-rails
-  sass-rails
+  sass-rails (~> 5.0.3)
   sidekiq
-  simple_form
-  sitemap_generator
+  simple_form (= 3.1.0)
+  sitemap_generator (= 5.0.5)
   therubyracer
-  turbolinks
-  uglifier
+  turbolinks (= 2.5.3)
+  uglifier (~> 2.7.1)
   web-console (~> 2.0)
   whenever

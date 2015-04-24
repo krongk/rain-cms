@@ -7,34 +7,56 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
+DOMAIN_NAME: abc.com
+SITE_DOMAIN: abc.com
+SITE_NAME: Rain CMS
+SITE_DESCRIPTION: 用于meta description 和基本的网站介绍
+SITE_LOGO: http://www.abc.com/assets/logo.jpg
 
-#send email
-GMAIL_USERNAME: wefwef
-GMAIL_PASSWORD: wef.com
+GMAIL_USERNAME: kenrome
+GMAIL_PASSWORD: www.abc.com
 
-QMAIL_USERNAME: wefewwe@qq.com
-QMAIL_PASSWORD: wef.com
-
-MAILGUN_USERNAME: wef@we.cn
-MAILGUN_PASSWORD: wfwewef
-
-#Use on email
-DOMAIN_NAME: localhost
-#User on sitemap_generator
-HOST_NAME: www.wef.com
-
-#Admin
-ADMIN_NAME: wefwf
-ADMIN_EMAIL: wef@wf.com
-ADMIN_PASSWORD: wfww
+ADMIN_NAME: master
+ADMIN_EMAIL: master@inruby.com
+ADMIN_PASSWORD: kenrome
 ROLES: [admin, user, VIP]
 
+#TODO: 开发短信预约接口
 #send sms
-SMS_BAO_USER: wfw
-SMS_BAO_PASSWORD: awfw
-SMS_MAX_CHARACTER_COUNT: 64
+SMS_TOGGLE: false
+SMS_BAO_USER: inruby
+SMS_BAO_PASSWORD: abc
+#SMS_PHONE: 18080810818|18080810818
+SMS_PHONE: 18080810818
 
-#Qiniu store
-QINIU_ACCESS_KEY: HXrvQOeDfAizpMzdawfweybFcx
-QINIU_SECRET_KEY: n886ogK5IGUwYx-M4m-NLSawd_
+#product e-commerce toggle
+# 如果开通电子商务，则会显示产品价格等字段
+PRODUCT_TOGGLE: false
 
+# 如果开通分销开关，则后台可获得总部数据
+FENXIAO_TOGGLE: false
+DB_HOST: 127.0.0.1
+DB_PORT: 3301
+DB_DATABASE: grand
+DB_USERNAME: root
+DB_PASSWORD: abc
+HEADPARTER_SITE: http://www.abc.com
+
+#CRM contact: 
+#将以下的值填写到db/seeds.rb中初始化：
+#   Admin::Keystore.put('contact_name', '宋学江')
+#也可以在console下运行，存储到admin::keystore中
+  # CONTACT_NAME: 宋学江
+  # CONTACT_QQ: 156090284
+  # CONTACT_WECHAT: xuejiang_song
+  # WECHAT_URL: 微信关注网址
+  # CONTACT_WEIBO: inruby
+  # WEIBO_URL: http://www.weibo.com/inruby
+  # CONTACT_MOBILE: 18280673990
+  # CONTACT_EMAIL: 156090284@qq.com
+
+  # FIRM_NAME: 成都yizhilia
+  # FIRM_ADDRESS: 成都市高新区天益街38号理想中心1栋13层1308号
+  # FIRM_PHONE: 028-82008001
+  # FIRM_CITY: 成都市
+  # FIRM_DESCRIPTION: 高新区天益街38号理想中心1栋13层1308号

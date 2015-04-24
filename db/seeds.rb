@@ -23,17 +23,31 @@ puts 'init templetes'
 Admin::Keystore.put('templete', 'default')
 Admin::Keystore.put('site_name', 'Rain CMS')
 
+puts "init crm info"
+Admin::Keystore.put('contact_name', '宋学江')
+Admin::Keystore.put('contact_qq', '156090284')
+Admin::Keystore.put('contact_wechat', 'xuejiang_song')
+Admin::Keystore.put('wechat_url', '微信关注网址')
+Admin::Keystore.put('contact_weibo', 'inruby')
+Admin::Keystore.put('weibo_url', 'http://www.weibo.com/inruby')
+Admin::Keystore.put('contact_mobile', '18280673990')
+Admin::Keystore.put('contact_email', '156090284@qq.com')
+Admin::Keystore.put('firm_name', '成都yizhilia')
+Admin::Keystore.put('firm_address', '成都市高新区天益街38号理想中心1栋13层1308号')
+Admin::Keystore.put('firm_phone', '028-82008001')
+Admin::Keystore.put('firm_city', '成都市')
+Admin::Keystore.put('firm_address', '高新区天益街38号理想中心1栋13层1308号')
+
 puts "create new channel"
 Admin::Channel.create!(
   :parent_id    => nil,
   :typo         => 'article',
-  :title        => '关于易莲',
+  :title        => '首页',
   :short_title  => 'index',
   :properties   => 1,
   :default_url  => nil,
   :tmp_index    => 'temp_index.html',
   :tmp_detail   => 'temp_index.html',
-  :keywords     => '关于易莲',
+  :keywords     => '首页',
   :description  => ''
 )
-
