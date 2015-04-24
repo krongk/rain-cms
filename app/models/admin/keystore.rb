@@ -9,11 +9,11 @@ class Admin::Keystore < ActiveRecord::Base
   end
 
   def self.get(key)
-    self.find_by_key(key)
+    self.find_by(key: key)
   end
 
   def self.put(key, value)
-    ks = self.find_or_create_by_key(key)
+    ks = self.find_or_create_by(key: key)
     #ks.value = ks.value + value
     ks.value = value
     ks.save!
@@ -33,7 +33,7 @@ class Admin::Keystore < ActiveRecord::Base
     new_value = nil
 
     Admin::Keystore.transaction do
-      ks = self.find_or_create_by_key(key)
+      ks = self.find_or_create_by(key: key)
       ks.value = ks.value.to_i + amount
       ks.save!
       new_value = self.value_for(key)
