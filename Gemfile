@@ -64,6 +64,8 @@ gem "htmlentities"
 gem 'chinese_pinyin'
 
 group :development do
+  gem 'pry'
+  gem 'pry-debugger'
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

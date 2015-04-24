@@ -3,10 +3,10 @@
 #####define local module############
 $:.unshift(File.dirname(__FILE__))
 require 'rubygems'
+require 'pry'
 require 'active_record'
 
-module HeadSite
-  
+module HeadSite  
   class HeadSiteBase < ActiveRecord::Base
     self.abstract_class = true
     self.pluralize_table_names = false
@@ -16,7 +16,7 @@ module HeadSite
   HeadSiteBase.establish_connection(
     :adapter  => "mysql2",
     :host     => ENV['DB_HOST'],
-    :port     => ENV['DB_PORT'].to_i,
+    #:port     => ENV['DB_PORT'].to_i,
     :username => ENV['DB_USERNAME'],
     :password => ENV['DB_PASSWORD'],
     :database => ENV['DB_DATABASE']
@@ -25,13 +25,21 @@ module HeadSite
   class Page < HeadSiteBase 
     self.table_name = 'admin_pages'
   end
-
 end
 
 class FenXiao
   def run(last_headquarter_id)
     puts ".....start get headquarter pages....."
-    HeadSite::Page.where("id > ?", last_headquarter_id).order("id asc").each do |page|
+#binding.pry
+HeadSite::Page.establish_connection(
+    :adapter  => "mysql2",
+    :host     => ENV['DB_HOST'],
+    :port     => ENV['DB_PORT'].to_i,
+    :username => ENV['DB_USERNAME'],
+    :password => ENV['DB_PASSWORD'],
+    :database => ENV['DB_DATABASE']
+  ) 
+  HeadSite::Page.where("id > ?", last_headquarter_id).order("id asc").each do |page|
       Admin::Forage.create!(
         title: page.title, 
         content: page.content,
