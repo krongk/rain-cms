@@ -1,0 +1,21 @@
+<div id="install" class="list">
+  <h2><i class="fa fa-dot-circle-o fa-lg"></i> 安装说明</h2>
+  <p><strong>RainCMS</strong>安装步骤：</p>
+
+  <ol>
+    <li>git clone git@github.com:krongk/rain-cms.git your_dir</li>
+    <li>cp config/application.example.yml config/application.yml</li>
+    <li>vi config/application.yml</li>
+    <li>cp config/database.example.yml config/database.yml</li>
+    <li>vi config/database.yml</li>
+    <li>vi db/seeds.rb</li>
+    <li>bundle install</li>
+    <li>bundle exec rake db:create</li>
+    <li>bundle exec rake db:migrate</li>
+    <li>bundle exec rake db:seed</li>
+  </ol>
+
+  <p>* 也可以定制config/deploy.rb， 通过capistrano进行部署</p>
+</div>
+
+
