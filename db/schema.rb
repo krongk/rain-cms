@@ -38,18 +38,18 @@ ActiveRecord::Schema.define(version: 20150424064658) do
 
   create_table "admin_comments", force: :cascade do |t|
     t.string   "name",         limit: 255
-    t.string   "mobile_phone", limit: 255
-    t.string   "tel_phone",    limit: 255
-    t.string   "email",        limit: 255
-    t.string   "qq",           limit: 255
-    t.string   "address",      limit: 255
-    t.string   "gender",       limit: 255
+    t.string   "mobile_phone", limit: 32
+    t.string   "tel_phone",    limit: 32
+    t.string   "email",        limit: 64
+    t.string   "qq",           limit: 16
+    t.string   "address",      limit: 512
+    t.string   "gender",       limit: 8
     t.date     "birth"
-    t.string   "hobby",        limit: 255
+    t.string   "hobby",        limit: 1024
     t.text     "content",      limit: 65535
     t.text     "content2",     limit: 65535
     t.text     "content3",     limit: 65535
-    t.string   "status",       limit: 255
+    t.string   "status",       limit: 255,   default: "未处理"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,11 +97,10 @@ ActiveRecord::Schema.define(version: 20150424064658) do
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
-  create_table "admin_properties", force: :cascade do |t|
-    t.string "name", limit: 255, null: false
+  create_table "admin_properties", id: false, force: :cascade do |t|
+    t.integer "id",   limit: 4,   null: false
+    t.string  "name", limit: 255, null: false
   end
-
-  add_index "admin_properties", ["name"], name: "index_admin_properties_on_name", unique: true, using: :btree
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",    limit: 255, null: false
