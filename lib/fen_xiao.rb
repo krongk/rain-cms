@@ -3,7 +3,6 @@
 #####define local module############
 $:.unshift(File.dirname(__FILE__))
 require 'rubygems'
-require 'pry'
 require 'active_record'
 
 module HeadSite  
