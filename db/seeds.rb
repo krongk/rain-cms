@@ -51,3 +51,58 @@ Admin::Channel.create!(
   :keywords     => '首页',
   :description  => ''
 )
+
+Admin::Channel.create!(
+  :parent_id    => nil,
+  :typo         => 'product',
+  :title        => '产品中心',
+  :short_title  => 'product',
+  :properties   => 1,
+  :default_url  => nil,
+  :tmp_index    => 'temp_product_list.html',
+  :tmp_detail   => 'temp_default_detail.html',
+  :keywords     => '',
+  :description  => ''
+)
+
+Admin::Channel.create!(
+  :parent_id    => nil,
+  :typo         => 'product',
+  :title        => '客户案例',
+  :short_title  => 'case',
+  :properties   => 1,
+  :default_url  => nil,
+  :tmp_index    => 'temp_product_list.html',
+  :tmp_detail   => 'temp_default_detail.html',
+  :keywords     => '',
+  :description  => ''
+)
+
+Admin::Channel.create!(
+  :parent_id    => nil,
+  :typo         => 'article',
+  :title        => '新闻中心',
+  :short_title  => 'news',
+  :properties   => 1,
+  :default_url  => nil,
+  :tmp_index    => 'temp_article_list.html',
+  :tmp_detail   => 'temp_default_detail.html',
+  :keywords     => '',
+  :description  => ''
+)
+
+Admin::Channel.create!(
+  :parent_id    => nil,
+  :typo         => 'product',
+  :title        => '在线预订',
+  :short_title  => 'contact',
+  :properties   => 1,
+  :default_url  => nil,
+  :tmp_index    => 'temp_contact.html',
+  :tmp_detail   => 'temp_contact.html',
+  :keywords     => '',
+  :description  => ''
+)
+
+
+
