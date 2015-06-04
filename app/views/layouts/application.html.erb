@@ -36,5 +36,16 @@
          </div>
       </div>
     </main>
+
+    <script type="text/javascript">
+      $('#sidebar-affix').affix({
+        offset: {
+          top: 150,
+          bottom: function () {
+            return (this.bottom = $('.footer').outerHeight(true))
+          }
+        }
+      })
+    </script>
   </body>
 </html>

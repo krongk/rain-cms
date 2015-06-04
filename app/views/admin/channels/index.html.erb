@@ -1,11 +1,13 @@
 <div class="row">
   <div class="col-md-2">
-    <h2>栏目管理</h2>
-    <blockquote>
-      <p><%= link_to '添加栏目', new_admin_channel_path, class: 'btn btn-primary btn-small' %></p>
-      <small>对应网站前台的栏目</small>
-    </blockquote>
-    <hr>
+    <div id="sidebar-affix">
+      <h2>栏目管理</h2>
+      <blockquote>
+        <p><%= link_to '添加栏目', new_admin_channel_path, class: 'btn btn-info btn-small' %></p>
+        <small>对应网站前台的栏目</small>
+      </blockquote>
+      <hr>
+    </div>
   </div>
   <div class="col-md-10">
     <% @admin_channels.each do |channel| %>

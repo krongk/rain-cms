@@ -1,22 +1,27 @@
 <div class="container">
   <div class="row">
     <% @comments.each do |comment| %>
-      <div class="col-xs-12 col-sm-21 col-md-4 col-lg-3">
-        <div class="alert alert-block alert-<%= comment.status == '未处理' ? 'warning' : 'info'%>">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <h4><%= comment.mobile_phone %></h4>
-          <%= comment.content.to_s.truncate(300) %>
-          <hr>
-          <i class="fa fa-bookmark"></i> <%= comment.status %>
-          &nbsp;&nbsp;
-          <%= link_to edit_admin_comment_path(comment) do %>
-            <i class="fa fa-edit"></i> 查看/修改
-          <% end %> 
-          <span class="pull-right">
-          <%= link_to comment, method: :delete, data: { confirm: '删除以后无法恢复，确定要删除?' }  do %>
-            <i class="fa fa-trash-o"></i> 删除
-          <% end %></span>
-
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="panel panel-<%= comment.status == '未处理' ? 'info' : 'default'%>">
+          <div class="panel-heading">
+            <%= comment.mobile_phone %>
+            <span class="pull-right">
+              <%= distance_of_time_in_words_to_now(comment.created_at) %>前 
+              <% if comment.status == '未处理' %>&nbsp;<i class="fa fa-flag orange"> </i><% end %>
+            </span>
+          </div>
+          <div class="panel-body min-height">
+            <%= comment.content.to_s.truncate(60) %>
+          </div>
+          <div class="panel-footer">
+            <%= link_to edit_admin_comment_path(comment) do %>
+              <i class="fa fa-edit"></i> 查看/修改
+            <% end %> 
+            <span class="pull-right">
+            <%= link_to comment, method: :delete, data: { confirm: '删除以后无法恢复，确定要删除?' }  do %>
+              <i class="fa fa-x2 fa-trash-o"></i>
+            <% end %></span>
+          </div>
         </div>
       </div>
     <% end %>

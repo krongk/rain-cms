@@ -1,12 +1,13 @@
 <div id="admin_help" class="container">
   <div class="row">
     <div class="col-md-2">
-      <div class="list-group" data-spy="affix" data-offset-top="100">
+      <div class="list-group" id="sidebar-affix">
         <a href="#" class="list-group-item active">
           RainCMS使用教程
         </a>
         <a href="#about" class="list-group-item"><i class="fa fa-dot-circle-o"></i> RainCMS简介</a>
         <a href="#user" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 用户权限管理</a>
+        <a href="#setting" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 参数/常量设置</a>
         <a href="#templete" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何创建网页模板</a>
         <a href="#channel" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加栏目</a>
         <a href="#page" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 如何添加页面</a>
@@ -16,7 +17,8 @@
         <a href="#helper" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 辅助方法汇总</a>
         <a href="#forage" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 关于采集数据</a>
         <a href="#sms" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 开通短信接口</a>
-        <a href="#sms" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 开通分销模式</a>
+        <a href="#ecommerce" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 开通电商接口</a>
+        <a href="#fenxiao" class="list-group-item"><i class="fa fa-dot-circle-o"></i> 开通分销模式</a>
       </div>
     </div>
     <div class="col-md-10">
@@ -28,6 +30,9 @@
 
       <hr class="hr-white"><a name="user"></a>
       <%= render partial: 'user' %>
+
+      <hr class="hr-white"><a name="setting"></a>
+      <%= render partial: 'setting' %>
 
       <hr class="hr-white"><a name="templete"></a>
       <%= render partial: 'templete' %>
@@ -55,6 +60,9 @@
 
       <hr class="hr-white"><a name="sms"></a>
       <%= render partial: 'sms' %>
+
+      <hr class="hr-white"><a name="ecommerce"></a>
+      <%= render partial: 'ecommerce' %>
 
       <hr class="hr-white"><a name="fenxiao"></a>
       <%= render partial: 'fenxiao' %>

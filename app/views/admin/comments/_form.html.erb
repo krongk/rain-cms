@@ -2,10 +2,12 @@
   <%= f.error_notification %>
 <div class="row">
   <div class="col-md-4">
-    <label class="string optional control-label" for="admin_channel_typo">修改状态：</label>
-    <%= f.select :status, Comment::STATUS, include_blank: true %>
+    <p>
+      <label class="string optional control-label" for="admin_channel_typo">修改状态：</label><br/>
+      <%= f.select :status, Comment::STATUS, include_blank: false, selected: '已处理' %>
+    </p>
     <blockquote>
-      <p><%= f.button :submit, class: 'btn btn-large btn-primary' %> | 
+      <p><%= f.button :submit, class: 'btn btn-large btn-danger' %> | 
       <a href="/admin/comments" class='btn btn-large btn-default'>返回</a>
       </p>
     </blockquote>

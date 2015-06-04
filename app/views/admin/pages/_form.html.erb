@@ -2,36 +2,38 @@
   <%= f.error_notification %>
   <div class="row">
     <div class="col-md-3 col-sm-12">
-      <h2>页面管理</h2>
-      <blockquote>
-        <p>
-          <%= f.button :submit, '保存并发布', class: 'btn btn-lg btn-danger' %><br>
-        </p>
-        <small>对应网站前台的页面</small>
-      </blockquote>
-      <hr>
+      <div id="sidebar-affix">
+        <h2>页面管理</h2>
+        <blockquote>
+          <p>
+            <%= f.button :submit, '保存并发布', class: 'btn btn-lg btn-danger' %><br>
+          </p>
+          <small>对应网站前台的页面</small>
+        </blockquote>
+        <hr>
 
-      <% if ENV['PRODUCT_TOGGLE'] %>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-warning">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-                  电子商务选项
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse">
-              <div class="panel-body">
-                <%= f.input :price, input_html: {placeholder: '12.00'} %>
-                <%= f.input :unit, input_html: {value: @admin_page.unit || '个'}, label: '单位(个/件/箱)' %>
-                <%= f.input :discount, placeholder: '10', label: '折扣(10表示不打折)' %>
-                <%= f.input :amount, placeholder: '100' %>
+        <% if ENV['PRODUCT_TOGGLE'] %>
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
+                    电子商务选项
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <%= f.input :price, input_html: {placeholder: '12.00'} %>
+                  <%= f.input :unit, input_html: {value: @admin_page.unit || '个'}, label: '单位(个/件/箱)' %>
+                  <%= f.input :discount, placeholder: '10', label: '折扣(10表示不打折)' %>
+                  <%= f.input :amount, placeholder: '100' %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-9 col-sm-12">
       <div class="form-inputs">

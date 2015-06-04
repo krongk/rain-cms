@@ -1,0 +1,65 @@
+<div id="ecommerce" class="list">
+  <h2><i class="fa fa-dot-circle-o fa-lg"></i>  设置参数／常量</h2>
+
+  <p>参数／常量分为两类</p>
+  <ol>
+    <li>在application.yml 中设置的程序常量
+      <pre>
+#Use for Mail/SiteMap
+DOMAIN_NAME: www.zhidak.com
+HOST_NAME: http://www.zhidak.com
+
+#Use for Mail
+GMAIL_USERNAME: kenrome
+GMAIL_PASSWORD: www.zhidak.com
+
+#Use for init accoutn on db/seeds.rb
+ADMIN_NAME: master
+ADMIN_EMAIL: master@inruby.com
+ADMIN_PASSWORD: kenxxx
+ROLES: [admin, user, VIP]
+
+#Use for send sms
+SMS_TOGGLE: true
+SMS_BAO_USER: inruby
+SMS_BAO_PASSWORD: kenxx
+#SMS_PHONE: 18080810818|18080810818
+SMS_PHONE: 18080810818
+
+#product e-commerce toggle
+# 如果开通电子商务，则会显示产品价格等字段
+PRODUCT_TOGGLE: true
+# 如果开通分销开关，则后台可获得总部数据
+FENXIAO_TOGGLE: true
+DB_HOST: localhost
+DB_PORT: 3306
+DB_DATABASE: zhidak
+DB_USERNAME: root
+DB_PASSWORD: kenrome001
+HEADPARTER_SITE: http://www.zhidak.com
+      </pre>
+    </li>
+    <li>还有一部分是用户常量，直接写在db/seeds.rb中初始化
+      <pre>
+puts 'init templetes'
+Admin::Keystore.put('templete', 'default')
+Admin::Keystore.put('site_name', 'Rain CMS')
+
+puts "init crm info"
+Admin::Keystore.put('contact_name', '宋学江')
+Admin::Keystore.put('contact_qq', '156090284')
+Admin::Keystore.put('contact_wechat', 'xuejiang_song')
+Admin::Keystore.put('wechat_url', '微信关注网址')
+Admin::Keystore.put('contact_weibo', 'inruby')
+Admin::Keystore.put('weibo_url', 'http://www.weibo.com/inruby')
+Admin::Keystore.put('contact_mobile', '18280673990')
+Admin::Keystore.put('contact_email', '156090284@qq.com')
+Admin::Keystore.put('firm_name', '成都yizhilia')
+Admin::Keystore.put('firm_address', '成都市高新区天益街38号理想中心1栋13层1308号')
+Admin::Keystore.put('firm_phone', '028-82008001')
+Admin::Keystore.put('firm_city', '成都市')
+Admin::Keystore.put('firm_address', '高新区天益街38号理想中心1栋13层1308号')
+      </pre>
+    </li>
+  </ol>
+</div>

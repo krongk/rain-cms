@@ -2,15 +2,17 @@
   <%= f.error_notification %>
   <div class="row">
     <div class="col-md-2">
-      <h2>栏目管理</h2>
-      <blockquote>
-        <p>
-          <%= f.button :submit, '提交保存', class: 'btn btn-lg btn-danger' %><br>
-          <small><%= link_to '返回栏目列表', admin_channels_path %></small>
-        </p>
-        <small>对应网站前台的栏目</small>
-      </blockquote>
-      <hr>
+      <div id="sidebar-affix">
+        <h2>栏目管理</h2>
+        <blockquote>
+          <p>
+            <%= f.button :submit, '提交保存', class: 'btn btn-lg btn-danger' %><br>
+            <small><%= link_to '返回栏目列表', admin_channels_path %></small>
+          </p>
+          <small>对应网站前台的栏目</small>
+        </blockquote>
+        <hr>
+      </div>
     </div>
     <div class="col-md-10">
       <div class="form-inputs">
