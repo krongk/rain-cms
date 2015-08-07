@@ -43,5 +43,16 @@
     SMS_BAO_PASSWORD: kenrome001
     SMS_PHONE: 18080810818|18080810818    ＃短信通知到哪些手机号
   </pre>
-
+  <h3>如何开通分站短信发送</h3>
+  <small>逻辑：判断是非有分站手机号，如果有则发送给分站，否则发送给总站设置的手机号</small>
+  <ol>
+    <li>在用户提交表单的时候，给comment.branch赋值： branch1, branch2, branch3...</li> 
+    <li>添加分站栏目的时候，应该考虑把short_title=branch1, branch2...以保持变量传递一致性</li>
+    <li>在application.yml中，给每个分站设置接收短信的手机号，如下：</li>
+  </ol>
+  <pre>
+    #分站管理员手机号
+    SMS_BRANCH1: 15328077520
+    SMS_BRANCH2: 18080810818
+  </pre>
 </div>

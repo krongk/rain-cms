@@ -13,12 +13,12 @@ SITE_NAME: Rain CMS
 SITE_DESCRIPTION: 用于meta description 和基本的网站介绍
 SITE_LOGO: http://www.abc.com/assets/logo.jpg
 
-GMAIL_USERNAME: kenrome
+GMAIL_USERNAME: xxx
 GMAIL_PASSWORD: www.abc.com
 
 ADMIN_NAME: master
-ADMIN_EMAIL: master@inruby.com
-ADMIN_PASSWORD: kenrome
+ADMIN_EMAIL: master@xxx.com
+ADMIN_PASSWORD: xxx
 ROLES: [admin, user, VIP]
 
 #TODO: 开发短信预约接口
@@ -37,26 +37,7 @@ PRODUCT_TOGGLE: false
 FENXIAO_TOGGLE: false
 DB_HOST: 127.0.0.1
 DB_PORT: 3301
-DB_DATABASE: grand
+DB_DATABASE: rrr
 DB_USERNAME: root
 DB_PASSWORD: abc
 HEADPARTER_SITE: http://www.abc.com
-
-#CRM contact: 
-#将以下的值填写到db/seeds.rb中初始化：
-#   Admin::Keystore.put('contact_name', '宋学江')
-#也可以在console下运行，存储到admin::keystore中
-  # CONTACT_NAME: 宋学江
-  # CONTACT_QQ: 156090284
-  # CONTACT_WECHAT: xuejiang_song
-  # WECHAT_URL: 微信关注网址
-  # CONTACT_WEIBO: inruby
-  # WEIBO_URL: http://www.weibo.com/inruby
-  # CONTACT_MOBILE: 18280673990
-  # CONTACT_EMAIL: 156090284@qq.com
-
-  # FIRM_NAME: 成都yizhilia
-  # FIRM_ADDRESS: 成都市高新区天益街38号理想中心1栋13层1308号
-  # FIRM_PHONE: 028-82008001
-  # FIRM_CITY: 成都市
-  # FIRM_DESCRIPTION: 高新区天益街38号理想中心1栋13层1308号

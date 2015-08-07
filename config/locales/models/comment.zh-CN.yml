@@ -2,7 +2,7 @@
 zh-CN:
   activerecord:
     models:
-      comment: 留言
+      comment: 留言预定
     attributes:
       comment:
         name: 姓名
@@ -14,10 +14,12 @@ zh-CN:
         gender: 性别
         birth: 出生日期
         hobby: 爱好
-        content: 留言内容
+        content: 详细内容
         content2: 补充
         content3: 其它
         status: 状态
+        branch: 分站
+        datetime: 预订时间
     errors:
       comment: 
   helpers:

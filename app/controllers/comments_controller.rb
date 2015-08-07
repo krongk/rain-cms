@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       @comment.status = '未处理'
       if @comment.save
-        format.html { redirect_to "/", notice: '留言成功.' }
+        format.html { redirect_to "/", notice: '预订成功.' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
         format.html { render action: 'new' }
@@ -33,6 +33,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:name, :mobile_phone, :tel_phone, :email, :qq, :address, :gender, :birth, :hobby, :content, :content2, :content3, :status)
+      params.require(:comment).permit(:name, :mobile_phone, :tel_phone, :email, :qq, :address, :gender, :birth, :hobby, :content, :content2, :content3, :status, :branch, :datetime)
     end
 end

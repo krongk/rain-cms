@@ -4,7 +4,8 @@ class Admin::CommentsController < Admin::ApplicationController
   # GET /admin/comments
   # GET /admin/comments.json
   def index
-    @comments = Admin::Comment.order("updated_at DESC").page(params[:page])
+    @comments = Admin::Comment.order("updated_at DESC, status ASC").page(params[:page])
+    @comments = @comments.where("status = ?", params[:status]) if params[:status]
   end
 
   # GET /admin/comments/1
@@ -79,6 +80,6 @@ class Admin::CommentsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_comment_params
-      params.require(:admin_comment).permit(:name, :mobile_phone, :tel_phone, :email, :qq, :address, :gender, :birth, :hobby, :content, :content2, :content3, :status)
+      params.require(:admin_comment).permit(:name, :mobile_phone, :tel_phone, :email, :qq, :address, :gender, :birth, :hobby, :content, :content2, :content3, :status, :branch, :datetime)
     end
 end
