@@ -9,7 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require framework_and_overrides
+ *= require admin/home
+ *= require admin/pages
+ * require_tree .
  */
 .content {
   background-color: #eee;

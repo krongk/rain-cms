@@ -74,6 +74,7 @@ GEM
       sass (>= 3.2.19)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    bower-rails (0.10.0)
     builder (3.2.2)
     cancan (1.6.10)
     capistrano (3.4.0)
@@ -298,6 +299,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.4.1)
   bootstrap-will_paginate
+  bower-rails
   cancan (= 1.6.10)
   capistrano-passenger
   capistrano-rails

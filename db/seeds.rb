@@ -20,28 +20,28 @@ puts 'user: ' << user.name
 user.add_role :admin
 
 puts 'DEFAULT USERS'
-user = User.create(:name => '3097932310', :email => '3097932310@qq.com', :password => 'yjy3097932310eje', :password_confirmation => 'yjy3097932310eje')
+user = User.create(:name => 'omero', :email => 'omero@qq.com', :password => 'omero-china.com', :password_confirmation => 'omero-china.com')
 puts 'user: ' << user.name
 #user.confirm!
 user.add_role :admin
 
 puts 'init templetes'
 Admin::Keystore.put('templete', 'default')
-Admin::Keystore.put('site_name', 'Rain CMS')
+Admin::Keystore.put('site_name', '洗衣O2O')
 
 puts "init crm info"
-Admin::Keystore.put('contact_name', '衣袈铱')
-Admin::Keystore.put('contact_qq', '3176989986')
+Admin::Keystore.put('contact_name', '洗衣O2O')
+Admin::Keystore.put('contact_qq', '872342975')
 Admin::Keystore.put('contact_wechat', 'xuejiang_song')
 Admin::Keystore.put('wechat_url', '微信关注网址')
-Admin::Keystore.put('contact_weibo', 'inruby')
-Admin::Keystore.put('weibo_url', 'http://www.weibo.com/inruby')
-Admin::Keystore.put('contact_mobile', '18180726163')
-Admin::Keystore.put('contact_email', '3176989986@qq.com')
-Admin::Keystore.put('firm_name', '成都衣袈铱洗涤技术咨询服务有限公司')
-Admin::Keystore.put('firm_phone', '400-040-5133')
+Admin::Keystore.put('contact_weibo', 'omero')
+Admin::Keystore.put('weibo_url', 'http://www.weibo.com/omero')
+Admin::Keystore.put('contact_mobile', '13981811358')
+Admin::Keystore.put('contact_email', '872342975@qq.com')
+Admin::Keystore.put('firm_name', '四川万邦欧美龙洗涤服务有限公司')
+Admin::Keystore.put('firm_phone', '4000-300-389')
 Admin::Keystore.put('firm_city', '成都市')
-Admin::Keystore.put('firm_address', '成都市双流县东升街道龙桥路6号119栋1单元3层307号')
+Admin::Keystore.put('firm_address', '成都市双流县')
 
 puts "create new channel"
 Admin::Channel.create!(
@@ -60,7 +60,7 @@ Admin::Channel.create!(
 Admin::Channel.create!(
   :parent_id    => nil,
   :typo         => 'product',
-  :title        => '关于我们',
+  :title        => '加盟分店',
   :short_title  => 'product',
   :properties   => 1,
   :default_url  => nil,
@@ -86,7 +86,7 @@ Admin::Channel.create!(
 Admin::Channel.create!(
   :parent_id    => nil,
   :typo         => 'article',
-  :title        => '洗涤知识',
+  :title        => '衣聊部落',
   :short_title  => 'news',
   :properties   => 1,
   :default_url  => nil,

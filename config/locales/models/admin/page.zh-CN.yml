@@ -18,6 +18,7 @@ zh-CN:
           discount: 折扣
           unit: 单位
           amount: 库存数量
+          external_url: 外部链接
           headquarter_id: 总站ID
           is_processed: 是否发布
     errors:

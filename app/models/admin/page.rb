@@ -5,7 +5,7 @@ class Admin::Page < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates :channel, :title, :short_title, presence: true
+  validates :channel, :title, presence: true
   validates :short_title, format: { with: /\A[a-zA-Z0-9-]+\z/,
     message: "名称简写只能包括字母数字和横线" }
 

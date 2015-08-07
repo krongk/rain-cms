@@ -17,7 +17,10 @@ class ApplicationController < ActionController::Base
     not_found#  redirect_to root_path
   end
 
-  private
+  def resolve_layout
+    Admin::Keystore.value_for('app').present? ? 'app' : 'frontpage'
+  end
+
   #detect if a mobile device
   def mobile_device?
     !!(request.user_agent =~ /Mobile|webOS/i)

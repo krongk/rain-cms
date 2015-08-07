@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   caches_page :index 
   
-  layout 'frontpage'
+  layout :resolve_layout
 
   #{"controller"=>"welcome", "action"=>"index", "channel"=>"fw", "id"=>"2", "tag" => "tagkey"}
   #params

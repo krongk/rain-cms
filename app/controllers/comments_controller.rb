@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
   before_action :set_channel, only: [:new, :create]
-  layout 'frontpage'
+  layout :resolve_layout
 
   # GET /comments/new
   def new

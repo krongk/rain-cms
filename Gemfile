@@ -30,6 +30,8 @@ gem 'actionpack-page_caching'
 #Liquid templete html
 #gem 'liquid'
 
+gem 'bower-rails'
+
 #add :git to bugfix open dialog error
 #gem "ckeditor", :git => "git@github.com:galetahub/ckeditor.git"
 gem 'ckeditor', github: 'galetahub/ckeditor'

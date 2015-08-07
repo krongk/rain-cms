@@ -98,7 +98,7 @@ class Admin::PagesController < Admin::ApplicationController
       params.require(:admin_page).permit(:user_id, :channel_id, :title, :short_title, 
         :keywords, 
         :description, :image_path, :content,
-        :price, :discount, :unit, :amount, :is_processed, :headquarter_id,
+        :price, :discount, :unit, :amount, :is_processed, :headquarter_id, :external_url,
         :tag_id, :context, :taggable)
     end
 end

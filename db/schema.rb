@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424064658) do
+ActiveRecord::Schema.define(version: 20150725155624) do
 
   create_table "admin_channels", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -76,21 +76,22 @@ ActiveRecord::Schema.define(version: 20150424064658) do
   add_index "admin_keystores", ["key"], name: "index_admin_keystores_on_key", using: :btree
 
   create_table "admin_pages", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.integer  "channel_id",  limit: 4
-    t.string   "title",       limit: 255
-    t.string   "short_title", limit: 255
-    t.string   "properties",  limit: 255
-    t.string   "keywords",    limit: 255
-    t.string   "description", limit: 255
-    t.string   "image_path",  limit: 255
-    t.text     "content",     limit: 65535
+    t.integer  "user_id",      limit: 4
+    t.integer  "channel_id",   limit: 4
+    t.string   "title",        limit: 255
+    t.string   "short_title",  limit: 255
+    t.string   "properties",   limit: 255
+    t.string   "keywords",     limit: 255
+    t.string   "description",  limit: 255
+    t.string   "image_path",   limit: 255
+    t.text     "content",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",                     precision: 8,  scale: 2
-    t.decimal  "discount",                  precision: 10
-    t.string   "unit",        limit: 255
-    t.integer  "amount",      limit: 4
+    t.decimal  "price",                      precision: 8,  scale: 2
+    t.decimal  "discount",                   precision: 10
+    t.string   "unit",         limit: 255
+    t.integer  "amount",       limit: 4
+    t.string   "external_url", limit: 255
   end
 
   add_index "admin_pages", ["channel_id"], name: "index_admin_pages_on_channel_id", using: :btree

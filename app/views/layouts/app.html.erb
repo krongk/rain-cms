@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="<%= asset_path 'icon.png' %>">
+    <link rel="apple-touch-icon" href="<%= asset_path Admin::Keystore.value_for('icon') || 'icon.png' %>">
+    <title><%= content_for?(:title) ? yield(:title) : Admin::Keystore.value_for('site_name') %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : Admin::Keystore.value_for('site_name') %>">
+    <%= stylesheet_link_tag 'app', media: 'all' %>
+    <%= csrf_meta_tags %>
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+    <%= render file: @base_dir + '_head.html' %>
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <%= yield(:header) %>
+    <div class="views">
+      <div class="view view-main">
+        <% unless params[:search] || params[:tag] || params[:controller] == 'comments' %>
+          <% if @page %>
+            <% if File.exist?( @base_dir + @channel.tmp_detail )%>
+              <%= render file: @base_dir + @channel.tmp_detail %>
+            <% else %>
+              <h1>找不到模版文件： <%= @channel.tmp_detail %> </h1>
+            <% end %>
+          <% else %> 
+            <% case @channel.properties.to_i %>
+            <% when 1 %>
+              <% if File.exist?( @base_dir + @channel.tmp_index )%>
+                <%= render file: @base_dir + @channel.tmp_index %>
+              <% else %>
+                <h1>找不到模版文件： <%= @channel.tmp_index %> </h1>
+              <% end %>
+            <% when 2 %>
+              <script type="text/javascript">
+                window.location.href="<%= @channel.default_url %>" 
+              </script>
+            <% else %>
+              cuwo 
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+    <%= yield(:footer) %>
+    <%= javascript_include_tag 'app' %>
+    <%= render file: @base_dir + '_foot.html' %>
+  </body>
+</html>
+

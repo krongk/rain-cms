@@ -6,6 +6,10 @@
   
 }
 
+.list-group .list-group{
+  border: solid #ddd 1px;
+}
+
 #admin_help h2{
   color: red;
   padding: 20px;
@@ -21,4 +25,8 @@
   position: fixed;
   top: 0;
   width:225px;
+}
+
+.min-height{
+  min-height: 110px;
 }
