@@ -11,6 +11,7 @@ class Admin::Channel < ActiveRecord::Base
   acts_as_taggable
 
   validates :typo, :title, :short_title, :tmp_index, :tmp_detail, presence: true
+  validates_uniqueness_of :short_title
   validates :short_title, format: { with: /\A[a-zA-Z0-9-]+\z/,
     message: "名称简写只能包括字母数字和横线" }
 

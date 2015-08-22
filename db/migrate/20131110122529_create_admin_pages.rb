@@ -13,6 +13,6 @@ class CreateAdminPages < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :admin_pages, :short_title  
+    add_index :admin_pages, :short_title, unique: true
   end
 end

@@ -1,5 +1,6 @@
 class Admin::Keystore < ActiveRecord::Base
   validates :key, :value, presence: true
+  validates_uniqueness_of :key
   after_save :clean_cache
 
   def clean_cache

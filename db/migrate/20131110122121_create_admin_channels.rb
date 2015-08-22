@@ -17,7 +17,6 @@ class CreateAdminChannels < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :admin_channels, :title, unique: true
     add_index :admin_channels, :short_title, unique: true
   end
 end

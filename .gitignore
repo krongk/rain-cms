@@ -21,7 +21,6 @@ db/*.sqlite3
 /tmp/*
 
 /public/news_pictures/
-/public/templetes/
 /public/robots.txt
 # various artifacts
 **.war
