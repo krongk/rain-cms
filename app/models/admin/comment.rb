@@ -16,12 +16,12 @@ class Admin::Comment < ActiveRecord::Base
    if ENV['SMS_TOGGLE']
       if branch.present? && branch =~ /^\s*branch(\d+)\s*$/
         branch_id = $1
-        send_phone = ENV["SMS_BRANCH#{branch_id}"].split('|').join(',')
+        send_phone = Admin::Keystore.value_for("sms_branch#{branch_id}").split(/[\|,，。.]/).join(',')
       end
       send_phone ||= ENV['SMS_PHONE'].split('|').join(',')
       if send_phone =~ /\d{11}/
         SmsSendWorker.perform_async(send_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】您有新预订信息，#{name} #{mobile_phone} #{content.nil? ? '希望你尽快与他取得联系' : content.to_s.truncate(36)}")
-        SmsSendWorker.perform_async(mobile_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】感谢您的留言，我们会尽快与您取得联系！#{Admin::Keystore.value_for('firm_phone')}")
+        SmsSendWorker.perform_async(mobile_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】感谢您的留言，我们会尽快与您取得联系！#{send_phone || Admin::Keystore.value_for('firm_phone')}")
       end
     end
   end
