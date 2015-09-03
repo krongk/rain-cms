@@ -183,7 +183,7 @@ module ApplicationHelper
   #=> {src: "/ckeditor/pictures/148/original.jpg", alt: 'hello', width: "640", height: "427"}
   def get_images_from_content(content)
     photos = []
-    return if content.blank?
+    return photos if content.blank?
     Nokogiri::HTML(content).search("img").each do |img|
       next if img['src'].blank?
       photo = {}
