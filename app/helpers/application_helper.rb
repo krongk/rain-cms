@@ -178,4 +178,21 @@ module ApplicationHelper
     slice_pages
   end
 
+  #把ckeditor内容里面的图片地址全部查询出来，包括宽高
+  #<img alt="" src="/ckeditor/pictures/148/original.jpg" style="width: 640px; height: 427px;" />
+  #=> {src: "/ckeditor/pictures/148/original.jpg", alt: 'hello', width: "640", height: "427"}
+  def get_images_from_content(content)
+    photos = []
+    retun if content.blank?
+    Nokogiri::HTML(content).search("img").each do |img|
+      next if img['src'].blank?
+      photo = {}
+      photo['src'] = img['src']
+      photo['alt'] = img['alt']
+      photo['width'] = $1.to_i if img['style'] =~ /width: (\d+)/i
+      photo['height'] = $1.to_i if img['style'] =~ /height: (\d+)/i
+      photos << photo
+    end
+    return photos
+  end
 end
