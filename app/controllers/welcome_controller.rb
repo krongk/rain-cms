@@ -62,6 +62,8 @@ class WelcomeController < ApplicationController
 
     #comment
     @comment = Comment.new
+    #tag cloud
+    @tags = Admin::Page.tag_counts_on(:tags)
   end
 
   def tag
