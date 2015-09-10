@@ -66,7 +66,7 @@ gem "htmlentities"
 gem 'chinese_pinyin'
 
 #wechat 
-gem 'weixin_authorize'
+#gem 'weixin_authorize'
 
 group :development do
   gem 'web-console', '~> 2.0'
