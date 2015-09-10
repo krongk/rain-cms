@@ -65,6 +65,9 @@ gem "htmlentities"
 #Pinyin.t('中国', splitter: '-') => "zhong-guo"
 gem 'chinese_pinyin'
 
+#wechat 
+gem 'weixin_authorize'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'better_errors'

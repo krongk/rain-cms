@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150807072714) do
   end
 
   add_index "admin_channels", ["short_title"], name: "index_admin_channels_on_short_title", unique: true, using: :btree
-  add_index "admin_channels", ["title"], name: "index_admin_channels_on_title", unique: true, using: :btree
   add_index "admin_channels", ["user_id"], name: "index_admin_channels_on_user_id", using: :btree
 
   create_table "admin_comments", force: :cascade do |t|
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 20150807072714) do
   end
 
   add_index "admin_pages", ["channel_id"], name: "index_admin_pages_on_channel_id", using: :btree
-  add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
+  add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", unique: true, using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
 
   create_table "admin_properties", force: :cascade do |t|

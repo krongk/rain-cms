@@ -41,3 +41,7 @@ DB_DATABASE: rrr
 DB_USERNAME: root
 DB_PASSWORD: abc
 HEADPARTER_SITE: http://www.abc.com
+
+#配置微信接口
+WECHAT_APP_ID: sfsd
+WECHAT_APP_SECRET: w93r34
