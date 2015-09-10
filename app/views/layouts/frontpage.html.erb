@@ -25,11 +25,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-<% if Admin::Keystore.value_for('body_tag') %>
-  <%= raw Admin::Keystore.value_for('body_tag') %>
-<% else %>
-  <body>
-<% end %>
+  <body <%= yield(:body_tag) %>>
 
     <%= render 'layouts/messages' %>
 
