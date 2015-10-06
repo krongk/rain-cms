@@ -76,6 +76,8 @@ GEM
       will_paginate
     bower-rails (0.10.0)
     builder (3.2.2)
+    byebug (5.0.0)
+      columnize (= 0.9.0)
     cancan (1.6.10)
     capistrano (3.4.0)
       i18n
@@ -92,11 +94,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chinese_pinyin (0.7.0)
@@ -114,6 +111,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
+    columnize (0.9.0)
     connection_pool (2.2.0)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
@@ -156,8 +154,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.2.10)
     mini_portile (0.6.2)
     minitest (5.6.0)
     multi_json (1.11.0)
@@ -177,6 +175,13 @@ GEM
     paperclip-qiniu (0.2.0)
       paperclip
       qiniu (~> 6.4.1)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
     qiniu (6.4.2)
       json (~> 1.8)
       mime-types (~> 2.4.3)
@@ -259,6 +264,7 @@ GEM
       activemodel (~> 4.0)
     sitemap_generator (5.0.5)
       builder
+    slop (3.6.0)
     sprockets (3.0.1)
       rack (~> 1.0)
     sprockets-rails (2.2.4)
@@ -291,16 +297,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    weixin_authorize (1.6.3)
-      carrierwave (>= 0.10.0)
-      mini_magick (>= 3.7.0)
-      redis (>= 3.1.0)
-      rest-client (>= 1.6.7)
-      yajl-ruby (>= 1.2.0)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
-    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -334,6 +333,8 @@ DEPENDENCIES
   nokogiri
   paperclip
   paperclip-qiniu
+  pry
+  pry-byebug
   quiet_assets
   rails (~> 4.2.1)
   rails-i18n!
@@ -348,5 +349,4 @@ DEPENDENCIES
   turbolinks (= 2.5.3)
   uglifier (~> 2.7.1)
   web-console (~> 2.0)
-  weixin_authorize
   whenever

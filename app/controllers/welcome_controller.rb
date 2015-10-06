@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   caches_page :index 
   
   layout :resolve_layout
+  respond_to :html, :json, :js
 
   #{"controller"=>"welcome", "action"=>"index", "channel"=>"fw", "id"=>"2", "tag" => "tagkey"}
   #params
@@ -23,6 +24,9 @@ class WelcomeController < ApplicationController
     @channel ||= Admin::Channel.find_by(short_title: params[:channel])
     #channel id is not cached, use to previous
     @channel ||= Admin::Channel.find_by(id: params[:channel])
+
+    #for f7
+    #
 
     #root index.html has no params
     if params.delete_if {|k, v| ['controller', 'action'].include?(k)}.empty?
@@ -52,6 +56,11 @@ class WelcomeController < ApplicationController
       if request.path != "/#{@channel.short_title}/#{@page.id}"
         redirect_to "/#{@channel.short_title}/#{@page.id}"
       end
+    end
+    #respond_with @page || @channel
+    respond_to do |format|
+      format.html
+      format.js
     end
 
   end
