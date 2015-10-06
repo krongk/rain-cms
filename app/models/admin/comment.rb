@@ -20,7 +20,7 @@ class Admin::Comment < ActiveRecord::Base
       end
       send_phone ||= ENV['SMS_PHONE'].split('|').join(',')
       if send_phone =~ /\d{11}/
-        SmsSendWorker.perform_async(send_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】您有新预订信息:#{name}(#{mobile_phone})#{content.nil? ? '希望您尽快与他取得联系' : content.to_s.truncate(36)}")
+        SmsSendWorker.perform_async(send_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】您有新预订信息:#{name}(#{mobile_phone})#{'地址：' + address if address.present?}#{content.nil? ? '希望您尽快与他取得联系' : '留言：' + content.to_s.truncate(36)}")
         SmsSendWorker.perform_async(mobile_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】感谢您的留言，我们会尽快与您取得联系！您可以拨打电话：#{send_phone || Admin::Keystore.value_for('firm_phone')}")
       end
     end
