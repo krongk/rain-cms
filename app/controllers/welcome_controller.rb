@@ -25,11 +25,8 @@ class WelcomeController < ApplicationController
     #channel id is not cached, use to previous
     @channel ||= Admin::Channel.find_by(id: params[:channel])
 
-    #for f7
-    #
-
     #root index.html has no params
-    if params.delete_if {|k, v| ['controller', 'action'].include?(k)}.empty?
+    if params.delete_if {|k, v| ['controller', 'action', 'from', 'isappinstalled'].include?(k)}.empty?
       @channel ||= Admin::Channel.first 
     end
     
