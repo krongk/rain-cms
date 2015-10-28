@@ -15,7 +15,7 @@
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
     <%= render file: @base_dir + '_head.html' %>
   </head>
-  <body>
+  <body class="theme-red">
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"></div>
     <%= yield(:header) %>
