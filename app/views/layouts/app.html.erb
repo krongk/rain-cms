@@ -10,6 +10,9 @@
     <link rel="apple-touch-icon" href="<%= asset_path Admin::Keystore.value_for('icon') || 'icon.png' %>">
     <title><%= content_for?(:title) ? yield(:title) : Admin::Keystore.value_for('site_name') %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : Admin::Keystore.value_for('site_name') %>">
+    <!-- baidu map 1 start -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=xD0rO5z4aNh1dkf0mTOb1cFV&v=1.0"></script>  
+    <!-- baidu map 1 end -->
     <%= stylesheet_link_tag 'app', media: 'all' %>
     <%= csrf_meta_tags %>
     <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
@@ -21,6 +24,7 @@
     <%= yield(:header) %>
     <div class="views">
       <div class="view view-main">
+        <%= render 'layouts/messages' %>
         <% unless params[:search] || params[:tag] || params[:controller] == 'comments' %>
           <% if @page %>
             <% if File.exist?( @base_dir + @channel.tmp_detail )%>

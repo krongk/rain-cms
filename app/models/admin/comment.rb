@@ -13,6 +13,7 @@ class Admin::Comment < ActiveRecord::Base
 
   #判断是非有分站手机号，如果有则发送给分站，否则发送给总站
   def send_sms
+   logger.info "------\nsend sms: #{ENV['SMS_TOGGLE']}"
    if ENV['SMS_TOGGLE']
       if branch.present? && branch =~ /^\s*branch(\d+)\s*$/
         branch_id = $1
@@ -20,6 +21,7 @@ class Admin::Comment < ActiveRecord::Base
       end
       send_phone ||= ENV['SMS_PHONE'].split('|').join(',')
       if send_phone =~ /\d{11}/
+        logger.info "send_phone: #{send_phone}, mobile_phone: #{mobile_phone}"
         SmsSendWorker.perform_async(send_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】您有新预订信息:#{name}(#{mobile_phone})#{'地址：' + address if address.present?}#{content.nil? ? '希望您尽快与他取得联系' : '留言：' + content.to_s.truncate(36)}")
         SmsSendWorker.perform_async(mobile_phone, "【#{Admin::Keystore.value_for('site_name') || '直达客'}】感谢您的留言，我们会尽快与您取得联系！您可以拨打电话：#{send_phone || Admin::Keystore.value_for('firm_phone')}")
       end
