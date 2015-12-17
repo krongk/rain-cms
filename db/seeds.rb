@@ -8,42 +8,42 @@
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 # puts 'ROLES'
-# YAML.load(ENV['ROLES']).each do |role|
-#   Role.find_or_create_by(name: role)
-#   puts 'role: ' << role
-# end
+YAML.load(ENV['ROLES']).each do |role|
+  Role.find_or_create_by(name: role)
+  puts 'role: ' << role
+end
 
-# puts 'DEFAULT USERS'
-# user = User.create(:name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup)
-# puts 'user: ' << user.name
-# #user.confirm!
-# user.add_role :admin
+puts 'DEFAULT USERS'
+user = User.create(:name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup)
+puts 'user: ' << user.name
+#user.confirm!
+user.add_role :admin
 
-# puts 'DEFAULT USERS'
-# user = User.create(:name => 'song', :email => 'song@tanmer.com', :password => 'tanmer.com', :password_confirmation => 'tanmer.com')
-# puts 'user: ' << user.name
-# #user.confirm!
-# user.add_role :admin
+puts 'DEFAULT USERS'
+user = User.create(:name => 'song', :email => 'song@tanmer.com', :password => 'tanmer.com', :password_confirmation => 'tanmer.com')
+puts 'user: ' << user.name
+#user.confirm!
+user.add_role :admin
 
-# puts 'DEFAULT USERS'
-# user = User.create(:name => 'xiaohui', :email => 'xiaohui@tanmer.com', :password => 'tanmer.com', :password_confirmation => 'tanmer.com')
-# puts 'user: ' << user.name
-# #user.confirm!
-# user.add_role :admin
+puts 'DEFAULT USERS'
+user = User.create(:name => 'xiaohui', :email => 'xiaohui@tanmer.com', :password => 'tanmer.com', :password_confirmation => 'tanmer.com')
+puts 'user: ' << user.name
+#user.confirm!
+user.add_role :admin
 
-# puts 'init templetes'
-# Admin::Keystore.put('templete', 'tanmer')
-# Admin::Keystore.put('site_name', '探码科技')
+puts 'init templetes'
+Admin::Keystore.put('templete', 'piaor')
+Admin::Keystore.put('site_name', '打黄牛微票系统')
 
-# puts "init crm info"
+puts "init crm info"
 # Admin::Keystore.put('contact_name', '探码科技')
-# Admin::Keystore.put('contact_qq', '77632132')
-# Admin::Keystore.put('contact_wechat', 'xuejiang_song')
+Admin::Keystore.put('contact_qq', '77632132')
+Admin::Keystore.put('contact_wechat', 'xuejiang_song')
 # Admin::Keystore.put('contact_weibo', 'tanmer')
 # Admin::Keystore.put('weibo_url', 'http://www.weibo.com/tanmer')
-# Admin::Keystore.put('contact_mobile', '18080810818')
-# Admin::Keystore.put('contact_email', 'song@tanmer.com')
-# Admin::Keystore.put('firm_name', '成都探码科技有限公司')
+Admin::Keystore.put('contact_mobile', '18080810818')
+Admin::Keystore.put('contact_email', 'song@jhsport.com')
+Admin::Keystore.put('firm_name', '成都劲虎科技有限公司')
 
 # puts "create new channel"
 # Admin::Channel.create!(
@@ -127,13 +127,13 @@
 
 
 Admin::Channel.create!(
-  :parent_id    => 1,
+  :parent_id    => 0,
   :typo         => 'article',
-  :title        => '关于我们',
-  :short_title  => 'about',
+  :title        => '首页',
+  :short_title  => 'index',
   :properties   => 1,
   :default_url  => nil,
-  :tmp_index    => 'temp_about.html',
+  :tmp_index    => 'temp_index.html',
   :tmp_detail   => 'temp_detail.html',
   :keywords     => '',
   :description  => ''
@@ -147,7 +147,7 @@ Admin::Channel.create!(
   :short_title  => 'case',
   :properties   => 1,
   :default_url  => nil,
-  :tmp_index    => 'temp_case_list.html',
+  :tmp_index    => 'temp_list.html',
   :tmp_detail   => 'temp_detail.html',
   :keywords     => '',
   :description  => ''
@@ -160,7 +160,7 @@ Admin::Channel.create!(
   :short_title  => 'blog',
   :properties   => 1,
   :default_url  => nil,
-  :tmp_index    => 'temp_news_list.html',
+  :tmp_index    => 'temp_list.html',
   :tmp_detail   => 'temp_detail.html',
   :keywords     => '',
   :description  => ''

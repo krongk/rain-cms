@@ -10,7 +10,7 @@ class Admin::Page < ActiveRecord::Base
     message: "名称简写只能包括字母数字和横线" }
   validates_uniqueness_of :short_title
 
-  before_create :format_image_style
+  before_save :set_content_image
 
   #cache
   after_save :expire_cache
@@ -83,9 +83,10 @@ class Admin::Page < ActiveRecord::Base
 
   private
 
-  def format_image_style
+  def set_content_image
+    return if self.any_options?('海报')
+    doc = Nokogiri::HTML(content)
     begin
-      doc = Nokogiri::HTML(content)
       doc.search("img").each do |img|
         img.remove_attribute("style")
         if img.attributes["class"].nil?
@@ -94,10 +95,10 @@ class Admin::Page < ActiveRecord::Base
           img.set_attribute("class", "#{val} img-responsive")
         end
       end
-      content = doc.at("body").inner_html
     rescue => ex
-      logger.error("on format_image_style: #{ex.message}")
+      puts ex.message
     end
+    self.content = doc.at("body").inner_html
   end
 
 end
