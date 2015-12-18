@@ -84,7 +84,6 @@ class Admin::Page < ActiveRecord::Base
   private
 
   def set_content_image
-    return if self.any_options?('海报')
     doc = Nokogiri::HTML(content)
     begin
       doc.search("img").each do |img|
