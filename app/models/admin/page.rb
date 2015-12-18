@@ -10,7 +10,7 @@ class Admin::Page < ActiveRecord::Base
     message: "名称简写只能包括字母数字和横线" }
   validates_uniqueness_of :short_title
 
-  before_save :set_content_image
+  before_save :set_content_image, :set_thumb_image_path
 
   #cache
   after_save :expire_cache
@@ -82,6 +82,12 @@ class Admin::Page < ActiveRecord::Base
   end
 
   private
+
+  def set_thumb_image_path
+    if image_path =~ /\/(content|original)\./
+      image_path.sub!(/\/(content|original)\./, '/thumb.')
+    end
+  end
 
   def set_content_image
     doc = Nokogiri::HTML(content)

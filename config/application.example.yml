@@ -8,7 +8,7 @@
 # Add application configuration variables here, as shown below.
 #
 DOMAIN_NAME: abc.com
-SITE_DOMAIN: abc.com
+HOST_URL: http://www.abc.com
 SITE_NAME: Rain CMS
 SITE_DESCRIPTION: 用于meta description 和基本的网站介绍
 SITE_LOGO: http://www.abc.com/assets/logo.jpg
