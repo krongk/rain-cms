@@ -1,0 +1,79 @@
+                                                                                    
+
+<%= render file: 'public/templetes/unify/_header.html' %>
+
+<!--=== Breadcrumbs ===-->
+<%= render file: 'public/templetes/unify/_breadcrumb.html' %>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">		
+	<div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+    	<div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->        
+            <div class="blog margin-bottom-40">
+                 <h1><%= @page.title %></h1>
+                <div class="blog-post-tags">
+                    <ul class="list-unstyled list-inline blog-info">
+                        <li><i class="icon-calendar"></i> <%= @page.format_date %></li>
+                        <li><ul class="list-unstyled list-inline blog-tags"><li><i class="icon-tags"></i>  <% @page.tag_list.each do |tag| %> <%= link_to tag, tag_path(tag) %><% end %></li></ul></li>
+                    </ul>                                             
+                </div>
+                <div class="blog-img text-center">
+                    <img class="img-responsive" src="<%= @page.image_path %>" alt="<%= @page.title %>" title="<%= @page.title %>">
+                </div>
+                <div class="blog-content">
+                   <%= raw @page.content %>
+                   <hr/>
+<!-- Baidu Share Button BEGIN -->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- Baidu Share  END -->
+                </div>           
+            </div>
+            <!--End Blog Post-->        
+	    <hr>
+ 
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+      var duoshuoQuery = {short_name:"zxjj99"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+     
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3 magazine-page">
+            <%= render file: 'public/templetes/unify/_article_sidebar.html' %>
+        </div>
+        <!-- End Right Sidebar -->
+    </div><!--/row-->        
+</div><!--/container-->		
+<!--=== End Content Part ===-->
+<%= render file: 'public/templetes/unify/_footer.html' %>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

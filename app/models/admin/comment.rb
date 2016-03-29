@@ -13,8 +13,7 @@ class Admin::Comment < ActiveRecord::Base
 
   #判断是非有分站手机号，如果有则发送给分站，否则发送给总站
   def send_sms
-   logger.info "------\nsend sms: #{ENV['SMS_TOGGLE']}"
-   if ENV['SMS_TOGGLE']
+   if ENV['SMS_TOGGLE'].downcase == 'true'
       if branch.present? && branch =~ /^\s*branch(\d+)\s*$/
         branch_id = $1
         send_phone = Admin::Keystore.value_for("sms_branch#{branch_id}").split(/[\|,，。.]/).join(',')

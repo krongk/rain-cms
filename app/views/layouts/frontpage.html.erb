@@ -41,19 +41,10 @@
           <h1>找不到模版文件： <%= @channel.tmp_detail %> </h1>
         <% end %>
       <% else %> 
-        <% case @channel.properties.to_i %>
-        <% when 1 %>
-          <% if File.exist?( @base_dir + @channel.tmp_index )%>
-            <%= render file: @base_dir + @channel.tmp_index %>
-          <% else %>
-            <h1>找不到模版文件： <%= @channel.tmp_index %> </h1>
-          <% end %>
-        <% when 2 %>
-          <script type="text/javascript">
-            window.location.href="<%= @channel.default_url %>" 
-          </script>
+        <% if File.exist?( @base_dir + @channel.tmp_index )%>
+          <%= render file: @base_dir + @channel.tmp_index %>
         <% else %>
-          cuwo 
+          <h1>找不到模版文件： <%= @channel.tmp_index %> </h1>
         <% end %>
       <% end %>
     <% end %>

@@ -5,36 +5,37 @@
   comment Model对应前端<br>
   admin_comment Model 对应后台<br>
 
-  要添加表单，需要创建一个模版文件：temp_comment.html<br>
-  temp_comment.html 的结构大致如下：</p>
+  要添加表单，分两步完成：
+  1. 创建一个模版文件：temp_comment.html，temp_comment.html 的结构大致如下：</p>
   <pre>
     &lt;%= render file: 'public/templetes/unify/_header.html' %&gt;
 
     &lt;div class="container"&gt;   
       &lt;!-- Comment Boxes --&gt;
-      &lt;%= yield(:comment) %&gt;
+      <span class="bg-success">&lt;%= yield(:comment) %&gt;</span>
     &lt;/div&gt;
 
     &lt;%= render file: 'public/templetes/unify/_footer.html' %&gt;
   </pre>
   最重要的是要加： <b> yield(:comemnt)</b>
 
-<h3>在前台添加表单样式</h3>
-<pre>
-  &lt;%= simple_form_for(@comment, html: { class: 'footer-subsribe' } ) do |f| %&gt;                
+  2. 在前台添加表单代码
+  <pre>
+    <span class="bg-success">&lt;%= simple_form_for(@comment, html: { class: 'footer-subsribe' } ) do |f| %&gt; </span>           
 
-    &lt;div class="input-group"&gt;
-        &lt;input type="text" class="form-control" name="comment[mobile_phone]" placeholder="请输入您的手机号"&gt;                            
-        &lt;span class="input-group-btn"&gt;
-            &lt;button class="btn-u" type="submit"&gt;立即预定&lt;/button&gt;
-        &lt;/span&gt;
-    &lt;/div&gt;         
-  &lt;% end %&gt;
-</pre>
+      &lt;div class="input-group"&gt;
+          &lt;input type="text" class="form-control" name="<span class="bg-danger">comment[mobile_phone]</span>" placeholder="请输入您的手机号"&gt;                            
+          &lt;span class="input-group-btn"&gt;
+              &lt;button class="btn-u" type="submit"&gt;立即预定&lt;/button&gt;
+          &lt;/span&gt;
+      &lt;/div&gt;         
+    <span class="bg-success">&lt;% end %&gt;</span>
+  </pre>
+  高亮的三个部分为必须，其中可以添加的表单元素如下：
 </div>
 
-<h3>表单元素</h3>
 <table class="table table-bordered">
+  <tr><th>表单元素</th><th>类型</th><th>引用</th></tr>
   <tr><td>:name</td><td>String</td><td>comment[name]</td></tr>
   <tr><td>:mobile_phone</td><td>String</td><td>comment[mobile_phone]</td></tr>
   <tr><td>:tel_phone</td><td>String</td><td>comment[tel_phone]</td></tr>

@@ -2,13 +2,54 @@
   <h2><i class="fa fa-dot-circle-o fa-lg"></i>  辅助方法汇总</h2>
 
   <table class="table table-bordered">
+    <tr><th>方法</th><th>说明</th></tr>
     <tr>
-      <td>:name</td>
-      <td>
-        
+      <td>get_date(date)</td><td>
+        data: Date类型<br/>
+        返回时间格式：date.strftime("%Y-%m-%d")
       </td>
     </tr>
-    
+    <tr>
+      <td>get_short_content(content, count = 120)</td><td>
+        content: 字符串类型<br/>
+        返回content的前半截(120个字符)内容，往往用于显示文章摘要。
+      </td>
+    </tr>
+    <tr>
+      <td>get_url(obj)</td><td>
+        obj: Admin::Page或Admin::Channel的实例<br/>
+        返回给定实例对应的URL地址
+      </td>
+    </tr>
+    <tr>
+      <td>get_next_obj(obj)</td><td>
+        obj: Admin::Page或Admin::Channel的实例<br/>
+        返回给定实例的下一个实例
+      </td>
+    </tr>
+    <tr>
+      <td>get_menu(short_title, level = 1)</td><td>
+        short_title: 传一个channel实例的short_title值，如get_menu('product')<br/>
+        level: 显示的层级深度，默认为2级；如果要显示3级，则调用：get_menu('product', 3)<br/>
+        通过传入的父级channel，获取下拉菜单
+      </td>
+    </tr>
+    <tr>
+      <td>get_slice_pages(pages, count)</td><td>
+        pages：一个Admin::Page数组，即页面数组<br/>
+        count: 分组数量<br/>
+        将pages数组按照每count一组分组，用于一些特殊展示，
+        例：[1,2,3,'a', 'b', 'c','d'] => [[1, 2, 3], ["a", "b", "c"], ["d"]]
+      </td>
+    </tr>
+    <tr>
+      <td>get_images_from_content(content)</td><td>
+        content: 代表channel.content或page.content<br/>
+        把content内容里面的图片全部查询出来，包括宽高，最好返回一个图片数组；
+        例： <img alt="" src="/ckeditor/pictures/148/original.jpg" style="width: 640px; height: 427px;" />
+        => {src: "/ckeditor/pictures/148/original.jpg", alt: 'hello', width: "640", height: "427"}
+      </td>
+    </tr>
   </table>
 
 </div>

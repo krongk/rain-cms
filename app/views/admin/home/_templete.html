@@ -6,7 +6,7 @@
 
   <h3>模版文件结构</h3>
   <pre>
-    |templetes
+    public/templetes
               |templete_name
                             |assets
                                   |css
@@ -23,8 +23,8 @@
   <ul>
     <li>模版必须放在/public/templetes/目录下</li>
     <li>[首页]必须名为: index.html</li>
-    <li>[模版页]必须以"t_"打头， 如blog_list.html</li>
-    <li>[内容页]用容易识别的名称命名</li>
+    <li>[模版页]必须以"t_"或者"temp_"打头， 如t_blog_list.html</li>
+    <li>[内容页]用容易识别的名称命名, 如about.html(关于我们), contact.html(联系我们)</li>
   </ul>
 
   <p>下面分别介绍[首页],[模版页]和[内容页]</p>
@@ -87,27 +87,4 @@
     </li>
   </ul>
 
-  <h3>定制[内容页]</h3>
-  <p>内容页作为某个独特的网页而存在，比如about.html是为了呈现‘关于我们’栏目的效果，team.html是为了呈现'关于团队'栏目的效果。</p>
-  <p>内容页将会装载到指定的模版页面中，如"temp_default_index.html"模版中，如果内容页作为栏目，那么该栏目下面的页面将会装载到“temp_default_detail.html”模版中， 内容页的修改步骤如下:</p>
-  <ul>
-    <li>
-      <p>通过模版页复制，创建两个文件“t_default_index.html"和"t_default_detail.html"</p>
-    </li>
-    <li>
-      <p>在“t_default_index.html"和"t_default_detail.html"要呈现内容的地方加上： &gt;%= yield(:content) %&lt; </p>
-    </li> 
-    <li>
-      <p>把内容页&gt;body&lt;部分中的header,footer部分用代码标记起来：</p>
-      <pre>
-        &lt;!-- [[header start]] --&gt;
-          ...
-        &lt;!-- [[header end]] --&gt;
-
-        &lt;!-- [[footer start]] --&gt;
-          ...
-        &lt;!-- [[footer end]] --&gt;
-      </pre>
-    </li>
-  </ul>
 </div>

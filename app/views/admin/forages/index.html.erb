@@ -6,7 +6,7 @@
     </blockquote>
     <hr>
 
-    <% if ENV['FENXIAO_TOGGLE'] %>
+    <% if ENV['FENXIAO_TOGGLE'].downcase == 'true' %>
       <blockquote>
         <%= simple_form_for(Admin::Comment.new, url: '/admin/home/fenxiao_headquarter', method: 'post', html: { id: 'contact', name: 'contact', novalidate: true } ) do |f| %>
            <button type="submit" class="btn btn-lg btn-warning">获取分销总站的最新数据</button>

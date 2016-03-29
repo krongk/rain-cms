@@ -1,5 +1,74 @@
 <div id="channel" class="list">
   <h2><i class="fa fa-dot-circle-o fa-lg"></i> 如何添加栏目</h2>
 
-  <p>栏目的初始化在这里设置： <b>/public/templetes/initialize_admin_channel.rb</b></p>
+  <p>栏目（导航）是一个网站的核心框架，每个栏目的模板可以独立设计，以实现网站展示效果的多样性。</p>
+  <p>初始化栏目可以在db/seeds.rb文件中完成，如下所示：</p>
+  <pre>
+    Admin::Channel.create!(
+      :parent_id    => nil,
+      :typo         => 'article',
+      :title        => '首页',
+      :short_title  => 'index',
+      :tmp_index    => 'temp_index.html',
+      :tmp_detail   => 'temp_detail.html',
+      :keywords     => '首页',
+      :description  => '欢迎使用RainCMS, 成都探码科技有限公司出品！'
+    )
+
+    Admin::Channel.create!(
+      :parent_id    => nil,
+      :typo         => 'product',
+      :title        => '博客',
+      :short_title  => 'blog',
+      :tmp_index    => 'temp_blog.html',
+      :tmp_detail   => 'temp_detail.html',
+      :keywords     => '博客列表',
+      :description  => ''
+    )
+  </pre>
+  <p>也可以直接登录到后台‘栏目管理’中创建栏目。</p>
+  <h4>属性说明：</h4>
+  <table class="table table-bordered">
+    <tr><th>属性</th><th>说明</th></tr>
+    <tr>
+      <td>parent_id</td>
+      <td>父级栏目ID，顶级栏目则不填</td>
+    </tr>
+    <tr>
+      <td>typo</td>
+      <td>有三个值：article image product，分别表示这个栏目是用于文本链接、图片展示、还是商品</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>栏目名称</td>
+    </tr>
+    <tr>
+      <td>short_title</td>
+      <td>栏目URL缩写，如http://localhost:3000/<span class="bg-primary">blog</span>/23</td>
+    </tr>
+    <tr>
+      <td>properties</td>
+      <td>(废弃)</td>
+    </tr>
+    <tr>
+      <td>default_url</td>
+      <td>(废弃)</td>
+    </tr>
+    <tr>
+      <td>tmp_index</td>
+      <td>栏目模板</td>
+    </tr>
+    <tr>
+      <td>tmp_detail</td>
+      <td>栏目下的子页面模板</td>
+    </tr>
+    <tr>
+      <td>keywords</td>
+      <td>SEO关键词</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>SEO描述信息</td>
+    </tr>
+  </table>
 </div>

@@ -9,6 +9,18 @@
     <li>参考Gem <a href="https://github.com/EppO/rolify" target="_blank">rolify</a></li>
   </ul>
 
+  <h3>需要在db/seeds.rb中初始化角色权限表和默认登录用户</h3>
+  <pre>
+    # puts '初始化权限表'
+    YAML.load(ENV['ROLES']).each do |role|
+      Role.find_or_create_by(name: role)
+      puts 'role: ' << role
+    end
+
+    puts '初始化管理员信息'
+    user = User.create(:name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup)
+    user.add_role :admin
+  </pre>
 </div>
 
 

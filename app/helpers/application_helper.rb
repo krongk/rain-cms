@@ -142,15 +142,6 @@ module ApplicationHelper
     return st
   end
 
-  #this method is to get content from default_url which channel has.
-  # welcome/index.html.erb
-  def get_templete_content(default_url)
-    if !default_url.blank? && File.exist?(@base_dir + default_url)
-      return File.open(@base_dir + default_url, 'r').read
-    end
-    '没有找到任何文件,请检查default_url是否设置正确'
-  end
-
   #Tag 用以下的符号隔开都可以，就是不能用空格
   def update_tag(channel_or_page)
     #remove all previows
